@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-G4b::Application.load_tasks
+Mocs::Application.load_tasks

@@ -3,21 +3,20 @@ class TagsController < ApplicationController
     @tag = Tag.find_by_name(params[:id])
     @posts = Post.tagged_with(params[:id])
     post_ids = @posts.pluck(:id)
-    @check_ins = CheckIn.where('id IN (?)', post_ids)
 
 
     @start_date = @posts.first.created_at.utc.to_i * 1000
-    @t = LazyHighCharts::HighChart.new('graph') do |f|
-      f.options[:chart][:defaultSeriesType] = "line"
-      f.options[:title][:text] = "Tag Engagement"
-      f.options[:subtitle][:text] = "Number of Checkins on Top 10 Actions"
-      f.options[:plotOptions][:area] = { stacking: "normal", pointStart: @start_date, pointInterval: 1.day * 1000 }
-      f.options[:xAxis][:type] ='datetime'
-      f.options[:yAxis][:title] = 'Takers'
-      @posts.each do |p|
-        f.series(:name=>"#{p.short_title}", :data => p.checkins_per_day )
-      end
-    end
+    # @t = LazyHighCharts::HighChart.new('graph') do |f|
+    #   f.options[:chart][:defaultSeriesType] = "line"
+    #   f.options[:title][:text] = "Tag Engagement"
+    #   f.options[:subtitle][:text] = "Number of Checkins on Top 10 Actions"
+    #   f.options[:plotOptions][:area] = { stacking: "normal", pointStart: @start_date, pointInterval: 1.day * 1000 }
+    #   f.options[:xAxis][:type] ='datetime'
+    #   f.options[:yAxis][:title] = 'Takers'
+    #   @posts.each do |p|
+    #     f.series(:name=>"#{p.short_title}", :data => p.checkins_per_day )
+    #   end
+    # end
 
     # @t = LazyHighCharts::HighChart.new('graph') do |f|
     #   f.options[:chart][:defaultSeriesType] = "area"

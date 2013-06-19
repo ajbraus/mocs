@@ -13,18 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130513005636) do
 
-  create_table "check_ins", :force => true do |t|
-    t.string   "content"
-    t.integer  "checked_in_user_id"
-    t.integer  "checked_in_post_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "check_ins", ["checked_in_post_id"], :name => "index_check_ins_on_checked_in_post_id"
-  add_index "check_ins", ["checked_in_user_id", "checked_in_post_id"], :name => "index_check_ins_on_checked_in_user_id_and_checked_in_post_id"
-  add_index "check_ins", ["checked_in_user_id"], :name => "index_check_ins_on_checked_in_user_id"
-
   create_table "comments", :force => true do |t|
     t.string   "content"
     t.integer  "commentable_id"
@@ -79,11 +67,6 @@ ActiveRecord::Schema.define(:version => 20130513005636) do
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "name",                   :default => "", :null => false
-    t.integer  "care"
-    t.integer  "fairness"
-    t.integer  "loyalty"
-    t.integer  "authority"
-    t.integer  "purity"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

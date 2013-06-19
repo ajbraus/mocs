@@ -36,13 +36,6 @@ padding-top: 70px;
 .row {
 
 }
-
-.container {
-	position: relative;
-top: 90px;
-padding-bottom: 150px;
-}
-
 .media-object {
 	border-radius: 4px;
 }
@@ -89,40 +82,184 @@ left: 3px;
 width: 47px;
 }
 
-.check-in {
-	text-align: center;
-background: #F6F6F6;
-padding: 17px 0;
-margin-left: -20px;
-position: relative;
-left: 30px;
-padding-left: 40px;
-}
-
-.label {
-	background:lightgrey;
-	cursor:pointer;
-	font-size: 17px;
-	padding:7px;
-	margin:3px;
-	&:hover {
-		background:#BAF254;
-	}
-}
-
-form.survey {
-	input[type=number] {
-		width:25px;
-		text-align: center;
-	}
-}
-
-ul.scale {
-	list-style: none;
-	li {
-	}
-}
-
 .comment-pic {
 	width:40px;
+}
+
+.sexy {
+  background-color: #00365F;
+}
+
+.form-search {
+	margin-top:0px;
+  margin-bottom:0px;
+}
+.label {
+padding: 5px;
+font-size: 12px;
+cursor: pointer;
+margin: 2px;
+}
+.label:hover {
+  opacity:.6;
+}
+
+.well {
+	padding:17px;
+}
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+hr {
+  margin:30px;
+  color:#eee;
+}
+
+.searchHeader {
+  color: #1F7A1F;
+}
+.margin-auto {
+  margin:0 auto;
+  width:50%;
+}
+
+#searchingProjects h1{
+  color: white;
+}
+
+#yourProfile h1{
+  color: white;
+}
+
+.media-heading {
+  color: #009966;
+}
+.progress {
+width: 150px;
+margin-top: 13px;
+margin-bottom: 0;
+}
+
+.white {
+  color:white;
+}
+.white:hover {
+  font-weight: 30px;
+  text-decoration: none;
+  color: #61C5FA;
+}
+
+.gold {
+  color:gold;
+}
+
+.grey {
+  color:lightgrey;
+}
+
+.grey:hover {
+  color:gold;
+}
+
+.icon-star {
+  font-size: 20px;
+}
+
+textarea {
+  width:80%;
+}
+
+.close-jumbotron {
+  color:grey;
+}
+
+.close-jumbotron:hover {
+  color:red;
+}
+
+.clear {
+  width: 100px;
+  margin-left: 750px;
+}
+
+.filter {
+  display: inline-block;
+}
+
+.points {
+  color:  #E6E6F0;
+}
+
+.completed {
+  display: inline-block;
+}
+.inline {
+  display: inline-block;
+}
+
+.yourimage {
+  text-align: center;
+}
+
+.searchTags {
+  background-color: #DBDBDB;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+/*This is the 'About Non-MOCs for Docs' Page*/
+
+.bs-docs-sidenav {
+  width: 228px;
+  margin: 30px 0 0;
+  padding: 0;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.bs-docs-sidenav > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.bs-docs-sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+.Overview {
+  margin-top: 0px;
+}
+
+hr {
+  margin-bottom: 15px;
+}
+
+/*This is the Project Page*/
+
+.small-thumbnail {
+	height: 50px;
 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "G4b" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Mocs" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -37,46 +37,68 @@
 <% end %>
   </head>
   <body>  
-    <div class="navbar" data-spy="affix" data-offset-top="100px">
-      <div class="nav-border navbar-inner">
-        <%= link_to root_path, class:"brand" do %>
-          <%= image_tag "logo.png" %>
-        <% end %>
-
-        <ul class="nav">
-          <li><%= link_to 'How it Works', how_path %></li>
-          <li><%= link_to 'About', about_path %></li>
-        </ul>
-        <div class="pull-right">
-          <% if !user_signed_in? %>
-            <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
-            <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-inverse" %>
-          <% else %>
-            <%= link_to "New Action", new_post_path, class: "btn btn-inverse" %>
-            <%= link_to "logout", destroy_user_session_path, method: "delete" %>
-          <% end %>
-        </div>
-        <%= form_tag posts_path, :method => :get, class:"form-search" do %>
-          <div class="input-append">
-            <%= text_field_tag :search, params[:search], class:"span3 search-query", placeholder:"Search Actions and #Tags" %>
-            <%= button_tag "Search", name: nil, class:"btn" %>
-          </div>
-        <% end %>
-      </div>
-    </div>
     <div class="container">
+      <div class="navbar">
+       <div class="navbar-inner">
+           <%= link_to root_path, class:"brand" do %>
+             Non Mocks
+           <% end %>
+            <ul class="nav" id="main-menu-left">
+              <li><%= link_to 'How it Works', how_path %></li>
+              <li><%= link_to 'About MOCs', about_path %></li>
+              <% if !user_signed_in? %>
+              </ul> 
+                <div class="pull-right">
+                  <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
+                  <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-inverse" %>
+                </div>
+              <% else %>
+                <li><%= link_to "Create a MOC", new_post_path %></li>
+                <li class="dropdown offset2">
+                  <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><%= current_user.name %><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" data-toggle="tab">Settings</a></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#" data-toggle="tab"><i class="icon-user icon-white"></i>Improve Profile</a>
+                    </li>
+                    <li><a href="#" data-toggle="tab"><div class="progress progress-danger progress-striped active">
+                      <div class="bar" style="width: 45%"></div>
+                      </div></a></li>
+                  </ul>
+                </li>
+                <li><%= image_tag 'tflood.png', class:"img-polaroid small-thumbnail" %></li>
+              </ul>                   
+              <% end %>   
+         </div>
+       </div>
         <%= bootstrap_flash %>
         <%= yield %>
-    </div> <!-- /container -->
+      </div> <!-- /container -->
+    </div>
+
+
+    <footer id="footer">
+      <p class="pull-right"><a href="http://bootswatch.com/spruce/#top">Back to top</a></p>
+      <div class="links">
+        <a href="http://news.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Blog</a>
+        <a href="http://feeds.feedburner.com/bootswatch">RSS</a>
+        <a href="https://twitter.com/thomashpark">Twitter</a>
+        <a href="https://github.com/thomaspark/bootswatch/">GitHub</a>
+        <a rel="tooltip" href="javascript:(function(e,a,g,h,f,c,b,d)%7Bif(!(f%3De.jQuery)%7C%7Cg%3Ef.fn.jquery%7C%7Ch(f))%7Bc%3Da.createElement(%22script%22)%3Bc.type%3D%22text/javascript%22%3Bc.src%3D%22http://ajax.googleapis.com/ajax/libs/jquery/%22%2Bg%2B%22/jquery.min.js%22%3Bc.onload%3Dc.onreadystatechange%3Dfunction()%7Bif(!b%26%26(!(d%3Dthis.readyState)%7C%7Cd%3D%3D%22loaded%22%7C%7Cd%3D%3D%22complete%22))%7Bh((f%3De.jQuery).noConflict(1),b%3D1)%3Bf(c).remove()%7D%7D%3Ba.documentElement.childNodes%5B0%5D.appendChild(c)%7D%7D)(window,document,%221.3.2%22,function(%24,L)%7Bif(%24(%22.bootswatcher%22)%5B0%5D)%7B%24(%22.bootswatcher%22).remove()%7Delse%7Bvar%20%24e%3D%24(%27%3Cselect%20class%3D%22bootswatcher%22%3E%3Coption%3EAmelia%3C/option%3E%3Coption%3ECerulean%3C/option%3E%3Coption%3ECosmo%3C/option%3E%3Coption%3ECyborg%3C/option%3E%3Coption%3EJournal%3C/option%3E%3Coption%3EReadable%3C/option%3E%3Coption%3ESimplex%3C/option%3E%3Coption%3ESlate%3C/option%3E%3Coption%3ESpacelab%3C/option%3E%3Coption%3ESpruce%3C/option%3E%3Coption%3ESuperhero%3C/option%3E%3Coption%3EUnited%3C/option%3E%3C/select%3E%27)%3Bvar%20l%3D1%2BMath.floor(Math.random()*%24e.children().length)%3B%24e.css(%7B%22z-index%22:%2299999%22,position:%22fixed%22,top:%225px%22,right:%225px%22,opacity:%220.5%22%7D).hover(function()%7B%24(this).css(%22opacity%22,%221%22)%7D,function()%7B%24(this).css(%22opacity%22,%220.5%22)%7D).change(function()%7Bif(!%24(%22link.bootswatcher%22)%5B0%5D)%7B%24(%22head%22).append(%27%3Clink%20rel%3D%22stylesheet%22%20class%3D%22bootswatcher%22%3E%27)%7D%24(%22link.bootswatcher%22).attr(%22href%22,%22http://bootswatch.com/%22%2B%24(this).find(%22:selected%22).text().toLowerCase()%2B%22/bootstrap.min.css%22)%7D).find(%22option:nth-child(%22%2Bl%2B%22)%22).attr(%22selected%22,%22selected%22).end().trigger(%22change%22)%3B%24(%22body%22).append(%24e)%7D%3B%7D)%3B" title="" data-original-title="Drag to your bookmarks bar">Bookmarklet</a>
+        <a href="https://github.com/thomaspark/bootswatch/tree/gh-pages/swatchmaker">Swatchmaker</a>
+        <a href="http://news.bootswatch.com/post/22193315172/bootswatch-api">API</a>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F22JEM3Q78JC2">Donate</a>
+        <a href=mailto:"andrewscottconley@gmail.com">Contact Us</a>
+      </div>
+    </footer>
+
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
-    <footer>
-      <p>&copy; Good4Better 2013</p>
-    </footer>
-      
-
+    
   </body>
 </html>

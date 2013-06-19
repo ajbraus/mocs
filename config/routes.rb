@@ -1,4 +1,4 @@
-G4b::Application.routes.draw do
+Mocs::Application.routes.draw do
   resources :posts
 
   root :to => 'welcome#index'
@@ -18,13 +18,6 @@ G4b::Application.routes.draw do
   end
 
   resources :commitments, only: [:create, :destroy]
-  
-  resources :check_ins, only: [:create] do
-    member do
-      get :vote_up
-      get :vote_down
-    end
-  end
 
   get 'tags/:tag', to: 'tags#show', as: :tag
 

@@ -17,8 +17,6 @@
 
   <% if @post.present? %>
     <%= f.hidden_field :post_id, value: "#{@post.id}" %>
-  <% elsif @check_in.present? %>
-    <%= f.hidden_field :check_in_id, value: "#{@check_in.id}" %>
   <% end %>
 
   <div class="actions">

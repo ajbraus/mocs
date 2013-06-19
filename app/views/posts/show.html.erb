@@ -1,5 +1,4 @@
 <div class="row clearfix">
-  <%= render partial:'check_ins/check_in', locals: { post: @post } %>
   <div class="span8">
     <h2><%= @post.title %>
         <% if user_signed_in? && current_user == @post.user %>
@@ -74,23 +73,7 @@
     <%= render partial: 'comments/form' %>
   </div>
   <div class="span4">
-    <h5>Recent Takers</h5>
-    <ul class="media-list">
-      <% @post.check_ins.each do |ci| %>
-        <li class="media">
-          <a class="pull-left" href="#">
-            <%= image_tag "pro-pic.png", class:"media-object", width:40 %>
-          </a>
-          <div class="media-body">
-            <div class="media-heading"><%= ci.checked_in_user.name %></div>
-            <div class="muted">"<%= ci.content %>"</div>
-            <!-- Nested media object -->
-            <div class="media">
-           </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    blah
   </div>
 </div>
 <% end %>

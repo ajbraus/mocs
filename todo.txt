@@ -1,5 +1,20 @@
+create mocs
+see trending tags on side
+make short_desc
+make user profile page
+post#show page
+make rating MOCs
+make favorting MOCs
+check comments and voting on comments
+
+add validations
+
+make search work
+
 count impressions with impressionist (add cache counter - impressions_count)
   is_impressionable :counter_cache => { :column_name => :my_column, :unique => true }
+
+add public action gem
 
 add profile screen after signup, username, name, location
 

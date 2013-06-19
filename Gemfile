@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-
 gem 'rails', '3.2.6'
-
 gem 'heroku'
-
 gem 'pg'
+gem 'thin'
 
 gem 'thinking-sphinx', '2.0.11'
 gem 'flying-sphinx',   '0.8.4'
-
-gem 'thin'
+gem 'devise'
+gem 'lazy_high_charts'
+gem 'thumbs_up'
+gem 'will_paginate'
 
 gem 'whenever', require: false
 
@@ -19,12 +19,6 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-
-gem 'devise'
-
-gem 'lazy_high_charts'
-
-gem 'thumbs_up'
 
 # group :development, :test do
 # 	gem 'rspec-rails'

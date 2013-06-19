@@ -3,8 +3,6 @@ class Post < ActiveRecord::Base
 
   has_many :committed_users, through: :commitments
 
-  has_many :check_ins, foreign_key: "checked_in_post_id"
-
   has_and_belongs_to_many :tags
 
   has_many :comments, as: :commentable
@@ -30,6 +28,14 @@ class Post < ActiveRecord::Base
     has created_at
   end
 
+  def nice_created_at_date
+    created_at.strftime("%b %e, %Y") #May 21, 2010
+  end
+
+  def short_desc
+
+  end
+
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
   end
@@ -51,14 +57,6 @@ class Post < ActiveRecord::Base
 
   def is_committed_to_by?(user)
     return self.committed_user.find_by_committed_user_id(user.id).present?
-  end
-
-  def checkins_per_day
-    checkins_per_day = []
-    self.created_at.to_date.upto(Date.today).each do |date|
-      checkins_per_day.push(self.check_ins.select { |ci| ci.created_at == date })
-    end
-    return checkins_per_day
   end
 
   def short_title

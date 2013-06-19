@@ -6,9 +6,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: g4b_development
+  database: mocs_development
   pool: 5
-  username: g4b
+  username: mocs
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -17,15 +17,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: g4b_development
+  database: mocs_test
   pool: 5
-  username: g4b
+  username: mocs
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: g4b_development
+  database: mocs_production
   pool: 5
-  username: g4b
+  username: mocs
   password:
