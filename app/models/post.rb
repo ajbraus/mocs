@@ -33,7 +33,11 @@ class Post < ActiveRecord::Base
   end
 
   def short_desc
-
+    if self.desc.size >=250
+      self.desc.slice(0..250) + ". . . "
+    else
+      self.desc
+    end
   end
 
   def self.tagged_with(name)

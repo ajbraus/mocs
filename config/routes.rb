@@ -17,6 +17,9 @@ Mocs::Application.routes.draw do
     end
   end
 
+  resources :users, :only => [:show]
+  match 'users/:id' => 'users#show'
+
   resources :commitments, only: [:create, :destroy]
 
   get 'tags/:tag', to: 'tags#show', as: :tag

@@ -1,4 +1,5 @@
 JAMES
+  GET HOMEBREW TO WORK!!!!!
   welcome#index
     make pagination work (will_paginate)
     make sorting navbar work (Relevance, Activity, Rating, Near You)
@@ -17,8 +18,10 @@ JAMES
   make rating MOCs (if completed)
 
 ADAM
-  make short_desc
   make user profile page
+    add top interest tags
+    add karma
+    create moc and mini_moc paritals
   post#new form
   post#show page
   see trending tags on side
@@ -81,3 +84,6 @@ DONE setup checking in on actions - rails tutorial
 DONE setup lazy high-charts graphics for #tag activity and activity checkins
 
 DONE setup thumbs_up on checkins and comments
+
+
+DONE make short_desc

@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_karma(:comments)
 
+  validates :name, presence: true
+
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
   end

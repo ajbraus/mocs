@@ -98,8 +98,8 @@
                   <%= m.title %>
                 <% end %>
               </h4>
-              <h6>Project Lead: <em><%= m.user.name %></em> </h6>
-              <%= m.desc %>
+              <h6>Project Lead: <em><%= link_to "#{m.user.name}", user_path(m) %></em></h6>
+              <%= m.short_desc %> <%= link_to '(more)', post_path(m) %>
               <div class="muted">
                   Participants: <em>25</em> Published: <em><%= m.nice_created_at_date %></em>
               </div>
