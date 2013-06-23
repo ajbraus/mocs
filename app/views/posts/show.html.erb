@@ -1,10 +1,86 @@
+<div class="row">
+  <div class="span4">
+    <%= youtube_embed(@post.video_url) %>
+    <div>
+      <%= raw @post.tags.map(&:name).map { |t| link_to "#" + t, tag_path(t), class:"label" }.join(' ') %>
+    </div>
+    <h4>Comments</h4>
+    <textarea></textarea>
+    <br />
+    <a href="#" class="btn btn-success">Comment</a>
+  </br></br>
+    <div class="well dark span3">
+      <h3><i>Related projects</i></h3>
+      <ul>
+        <li>
+          <a href="project.html">
+            <img class="img-polaroid" src="images/video_image7" width="100" height="75">
+          </a>
+            <h5 class="media-heading"><a href="project.html">Sample Project 7</a></h5>
+            <p>Project Lead: <em>John Doe</em> <p>
+        </li>
+        <li>
+          <a href="project.html">
+            <img class="img-polaroid" src="images/video_image2.png" width="100" height="75">
+          </a>
+            <h5 class="media-heading"><a href="project.html">Sample Project 2</a></h5>
+            <p>Project Lead: <em>John Doe</em> <p>
+        </li>
+        <li>
+          <a href="project.html">
+            <img class="img-polaroid" src="images/video_image9" width="100" height="75">
+          </a>
+            <h5 class="media-heading"><a href="project.html">Sample Project 9</a></h5>
+            <p>Project Lead: <em>John Doe</em> <p>
+        </li>
+      </ul>
+    </div>   
+  </div>
+
+  <div class="span4">       
+    <div>
+      <h3>
+        <strong>
+          <%= @post.title %>
+          <% if user_signed_in? && current_user == @post.user %>
+            <%= link_to 'Edit', edit_post_path(@post), style: "font-size:17px;" %>
+          <% end %>
+        </strong>
+      </h3>
+<!--  <p class="lead">
+        by <a href="orgprofile.html">The American Madeup Association</a>
+      </p> -->
+      <p class="muted">
+        Project Lead: <%= @post.user.name %>
+      </p>
+    </div>    
+    <div>
+      <button class="btn btn-success">Join</button>&nbsp;&nbsp;<p class="icon-ok muted">34 Joined</p>&nbsp;&nbsp;&nbsp;<button class="btn btn-inverse">Favorite</button>&nbsp;&nbsp;<p class="icon-star-empty muted">78 Favorited</p>&nbsp;&nbsp;&nbsp;
+    </div>       
+    <div>
+      <h3><strong>Summary</strong></h3>
+      <p class="muted">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris. Maecenas placerat, nisl at consequat rhoncus, sem nunc gravida justo, quis eleifend arcu velit quis lacus. Morbi magna magna, tincidunt a, mattis non, imperdiet vitae, tellus. Sed odio est, auctor ac, sollicitudin in, consequat vitae, orci. Fusce id felis. Vivamus sollicitudin metus eget eros.
+      </p>
+    </div>
+    <div>
+      <strong>Expected Project Duration</strong>
+      <p>
+        6 months
+      </p>
+      <strong>Approximate Time Commitment per Week</strong>
+      <p>
+        3 hours
+      </p>
+      <strong>Number of Projects Completed</strong>
+      <p>
+        8 completed
+      </p>
+    </div>      
+  </div>
+</div>
+
 <div class="row clearfix">
-  <div class="span8">
-    <h2><%= @post.title %>
-        <% if user_signed_in? && current_user == @post.user %>
-          <%= link_to 'Edit', edit_post_path(@post), style: "font-size:17px;" %>
-        <% end %>
-    </h2>
     <div class="muted created-on">
       created on: <%= @post.created_at.strftime "%A %B %e" %>
     </div>

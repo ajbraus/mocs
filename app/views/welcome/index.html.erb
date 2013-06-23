@@ -3,16 +3,28 @@
   ================================================== -->
   <header class="jumbotron subhead" id="overview">
     <% unless user_signed_in? %>
-      <div class="row">
-        <div id="closeJumbotron" class="pull-right close-jumbotron">
-          <i class="icon-remove-sign"></i>
-        </div>      
-        <div class="span6">
+      <div class="row">   
+        <div class="span5">
           <h1>Rise to the Top</h1>      
           <span class="muted">Come, Learn, Contribute</span>
           <p class="lead">MOCs for Docs makes it fun to find a project for Maintenance of Certification part IV!</p>
         </div>
-        <div class="offset1 span5 margin-bottom">
+        <div class="span3 well">
+          <h2>Login</h2>
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <div>
+              <%= f.label :email %>
+              <%= f.email_field :email %>
+            </div>
+            <div>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </div>
+            <div><%= f.submit "Login", class:"btn btn-primary" %></div>
+          <% end %>
+        </div>
+        <div class="span3 well">
           <h2>Sign Up</h2>
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>

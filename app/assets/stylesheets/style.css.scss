@@ -48,6 +48,10 @@ padding-top: 70px;
 	border-bottom:1px solid lightgrey;
 }
 
+.navbar .nav {
+  float: right;
+}
+
 .navbar {
 	border-bottom: 1px solid lightgrey;
 width: 100%;
@@ -123,14 +127,6 @@ hr {
 .margin-auto {
   margin:0 auto;
   width:50%;
-}
-
-#searchingProjects h1{
-  color: white;
-}
-
-#yourProfile h1{
-  color: white;
 }
 
 .media-heading {

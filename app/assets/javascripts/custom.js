@@ -16,9 +16,9 @@ $(document).ready(function() {
     $('#trendingTags').prepend("<span class='" + style + "''>" + entry + "</span>")
   });
 
-  $('#closeJumbotron').click(function(){
-    $('#overview').slideUp();
-  });
+  // $('#closeJumbotron').click(function(){
+  //   $('#overview').slideUp();
+  // });
 
   $('#register').click(function(){
     $('#overview').slideUp();

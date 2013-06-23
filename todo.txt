@@ -1,26 +1,37 @@
-create mocs
-see trending tags on side
-make short_desc
-make user profile page
-post#show page
-make rating MOCs
-make favorting MOCs
-check comments and voting on comments
+JAMES
+  welcome#index
+    make pagination work (will_paginate)
+    make sorting navbar work (Relevance, Activity, Rating, Near You)
+    make search work
+  user#show
+    add public action gem
+  make follow/favorite MOCs ('commitments_controller')
+  make sure comments and voting on comments is working (and karma)
+  add validations
+  
+  ------
+  setup comments on comments
+  Setup users messaging each other
+  
+  ------
+  make rating MOCs (if completed)
 
-add validations
+ADAM
+  make short_desc
+  make user profile page
+  post#new form
+  post#show page
+  see trending tags on side
 
-make search work
-
-count impressions with impressionist (add cache counter - impressions_count)
+------------------------------------------------------------------
+  count impressions with impressionist (add cache counter - impressions_count)
   is_impressionable :counter_cache => { :column_name => :my_column, :unique => true }
 
-add public action gem
-
-add profile screen after signup, username, name, location
+  add profile screen after signup, username, name, location (progessive registration)
 
   Actions
     # views
-    # commitments
+    # favorites
     # taken
 
   Tags
@@ -28,14 +39,10 @@ add profile screen after signup, username, name, location
 
   People
     # votes up on comments and checkins
-
     # actions created
     # tags created
     # actions joined
     # actions taken
-
-  if take action, also join if not already joined
-  sort trending actions by # of checkins
 
 profile page
   reputation
@@ -56,24 +63,6 @@ setup email notifications
   someone commented on your comment
   someone voted up your comment
   unlocked new permission
-
-----------------
-
-setup referral to gain 20 points, 20 points to share on fb, and 20 points to tweet, 100 points to create an action
-
-Permissions
-  20 karma create actions
-  100 create your own tag
-  200 allow vote down on action
-  1000 allow crowdfunding through G4B
-
-Setup comments on check-ins
-Setup comments on comments
-
-setup flagging comments, checkins, and actions for moderation
-
-setup twitter login
-setup facebook login
 
 ---------------------------------------
 

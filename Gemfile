@@ -13,12 +13,17 @@ gem 'lazy_high_charts'
 gem 'thumbs_up'
 gem 'will_paginate'
 
+# gem 'public_activity'
+# gem 'impressionist'
+
 gem 'whenever', require: false
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'coffee-rails', '~> 3.2.1'
+gem 'jquery-ui-rails'
 
 # group :development, :test do
 # 	gem 'rspec-rails'
@@ -55,7 +60,3 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'coffee-rails', '~> 3.2.1'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
