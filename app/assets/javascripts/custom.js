@@ -8,13 +8,13 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
-  var a = [$('#trendingTags').data("tags")];
-  var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
-  a.forEach(function(entry) {
-    var color = colors[Math.floor(Math.random()*colors.length)];
-    var style = "label " + color
-    $('#trendingTags').prepend("<span class='" + style + "''>" + entry + "</span>")
-  });
+  // var a = [$('#trendingTags').data("tags")];
+  // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
+  // a.forEach(function(entry) {
+  //   var color = colors[Math.floor(Math.random()*colors.length)];
+  //   var style = "label " + color
+  //   $('#trendingTags').prepend("<span class='" + style + "''>" + entry + "</span>")
+  // });
 
   // $('#closeJumbotron').click(function(){
   //   $('#overview').slideUp();
@@ -24,13 +24,13 @@ $(document).ready(function() {
     $('#overview').slideUp();
   });
 
-  $('.label').click(function(){
-   $(this).appendTo('#searchTags');
-  });
+  // $('.label').click(function(){
+  //  $(this).appendTo('#searchTags');
+  // });
 
-  $('#clearBtn').click(function(){
-    $('#searchTags').children().prependTo('#topicMenu');
-  });
+  // $('#clearBtn').click(function(){
+  //   $('#searchTags').children().prependTo('#topicMenu');
+  // });
 
   // var index;
 

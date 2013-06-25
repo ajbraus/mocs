@@ -1,6 +1,7 @@
 <tr>
-  <td><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
-  <td class="muted"><%= post.desc %></td>
+  <td width='20%'><%= image_tag post.img_url, class:"img-polaroid" %></td>
+  <td width="15%"><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
+  <td class="muted" width="45%"><%= post.short_desc %> <%= link_to "(more)", post_path(post) %></td>
   <% end %>
-  <td><%= render partial: "shared/tags", locals: { tags: post.tags }  %></td>
+  <td width="20%"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></td>
 </tr>

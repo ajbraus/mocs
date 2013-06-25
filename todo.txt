@@ -7,7 +7,6 @@ JAMES
   user#show
     add public_activity gem
   make follow/favorite MOCs ('commitments_controller')
-  make sure comments and voting on comments is working (and karma)
   add validations
   
   ------
@@ -18,12 +17,15 @@ JAMES
   make rating MOCs (if completed)
 
 ADAM
-  make user profile page
-    add karma
-    create moc and mini_moc paritals
+  make moc show page
+  make sure comments and voting on comments is working (and karma)
+  make karma work
+  make user profile page  
   post#new form
-  post#show page
-  see trending tags on side
+  Add profile avatar?
+
+  Email this to a friend button
+  Tweet button working
 
 ------------------------------------------------------------------
   count impressions with impressionist (add cache counter - impressions_count)
@@ -86,3 +88,6 @@ DONE setup thumbs_up on checkins and comments
 
 
 DONE make short_desc
+
+DONE post#show page
+DONE see trending tags on side
