@@ -2,7 +2,7 @@
   <div class="span4">
     <%= youtube_embed(@post.video_url) %>
     <div>
-      <%= raw @post.tags.map(&:name).map { |t| link_to "#" + t, tag_path(t), class:"label" }.join(' ') %>
+      <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
     </div>
     <h4>Comments</h4>
     <textarea></textarea>
@@ -88,7 +88,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     <div>
-      <%= raw @post.tags.map(&:name).map { |t| link_to "#" + t, tag_path(t), class:"label" }.join(' ') %>
+      <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
     </div>    
     <strong>Desc:</strong> <span class="muted"><%= @post.desc %></span><br><br>
     <% if @post.happening_on.present? %>

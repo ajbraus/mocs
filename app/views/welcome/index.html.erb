@@ -88,23 +88,7 @@
     <div class="tab-content">
       <div class="tab-pane active" id="A">
         <% @mocs.each do |m| %>
-          <div class="media">
-            <a class="pull-left" href="project.html">
-              <%= image_tag m.img_url, class:"img-polaroid" %>
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading">
-                <%= link_to post_path(m) do %>
-                  <%= m.title %>
-                <% end %>
-              </h4>
-              <h6>Project Lead: <em><%= link_to "#{m.user.name}", user_path(m) %></em></h6>
-              <%= m.short_desc %> <%= link_to '(more)', post_path(m) %>
-              <div class="muted">
-                  Participants: <em>25</em> Published: <em><%= m.nice_created_at_date %></em>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "shared/moc", locals: { m: m }  %>
         <% end %>
       </div>
 
@@ -133,40 +117,15 @@
 <div class="span4">
   <div class="well dark">
     <p class="muted">Trending Tags</p>
-    <div id="trendingTags" data-tags="<%=@trending_tags %>">
-    </div>
+    <%= render partial: "shared/tags", locals: { tags: @tags }  %>
   </div>
     <div class="well dark">
       <p class="muted">Trending Projects</p>
       <ul>
         <% @trending_mocs.each do |tm| %>
-        <li>
-          <%= link_to post_path(tm) do %>
-            <%= image_tag tm.img_url, class:"img-polaroid trending" %>
-          <% end %>
-            <h5 class="media-heading">
-              <%= link_to post_path(tm) do %>
-                <%= tm.title %>
-              <% end %>
-            <p>Project Lead: <em><%= tm.user.name %></em> <p>
-        </li>
+          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
         <% end %>
       </ul>
-      <% if false %>
-      <h3><i>Top DOCs</i></h3>
-        <ul>
-          <% @trending_docs.each do |td| %>
-          <li>
-            <%= link_to user_path(td) do %>
-              <%= image_tag td.avatar, class:"img-polaroid trending" %>
-            <% end %>
-              <h5 class="media-heading">
-                blah
-              </h5>
-          </li>
-          <% end %>
-        </ul>
-      <% end %>
     </div>
 </div>
 </div>

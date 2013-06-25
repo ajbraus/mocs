@@ -13,6 +13,10 @@ body {
 	font-family: gurmukhi, "lucida grande", arial;
 }
 
+ul, li {
+  list-style: none;
+}
+
 footer {
 clear: both;
 background-color: #232323;
@@ -258,4 +262,8 @@ hr {
 
 .small-thumbnail {
 	height: 50px;
+}
+
+.clear-both {
+  clear:both;
 }

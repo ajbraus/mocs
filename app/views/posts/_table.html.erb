@@ -2,5 +2,5 @@
   <td><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
   <td class="muted"><%= post.desc %></td>
   <% end %>
-  <td><%= raw post.tags.map(&:name).map { |t| link_to "#" + t, tag_path(t), class:"label" }.join(' ') %></td>
+  <td><%= render partial: "shared/tags", locals: { tags: post.tags }  %></td>
 </tr>

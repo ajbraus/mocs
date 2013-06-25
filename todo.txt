@@ -5,7 +5,7 @@ JAMES
     make sorting navbar work (Relevance, Activity, Rating, Near You)
     make search work
   user#show
-    add public action gem
+    add public_activity gem
   make follow/favorite MOCs ('commitments_controller')
   make sure comments and voting on comments is working (and karma)
   add validations
@@ -19,7 +19,6 @@ JAMES
 
 ADAM
   make user profile page
-    add top interest tags
     add karma
     create moc and mini_moc paritals
   post#new form

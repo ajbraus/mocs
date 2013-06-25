@@ -40,6 +40,14 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def very_short_desc
+    if self.desc.size >=60
+      self.desc.slice(0..60) + ". . . "
+    else
+      self.desc
+    end
+  end
+
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
   end

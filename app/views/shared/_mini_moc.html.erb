@@ -1,0 +1,13 @@
+<li class="row">
+  <div class="span2">
+    <%= link_to post_path(m) do %>
+      <%= image_tag m.img_url, class:"img-polaroid trending" %>
+    <% end %>
+  </div>
+      <%= link_to post_path(m) do %>
+        <%= m.title %>
+      <% end %>
+    <p><em><%= link_to "#{m.user.name}", user_path(m) %></em> <p>
+    <%= render partial: "shared/tags", locals: { tags: Tag.first(3) }  %>
+    <div><%= m.very_short_desc %> <%= link_to '(more)', post_path(m) %></div>
+</li>

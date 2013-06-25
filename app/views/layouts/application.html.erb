@@ -57,8 +57,8 @@
                 <li class="dropdown offset2">
                   <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><%= current_user.name %><b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="#" data-toggle="tab">Settings</a></li>
+                    <li><%= link_to "Profile", user_path(current_user) %></a></li>
+                    <li><%= link_to "Settings", edit_user_registration_path %></li>
                     <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
                     <li class="divider"></li>
                     <li>
@@ -69,7 +69,6 @@
                       </div></a></li>
                   </ul>
                 </li>
-                <li><%= image_tag 'tflood.png', class:"img-polaroid small-thumbnail" %></li>
               </ul>                   
               <% end %>   
          </div>
