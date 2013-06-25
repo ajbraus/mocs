@@ -4,8 +4,6 @@ JAMES
     make pagination work (will_paginate)
     make sorting navbar work (Relevance, Activity, Rating, Near You)
     make search work
-  user#show
-    add public_activity gem
   make follow/favorite MOCs ('commitments_controller')
   add validations
   
@@ -17,10 +15,8 @@ JAMES
   make rating MOCs (if completed)
 
 ADAM
-  make moc show page
-  make sure comments and voting on comments is working (and karma)
   make karma work
-  make user profile page  
+  add public_activity gem
   post#new form
   Add profile avatar?
 
@@ -91,3 +87,5 @@ DONE make short_desc
 
 DONE post#show page
 DONE see trending tags on side
+DONE make sure comments and voting on comments is working (and karma)
+DONE make moc show page

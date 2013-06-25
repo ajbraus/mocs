@@ -1,43 +1,6 @@
 <div class="row">
-  <div class="span4">
-    <%= youtube_embed(@post.video_url) %>
-    <div>
-      <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
-    </div>
-    <h4>Comments</h4>
-    <textarea></textarea>
-    <br />
-    <a href="#" class="btn btn-success">Comment</a>
-  </br></br>
-    <div class="well dark span3">
-      <h3><i>Related projects</i></h3>
-      <ul>
-        <li>
-          <a href="project.html">
-            <img class="img-polaroid" src="images/video_image7" width="100" height="75">
-          </a>
-            <h5 class="media-heading"><a href="project.html">Sample Project 7</a></h5>
-            <p>Project Lead: <em>John Doe</em> <p>
-        </li>
-        <li>
-          <a href="project.html">
-            <img class="img-polaroid" src="images/video_image2.png" width="100" height="75">
-          </a>
-            <h5 class="media-heading"><a href="project.html">Sample Project 2</a></h5>
-            <p>Project Lead: <em>John Doe</em> <p>
-        </li>
-        <li>
-          <a href="project.html">
-            <img class="img-polaroid" src="images/video_image9" width="100" height="75">
-          </a>
-            <h5 class="media-heading"><a href="project.html">Sample Project 9</a></h5>
-            <p>Project Lead: <em>John Doe</em> <p>
-        </li>
-      </ul>
-    </div>   
-  </div>
-
-  <div class="span4">       
+  <div class="span8">  
+  <%= raw(youtube_embed(@post.video_url)) %>     
     <div>
       <h3>
         <strong>
@@ -50,12 +13,13 @@
 <!--  <p class="lead">
         by <a href="orgprofile.html">The American Madeup Association</a>
       </p> -->
-      <p class="muted">
-        Project Lead: <%= @post.user.name %>
-      </p>
+      <span class="muted">Project Lead: <em><%= link_to "#{@post.user.name}", user_path(@post.user) %></em></span>
     </div>    
     <div>
-      <button class="btn btn-success">Join</button>&nbsp;&nbsp;<p class="icon-ok muted">34 Joined</p>&nbsp;&nbsp;&nbsp;<button class="btn btn-inverse">Favorite</button>&nbsp;&nbsp;<p class="icon-star-empty muted">78 Favorited</p>&nbsp;&nbsp;&nbsp;
+      <i class="icon-star gold"></i> 78 Favorite</p>
+      <div>
+        <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
+      </div>
     </div>       
     <div>
       <h3><strong>Summary</strong></h3>
@@ -76,80 +40,26 @@
       <p>
         8 completed
       </p>
-    </div>      
-  </div>
-</div>
-
-<div class="row clearfix">
-    <div class="muted created-on">
-      created on: <%= @post.created_at.strftime "%A %B %e" %>
-    </div>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags='G4B'>Tweet</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-    <div>
-      <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
     </div>    
-    <strong>Desc:</strong> <span class="muted"><%= @post.desc %></span><br><br>
-    <% if @post.happening_on.present? %>
-      <strong>Happening on:</strong> <%= @post.happening_on %><br>
-    <% end %>
-    <% if @post.starts_at.present? %>
-      <strong>Starts at:</strong> <%= @post.starts_at %><br>
-    <% end %>
-    <% if @post.location.present? %>
-      <strong>Location:</strong> <span class="muted"><%= @post.location %></span><br>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span6 text-center">
-    <% if @post.img_url.present? %>
-      <%= image_tag @post.img_url, width:200 %> 
-    <% end %>
-  </div>
-  <div class="span6">
-    <% if @post.video_url.present? %>
-      <%= raw(youtube_embed(@post.video_url)) %>
-    <% end %>
-  </div>
-</div>
-<hr>
-<% if @post.user == current_user %>
-<div class="row border-bottom clearfix">
-  <div class="span8">
-    <h3>comments</h3>
+        <h3>comments</h3>
+        <%= render partial: 'comments/form' %>
     <ul class="media-list">
     <% @comments.each do |c| %>
-      <li class="media">
-        <div class="vote-count">
-          <%= c.plusminus %>
-        </div>
-        <div class="pull-left">
-          <% if user_signed_in? %>
-            <%= link_to vote_up_comment_path(c) do %>
-              <p><i class="icon-chevron-up <%= current_user.voted_for?(c) ? 'voted' : 'not-voted' %>"></i></p>
-            <% end %>
-            <%= link_to vote_down_comment_path(c) do %>
-              <p><i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i></p>
-            <% end %>
-          <% end %>
-        </div>        
-        <a class="pull-left" href="#">
-          <%= image_tag 'default_profile_pic.png', class:"media-object comment-pic" %>
-        </a>
-        <div class="media-body">
-          <div class="media-heading"><%= c.commentable.user.name %></div>
-          <div class="pull-right muted"><%= c.content %></div>
-        </div>
-      </li>
+      <% if c.id.present? %>
+        <%= render partial: 'shared/comment', locals: { c: c } %>
+      <% end %>
     <% end %>
-    </ul>
-    <%= render partial: 'comments/form' %>
+    </ul>  
   </div>
-  <div class="span4">
-    blah
+    <div class="span3">
+      <div class="min-well">
+        <h5><i>Related projects</i></h5>
+        <ul>
+          <% @mocs.each do |m| %>
+            <%= render partial: "shared/mini_moc", locals: { m: m }  %>
+          <% end %>
+        </ul>
+      </div>
+    </div>   
   </div>
 </div>
-<% end %>

@@ -267,3 +267,16 @@ hr {
 .clear-both {
   clear:both;
 }
+
+.min-well {
+  padding: 10px;
+  border-left: 1px solid lightgrey;
+  margin-left: 10px;
+}
+
+.vote-count {
+  font-size: 19px;
+position: relative;
+bottom: 6px;
+left: 2px;
+}

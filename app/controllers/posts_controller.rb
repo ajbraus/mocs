@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+    @mocs = Post.first(5)
 
     respond_to do |format|
       format.html # show.html.erb
