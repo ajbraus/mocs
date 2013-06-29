@@ -1,4 +1,6 @@
 class Commitment < ActiveRecord::Base
+  include PublicActivity::Common
+  
   attr_accessible :commitment_id
   
   belongs_to :committed_user, class_name: "User"

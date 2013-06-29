@@ -62,6 +62,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @post.create_activity :create, owner: current_user
         format.html { redirect_to root_path, notice: 'MOC was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

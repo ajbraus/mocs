@@ -12,8 +12,8 @@ gem 'devise'
 gem 'lazy_high_charts'
 gem 'thumbs_up'
 gem 'will_paginate'
+gem 'public_activity'
 
-# gem 'public_activity'
 # gem 'impressionist'
 
 gem 'whenever', require: false

@@ -1,4 +1,7 @@
 Mocs::Application.routes.draw do
+
+  resources :activities
+
   resources :posts
 
   root :to => 'welcome#index'
