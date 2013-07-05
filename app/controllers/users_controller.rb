@@ -4,5 +4,6 @@ class UsersController < ApplicationController
     @tags = Tag.first(5)
     @recommended_mocs = Post.first(5)
     @mocs = Post.first(5)
+    @activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
   end
 end

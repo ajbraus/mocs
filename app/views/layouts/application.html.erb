@@ -40,37 +40,39 @@
     <div class="container">
       <div class="navbar">
        <div class="navbar-inner">
-           <%= link_to root_path, class:"brand" do %>
-             Non Mocks
-           <% end %>
-            <ul class="nav" id="main-menu-left">
-              <li><%= link_to 'How it Works', how_path %></li>
-              <li><%= link_to 'About MOCs', about_path %></li>
-              <% if !user_signed_in? %>
-              </ul> 
-                <div class="pull-right">
-                  <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
-                  <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-inverse" %>
-                </div>
-              <% else %>
-                <li><%= link_to "Create a MOC", new_post_path %></li>
-                <li class="dropdown offset2">
-                  <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><%= current_user.name %><b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Profile", user_path(current_user) %></a></li>
-                    <li><%= link_to "Settings", edit_user_registration_path %></li>
-                    <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" data-toggle="tab"><i class="icon-user icon-white"></i>Improve Profile</a>
-                    </li>
-                    <li><a href="#" data-toggle="tab"><div class="progress progress-danger progress-striped active">
-                      <div class="bar" style="width: 45%"></div>
-                      </div></a></li>
-                  </ul>
+        <ul class="nav" id="main-menu-left">
+          <li>           
+            <%= link_to root_path, class:"brand" do %>
+              Non Mocks
+            <% end %>
+          </li>
+          <li><%= link_to 'How it Works', how_path %></li>
+          <li><%= link_to 'About MOCs', about_path %></li>
+          <% if !user_signed_in? %>
+          </ul> 
+            <div class="pull-right">
+              <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
+              <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-inverse" %>
+            </div>
+          <% else %>
+            <li><%= link_to "Create a MOC", new_post_path %></li>
+            <li class="dropdown offset2">
+              <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><%= current_user.name %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", user_path(current_user) %></a></li>
+                <li><%= link_to "Settings", edit_user_registration_path %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#" data-toggle="tab"><i class="icon-user icon-white"></i>Improve Profile</a>
                 </li>
-              </ul>                   
-              <% end %>   
+                <li><a href="#" data-toggle="tab"><div class="progress progress-danger progress-striped active">
+                  <div class="bar" style="width: 45%"></div>
+                  </div></a></li>
+              </ul>
+            </li>
+          </ul>                   
+          <% end %>   
          </div>
        </div>
         <%= bootstrap_flash %>

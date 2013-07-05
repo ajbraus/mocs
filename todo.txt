@@ -15,15 +15,15 @@ JAMES
   make rating MOCs (if completed)
 
 ADAM
-  make karma work
+  make emailing work
   add public_activity gem
     test
     add comment text to comment and link to post
     log getting more karma
   post#new form
   Add profile avatar?
-
-  Email this to a friend button
+  make karma work
+  
   Tweet button working
 
 ------------------------------------------------------------------

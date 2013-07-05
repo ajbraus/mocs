@@ -8,6 +8,6 @@
         <%= m.title %>
       <% end %>
     <p><em><%= link_to "#{m.user.name}", user_path(m) %></em> <p>
-    <%= render partial: "shared/tags", locals: { tags: Tag.first(3) }  %>
+    <%= render partial: "shared/tags", locals: { tags: m.tags }  %>
     <div><%= m.very_short_desc %> <%= link_to '(more)', post_path(m) %></div>
 </li>

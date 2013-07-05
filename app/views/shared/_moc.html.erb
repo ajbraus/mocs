@@ -9,7 +9,7 @@
       <% end %>
     </h4>
     <h6 class="pull-left">Project Lead: <em><%= link_to "#{m.user.name}", user_path(m) %></em></h6>
-    <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: Tag.first(3) }  %></div>
+    <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: m.tags }  %></div>
     <div class="clear-both"><%= m.short_desc %> <%= link_to '(more)', post_path(m) %></div>
     <div class="muted">
         Participants: <em>25</em> Published: <em><%= m.nice_created_at_date %></em>
