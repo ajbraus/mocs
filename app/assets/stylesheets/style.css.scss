@@ -52,10 +52,6 @@ padding-top: 70px;
 	border-bottom:1px solid lightgrey;
 }
 
-.navbar .nav {
-  float: right;
-}
-
 .navbar {
 	border-bottom: 1px solid lightgrey;
 width: 100%;
@@ -293,12 +289,16 @@ left: 2px;
 
 .media {
   margin-top:25px;
-  img {
-    width: 150px;
-  }
+}
+
+.moc-pic {
+  width: 150px;
 }
 
 .trending {
   width:90px;
   float:left;
+}
+.dropdown {
+  width: 105px;
 }

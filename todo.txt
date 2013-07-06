@@ -15,14 +15,17 @@ JAMES
   make rating MOCs (if completed)
 
 ADAM
+  add location to users
   make emailing work
   add public_activity gem
-    test
     add comment text to comment and link to post
+    fix polymorphic associations
+      http://railscasts.com/episodes/154-polymorphic-association
     log getting more karma
   post#new form
   Add profile avatar?
   make karma work
+  add friendly_id
   
   Tweet button working
 

@@ -40,7 +40,7 @@
     <div class="container">
       <div class="navbar">
        <div class="navbar-inner">
-        <ul class="nav" id="main-menu-left">
+        <ul class="nav pull-left" id="main-menu-left">
           <li>           
             <%= link_to root_path, class:"brand" do %>
               Non Mocks
@@ -56,8 +56,13 @@
             </div>
           <% else %>
             <li><%= link_to "Create a MOC", new_post_path %></li>
-            <li class="dropdown offset2">
-              <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><%= current_user.name %><b class="caret"></b></a>
+          </ul>
+
+            <div class="dropdown pull-right">
+              <%= link_to user_path(current_user), class:"pull-left" do %>
+                <%= current_user.name %>
+              <% end %>
+              <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><b class="caret"></b></div></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></a></li>
                 <li><%= link_to "Settings", edit_user_registration_path %></li>
@@ -70,8 +75,7 @@
                   <div class="bar" style="width: 45%"></div>
                   </div></a></li>
               </ul>
-            </li>
-          </ul>                   
+            </div>
           <% end %>   
          </div>
        </div>

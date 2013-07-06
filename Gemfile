@@ -34,6 +34,7 @@ gem 'jquery-ui-rails'
 group :development do
 	gem 'pry'
 	gem 'pry-debugger'
+  gem 'populator'
 end
 
 group :test do

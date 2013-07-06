@@ -153,6 +153,7 @@ GEM
     orm_adapter (0.4.0)
     pg (0.14.0)
     polyglot (0.3.3)
+    populator (1.0.0)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -287,6 +288,7 @@ DEPENDENCIES
   lazy_high_charts
   less-rails
   pg
+  populator
   pry
   pry-debugger
   public_activity

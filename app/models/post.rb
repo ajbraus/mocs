@@ -1,15 +1,10 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Common
   #tracked owner: ->(controller, model) { controller && controller.current_user }
-  
   belongs_to :user
-
   has_many :committed_users, through: :commitments
-
   has_and_belongs_to_many :tags
-
   has_many :comments, as: :commentable
-
   attr_accessible :desc, 
                   :happening_on, 
                   :location, 
@@ -19,13 +14,14 @@ class Post < ActiveRecord::Base
                   :img_url, 
                   :tag_list
 
+  validates :title, :desc, presence: true
+
   define_index do
     indexes :desc, as: :description
     indexes tags(:name), as: :tag_name
     indexes :title, as: :post_title
     #indexes location, sortable: true
     #indexes happening_on, sortable: true
-    # indexes tag.name, as: :tag_name
 
     # has author_id, published_at
     has created_at
