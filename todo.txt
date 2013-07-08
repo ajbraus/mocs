@@ -1,20 +1,7 @@
-JAMES
-  GET HOMEBREW TO WORK!!!!!
   welcome#index
-    make pagination work (will_paginate)
+    DONE make pagination work (will_paginate)
+    DONE make search work
     make sorting navbar work (Relevance, Activity, Rating, Near You)
-    make search work
-  make follow/favorite MOCs ('commitments_controller')
-  add validations
-  
-  ------
-  setup comments on comments
-  Setup users messaging each other
-  
-  ------
-  make rating MOCs (if completed)
-
-ADAM
   add location to users
   make emailing work
   add public_activity gem
@@ -25,16 +12,28 @@ ADAM
   post#new form
   Add profile avatar?
   make karma work
-  add friendly_id
+  add friendly_id for posts
+  make follow/favorite MOCs ('commitments_controller')
+  add validations
+  get populator to work in production
   
-  Tweet button working
-
-------------------------------------------------------------------
   count impressions with impressionist (add cache counter - impressions_count)
   is_impressionable :counter_cache => { :column_name => :my_column, :unique => true }
 
   add profile screen after signup, username, name, location (progessive registration)
+  ------
+  
+  setup comments on comments
+  Setup users messaging each other
 
+  ------
+  make rating MOCs (if completed)
+  
+  Tweet button working
+
+------------------------------------------------------------------
+
+  
   Actions
     # views
     # favorites
@@ -95,3 +94,4 @@ DONE post#show page
 DONE see trending tags on side
 DONE make sure comments and voting on comments is working (and karma)
 DONE make moc show page
+DONE add db populator

@@ -17,12 +17,11 @@ class Post < ActiveRecord::Base
   validates :title, :desc, presence: true
 
   define_index do
+    indexes :title, as: :post_title
     indexes :desc, as: :description
     indexes tags(:name), as: :tag_name
-    indexes :title, as: :post_title
     #indexes location, sortable: true
     #indexes happening_on, sortable: true
-
     # has author_id, published_at
     has created_at
   end

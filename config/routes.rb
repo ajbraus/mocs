@@ -2,7 +2,7 @@ Mocs::Application.routes.draw do
 
   resources :posts
 
-  root :to => 'welcome#index'
+  root :to => 'posts#index'
   match '/how', :to => 'welcome#how', :as => "how"
   match '/about', :to => 'welcome#about', :as => "about"
   match '/survey', to: 'welcome#survey', as: "survey"

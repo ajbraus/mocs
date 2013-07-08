@@ -1,13 +1,15 @@
 development:
+  version: 2.0.6
   port: 9110
   morphology: stem_en
   enable_star: true
   html_strip: 1
   min_infix_len: 2
-  bin_path: "/usr/bin"
-  searchd_binary_name: "/usr/bin/searchd"
-  indexer_binary_name: "/usr/bin/indexer"
+  bin_path: "/usr/local/bin"
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
 test:
+  version: 2.0.6
   port: 9111
   morphology: stem_en
   enable_star: true
