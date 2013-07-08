@@ -9,9 +9,10 @@ namespace :db do
     User.populate 20 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
+      user.state = "WI"
       user.encrypted_password = "password"
     end
-    User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password")
+    User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI")
     User.all.each do |user|
       Post.populate 10..30 do |post|
         post.title = Populator.words(7..18).titleize

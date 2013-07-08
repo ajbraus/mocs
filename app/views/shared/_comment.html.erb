@@ -16,7 +16,7 @@
     <%= image_tag 'default_profile_pic.png', class:"media-object comment-pic" %>
   </a>
   <div class="media-body">
-    <div class="media-heading"><%= c.commentable.user.name %></div>
+    <div class="media-heading"><%= link_to c.commentable.user do %><%= c.commentable.user.name %> <% end %></div>
     <div><%= c.content %></div>
   </div>
 </li>

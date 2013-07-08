@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     if params[:search].present?
       @mocs = Post.search(params[:search], params[:page])
+      @mocs_by_state = Post.search(params[:search], with: { state: current_user.state }) #TODO order by state)
     else 
       @mocs = Post.paginate(:page => params[:page], :per_page => 10)
     end
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @mocs = Post.first(5)
+    @post.create_activity :show, owner: current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,6 +53,7 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.build(params[:post])
+    @post.state = @user.state
 
     respond_to do |format|
       if @post.save

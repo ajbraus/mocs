@@ -1,8 +1,12 @@
   welcome#index
     DONE make pagination work (will_paginate)
     DONE make search work
-    make sorting navbar work (Relevance, Activity, Rating, Near You)
-  add location to users
+    Sorting 
+      DONE Recent (created at), 
+      State (filtered to your state), 
+      Activity (sorted on comment created_at), 
+      # Followers (sorted on # of committed))
+  make follow/favorite MOCs ('commitments_controller')
   make emailing work
   add public_activity gem
     add comment text to comment and link to post
@@ -10,17 +14,13 @@
       http://railscasts.com/episodes/154-polymorphic-association
     log getting more karma
   post#new form
-  Add profile avatar?
-  make karma work
-  add friendly_id for posts
-  make follow/favorite MOCs ('commitments_controller')
-  add validations
+  
+  add validations to server and client
   get populator to work in production
   
   count impressions with impressionist (add cache counter - impressions_count)
   is_impressionable :counter_cache => { :column_name => :my_column, :unique => true }
 
-  add profile screen after signup, username, name, location (progessive registration)
   ------
   
   setup comments on comments
@@ -30,6 +30,10 @@
   make rating MOCs (if completed)
   
   Tweet button working
+
+  ---------------------------------
+
+  add friendly_id for posts and user profiles
 
 ------------------------------------------------------------------
 
@@ -95,3 +99,6 @@ DONE see trending tags on side
 DONE make sure comments and voting on comments is working (and karma)
 DONE make moc show page
 DONE add db populator
+
+DONE add viewed MOC action
+DONE  add state to users and posts

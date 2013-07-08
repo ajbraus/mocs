@@ -7,23 +7,25 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
   attr_accessible :desc, 
                   :happening_on, 
-                  :location, 
+                  :state, 
                   :starts_at, 
                   :title, 
                   :video_url, 
                   :img_url, 
                   :tag_list
 
-  validates :title, :desc, presence: true
+  validates :title, :desc, :state, presence: true
 
   define_index do
     indexes :title, as: :post_title
     indexes :desc, as: :description
     indexes tags(:name), as: :tag_name
+
     #indexes location, sortable: true
     #indexes happening_on, sortable: true
     # has author_id, published_at
     has created_at
+    has state
   end
 
   def nice_created_at_date

@@ -10,7 +10,7 @@
           <p class="lead">MOCs for Docs makes it fun to find a project for Maintenance of Certification part IV!</p>
         </div>
         <div class="span3 well">
-          <h2>Login</h2>
+          <h4>Login</h4>
           <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
             <div>
@@ -25,24 +25,24 @@
           <% end %>
         </div>
         <div class="span3 well">
-          <h2>Sign Up</h2>
+          <h4>Sign Up</h4>
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
-            <div>
-              <%= f.label :email %>
-              <%= f.email_field :email %>
-            </div>
             <div>
               <%= f.label :name %>
               <%= f.text_field :name %>
             </div>
             <div>
-              <%= f.label :password %>
-              <%= f.password_field :password %>
+              <%= f.label :email %>
+              <%= f.email_field :email %>
             </div>
             <div>
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
+              <%= f.label :state %>
+              <%= f.select :state, us_states, class:"state required" %><br>
+            </div>
+            <div>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
             </div>
             <div><%= f.submit "Register", class:"btn btn-primary" %></div>
           <% end %>
@@ -80,10 +80,12 @@
 
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#A" data-toggle="tab">Relevance</a></li>
-      <li><a href="#B" data-toggle="tab">Rating</a></li>
+      <li class="active"><a href="#A" data-toggle="tab">Newest</a></li>
       <li><a href="#C" data-toggle="tab">Activity</a></li>
-      <li><a href="#D" data-toggle="tab">Near You</a></li>
+      <li><a href="#B" data-toggle="tab"># Followers</a></li>
+      <% if user_signed_in? %>
+        <li><a href="#D" data-toggle="tab"><%= current_user.state %></a></li>
+      <% end %>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="A">
@@ -101,7 +103,12 @@
         
       </div>
       <div class="tab-pane" id="D">
-
+        <% if user_signed_in? && params[:search].present? %>
+          <% @mocs_by_state.each do |m| %>
+            <%= render partial: "shared/moc", locals: { m: m }  %>
+          <% end %>
+          <%= will_paginate @mocs, renderer: BootstrapPagination::Rails %>
+        <% end %>
       </div>      
     </div>
   </div> <!-- /tabbable -->

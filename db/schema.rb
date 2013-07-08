@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625150336) do
+ActiveRecord::Schema.define(:version => 20130708051747) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20130625150336) do
     t.text     "desc"
     t.string   "img_url"
     t.string   "video_url"
-    t.string   "location"
+    t.string   "state"
     t.date     "happening_on"
     t.datetime "starts_at"
     t.integer  "user_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20130625150336) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "state"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
