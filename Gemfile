@@ -16,6 +16,7 @@ gem 'thumbs_up'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
+gem 'impressionist'
 
 # gem 'impressionist'
 

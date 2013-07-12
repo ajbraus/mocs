@@ -1,30 +1,36 @@
-  welcome#index
-    DONE make pagination work (will_paginate)
-    DONE make search work
-    Sorting 
-      DONE Recent (created at), 
-      State (filtered to your state), 
-      Activity (sorted on comment created_at), 
-      # Followers (sorted on # of committed))
-  make follow/favorite MOCs ('commitments_controller')
-  make emailing work
-  add public_activity gem
-    add comment text to comment and link to post
-    fix polymorphic associations
-      http://railscasts.com/episodes/154-polymorphic-association
-    log getting more karma
   post#new form
+    add published? column and published_on column and filter out not-published mocs
+    add validations to server and client
+
+  filter out non-published
+  order by published date
+
+  Setup users messaging each other
+
+  branding for email
+
+  bugs:
+    @post.impressions_count not incrementing
   
-  add validations to server and client
-  get populator to work in production
   
-  count impressions with impressionist (add cache counter - impressions_count)
-  is_impressionable :counter_cache => { :column_name => :my_column, :unique => true }
+  make related projects - projects with tags from the viewed project sorted by highest impressions * followers
+  make trending tags - tags on projects with most followers * most impressions
+  make trending projects - average of most followers * most impressions 
 
   ------
-  
+
+  add public_activity gem
+    log getting more karma
+    only log views of a post once per session
+    
+  make follow/favorite MOCs ('commitments_controller') 
+    make sure last_touched is upated after followered
+    add filter of # Followers (sorted on # of committed)
+
   setup comments on comments
-  Setup users messaging each other
+
+  search by aurthor's name
+  search by certifying institution
 
   ------
   make rating MOCs (if completed)
@@ -101,4 +107,20 @@ DONE make moc show page
 DONE add db populator
 
 DONE add viewed MOC action
-DONE  add state to users and posts
+DONE add state to users and posts
+DONE make emailing work
+DONE add comment text to comment and link to post
+DONE fix polymorphic associations
+
+DONE count impressions with impressionist (add cache counter - impressions_count)
+DONE is_impressionable :counter_cache => { :column_name => :my_column, :unique => true } -
+welcome#index
+  DONE make pagination work (will_paginate)
+  DONE make search work
+  DONE weight tags higher
+
+  Sorting - all paginated
+    DONE Recent (created at),
+    DONE State (filtered to your state), 
+    DONE Activity (sorted on last_touched column of posts table),
+    

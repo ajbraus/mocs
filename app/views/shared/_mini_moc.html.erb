@@ -5,7 +5,7 @@
     <% end %>
   </div>
       <%= link_to post_path(m) do %>
-        <%= m.title %>
+        <%= m.short_title %>
       <% end %>
     <p><em><%= link_to "#{m.user.name}", user_path(m) %></em> <p>
     <%= render partial: "shared/tags", locals: { tags: m.tags }  %>

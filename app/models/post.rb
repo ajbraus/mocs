@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Common
+  is_impressionable :counter_cache => true #@post.impressions_count
   #tracked owner: ->(controller, model) { controller && controller.current_user }
   belongs_to :user
   has_many :committed_users, through: :commitments
@@ -20,12 +21,16 @@ class Post < ActiveRecord::Base
     indexes :title, as: :post_title
     indexes :desc, as: :description
     indexes tags(:name), as: :tag_name
-
-    #indexes location, sortable: true
     #indexes happening_on, sortable: true
-    # has author_id, published_at
+    #has author_id, published_at
     has created_at
+    has last_touched
     has state
+    set_property :field_weights => {
+      :post_title => 5,
+      :description => 1,
+      :tag_name => 30
+    }
   end
 
   def nice_created_at_date
@@ -37,6 +42,14 @@ class Post < ActiveRecord::Base
       self.desc.slice(0..250) + ". . . "
     else
       self.desc
+    end
+  end
+
+  def short_title
+    if self.title.size >= 50
+      self.title.slice(0..50) + "..."
+    else
+      self.title
     end
   end
 
@@ -69,13 +82,5 @@ class Post < ActiveRecord::Base
 
   def is_committed_to_by?(user)
     return self.committed_user.find_by_committed_user_id(user.id).present?
-  end
-
-  def short_title
-    if self.title.size >=10
-      self.title.slice(0..10)
-    else
-      self.title
-    end
   end
 end

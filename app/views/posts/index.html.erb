@@ -81,53 +81,51 @@
   <div class="tabbable">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#A" data-toggle="tab">Newest</a></li>
-      <li><a href="#C" data-toggle="tab">Activity</a></li>
-      <li><a href="#B" data-toggle="tab"># Followers</a></li>
+      <li><a href="#B" data-toggle="tab">Activity</a></li>
+      <!-- <li><a href="#C" data-toggle="tab"># Followers</a></li> -->
       <% if user_signed_in? %>
         <li><a href="#D" data-toggle="tab"><%= current_user.state %></a></li>
       <% end %>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="A">
-        <% @mocs.each do |m| %>
-          <%= render partial: "shared/moc", locals: { m: m }  %>
-        <% end %>
-        <%= will_paginate @mocs, renderer: BootstrapPagination::Rails %>
+        <%= render partial: "posts/post", collection: @posts, as: :post %>
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
       </div>
 
       <div class="tab-pane" id="B">
-        
+        <%= render partial: "posts/post", collection: @posts_by_activity, as: :post %>
+        <%= will_paginate @posts_by_activity, renderer: BootstrapPagination::Rails %>                
       </div>
 
+<% if false %>
       <div class="tab-pane" id="C">
-        
+        <%= render "posts/post", collection: @posts_by_followers, as: :post %>
+        <%= will_paginate @posts_by_followers, renderer: BootstrapPagination::Rails %>        
       </div>
+<% end %>
       <div class="tab-pane" id="D">
-        <% if user_signed_in? && params[:search].present? %>
-          <% @mocs_by_state.each do |m| %>
-            <%= render partial: "shared/moc", locals: { m: m }  %>
-          <% end %>
-          <%= will_paginate @mocs, renderer: BootstrapPagination::Rails %>
+        <% if user_signed_in? %>
+          <%= render partial: "posts/post", collection: @posts_by_state, as: :post %>
+          <%= will_paginate @posts_by_state, renderer: BootstrapPagination::Rails %>
         <% end %>
       </div>      
     </div>
   </div> <!-- /tabbable -->
+</div><!-- /row -->
 
-
-</div>
-
-<div class="span4">
-  <div class="well dark">
-    <p class="muted">Trending Tags</p>
-    <%= render partial: "shared/tags", locals: { tags: @tags }  %>
-  </div>
+  <div class="span4">
     <div class="well dark">
-      <p class="muted">Trending Projects</p>
-      <ul>
-        <% @trending_mocs.each do |tm| %>
-          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-        <% end %>
-      </ul>
+      <p class="muted">Trending Tags</p>
+      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
     </div>
-</div>
+      <div class="well dark">
+        <p class="muted">Trending Projects</p>
+        <ul>
+          <% @trending_mocs.each do |tm| %>
+            <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
+          <% end %>
+        </ul>
+      </div>
+  </div>
 </div>

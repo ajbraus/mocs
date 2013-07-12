@@ -3,13 +3,22 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:search].present?
-      @mocs = Post.search(params[:search], params[:page])
-      @mocs_by_state = Post.search(params[:search], with: { state: current_user.state }) #TODO order by state)
+      if user_signed_in?
+        @posts_by_state = Post.search(params[:search], with: { state: current_user.state }, :page => params[:page], :per_page => 10)
+      end
+      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
+      @posts_by_activity = Post.search(params[:search], order: 'last_touched asc', :page => params[:page], :per_page => 10)
+      #@posts_by_followers = @mocs.sort_by { |m| m.followers.count }
     else 
-      @mocs = Post.paginate(:page => params[:page], :per_page => 10)
+      if user_signed_in?
+        @posts_by_state = Post.where(state: current_user.state).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+      end
+      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+      @posts_by_activity = Post.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
+      #@posts_by_followers = Post.sort_by { |m| m.followers.count }
     end
-    @trending_mocs = Post.first(5)
-    @tags = Tag.first(15)
+    @trending_mocs = Post.first(3)
+    @trending_tags = Tag.first(30)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,6 +63,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.build(params[:post])
     @post.state = @user.state
+    @post.last_touched = Time.now
 
     respond_to do |format|
       if @post.save

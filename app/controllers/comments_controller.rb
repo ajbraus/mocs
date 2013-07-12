@@ -59,11 +59,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @parent = Post.find(params[:comment][:post_id])
-
     @comment = @parent.comments.build(content: params[:comment][:content])
 
     respond_to do |format|
       if @comment.save
+        @parent.last_touched = Time.now
+        @parent.save
         @comment.create_activity :create, owner: current_user
         format.html { redirect_to @parent, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
