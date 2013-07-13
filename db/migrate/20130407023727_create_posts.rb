@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration
       t.text :desc
       t.string :img_url
       t.string :video_url
-      t.string :state
       t.date :happening_on
       t.datetime :starts_at
       t.references :user
