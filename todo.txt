@@ -1,6 +1,11 @@
+==INBOX==  
   post#new form
     add published? column and published_on column and filter out not-published mocs
     add validations to server and client
+
+  paginate comments
+  sort comments by vote
+  comment on comments
 
   tabbable not working on posts#index
 
@@ -15,22 +20,24 @@
 
   branding for email
 
+==ADAM'S LIST==
+
+==JAMES' LIST==
   bugs:
     @post.impressions_count not incrementing
-  
-  paginate comments
-  sort comments by votes
 
-  idea: endorsement
+    Karma inrcrement on comments not working
   
   make related projects - projects with tags from the viewed project sorted by highest impressions * followers
   make trending tags - tags on projects with most followers * most impressions
   make trending projects - average of most followers * most impressions 
 
-  setup 'private' public, filter by organization
+
 
   --------------------------
 
+  setup 'private' public, filter by organization
+  
   setup 'commitments' (projects your doing)
     automated messages to project lead ("You will be contacted")
     automated confirmation email with link to the MOC official website
