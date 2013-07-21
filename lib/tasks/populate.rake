@@ -13,6 +13,7 @@ namespace :db do
       user.encrypted_password = "password"
     end
     User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI")
+    User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI")
     User.all.each do |user|
       Post.populate 10..30 do |post|
         post.title = Populator.words(7..18).titleize
@@ -24,7 +25,7 @@ namespace :db do
         post.created_at = 4.months.ago..Time.now
         post.last_touched = 4.months.ago..Time.now
         post.impressions_count = 1..50000
-        post.published = true..false
+        post.published = [true,false]
         if post.published == true
           post.published_on = 4.months.ago..Time.now
         end
