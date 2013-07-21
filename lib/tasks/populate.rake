@@ -24,7 +24,7 @@ namespace :db do
         post.created_at = 4.months.ago..Time.now
         post.last_touched = 4.months.ago..Time.now
         post.impressions_count = 1..50000
-        post.published = true..false
+        post.published = true
         if post.published == true
           post.published_on = 4.months.ago..Time.now
         end

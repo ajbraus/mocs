@@ -18,12 +18,31 @@
   bugs:
     @post.impressions_count not incrementing
   
+  paginate comments
+  sort comments by votes
+
+  idea: endorsement
   
   make related projects - projects with tags from the viewed project sorted by highest impressions * followers
   make trending tags - tags on projects with most followers * most impressions
   make trending projects - average of most followers * most impressions 
 
-  ------
+  setup 'private' public, filter by organization
+
+  --------------------------
+
+  setup 'commitments' (projects your doing)
+    automated messages to project lead ("You will be contacted")
+    automated confirmation email with link to the MOC official website
+    who else has committed to a project
+    reminder - you signed up for this project, this project ends on this date
+    reminder - careful this is getting close to ending, you have 1 more month to complete it
+    completed?
+
+  project lead dashboard
+    needs extra powers over the commitments
+    list out favoriters
+    list out committers
 
   add public_activity gem
     log getting more karma
@@ -32,6 +51,8 @@
   make follow/favorite MOCs ('commitments_controller') 
     make sure last_touched is upated after followered
     add filter of # Followers (sorted on # of committed)
+
+  setup favoriting
 
   setup comments on comments
 
