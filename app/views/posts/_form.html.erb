@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span8">
+  <div class="span6 offset1">
     <%= form_for(@post) do |f| %>
       <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -18,13 +18,13 @@
         <%= f.text_field :title %>
       </div>
       <div class="field">
+        <%= f.label :tag_list, "Topics (words or phrases separated by commas)" %> 
+        <%= f.text_field :tag_list %>
+      </div>  
+      <div class="field">
         <%= f.label :desc, "Project Description" %>
         <%= f.text_area :desc %>
       </div>
-      <div class="field">
-        <%= f.label :tag_list, "Topics (separated by commas)" %> 
-        <%= f.text_field :tag_list %>
-      </div>  
       <div class="field">
         <%= f.label :img_url, "Image URL" %>
         <%= f.text_field :img_url %>
@@ -38,12 +38,14 @@
         <%= f.number_field :price %>
       </div>
       <div class="field">
-        <%= f.label :begins_on, "Begins On" %>
-        <%= f.text_field :begins_on %>
-      </div>
-      <div class="field">
-        <%= f.label :ends_on, "Ends On" %>
-        <%= f.text_field :ends_on %>
+        <div class="times-input">
+          <%= f.label :begins_on, "Begins On", class:"input-medium" %>
+          <%= f.text_field :begins_on %>
+        </div>
+        <div class="times-input">
+          <%= f.label :ends_on, "Ends On", class:"input-medium" %>
+          <%= f.text_field :ends_on %>
+        </div>
       </div>
       <div class="field">
         <p>

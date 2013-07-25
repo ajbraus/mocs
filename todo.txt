@@ -34,8 +34,6 @@ Two user groups
     add date picker for begins on and ends on
     cancel button
 
-  
-
 ==JAMES' LIST==
   bugs:
     @post.impressions_count not incrementing
@@ -47,13 +45,10 @@ Two user groups
   make trending projects - average of most followers * most impressions 
 
   Setup users messaging each other
-    title:string
-    body:text
-    reciever_id:integer
-    sender_id:integer
-    is_read:boolean
-
-    blah: blah
+    create 'inbox' page messages#index
+    create 'message' page messages#show
+    create new message page messages#new
+    create "Message This User" link 
 
   --------------------------
 

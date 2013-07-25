@@ -348,3 +348,20 @@ left: 2px;
 .affix {
   top:50px;
 }
+
+.new_post {
+  input[type=text] {
+    width:95%;
+  }
+  textarea {
+    width:95%;
+  }
+  .times-input {
+    width:30%;
+    float:left;
+    margin-right:30px;
+  }
+}
+.field {
+  clear:both;
+}
