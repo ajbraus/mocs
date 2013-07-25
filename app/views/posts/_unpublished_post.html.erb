@@ -1,0 +1,11 @@
+<div class="well hover-edit">
+  <div class="pull-left">
+    <%= post.short_title %>   
+    <%= link_to edit_post_path(post), class:"no-hover" do %> 
+      <span class="edit" style="display:none;"><i class="icon-edit"></i> edit</span>
+    <% end %>
+  </div>
+  <div class="pull-right muted">
+    last updated <%= time_ago_in_words(post.updated_at) %> ago
+  </div>
+</div>

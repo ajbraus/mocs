@@ -7,15 +7,19 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :comments, as: :commentable
   attr_accessible :desc, 
-                  :happening_on, 
+                  :price,
+                  :certified,
                   :state, 
-                  :starts_at, 
+                  :published,
+                  :published_at,
+                  :begins_on,
+                  :ends_on, 
                   :title, 
                   :video_url, 
                   :img_url, 
                   :tag_list
 
-  validates :title, :desc, :state, presence: true
+  validates :title, :state, presence: true
 
   define_index do
     indexes :title, as: :post_title
@@ -23,9 +27,11 @@ class Post < ActiveRecord::Base
     indexes tags(:name), as: :tag_name
     #indexes happening_on, sortable: true
     #has author_id, published_at
-    has created_at
+    has published_at
     has last_touched
     has state
+    has published
+
     set_property :field_weights => {
       :post_title => 5,
       :description => 1,

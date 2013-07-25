@@ -5,8 +5,12 @@ class CreatePosts < ActiveRecord::Migration
       t.text :desc
       t.string :img_url
       t.string :video_url
-      t.datetime :starts_at
+      t.datetime :begins_on
+      t.datetime :ends_on
       t.integer :price
+      t.boolean :certified
+      t.boolean :published, default: false
+      t.datetime :published_at
       t.references :user
 
       t.timestamps

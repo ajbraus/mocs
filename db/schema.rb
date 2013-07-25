@@ -81,15 +81,17 @@ ActiveRecord::Schema.define(:version => 20130713200941) do
     t.text     "desc"
     t.string   "img_url"
     t.string   "video_url"
-    t.datetime "starts_at"
+    t.datetime "begins_on"
+    t.datetime "ends_on"
     t.integer  "price"
+    t.boolean  "certified"
+    t.boolean  "published",         :default => false
+    t.datetime "published_at"
     t.integer  "user_id"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.integer  "impressions_count", :default => 0
     t.datetime "last_touched"
-    t.boolean  "published",         :default => false
-    t.datetime "published_on"
     t.string   "state"
   end
 

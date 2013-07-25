@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="span3 offset9">
+    <%= link_to "Create a New Project", new_post_path, class:"btn btn-primary" %>
+  </div>
+</div>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Commitments (<%= @commitments.count %>)</a></li>
+    <li><a href="#tab2" data-toggle="tab">Published/Active (<%= @posts.count %>)</a></li>
+    <li><a href="#tab3" data-toggle="tab">Not Published (<%= @unpublished_posts.count %>)</a></li>
+    <li><a href="#tab4" data-toggle="tab">Expired (<%= @expired_posts.count %>)</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <%= render partial: 'posts/post', collection: @commitments, as: :post %>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <%= render @posts %>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <%= render partial: 'posts/unpublished_post', collection: @unpublished_posts, as: :post %>
+    </div>
+    <div class="tab-pane" id="tab4">
+      <%= render partial: 'posts/post', collection: @expired_posts, as: :post %>      
+    </div>
+  </div>
+</div>

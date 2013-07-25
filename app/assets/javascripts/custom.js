@@ -20,11 +20,33 @@ $(document).ready(function() {
   //   $('#overview').slideUp();
   // });
 
+  incomplete = $('form :input').filter(function() {
+                    return $(this).val() == '';
+                  });
+  if(incomplete.length > 0){}
+  else {
+    $('#publish').removeClass("disabled")  
+  }
+
+  $('input').keypress(function(){
+    incomplete = $('form :input').filter(function() {
+                        return $(this).val() == '';
+                      });
+    if(incomplete.length > 0){}
+    else {
+      $('#publish').removeClass("disabled")  
+    }
+  })
+  
+
   $('#register').click(function(){
     $('#overview').slideUp();
   });
 
   $('.alert').delay(2000).fadeOut();
+  $('.hover-edit').hover(function(){
+    $(this).find('.edit').fadeToggle('fast');
+  })
   // $('.label').click(function(){
   //  $(this).appendTo('#searchTags');
   // });

@@ -5,8 +5,6 @@ Mocs::Application.routes.draw do
   root :to => 'posts#index'
   match '/how', :to => 'welcome#how', :as => "how"
   match '/about', :to => 'welcome#about', :as => "about"
-  match '/survey', to: 'welcome#survey', as: "survey"
-  match '/submit_survey', to: 'welcome#submit_survey', as: "survey"
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :tags, only: [:create, :destroy, :show]
@@ -20,6 +18,7 @@ Mocs::Application.routes.draw do
 
   resources :users, :only => [:show]
   match 'users/:id' => 'users#show'
+  match 'user/projects', to: "users#posts", as: "user_posts"
 
   resources :commitments, only: [:create, :destroy]
 

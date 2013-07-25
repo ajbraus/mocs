@@ -4,16 +4,16 @@ class PostsController < ApplicationController
   def index
     if params[:search].present?
       if user_signed_in?
-        @posts_by_state = Post.search(params[:search], with: { state: current_user.state }, :page => params[:page], :per_page => 10)
+        @posts_by_state = Post.search(params[:search], with: { state: current_user.state, published: true }, :page => params[:page], :per_page => 10)
       end
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.search(params[:search], order: 'last_touched asc', :page => params[:page], :per_page => 10)
+      @posts = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
+      @posts_by_activity = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)
       #@posts_by_followers = @mocs.sort_by { |m| m.followers.count }
     else 
       if user_signed_in?
-        @posts_by_state = Post.where(state: current_user.state).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+        @posts_by_state = Post.where(state: current_user.state, published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       end
-      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+      @posts = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       @posts_by_activity = Post.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
       #@posts_by_followers = Post.sort_by { |m| m.followers.count }
     end
@@ -65,6 +65,13 @@ class PostsController < ApplicationController
     @post.state = @user.state
     @post.last_touched = Time.now
 
+    if params[:commit] == "Publish"
+      @post.published = true
+      @post.published_at = Time.now
+    else
+      @post.published = false
+    end
+
     respond_to do |format|
       if @post.save
         @post.create_activity :create, owner: current_user
@@ -81,6 +88,17 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+
+    if params[:commit] == "Publish"
+      @post.published = true
+      @post.published_at = Time.now
+    elsif params[:commit] == "Delete"
+      @post.destroy
+      redirect_to user_posts_path, notice: "Project successfully deleted."
+      return
+    else 
+      @post.published = false
+    end
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -100,7 +118,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to root_path, notice: "Project was successfully removed." }
       format.json { head :no_content }
     end
   end

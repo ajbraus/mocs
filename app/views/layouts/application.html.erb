@@ -55,14 +55,24 @@
           <% else %>
           </ul>
             <div class="dropdown pull-right">
-              <%= link_to user_path(current_user), class:"pull-left" do %>
-                <%= current_user.name %>
-              <% end %>
-              <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><b class="caret"></b></div></a>
+              <ul class="pull-left">
+                <li>
+                  <div class="label label-info pointer hover"><i class="icon-envelope-alt"></i> Messages</div>
+                </li>
+                <li>
+                  |
+                </li>
+                <li>
+                  <%= link_to user_path(current_user), class:'no-hover' do %>
+                    <%= current_user.name %>
+                  <% end %>
+                </li>
+              </ul>
+              <a  class="dropdown-toggle pull-right" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><b class="caret"></b></div></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></a></li>
                 <li><%= link_to "Settings", edit_user_registration_path %></li>
-                <li><%= link_to "Create a Project", new_post_path%></li>
+                <li><%= link_to "My Projects", user_posts_path %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
               </ul>

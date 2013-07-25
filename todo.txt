@@ -11,18 +11,20 @@ Two user groups
   sort comments by vote
   comment on comments
 
-  make publish button - 
-    pass in post
-    publish
-    add published date
-  filter out non-published
-  order by published date
-
-  branding for email
+  branding for email - mocsfordocs
 
   moc certified?
 
 ==ADAM'S LIST==
+
+  create a project leader dashboard
+    who has favorited them
+    who has viewed them
+    how much money I've charged them
+    promote my mocs - twitter, email
+    
+  improve form
+    add date picker for begins on and ends on
 
   tabbable not working on posts#index
   Setup users messaging each other
@@ -163,3 +165,17 @@ welcome#index
     DONE State (filtered to your state), 
     DONE Activity (sorted on last_touched column of posts table),
     
+    DONE  make publish button - 
+      publish
+      add published date
+    DONE filter out non-published
+    DONE order by published date
+
+
+DONE how many mocs I have
+DONE how many views I have
+DONE How many published projects?
+DONE When do they end?
+DONE How many unpublished projects do I have?
+DONE how many favorited
+DONE how many people have signed up for each one

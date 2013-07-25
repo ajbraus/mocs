@@ -29,6 +29,10 @@ padding: 0 50px;
 padding-top: 70px;
 }
 
+.container {
+  min-height: 600px;
+}
+
 .brand {
 	img {
 		height:40px;
@@ -99,7 +103,7 @@ width: 47px;
 	margin-top:0px;
   margin-bottom:0px;
 }
-.label {
+.tag {
   background:rgb(82, 145, 240);
 padding: 4px;
 font-size: 11px;
@@ -110,7 +114,7 @@ border-right:1px solid rgb(112, 163, 228);
 border-bottom:1px solid rgb(112, 163, 228);
 }
 
-.label:hover {
+.tag:hover {
   opacity:.7;
 }
 
@@ -306,6 +310,25 @@ left: 2px;
   float:left;
 }
 .dropdown {
-  width: 105px;
   top: 10px;
+  li {
+    display: inline;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hover:hover {
+  opacity: .7;
+}
+
+.no-hover:hover {
+  text-decoration: none;
+  color:inherit;
+}
+
+.margin-top {
+  margin-top:10px;
 }

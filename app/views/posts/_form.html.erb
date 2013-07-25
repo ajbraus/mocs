@@ -1,49 +1,80 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row">
+  <div class="span8">
+    <%= form_for(@post) do |f| %>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+      <div class="field">
+        <%= f.label :title, "Project Title" %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :desc, "Project Description" %>
+        <%= f.text_area :desc %>
+      </div>
+      <div class="field">
+        <%= f.label :tag_list, "Topics (separated by commas)" %> 
+        <%= f.text_field :tag_list %>
+      </div>  
+      <div class="field">
+        <%= f.label :img_url, "Image URL" %>
+        <%= f.text_field :img_url %>
+      </div>
+      <div class="field">
+        <%= f.label :video_url, "YouTube Video URL" %>
+        <%= f.text_field :video_url %>
+      </div>
+      <div class="field">
+        <%= f.label :price %>
+        <%= f.number_field :price %>
+      </div>
+      <div class="field">
+        <%= f.label :begins_on, "Begins On" %>
+        <%= f.text_field :begins_on %>
+      </div>
+      <div class="field">
+        <%= f.label :ends_on, "Ends On" %>
+        <%= f.text_field :ends_on %>
+      </div>
+      <div class="field">
+        <p>
+          <%= f.check_box :certified %> 
+          <%= f.label :certified, "Certified?", class:"checkbox inline" %>
+        </p>
+      </div>
+      <div class="actions">
+        <%= f.submit "Publish", class:'btn btn-inverse disabled', id: "publish"  %>
+        <%= f.submit "Save w/o Publishing", class:'btn btn-success'  %>
+        ||
+        <% if params[:action] == "edit" %>
+          <%= f.submit "Delete", class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
+        <% elsif params[:action] == "new" %>
+          <%= link_to "Delete", posts_path, class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :desc %>
-    <%= f.text_area :desc %>
+  <div class="span4">
+    <div class="well alert-info">
+      <p><strong>Tips</strong></p>
+      <p>
+        Choose a title that is brief and descriptive
+      </p>
+      <p>
+        Include a video stating the goals and benefits of the project and inviting doctors to join. To add a video, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
+      </p> 
+      <p>
+        In the "Tags" field, include a list of topic keywords and phrases that searchable and popular identifiers for the topics of your project.
+      </p>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :tag_list, "Topics (separated by commas)" %><br />
-    <%= f.text_field :tag_list %>
-  </div>  
-  <div>
-    <%= f.label :state %>
-    <%= f.select :state, us_states, class:"state required" %><br>
-  </div>
-  <div class="field">
-    <%= f.label :img_url %>
-    <%= f.text_field :img_url %>
-  </div>
-  <div class="field">
-    <%= f.label :video_url %>
-    <%= f.text_field :video_url %>
-  </div>
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :starts_at %>
-    <%= f.text_field :starts_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit class:'btn btn-primary'  %>
-  </div>
-<% end %>
+</div>

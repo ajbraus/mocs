@@ -27,7 +27,7 @@ namespace :db do
         post.impressions_count = 1..50000
         post.published = [true,false]
         if post.published == true
-          post.published_on = 4.months.ago..Time.now
+          post.published_at = 4.months.ago..Time.now
         end
         Comment.populate 3..30 do |comment|
           comment.commentable_type = "Post"
