@@ -26,15 +26,22 @@ Two user groups
     completed?
 
 ==ADAM'S LIST==
-  Search no working
-
   Improve Profile page
+
+  Search no working "published"
+  Search in production
 
   improve form
     add date picker for begins on and ends on
     cancel button
 
 ==JAMES' LIST==
+  Setup users messaging each other
+    create 'inbox' page messages#index
+    create 'message' page messages#show
+    create new message page messages#new
+    create "Message This User" link 
+  
   bugs:
     @post.impressions_count not incrementing
 
@@ -42,13 +49,7 @@ Two user groups
   
   make related projects - projects with tags from the viewed project sorted by highest impressions * followers
   make trending tags - tags on projects with most followers * most impressions
-  make trending projects - average of most followers * most impressions 
-
-  Setup users messaging each other
-    create 'inbox' page messages#index
-    create 'message' page messages#show
-    create new message page messages#new
-    create "Message This User" link 
+  make trending projects - average of most followers * most impressions
 
   --------------------------
 
