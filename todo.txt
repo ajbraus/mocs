@@ -1,4 +1,8 @@
-==INBOX==  
+Two user groups
+  doctors - search/sort, sign up
+  project leaders - promote, track/manage
+
+==INBOX==
   post#new form
     add published? column and published_on column and filter out not-published mocs
     add validations to server and client
@@ -7,8 +11,6 @@
   sort comments by vote
   comment on comments
 
-  tabbable not working on posts#index
-
   make publish button - 
     pass in post
     publish
@@ -16,11 +18,14 @@
   filter out non-published
   order by published date
 
-  Setup users messaging each other
-
   branding for email
 
+  moc certified?
+
 ==ADAM'S LIST==
+
+  tabbable not working on posts#index
+  Setup users messaging each other
 
 ==JAMES' LIST==
   bugs:

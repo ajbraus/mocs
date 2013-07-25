@@ -24,6 +24,7 @@ $(document).ready(function() {
     $('#overview').slideUp();
   });
 
+  $('.alert').delay(2000).fadeOut();
   // $('.label').click(function(){
   //  $(this).appendTo('#searchTags');
   // });

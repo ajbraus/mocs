@@ -57,6 +57,7 @@ padding-top: 70px;
 width: 100%;
 background: white;
 z-index: 100;
+padding: 13px 0;
 }
 
 .nav-border {
@@ -99,13 +100,18 @@ width: 47px;
   margin-bottom:0px;
 }
 .label {
-padding: 5px;
-font-size: 12px;
+  background:rgb(82, 145, 240);
+padding: 4px;
+font-size: 11px;
 cursor: pointer;
 margin: 2px;
+border-radius: 0;
+border-right:1px solid rgb(112, 163, 228);
+border-bottom:1px solid rgb(112, 163, 228);
 }
+
 .label:hover {
-  opacity:.6;
+  opacity:.7;
 }
 
 .well {
@@ -301,4 +307,5 @@ left: 2px;
 }
 .dropdown {
   width: 105px;
+  top: 10px;
 }

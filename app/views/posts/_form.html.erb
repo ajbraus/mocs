@@ -23,9 +23,9 @@
     <%= f.label :tag_list, "Topics (separated by commas)" %><br />
     <%= f.text_field :tag_list %>
   </div>  
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
+  <div>
+    <%= f.label :state %>
+    <%= f.select :state, us_states, class:"state required" %><br>
   </div>
   <div class="field">
     <%= f.label :img_url %>
@@ -36,8 +36,8 @@
     <%= f.text_field :video_url %>
   </div>
   <div class="field">
-    <%= f.label :happening_on %>
-    <%= f.text_field :happening_on %>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
   </div>
   <div class="field">
     <%= f.label :starts_at %>
