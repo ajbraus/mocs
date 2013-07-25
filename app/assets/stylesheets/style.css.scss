@@ -333,6 +333,14 @@ left: 2px;
   margin-top:10px;
 }
 
+.big {
+  font-size:120%;
+}
+
+.bigger {
+  font-size:150%; 
+}
+
 .small {
   font-size:80%;
 }
@@ -360,6 +368,9 @@ left: 2px;
     width:30%;
     float:left;
     margin-right:30px;
+  }
+  .price {
+    width: 50px;
   }
 }
 .field {
