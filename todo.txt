@@ -4,7 +4,7 @@ Two user groups
 
 ==INBOX==
   post#new form
-    add published? column and published_on column and filter out not-published mocs
+    DONE add published? column and published_on column and filter out not-published mocs
     add validations to server and client
 
   paginate comments
@@ -14,20 +14,27 @@ Two user groups
   branding for email - mocsfordocs
 
   moc certified?
+    DONE Added column
+    make visual indication of certification
+
+  setup 'commitments' (projects your doing)
+    automated messages to project lead ("You will be contacted")
+    automated confirmation email with link to the MOC official website
+    who else has committed to a project
+    reminder - you signed up for this project, this project ends on this date
+    reminder - careful this is getting close to ending, you have 1 more month to complete it
+    completed?
 
 ==ADAM'S LIST==
+  Search no working
 
-  create a project leader dashboard
-    who has favorited them
-    who has viewed them
-    how much money I've charged them
-    promote my mocs - twitter, email
-    
+  Improve Profile page
+
   improve form
     add date picker for begins on and ends on
+    cancel button
 
-  tabbable not working on posts#index
-  Setup users messaging each other
+  
 
 ==JAMES' LIST==
   bugs:
@@ -39,24 +46,24 @@ Two user groups
   make trending tags - tags on projects with most followers * most impressions
   make trending projects - average of most followers * most impressions 
 
+  Setup users messaging each other
+    title:string
+    body:text
+    reciever_id:integer
+    sender_id:integer
+    is_read:boolean
 
+    blah: blah
 
   --------------------------
 
   setup 'private' public, filter by organization
-  
-  setup 'commitments' (projects your doing)
-    automated messages to project lead ("You will be contacted")
-    automated confirmation email with link to the MOC official website
-    who else has committed to a project
-    reminder - you signed up for this project, this project ends on this date
-    reminder - careful this is getting close to ending, you have 1 more month to complete it
-    completed?
 
-  project lead dashboard
-    needs extra powers over the commitments
-    list out favoriters
-    list out committers
+  create a project leader dashboard
+    who has favorited them
+    who has viewed them
+    how much money I've charged them
+    promote my mocs - twitter, email
 
   add public_activity gem
     log getting more karma
@@ -179,3 +186,4 @@ DONE When do they end?
 DONE How many unpublished projects do I have?
 DONE how many favorited
 DONE how many people have signed up for each one
+DONE tabbable not working on posts#index
