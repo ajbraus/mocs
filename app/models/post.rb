@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
                   :img_url, 
                   :tag_list
 
-  validates :title, :state, presence: true
+  validates :title, presence: true
 
   define_index do
     indexes :title, as: :post_title
