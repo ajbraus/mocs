@@ -120,6 +120,9 @@ border-bottom:1px solid rgb(112, 163, 228);
 
 .well {
 	padding:17px;
+  background: rgb(241, 241, 241);
+  border:1px solid #eee;
+  border-radius: 0;
 }
 
 .margin-bottom {
@@ -375,4 +378,8 @@ left: 2px;
 }
 .field {
   clear:both;
+}
+
+.padding-top {
+  padding-top:60px;
 }

@@ -1,64 +1,36 @@
 <% unless user_signed_in? %>
   <header class="jumbotron subhead" id="overview">
      <div class="row">   
-       <div class="span5">
-         <h1>Rise to the Top</h1>      
-         <span class="muted">Come, Learn, Contribute</span>
-         <p class="lead">MOCs for Docs makes it fun to find a project for Maintenance of Certification part IV!</p>
-       </div>
-       <div class="span3 well">
-         <h4>Login</h4>
-         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-           <%= devise_error_messages! %>
-           <div>
-             <%= f.label :email %>
-             <%= f.email_field :email %>
-           </div>
-           <div>
-             <%= f.label :password %>
-             <%= f.password_field :password %>
-           </div>
-           <div><%= f.submit "Login", class:"btn btn-primary" %></div>
-         <% end %>
-       </div>
-       <div class="span3 well">
-         <h4>Sign Up</h4>
-         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-           <%= devise_error_messages! %>
-           <div>
-             <%= f.label :name %>
-             <%= f.text_field :name %>
-           </div>
-           <div>
-             <%= f.label :email %>
-             <%= f.email_field :email %>
-           </div>
-           <div>
-             <%= f.label :state %>
-             <%= f.select :state, us_states, class:"state required" %><br>
-           </div>
-           <div>
-             <%= f.label :password %>
-             <%= f.password_field :password %>
-           </div>
-           <div><%= f.submit "Register", class:"btn btn-primary" %></div>
-         <% end %>
-       </div>
-     </div>
-     <div class="row">
        <div class="span7">
-         <blockquote>
-           <p>“Seeing modern health care from the other side, I can say that it is clearly not set up for the patient. It is frequently a poor arrangement for doctors as well..."</p>
-           <small>Ross I. Donaldson, MD of<cite title="Source Title">The Lassa Ward</cite></small>
-         </blockquote>
+         <div class="row">
+           <div class="span6 offset1 padding-top">
+             <h1>Come Be A MOC Star</h1>      
+             <span class="muted">Come, Learn, Contribute</span>
+             <p class="lead">MOCs for Docs makes it fun to find a project for Maintenance of Certification part IV!</p>
+           </div>
+         </div>
+         <div class="row">
+           <div class="span6">
+<!--              <blockquote>
+               <p>“Seeing modern health care from the other side, I can say that it is clearly not set up for the patient. It is frequently a poor arrangement for doctors as well..."</p>
+               <small>Ross I. Donaldson, MD of<cite title="Source Title">The Lassa Ward</cite></small>
+             </blockquote> -->
+           </br>
+           </br>
+           </br>
+           </br>
+           </br>          
+             <blockquote>
+               <p>"The life so short, the craft so long to learn."</p>
+               <small><cite title="Source Title">Hippocrates</cite></small>
+             </blockquote>
+           </div>
+         </div>
        </div>
-       <div class="span4 pull-right">
-         <blockquote class="pull-right">
-           <p>"The life so short, the craft so long to learn."</p>
-           <small><cite title="Source Title">Hippocrates</cite></small>
-         </blockquote>
-       </div>
-     </div> 
+         <div class="span4">
+           <%= image_tag "doctor-02.jpg" %>
+         </div>
+      </div>
     <hr> 
   </header>
 <% end %>
