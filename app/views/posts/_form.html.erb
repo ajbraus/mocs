@@ -54,13 +54,12 @@
         </p>
       </div>
       <div class="actions">
-        <%= f.submit "Publish", class:'btn btn-inverse disabled', id: "publish"  %>
-        <%= f.submit "Save w/o Publishing", class:'btn btn-success'  %>
-        ||
+        <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>
+        <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large'  %>
         <% if params[:action] == "edit" %>
           <%= f.submit "Delete", class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% elsif params[:action] == "new" %>
-          <%= link_to "Delete", posts_path, class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
+          <%= link_to "Delete", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% end %>
       </div>
     <% end %>

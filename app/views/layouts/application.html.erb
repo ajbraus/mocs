@@ -37,7 +37,43 @@
 <% end %>
   </head>
   <body>  
-    <div class="container">
+    <% unless user_signed_in? %>
+      <header class="jumbotron subhead" id="overview">
+         <div class="row">   
+           <div class="span7">
+             <div class="row">
+               <div class="span6 offset1 padding-top">
+                 <h1>Come Be A MOC Star</h1>      
+                 <span class="muted">Come, Learn, Contribute</span>
+                 <p class="lead">MOCs for Docs makes it fun to find a project for Maintenance of Certification part IV!</p>
+               </div>
+             </div>
+             <div class="row">
+               <div class="span5 offset1">
+    <!--              <blockquote>
+                   <p>“Seeing modern health care from the other side, I can say that it is clearly not set up for the patient. It is frequently a poor arrangement for doctors as well..."</p>
+                   <small>Ross I. Donaldson, MD of<cite title="Source Title">The Lassa Ward</cite></small>
+                 </blockquote> -->
+                 <div class="text-center offset1">
+                  <%= link_to "Sign In", new_user_session_path, :class => "btn btn-large btn-success" %>
+                  <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-large btn-gold" %>
+                </div>
+               </br>
+               </br>          
+                 <blockquote>
+                   <p>"The life so short, the craft so long to learn."</p>
+                   <small><cite title="Source Title">Hippocrates</cite></small>
+                 </blockquote>
+               </div>
+             </div>
+           </div>
+             <div class="span4">
+               <%= image_tag "doctor-02.jpg" %>
+             </div>
+          </div>
+      </header>
+    <% end %>
+
       <div class="navbar">
        <div class="navbar-inner">
         <ul class="nav pull-left" id="main-menu-left">
@@ -46,11 +82,28 @@
           </li>
           <li><%= link_to 'FAQ', how_path %></li>
           <li><%= link_to 'About', about_path %></li>
+          <div class="search-form pull-right">
+            <%= form_tag root_path, :method => :get, class:"form-search" do %>
+              <div class="input-append">
+                <%= text_field_tag :search, params[:search], class:"", placeholder:"Search MOCS and Topics" %>
+                <button class="btn">
+                  <i class="icon-search"></i>
+                </button>
+              </div>
+            <% end %>
+          </div>
           <% if !user_signed_in? %>
           </ul> 
             <div class="pull-right">
-              <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
-              <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-inverse" %>
+              <%= form_for resource, :as => resource_name, :url => session_path(resource_name), class:"form-inline" do |f| %>
+                <%= f.email_field :email, :autofocus => true, class:"input-small", placeholder: "Email" %>
+                <%= f.password_field :password, class:"input-small", placeholder: "Password" %>
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.hidden_field :remember_me, value: true %> 
+                <% end -%>
+                <%= f.submit "Sign in", class:"btn btn-success" %>
+              <% end %>
+            </div>
             </div>
           <% else %>
           </ul>
@@ -97,6 +150,7 @@
           <% end %>   
          </div>
        </div>
+      <div class="container">
         <%= bootstrap_flash %>
         <%= yield %>
       </div> <!-- /container -->
