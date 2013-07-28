@@ -52,8 +52,8 @@ class Post < ActiveRecord::Base
   end
 
   def short_title
-    if self.title.size >= 50
-      self.title.slice(0..50) + "..."
+    if self.title.size >= 40
+      self.title.slice(0..40) + "..."
     else
       self.title
     end

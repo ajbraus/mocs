@@ -3,6 +3,9 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
+  
+  branding for email - mocsfordocs
+  
   make follow MOCs
     make sure last_touched is upated after followered
     add filter of # Followers (sorted on # of committed)
@@ -14,8 +17,6 @@ Two user groups
   paginate comments
   sort comments by vote
   comment on comments
-
-  branding for email - mocsfordocs
 
   moc certified?
     DONE Added column
