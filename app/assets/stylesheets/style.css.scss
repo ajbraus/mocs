@@ -120,6 +120,9 @@ border-bottom:1px solid rgb(112, 163, 228);
 
 .well {
 	padding:17px;
+  background: rgb(241, 241, 241);
+  border:1px solid #eee;
+  border-radius: 0;
 }
 
 .margin-bottom {
@@ -333,6 +336,14 @@ left: 2px;
   margin-top:10px;
 }
 
+.big {
+  font-size:120%;
+}
+
+.bigger {
+  font-size:150%; 
+}
+
 .small {
   font-size:80%;
 }
@@ -347,4 +358,28 @@ left: 2px;
 
 .affix {
   top:50px;
+}
+
+.new_post {
+  input[type=text] {
+    width:95%;
+  }
+  textarea {
+    width:95%;
+  }
+  .times-input {
+    width:30%;
+    float:left;
+    margin-right:30px;
+  }
+  .price {
+    width: 50px;
+  }
+}
+.field {
+  clear:both;
+}
+
+.padding-top {
+  padding-top:60px;
 }

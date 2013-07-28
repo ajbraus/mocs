@@ -4,7 +4,7 @@ Two user groups
 
 ==INBOX==
   post#new form
-    add published? column and published_on column and filter out not-published mocs
+    DONE add published? column and published_on column and filter out not-published mocs
     add validations to server and client
 
   paginate comments
@@ -14,37 +14,9 @@ Two user groups
   branding for email - mocsfordocs
 
   moc certified?
+    DONE Added column
+    make visual indication of certification
 
-==ADAM'S LIST==
-
-  create a project leader dashboard
-    who has favorited them
-    who has viewed them
-    how much money I've charged them
-    promote my mocs - twitter, email
-    
-  improve form
-    add date picker for begins on and ends on
-
-  tabbable not working on posts#index
-  Setup users messaging each other
-
-==JAMES' LIST==
-  bugs:
-    @post.impressions_count not incrementing
-
-    Karma inrcrement on comments not working
-  
-  make related projects - projects with tags from the viewed project sorted by highest impressions * followers
-  make trending tags - tags on projects with most followers * most impressions
-  make trending projects - average of most followers * most impressions 
-
-
-
-  --------------------------
-
-  setup 'private' public, filter by organization
-  
   setup 'commitments' (projects your doing)
     automated messages to project lead ("You will be contacted")
     automated confirmation email with link to the MOC official website
@@ -53,10 +25,41 @@ Two user groups
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
 
-  project lead dashboard
-    needs extra powers over the commitments
-    list out favoriters
-    list out committers
+==ADAM'S LIST==
+  Improve Profile page
+
+  Search no working "published"
+  Search in production
+
+  improve form
+    add date picker for begins on and ends on
+    cancel button
+
+==JAMES' LIST==
+  Setup users messaging each other
+    create 'inbox' page messages#index
+    create 'message' page messages#show
+    create new message page messages#new
+    create "Message This User" link 
+  
+  bugs:
+    @post.impressions_count not incrementing
+
+    Karma inrcrement on comments not working
+  
+  make related projects - projects with tags from the viewed project sorted by highest impressions * followers
+  make trending tags - tags on projects with most followers * most impressions
+  make trending projects - average of most followers * most impressions
+
+  --------------------------
+
+  setup 'private' public, filter by organization
+
+  create a project leader dashboard
+    who has favorited them
+    who has viewed them
+    how much money I've charged them
+    promote my mocs - twitter, email
 
   add public_activity gem
     log getting more karma
@@ -179,3 +182,4 @@ DONE When do they end?
 DONE How many unpublished projects do I have?
 DONE how many favorited
 DONE how many people have signed up for each one
+DONE tabbable not working on posts#index

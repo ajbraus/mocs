@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :posts
+  
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
   has_many :committed_tos, through: :commitments, source: "commitment"
 

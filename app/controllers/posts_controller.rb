@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       #@posts_by_followers = Post.sort_by { |m| m.followers.count }
     end
     @trending_mocs = Post.first(3)
-    @trending_tags = Tag.first(30)
+    @trending_tags = Tag.first(20)
 
     respond_to do |format|
       format.html # new.html.erb
