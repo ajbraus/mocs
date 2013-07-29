@@ -18,7 +18,8 @@ gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
 
-# gem 'impressionist'
+gem 'daemons'
+gem 'delayed_job_active_record'
 
 gem 'whenever', require: false
 

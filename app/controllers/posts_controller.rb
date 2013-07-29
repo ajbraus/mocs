@@ -11,6 +11,7 @@ class PostsController < ApplicationController
       #@posts_by_followers = @mocs.sort_by { |m| m.followers.count }
     else 
       if user_signed_in?
+        binding.pry
         @posts_by_state = Post.where(state: current_user.state, published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       end
       @posts = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
