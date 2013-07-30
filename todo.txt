@@ -4,6 +4,11 @@ Two user groups
 
 ==INBOX==
   
+  Add organization record
+  Create Organization dashboard
+
+  add state and name to settings edit
+
   add oofta = true
 
   add security 
@@ -18,8 +23,7 @@ Two user groups
   Project lead dashboard
     add progress bars to posts.html if your MOC
   
-  Add organization record
-  Create Organization dashboard
+  add delete message link
   
   Logo
 

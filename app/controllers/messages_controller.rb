@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
     @message.save
     
     @receiver = @message.receiver
+    @sender = @message.sender
 
     respond_to do |format|
       format.html # show.html.erb
