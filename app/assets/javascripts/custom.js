@@ -8,6 +8,11 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+  step = parseInt($('#progress').text()) + 1
+  id = "#" + step
+  $(id).removeClass("disabled strike-through").addClass("btn-primary")
+
+
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
   // a.forEach(function(entry) {

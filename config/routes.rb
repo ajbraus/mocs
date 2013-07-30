@@ -20,7 +20,12 @@ Mocs::Application.routes.draw do
   match 'users/:id' => 'users#show'
   match 'user/projects', to: "users#posts", as: "user_posts"
 
-  resources :commitments, only: [:create, :destroy]
+  resources :commitments, only: [:create, :destroy] do 
+    member do
+      put :increment_progress
+      put :decrement_progress
+    end
+  end
 
   get 'tags/:tag', to: 'tags#show', as: :tag
 

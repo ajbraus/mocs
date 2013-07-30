@@ -1,6 +1,6 @@
 <div class="row">
   <div class="span8">  
-  <%= raw(youtube_embed(@post.video_url)) %>
+  <%= raw(youtube_embed(@post.video_url)) if @post.video_url.present? %>
     <div>
       <h3>
         <strong>
@@ -67,7 +67,7 @@
                     <td><%= c.nice_created_at_date %></td>
                     <td>
                       <div class="progress">
-                        <div class="bar bar-success" style="width: 60%;"></div>
+                        <div class="bar bar-success" style="width: <%= c.percent_complete%>%;"></div>
                       </div>
                     </td>                                       
                 </tr>
@@ -75,35 +75,112 @@
               </tbody>
             </table>
           <% else %>
-            <div class="<%= current_user.committed_to?(@post) ? '' : 'muted'%>">
+            <% if current_user.committed_to?(@post) %>
+            <div>
               <ul class="todos">
-                <%= render 'commitments/commit' %>
-                <li>
-                  <span class="check-circle"></span>
-                  <span class="todo-text">Review Background Info</span>
+                <% if @commitment.progress >= 6 %>
+                  <div class="progress progress-striped progress-gold">
+                    <div class="bar" style="width: 100%;"><span class="progress-count">MOC Completed!</span></div>
+                  </div>
+                <% else %>
+                <h5>Your Progress</h5>
+                <div class="progress progress-success progress-striped">
+                  <div class="bar" style="width: <%= @percent_complete %>%;"></div>
+                  <span class="progress-count"><span id="progress"><%= @commitment.progress %></span> / 6</span>
+                </div>
+                <div class="muted">
+                  complete by <%= @post.nice_ends_on %>
+                </div>
+                <h5>To Do's</h5>
+                <li class="tracking-el">
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                  <div id="1" class="btn disabled btn-block">
+                    <i class="<%= @commitment.progress >= 1 ? 'icon-check' : 'icon-check-empty'%>"></i>
+                    <span class="todo-text <%= @commitment.progress >= 1 ? 'strike-through' : ''%>">Review Information</span>
+                  </div>
+                  <% end %>
                 </li>
-                <li>
-                  <span class="check-circle"></span>
-                  <span class="todo-text">Collect Baseline Data</span>
+                <li class="tracking-el">
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                  <div id="2" class="btn disabled btn-block">
+                    <i class="<%= @commitment.progress >= 2 ? 'icon-check' : 'icon-check-empty'%>"></i>
+                    <span class="todo-text <%= @commitment.progress >= 2 ? 'strike-through' : ''%>">Collect Baseline Data</span>
+                  </div>
+                  <% end %>
                 </li>
-                <li>
-                  <span class="check-circle"></span>
-                  <span class="todo-text">Choose Intervention</span>
+                <li class="tracking-el">
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                  <div id="3" class="btn disabled btn-block">
+                    <i class="<%= @commitment.progress >= 3 ? 'icon-check' : 'icon-check-empty'%>"></i>
+                    <span class="todo-text <%= @commitment.progress >= 3 ? 'strike-through' : ''%>">Choose Intervention</span>
+                  </div>
+                  <% end %>
                 </li>
-                <li>
-                  <span class="check-circle"></span>
-                  <span class="todo-text">Plan - Do - Check - Act</span>
+                <li class="tracking-el">
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                  <div id="4" class="btn disabled btn-block">
+                    <i class="<%= @commitment.progress >= 4 ? 'icon-check' : 'icon-check-empty'%>"></i>
+                    <span class="todo-text <%= @commitment.progress >= 4 ? 'strike-through' : ''%>">Plan, Do, Check, Act</span>
+                  </div>
+                  <% end %>
                 </li>
-                <li>
-                  <span class="check-circle"></span>
-                  <span class="todo-text">Collect Post Test Data</span>
+                <li class="tracking-el">
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                  <div id="5" class="btn disabled btn-block">
+                    <i class="<%= @commitment.progress >= 5 ? 'icon-check' : 'icon-check-empty'%>"></i>
+                    <span class="todo-text <%= @commitment.progress >= 5 ? 'strike-through' : ''%>">Collect Post Test Data</span>
+                  </div>
+                  <% end %>
                 </li>
+                <% unless @commitment.progress >= 6 %>
                 <div class="text-right">
-                  <div class="btn disabled">Complete MOC</div>
+                  <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+                    <div class="btn <%= @commitment.progress >= 5 ? 'btn-gold' : 'disabled'%>">Complete MOC</div>
+                  <% end %>
                   <%= render 'commitments/reneg' %>
                 </div>
+                <% end %>
+                <% end %>
               </ul>
             </div>
+            <% else %>
+            <div class="muted">
+              <ul class="todos">
+                <%= render 'commitments/commit' %>
+                <h5>To Do's</h5>
+                <li id="reviewInfo" class="tracking-el">
+                  <div class="btn disabled btn-block disabled">
+                    <i class="icon-check-empty"></i>
+                    <span class="todo-text">Review Information</span>
+                  </div>
+                </li>
+                <li id="baselineData" class="tracking-el">
+                  <div class="btn disabled btn-block disabled">
+                    <i class="icon-check-empty"></i>
+                    <span class="todo-text">Collect Baseline Data</span>
+                  </div>
+                </li>
+                <li id="chooseIntervention" class="tracking-el">
+                  <div class="btn disabled btn-block disabled">
+                    <i class="icon-check-empty"></i>
+                    <span class="todo-text">Choose Intervention</span>
+                  </div>
+                </li>
+                <li id="planDo" class="tracking-el">
+                  <div class="btn disabled btn-block disabled">
+                    <i class="icon-check-empty"></i>
+                    <span class="todo-text">Plan, Do, Check, Act</span>
+                  </div>
+                </li>
+                <li id="postTestData" class="tracking-el">
+                  <div class="btn disabled btn-block disabled">
+                    <i class="icon-check-empty"></i>
+                    <span class="todo-text">Collect Post Test Data</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>

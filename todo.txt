@@ -6,30 +6,19 @@ Two user groups
   
   Add search to production
 
-  Logo
-  Expected time
-  Processes vs. Outcome
-
   Doctor managing their own project
   Organization dashboard
   Project lead dashboard
 
+  Logo
+
+  change label text for certified?
+
+  don't require a video to publish
+
   Research in google docs
 
-  Certifying body 
-  #0-30 (?)
-
-  Pay the creator when doctors commit to a project - amazon market place of medical quality improvement projects
-
-  Organizational premium services
-
-
   add organization records
-
-  WI
-
-  add progress bars of complete to project creator on post#show
-  add how far you are along in post#show
 
   make follow MOCs
     post has_and_belongs_to_many followers, class "User"
@@ -38,6 +27,8 @@ Two user groups
     make sure last_touched is upated after followered
     track activity of following
     add filter of # Followers (sorted on # of committed)
+
+  add most popular tab
 
   public vs private profile
 
@@ -55,12 +46,14 @@ Two user groups
     DONE Added column
     make visual indication of certification
 
+    setup whenever to reindex every 12 hours
+    Moved my rake code to the appropriate models
+    Added controller/routing code for calling models methods from the browser
+    Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
+
 ==ADAM'S LIST==
 
   script/delayed_job start in production
-
-  Search no working "published"
-  Search in production
 
   improve form
     add date picker for begins on and ends on
@@ -82,12 +75,20 @@ Two user groups
   make trending tags - tags on projects with most followers * most impressions
   make trending projects - average of most followers * most impressions
 
-  setup whenever to reindex every 12 hours
-  Moved my rake code to the appropriate models
-  Added controller/routing code for calling models methods from the browser
-  Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
-
   --------------------------
+
+  Add to posts
+  class AddToPosts < ActiveRecord::Migration
+    def change
+      add_column :posts, :expected_hours_to_complete, :integer
+      add_column :posts, :actual_hours_to_complete, :integer
+    end
+  end
+
+  Expected time
+  Certifying body 
+  #0-30 (?)
+
 
   setup 'commitments' (projects your doing)
     payment gateway - stripe marketplace
@@ -97,8 +98,6 @@ Two user groups
     reminder - you signed up for this project, this project ends on this date
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
-
-  setup 'private' public, filter by organization
 
   create a project leader dashboard
     who has favorited them
@@ -222,3 +221,5 @@ DONE how many favorited
 DONE how many people have signed up for each one
 DONE tabbable not working on posts#index
 DONE  Improve Profile page
+DONE add progress bars of complete to project creator on post#show
+DONE add how far you are along in post#show

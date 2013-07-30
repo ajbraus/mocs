@@ -32,7 +32,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.paginate(:page => params[:page], :per_page => 10)
     @mocs = Post.first(5)
-    @post.create_activity :show, owner: current_user
+    if user_signed_in?
+      @post.create_activity :show, owner: current_user
+      @commitment = current_user.commitments.find_by_commitment_id(@post.id)
+      if @commitment.present?
+        @percent_complete = @commitment.percent_complete
+      end
+    end
+
 
     respond_to do |format|
       format.html # show.html.erb

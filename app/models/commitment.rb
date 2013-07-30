@@ -12,4 +12,12 @@ class Commitment < ActiveRecord::Base
   def nice_created_at_date
     created_at.strftime("%b %e, %Y") #May 21, 2010
   end
+
+  def percent_complete
+    if progress == 6
+      return 100
+    else
+      return progress*17
+    end
+  end
 end
