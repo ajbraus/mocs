@@ -61,7 +61,7 @@
                   </tr>
               </thead>   
               <tbody>
-                <% @post.commitments do |c| %>
+                <% @post.commitments.each do |c| %>
                 <tr>
                     <td><%= c.user.name %></td>
                     <td><%= c.nice_created_at_date %></td>

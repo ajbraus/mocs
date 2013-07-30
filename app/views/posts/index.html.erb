@@ -4,7 +4,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#A" data-toggle="tab">Newest</a></li>
         <li><a href="#B" data-toggle="tab">Activity</a></li>
-        <!-- <li><a href="#C" data-toggle="tab"># Followers</a></li> -->
+        <!-- <li><a href="#C" data-toggle="tab">Popularity</a></li> -->
         <% if user_signed_in? %>
           <li><a href="#D" data-toggle="tab"><%= current_user.state %></a></li>
         <% end %>
@@ -19,10 +19,10 @@
           <%= will_paginate @posts_by_activity, renderer: BootstrapPagination::Rails %>         
         </div>
         <% if false %>
-          <div class="tab-pane" id="C">
-            <%= render "posts/post", collection: @posts_by_followers, as: :post %>
-            <%= will_paginate @posts_by_followers, renderer: BootstrapPagination::Rails %>        
-          </div>
+        <div class="tab-pane" id="C">
+          <%= render "posts/post", collection: @posts_by_participants, as: :post %>
+          <%= will_paginate @posts_by_participants, renderer: BootstrapPagination::Rails %>
+        </div>
         <% end %>
         <% if user_signed_in? %>
           <div class="tab-pane" id="D">

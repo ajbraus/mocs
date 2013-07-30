@@ -14,6 +14,7 @@ Two user groups
   add security 
     only you can see your inbox
     only you can see your posts.html page
+    hide identifying info if not logged in
 
   Fix search and add to production
     search by aurthor's name
