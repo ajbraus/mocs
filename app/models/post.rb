@@ -3,13 +3,13 @@ class Post < ActiveRecord::Base
   is_impressionable :counter_cache => true #@post.impressions_count
   #tracked owner: ->(controller, model) { controller && controller.current_user }
   belongs_to :user
-  has_many :commitments, foreign_key: :committed_user_id
+  has_many :commitments, foreign_key: :committed_user_id, dependent: :destroy
   has_many :committed_users, through: :commitments
   has_and_belongs_to_many :tags
   has_many :comments, as: :commentable
   attr_accessible :desc, 
                   :price,
-                  :certified,
+                  :credits,
                   :state, 
                   :published,
                   :published_at,
@@ -23,11 +23,15 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
 
   def nice_created_at_date
-    created_at.strftime("%b %e, %Y") #May 21, 2010
+    created_at.strftime("%b %e, %y") #May 21, 2010
   end
 
   def nice_ends_on
-    ends_on.strftime("%b %e, %Y") if ends_on.present? #May 21, 2010 
+    ends_on.strftime("%b %e, %y") if ends_on.present? #May 21, 2010 
+  end
+
+  def nice_begins_on
+    begins_on.strftime("%b %e, %y") if begins_on.present? #May 21, 2010 
   end
 
   def short_desc

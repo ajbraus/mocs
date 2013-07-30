@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730145157) do
+ActiveRecord::Schema.define(:version => 20130730163752) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20130730145157) do
     t.datetime "begins_on"
     t.datetime "ends_on"
     t.integer  "price"
-    t.boolean  "certified"
     t.boolean  "published",         :default => false
     t.datetime "published_at"
     t.integer  "user_id"
@@ -110,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20130730145157) do
     t.integer  "impressions_count", :default => 0
     t.datetime "last_touched"
     t.string   "state"
+    t.integer  "credits",           :default => 0
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|

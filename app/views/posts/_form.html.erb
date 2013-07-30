@@ -34,6 +34,12 @@
         <%= f.text_field :video_url %>
       </div>
       <div class="field">
+        <p>
+          <%= f.label :credits, "MOC Credits", class:"price" %>
+          <%= f.number_field :credits %> 
+        </p>
+      </div>
+      <div class="field">
         <%= f.label :price %>
         <span class="bigger">$</span> <%= f.number_field :price, class:"price" %>
       </div>
@@ -46,12 +52,6 @@
           <%= f.label :ends_on, "Ends On", class:"input-medium" %>
           <%= f.text_field :ends_on %>
         </div>
-      </div>
-      <div class="field">
-        <p>
-          <%= f.check_box :certified %> 
-          <%= f.label :certified, "Certified?", class:"checkbox inline" %>
-        </p>
       </div>
       <div class="actions">
         <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>

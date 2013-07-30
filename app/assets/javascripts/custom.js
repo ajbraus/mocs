@@ -11,6 +11,12 @@ $(document).ready(function() {
   step = parseInt($('#progress').text()) + 1
   id = "#" + step
   $(id).removeClass("disabled strike-through").addClass("btn-primary")
+  $('a').click(function() { 
+    if ($(this).children('div').hasClass("disabled")) 
+    {
+    return false; 
+    }
+  });
 
 
   // var a = [$('#trendingTags').data("tags")];

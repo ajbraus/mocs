@@ -6,6 +6,15 @@
     <% if user_signed_in? && current_user == post.user %>
       <%= link_to "Edit", edit_post_path(post), class:"pull-left btn margin-top" %>
     <% end %>
+    <p>
+      <ul style='margin:0'>
+        <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
+        <li><strong>State:</strong> <em><%= post.state %></em> </li>
+        <li><strong>Published:</strong> <em><%= post.nice_created_at_date %></em> </li>
+        <li><strong>Starts:</strong> <em><%= post.nice_begins_on %></em> </li>
+        <li><strong>Ends:</strong> <em><%= post.nice_ends_on %></em> </li>
+      </ul>
+    </p>
   </div>
   <div class="media-body">
     <h4 class="media-heading">
@@ -13,21 +22,20 @@
         <%= post.title %>
       <% end %>
     </h4>
-    <h6 class="pull-left">
-      Project Lead: 
-      <em><%= link_to "#{post.user.name}", user_path(post.user) %></em>
-    </h6>
-    <div class="pull-right">
-      <%= render partial: "shared/tags", locals: { tags: post.tags }  %>
-    </div>
+
     <div class="clear-both">
       <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
     </div>
-    <div class="muted">
-      Impressions: <em><%= post.impressions_count %></em> 
-      State: <em><%= post.state %></em> 
-      Published: <em><%= post.nice_created_at_date %></em> 
-      Participants: <em>25</em> 
+    <div class="text-right">
+      <strong>Topics:</strong>
+      <%= render partial: "shared/tags", locals: { tags: post.tags }  %>
     </div>
+    <p>
+      <ul class="inline-list big">
+        <li><strong>Views:</strong> <em><%= post.impressions_count %></em> </li>
+        <li><strong>Participants:</strong> <em><%= post.committed_users.count %></em> </li>
+        <li><strong>MOC Credits:</strong> <em><%= post.credits %></em> </li>
+      </ul>
+    </p>
   </div>
 </div>

@@ -105,7 +105,7 @@ width: 47px;
   margin-bottom:0px;
 }
 .tag {
-background: #99BCF1;
+color:blue;
 padding: 4px;
 font-weight: 100;
 font-size: 13px;
@@ -113,8 +113,6 @@ text-shadow: none;
 cursor: pointer;
 margin: 2px;
 border-radius: 0;
-border-right: 1px solid #70a3e4;
-border-bottom: 1px solid #70a3e4;
 }
 
 .tag:hover {
@@ -125,6 +123,9 @@ border-bottom: 1px solid #70a3e4;
 padding: 17px;
 border-radius: 0;
 border: 0;
+ul {
+  margin:0;
+}
 }
 
 .gold-well {
@@ -315,8 +316,10 @@ left: 2px;
 }
 
 .trending {
-  width:90px;
+  width:50px;
+  margin-top:2px;
   float:left;
+  border:2px solid white;
 }
 .dropdown {
   top: 10px;
@@ -547,3 +550,11 @@ left: 2px;
     font-weight: bold;
   }
   }
+
+ul.inline-list {
+  display: inline;
+  li {
+    display: inline;
+    margin-right:10px;
+  }
+}

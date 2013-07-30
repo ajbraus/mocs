@@ -4,24 +4,17 @@ Two user groups
 
 ==INBOX==
   
-  Add search to production
-
-  DONE Doctor managing their own project
-  DONE Project lead dashboard
+  Fix search and add to production
   
-  Add organization
-  Organization dashboard
-  
-
-  Logo
-
-  change label text for certified?
-
   don't require a video to publish
 
-  Research in google docs
-
-  add organization records
+  Project lead dashboard
+    add progress bars to posts.html if your MOC
+  
+  Add organization record
+  Create Organization dashboard
+  
+  Logo
 
   make follow MOCs
     post has_and_belongs_to_many followers, class "User"
@@ -30,6 +23,7 @@ Two user groups
     make sure last_touched is upated after followered
     track activity of following
     add filter of # Followers (sorted on # of committed)
+  add updates to MOCs (like comments)
 
   add most popular tab
 
@@ -44,10 +38,6 @@ Two user groups
   paginate comments
   sort comments by vote
   comment on comments
-
-  moc certified?
-    DONE Added column
-    make visual indication of certification
 
     setup whenever to reindex every 12 hours
     Moved my rake code to the appropriate models
@@ -226,3 +216,8 @@ DONE tabbable not working on posts#index
 DONE  Improve Profile page
 DONE add progress bars of complete to project creator on post#show
 DONE add how far you are along in post#show
+DONE Doctor managing their own project
+DONE change label text for certified?
+moc certified?
+  DONE Added column
+  DONE make visual indication of certification

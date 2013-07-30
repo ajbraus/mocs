@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [User, Post, Comment, Tag].each(&:delete_all)
+    [User, Post, Comment, Tag, Commitment].each(&:delete_all)
     
     User.populate 20 do |user|
       user.name    = Faker::Name.name
@@ -24,7 +24,8 @@ namespace :db do
         post.img_url = "http://img.youtube.com/vi/x10zrYPuU_o/default.jpg"
         post.created_at = 4.months.ago..Time.now
         post.last_touched = 4.months.ago..Time.now
-        post.impressions_count = 1..50000
+        post.credits = 0..30
+        post.impressions_count = 1..3000
         post.published = [true,false]
         if post.published == true
           post.published_at = 4.months.ago..Time.now
