@@ -37,7 +37,7 @@
 <% end %>
   </head>
   <body>  
-    <% unless user_signed_in? || params[:action] == 'new' %>
+    <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' %>
       <header class="jumbotron subhead" id="overview">
          <div class="row">   
            <div class="span7">
