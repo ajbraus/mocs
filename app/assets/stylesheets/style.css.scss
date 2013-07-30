@@ -108,7 +108,7 @@ width: 47px;
 background: #99BCF1;
 padding: 4px;
 font-weight: 100;
-font-size: 11px;
+font-size: 13px;
 text-shadow: none;
 cursor: pointer;
 margin: 2px;
@@ -460,4 +460,34 @@ left: 2px;
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
   -webkit-font-smoothing: antialiased;
+}
+
+.todos {
+  li {
+    padding: 5px 0px;
+    margin: 5px 10px 10px 0px;
+  }
+  .check-circle {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 7px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c4cbd2;
+    border-radius: 12px;
+  }
+  .todo-text {
+    font-family:'Lucida Grande', Verdana, sans-serif;;
+    font-size:120%;
+  }
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color:lightblue;
+  &:hover {
+    text-decoration:underline;
+  }
 }

@@ -6,9 +6,9 @@ gem 'heroku'
 gem 'pg'
 gem 'thin'
 
-gem 'mysql2',          '0.3.12b4'
-gem 'thinking-sphinx', '2.0.11'
-gem 'flying-sphinx',   '0.8.4'
+gem 'mysql2',          '0.3.12b5'
+gem 'thinking-sphinx', '3.0.3' #'2.0.11'
+gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 
 gem 'devise'
 gem 'lazy_high_charts'

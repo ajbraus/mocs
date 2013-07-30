@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @trending_tags = Tag.first(10)
   end
   def posts
-    @commitments = current_user.commitments
+    @commitments = current_user.committed_tos
     @posts = current_user.posts.where(published: true)
     @unpublished_posts = current_user.posts.where(published: false)
     @expired_posts = current_user.posts.where("published = ? and ends_on > ?", true, Time.now  )
