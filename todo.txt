@@ -6,9 +6,12 @@ Two user groups
   
   Add search to production
 
-  Doctor managing their own project
+  DONE Doctor managing their own project
+  DONE Project lead dashboard
+  
+  Add organization
   Organization dashboard
-  Project lead dashboard
+  
 
   Logo
 
