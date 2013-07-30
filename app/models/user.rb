@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   
   def commit!(post)
     @commitment = commitments.create!(commitment_id: post.id)
-    @commitment.create_activity :create, owner: current_user
+    @commitment.create_activity :create, owner: self
   end  
 
   def reneg!(commitment)

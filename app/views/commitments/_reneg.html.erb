@@ -1,4 +1,10 @@
-<%= form_for(current_user.commitments.find_by_commitment_id(post),
+<% if user_signed_in? && current_user != @post.user %>
+  <div id="commit_form">
+    <% if current_user.committed_to?(@post) %>
+      <%= form_for(current_user.commitments.find_by_commitment_id(@post),
              html: { method: :delete }) do |f| %>
-  <%= f.submit "Leave Action", class: "btn" %>
+        <%= f.submit "Unregister for MOC", class: "btn-link" %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>

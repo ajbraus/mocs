@@ -8,4 +8,8 @@ class Commitment < ActiveRecord::Base
 
   validates :committed_user_id, presence: true
   validates :commitment_id, presence: true    
+  
+  def nice_created_at_date
+    created_at.strftime("%b %e, %Y") #May 21, 2010
+  end
 end

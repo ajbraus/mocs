@@ -1,6 +1,6 @@
-favorited  
+registered for   
 <% if activity.trackable %>
-  <%= link_to activity.trackable.title, activity.title %>
+  <%= link_to activity.trackable.commitment.title, activity.trackable %>
 <% else %>
-  which has since been removed 
+  a MOC but has since unregistered
 <% end %>

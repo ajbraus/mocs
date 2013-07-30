@@ -5,7 +5,7 @@
      <%= devise_error_messages! %>
      <div>
        <%= f.label :name %>
-       <%= f.text_field :name %>
+       <%= f.text_field :name, :autofocus => true %>
      </div>
      <div>
        <%= f.label :email %>
@@ -19,7 +19,7 @@
        <%= f.label :password %>
        <%= f.password_field :password %>
      </div>
-     <div><%= f.submit "Register", class:"btn btn-primary" %></div>
+     <div><%= f.submit "Sign Up", class:"btn btn-gold pull-right" %></div>
    <% end %>
  </div>
 <div class="span12">

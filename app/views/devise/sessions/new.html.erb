@@ -5,13 +5,13 @@
      <%= devise_error_messages! %>
      <div>
        <%= f.label :email %>
-       <%= f.email_field :email %>
+       <%= f.email_field :email, :autofocus => true %>
      </div>
      <div>
        <%= f.label :password %>
        <%= f.password_field :password %>
      </div>
-     <div><%= f.submit "Login", class:"btn btn-primary" %></div>
+     <div><%= f.submit "Login", class:"btn btn-success pull-right" %></div>
    <% end %>
   </div>
   <div class="span12">

@@ -28,7 +28,7 @@
     <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
   <% end %>
 
-  <div class="span7">
+  <div class="span8">
     <h3><%= @user.name %> <span class="muted">+123</span></h3>
     <h4>About Me</h4>
     <h4>Interests</h4>
@@ -46,10 +46,17 @@
     </div>
   </div>
 
-  <div class="span4 offset1">
-    <h4>Recommended Projects</h4>
-    <% @mocs.each do |m| %>
-      <%= render partial: "shared/mini_moc", locals: { m: m }  %>
-    <% end %>
+  <div class="span4">
+    <div class="well dark">
+      <p class="muted">Recommended Topics</p>
+      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
+    </div>
+
+    <div class="well dark">
+      <p class="muted">Recommended Projects</p>
+      <% @recommended_mocs.each do |m| %>
+        <%= render partial: "shared/mini_moc", locals: { m: m }  %>
+      <% end %>
+    </div>
   </div>
 </div>
