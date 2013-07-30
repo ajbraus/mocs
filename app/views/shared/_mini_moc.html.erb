@@ -6,7 +6,7 @@
       <%= link_to post_path(m) do %>
         <%= m.title %>
       <% end %>
-    <p>by: <em><%= link_to "#{m.user.name}", user_path(m) %></em> <p>
+    <p>by: <em><%= link_to "#{m.user.name}", user_path(m.user) %></em> <p>
     <% if false %>
       <div><%= m.very_short_desc %> <%= link_to '(more)', post_path(m) %></div>
     <% end %>

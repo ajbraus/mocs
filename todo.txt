@@ -4,7 +4,10 @@ Two user groups
 
 ==INBOX==
   
+  add oofta = true
+  
   Fix search and add to production
+    search by aurthor's name
 
   don't require a video to publish
 
@@ -51,13 +54,6 @@ Two user groups
   improve form
     add date picker for begins on and ends on
     cancel button
-
-  Setup users messaging each other
-    create 'inbox' page messages#index
-    create 'message' page messages#show
-    create 'reply' button on messages#show
-    DONE create new message page messages#new
-    DONE create "Message This User" link 
 
 ==JAMES' LIST==
   
@@ -106,8 +102,10 @@ Two user groups
 
   setup comments on comments
 
-  search by aurthor's name
   search by certifying institution
+
+  Setup users messaging each other
+    Thread messages
 
   ------
   make rating MOCs (if completed)
@@ -223,3 +221,9 @@ DONE change label text for certified?
 moc certified?
   DONE Added column
   DONE make visual indication of certification
+
+  DONE create 'inbox' page messages#index
+  DONE create 'message' page messages#show
+  DONE create 'reply' button on messages#show
+  DONE create new message page messages#new
+  DONE create "Message This User" link 
