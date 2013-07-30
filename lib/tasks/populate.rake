@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [User, Post, Comment, Tag].each(&:delete_all)
+    [User, Post, Comment, Message, Tag].each(&:delete_all)
     
     User.populate 20 do |user|
       user.name    = Faker::Name.name
@@ -33,6 +33,13 @@ namespace :db do
           comment.commentable_type = "Post"
           comment.commentable_id = post.id
           comment.content = Populator.words(3..14)
+        end
+        Message.populate 4..10 do |message|
+          message.title = Populator.words(7..18).titleize
+          message.body = Populator.words(50..120)
+          message.sender_id = user.id
+          message.receiver_id = user.id   #TODO - stop messaging yourself
+          message.is_read = [true,false]
         end
       end
     end
