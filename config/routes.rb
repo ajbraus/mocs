@@ -1,5 +1,6 @@
 Mocs::Application.routes.draw do
 
+  resources :messages
   resources :posts, path: 'MOCs'
 
   root :to => 'posts#index'

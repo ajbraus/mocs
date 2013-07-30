@@ -93,6 +93,19 @@ ActiveRecord::Schema.define(:version => 20130730163752) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "messages", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.boolean  "is_read"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "messages", ["receiver_id"], :name => "index_messages_on_receiver_id"
+  add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "desc"

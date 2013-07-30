@@ -118,7 +118,9 @@
                   |  
                 </li>
                 <li>
-                  <div class="label label-info pointer hover"><i class="icon-envelope-alt"></i> Messages</div>
+                  <%= link_to messages_path, class:"label btn-success hover" do %>
+                    <i class="icon-envelope-alt"></i> Messages
+                  <% end %>
                 </li>
                 <li>
                   |
