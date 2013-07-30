@@ -5,7 +5,7 @@ Two user groups
 ==INBOX==
   
   Fix search and add to production
-  
+
   don't require a video to publish
 
   Project lead dashboard
@@ -52,12 +52,14 @@ Two user groups
     add date picker for begins on and ends on
     cancel button
 
-==JAMES' LIST==
   Setup users messaging each other
     create 'inbox' page messages#index
     create 'message' page messages#show
-    create new message page messages#new
-    create "Message This User" link 
+    create 'reply' button on messages#show
+    DONE create new message page messages#new
+    DONE create "Message This User" link 
+
+==JAMES' LIST==
   
   bugs:
     @post.impressions_count not incrementing

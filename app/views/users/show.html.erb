@@ -1,32 +1,28 @@
 <div class="row">
   <div class="span9">
-  <h3><%= @user.name %></h3>
-  <em></em>
-  reputation:
-  <h4>About Me</h4>
-
-  <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
-    <%= form_for(Message.new, remote:true) do |f| %>
-      <div class="modal-header">  
-        <a class="close" data-dismiss="modal">×</a>  
-        <h3>Contact <%= @user.name %></h3>  
-      </div>  
-      <div class="modal-body">  
-        <div class=" message-subject">
-          <%= f.text_field :title , :placeholder => "Subject",  :class => "span5 message-subject-input"%>
-        </div>
-        <div class=" message-body ">
-          <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
-        </div>               
-      </div>  
-      <div class="modal-footer">  
-        <%= f.submit "Send Message", :class => "btn btn-primary" %>
-        <a href="#" class="btn" data-dismiss="modal">Close</a>  
-      </div>  
-    </div>
-    <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
-    <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
-  <% end %>
+    <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
+      <%= form_for @user.messages.new, remote:true do |f| %>
+        <div class="modal-header">  
+          <a class="close" data-dismiss="modal">×</a>  
+          <h3>Contact <%= @user.name %></h3>  
+        </div>  
+        <div class="modal-body">  
+          <div class=" message-subject">
+            <%= f.text_field :subject , :placeholder => "Subject",  :class => "span5 message-subject-input"%>
+          </div>
+          <div class=" message-body ">
+            <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
+          </div>               
+        </div>  
+        <div class="modal-footer">  
+          <%= f.submit "Send Message", :class => "btn btn-primary" %>
+          <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+        </div>  
+      </div>
+      <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+      <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
+    <% end %>
+  </div>
 
   <div class="span8">
     <h3><%= @user.name %> <span class="muted">+123</span></h3>

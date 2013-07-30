@@ -38,7 +38,7 @@ namespace :db do
           comment.content = Populator.words(3..14)
         end
         Message.populate 4..10 do |message|
-          message.title = Populator.words(7..18).titleize
+          message.subject = Populator.words(7..18).titleize
           message.body = Populator.words(50..120)
           message.sender_id = user.id
           message.receiver_id = user.id   #TODO - stop messaging yourself

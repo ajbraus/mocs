@@ -133,7 +133,7 @@ ul {
 }
 
 .margin-bottom {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 hr {
@@ -557,4 +557,13 @@ ul.inline-list {
     display: inline;
     margin-right:10px;
   }
+}
+
+.grey-border-bottom {
+  border-bottom:1px solid lightgrey;
+  padding-bottom:20px;
+}
+
+.unread {
+  background:lightpink
 }

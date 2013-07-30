@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20130730163752) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "messages", :force => true do |t|
-    t.string   "title"
+    t.string   "subject"
     t.text     "body"
     t.integer  "receiver_id"
     t.integer  "sender_id"

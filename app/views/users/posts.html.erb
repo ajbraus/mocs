@@ -1,7 +1,5 @@
 <div class="row">
-  <div class="span12 text-center margin-bottom">
-    <%= link_to "Create a MOC Project", new_post_path, class:"btn btn-gold btn-large" %>
-  </div>
+
 </div>
 <div class="row">
   <div class="span8">
@@ -33,6 +31,9 @@
     </div><!-- tabbable -->
   </div><!-- span8 -->
   <div class="span4">
+    <div class="text-center margin-bottom">
+      <%= link_to "Create a MOC Project", new_post_path, class:"btn btn-gold btn-large" %>
+    </div>
     <div class="well dark">
       <p class="muted">Trending Topics</p>
       <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
