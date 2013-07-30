@@ -3,7 +3,7 @@
     <% if current_user.committed_to?(@post) %>
       <%= form_for(current_user.commitments.find_by_commitment_id(@post),
              html: { method: :delete }) do |f| %>
-        <%= f.submit "Unregister for MOC", class: "btn-link" %>
+        <%= f.submit "Unregister for MOC", class: "btn-link", confirm:"Are you sure?" %>
       <% end %>
     <% end %>
   </div>

@@ -26,6 +26,10 @@ class Post < ActiveRecord::Base
     created_at.strftime("%b %e, %Y") #May 21, 2010
   end
 
+  def nice_ends_on
+    ends_on.strftime("%b %e, %Y") if ends_on.present? #May 21, 2010 
+  end
+
   def short_desc
     if self.desc.size >=250
       self.desc.slice(0..250) + ". . . "

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130725154608) do
-=======
-ActiveRecord::Schema.define(:version => 20130729015334) do
->>>>>>> de94081e9db75da1e9a6d0d366aa582020714714
+ActiveRecord::Schema.define(:version => 20130730145157) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -47,8 +43,9 @@ ActiveRecord::Schema.define(:version => 20130729015334) do
   create_table "commitments", :force => true do |t|
     t.integer  "committed_user_id"
     t.integer  "commitment_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "progress",          :default => 0
   end
 
   add_index "commitments", ["commitment_id"], :name => "index_commitments_on_commitment_id"

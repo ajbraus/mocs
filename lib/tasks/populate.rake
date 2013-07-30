@@ -29,6 +29,8 @@ namespace :db do
         if post.published == true
           post.published_at = 4.months.ago..Time.now
         end
+        post.begins_on = Time.now..Time.now + 4.months
+        post.ends_on = Time.now + 4.months..Time.now + 7.months
         Comment.populate 3..30 do |comment|
           comment.commentable_type = "Post"
           comment.commentable_id = post.id
