@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate_user!
   def index
     @messages = current_user.messages
     @sent_messages = current_user.sent_messages
@@ -11,11 +12,13 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(params[:message])
-    @message.save
 
-    respond_to do |format|
-      format.html
-      format.js
+    if @message.save
+      respond_to do |format|
+        format.html
+        format.js
+      end
+      Notifier.send_message(@message).deliver
     end
   end
 

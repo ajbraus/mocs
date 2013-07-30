@@ -25,6 +25,30 @@ class User < ActiveRecord::Base
 
   #validates :name, presence: true
 
+  def nice_name
+    @name_array = self.name.split(' ')
+    @name_array.each { |n| n.capitalize }
+  end
+
+  def first_name
+    @name_array = self.name.split(' ')
+    @name_array[0].capitalize
+  end
+
+  def first_name_with_last_initial
+    @name_array = self.name.split(' ')
+    @name_array[0].capitalize + " " + @name_array.last.capitalize.slice(0) + "."
+  end
+
+  def last_name
+    @name_array = self.name.split(' ')
+    @name_array.last
+  end
+
+  def middle_name
+    self.name.split.count > 3 ? self.name.split(' ')[1] : nil
+  end
+  
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
   end

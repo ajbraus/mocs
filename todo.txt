@@ -5,7 +5,11 @@ Two user groups
 ==INBOX==
   
   add oofta = true
-  
+
+  add security 
+    only you can see your inbox
+    only you can see your posts.html page
+
   Fix search and add to production
     search by aurthor's name
 
@@ -67,6 +71,8 @@ Two user groups
   make trending projects - average of most followers * most impressions
 
   --------------------------
+
+  setup @mocsfordocs.org emails
 
   Add to posts
   class AddToPosts < ActiveRecord::Migration
@@ -227,3 +233,4 @@ moc certified?
   DONE create 'reply' button on messages#show
   DONE create new message page messages#new
   DONE create "Message This User" link 
+  DONE make email work
