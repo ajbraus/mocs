@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(:version => 20130731142430) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "organizations", ["name"], :name => "index_organizations_on_name"
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "desc"

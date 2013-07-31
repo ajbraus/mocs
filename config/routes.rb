@@ -17,10 +17,12 @@ Mocs::Application.routes.draw do
     end
   end
 
+
   resources :users, :only => [:show]
   match 'users/:id' => 'users#show'
   match 'user/projects', to: "users#posts", as: "user_posts"
-
+  match '/org_name', :to => 'users#org_name', :as => "org_name"
+  
   resources :commitments, only: [:create, :destroy] do 
     member do
       put :increment_progress

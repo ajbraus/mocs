@@ -4,9 +4,8 @@ Two user groups
 
 ==INBOX==
 
-  Add organization record
-  Create Organization dashboard
-
+  Fix search and add to production
+  
   add state and name to settings edit
 
   add oofta = true
@@ -17,10 +16,7 @@ Two user groups
     hide identifying info if not logged in
 
   click tag just submits search with that tag
-
-  Fix search and add to production
-    search by aurthor's name
-
+    
   don't require a video to publish
 
   Project lead dashboard
@@ -79,12 +75,13 @@ Two user groups
 
   --------------------------
 
+  sort post by organization
+  search posts by organization
+  search posts by author
+  
+  Create Organization dashboard
+
   setup @mocsfordocs.org emails
-
-  Expected time
-  Certifying body 
-  #0-30 (?)
-
 
   setup 'commitments' (projects your doing)
     payment gateway - stripe marketplace
@@ -241,3 +238,5 @@ moc certified?
         Creator: Andrew Conley 
         Location: Madison WI 
         Goals of Project (pick one): 
+DONE Add organization record
+DONE search by aurthor's name

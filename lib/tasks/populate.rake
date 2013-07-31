@@ -5,16 +5,25 @@ namespace :db do
     require 'faker'
 
     [User, Post, Comment, Tag, Commitment, Message, Organization, OrganizationUser].each(&:delete_all)
-    
+    Organization.create(name:"UW Health")
+    Organization.create(name:"Gundersen Lutheran")
+    Organization.create(name:"Mayo Clinic")
+    Organization.create(name:"Guthrie Health")
+    Organization.create(name:"Cleveland Clinic")
+
     User.populate 20 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
       user.state = "WI"
       user.encrypted_password = "password"
     end
-    User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI")
-    User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI")
+    adam = User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI")
+    james = User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI")
+    adam.organizations << Organization.find_by_name("UW Health")
+    james.organizations << Organization.find_by_name("UW Health")
+
     User.all.each do |user|
+      user.organizations << Organization.all.sample
       Post.populate 10..30 do |post|
         post.title = Populator.words(7..18).titleize
         post.desc = Populator.words(50..120)
@@ -52,11 +61,6 @@ namespace :db do
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
     end
-    Organization.create(name:"UW Health")
-    Organization.create(name:"Gundersen Lutheran")
-    Organization.create(name:"Mayo Clinic")
-    Organization.create(name:"Guthrie Health")
-    Organization.create(name:"Cleveland Clinic")
 
     #rake ts:index
     

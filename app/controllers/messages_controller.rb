@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @messages = current_user.messages
-    @sent_messages = current_user.sent_messages
+    @messages = current_user.messages.paginate(:page => params[:page], :per_page => 15)
+    @sent_messages = current_user.sent_messages.paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
       format.html # show.html.erb

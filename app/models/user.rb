@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :state
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :state, :organization
   # attr_accessible :title, :body
 
   has_many :posts
@@ -67,5 +67,13 @@ class User < ActiveRecord::Base
 
   def reneg!(commitment)
     commitments.find(commitment.id).destroy
+  end
+
+  def organization
+    organizations.first if organizations.any?
+  end
+
+  def organization=(name)
+    self.organizations << Organization.find_or_create_by_name(name) unless name.blank?
   end
 end

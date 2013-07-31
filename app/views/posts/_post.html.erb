@@ -1,5 +1,5 @@
 <div class="media">
-  <div class="pull-left">
+  <div class="span3">
     <%= link_to post_path(post) do %>
       <%= image_tag post.img_url, class:"img-polaroid moc-pic" %>
     <% end %>
@@ -9,7 +9,7 @@
     <p>
       <ul style='margin:0'>
         <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
-        <li><strong>State:</strong> <em><%= post.state %></em> </li>
+        <li><strong>Organization:</strong> <em><%= post.user.organization.name %></em></li>
         <li><strong>Goal:</strong> <em><%= post.goal %></em> </li>
       </ul>
     </p>

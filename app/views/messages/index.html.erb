@@ -26,6 +26,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= will_paginate @messages, renderer: BootstrapPagination::Rails %>
       </div>
       <div class="tab-pane" id="tab2">
         <table class="table table-hover">
@@ -50,6 +51,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= will_paginate @sent_messages, renderer: BootstrapPagination::Rails %>
       </div>
     </div>
   </div>

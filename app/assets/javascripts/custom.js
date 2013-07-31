@@ -22,9 +22,7 @@ $(document).ready(function() {
     window.location = $(this).data("link")
   })
 
-  $('#city_name').autocomplete(function(){
-    source: $('#city_name').data('autocomplete-source')
-  });
+  $('#organization').autocomplete({source: $('#organization').data('autocomplete-source')});
       
 
   // var a = [$('#trendingTags').data("tags")];

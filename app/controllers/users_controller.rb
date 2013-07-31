@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:org_name]
   def show
     @user = User.find(params[:id])
     @tags = Tag.first(5)
@@ -15,5 +15,10 @@ class UsersController < ApplicationController
     @expired_posts = current_user.posts.where("published = ? and ends_on > ?", true, Time.now  )
     @recommended_mocs = Post.first(5)
     @trending_tags = Tag.first(15)
+  end
+
+  def org_name
+    @org_names = Organization.order(:name).where("lower(name) like ?", "%#{params[:term].downcase}%")
+    render json: @org_names.map(&:name)
   end
 end

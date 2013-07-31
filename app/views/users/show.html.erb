@@ -25,12 +25,17 @@
   </div>
 
   <div class="span8">
-    <h3><%= @user.name %> <span class="muted">+123</span></h3>
-    <h4>About Me</h4>
-    <h4>Interests</h4>
-    <%= render partial: "shared/tags", locals: { tags: @tags }  %>
-
-    <p><a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large pull-right">Contact</a></p>
+    <h3 class=""><%= @user.name %> <span class="muted">+123</span></h3>
+    <div class="big clear-both">
+      <strong>Organization:</strong> <%= @user.organization.name %>
+    </div>
+    <div class="big">
+      <strong>Interests</strong> 
+      <%= render partial: "shared/tags", locals: { tags: @tags }  %>
+    </div>
+    <div class="">
+      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Contact</a>
+    </div>
     <div class="clear-both">
       <h4>Recent Activity</h4>
       <% @activities.each do |activity| %>
