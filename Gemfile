@@ -19,6 +19,7 @@ gem 'public_activity'
 gem 'impressionist'
 
 gem 'airbrake'
+gem 'newrelic_rpm'
 
 gem 'daemons'
 gem 'delayed_job_active_record'
