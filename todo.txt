@@ -4,6 +4,8 @@ Two user groups
 
 ==INBOX==
 
+  state not being updated
+  
   Fix search and add to production
   
   add state and name to settings edit
