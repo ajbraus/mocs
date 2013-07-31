@@ -4,6 +4,8 @@ Two user groups
 
 ==INBOX==
 
+  state not being updated
+  
   Fix search and add to production
   
   add state and name to settings edit
@@ -149,8 +151,8 @@ profile page
 setup nearby actions - require location
 
 setup email notifications
-	welcome
-	s/o has joined your action
+  welcome
+  s/o has joined your action
   action comments digest (over 10 votes?)
   someone commented on your comment
   someone voted up your comment

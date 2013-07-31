@@ -63,7 +63,7 @@
               <tbody>
                 <% @post.commitments.each do |c| %>
                 <tr>
-                  <td><%= c.user.name %></td>
+                  <td><%= c.committed_user.name %></td>
                   <td><%= c.nice_created_at_date %></td>
                   <td>
                     <div class="progress progress-striped">
