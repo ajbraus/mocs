@@ -24,6 +24,7 @@
     <% end %>
   </div>
   <div class="span8 offset2">
+    <p><strong>From:</strong> <%= @message.sender.name %></p>
     <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
     <p><%= @message.body %></p>
     <div class="text-right">
