@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   attr_accessible :desc, 
                   :price,
                   :credits,
+                  :duration,
+                  :expected_time,
+                  :goal,
                   :state, 
                   :published,
                   :published_at,
@@ -35,8 +38,8 @@ class Post < ActiveRecord::Base
   end
 
   def short_desc
-    if self.desc.size >=250
-      self.desc.slice(0..250) + ". . . "
+    if self.desc.size >=180
+      self.desc.slice(0..180) + ". . . "
     else
       self.desc
     end
@@ -80,4 +83,21 @@ class Post < ActiveRecord::Base
   def is_committed_to_by?(user)
     return self.committed_user.find_by_committed_user_id(user.id).present?
   end
+
+  def duration
+    read_attribute(:duration)/604800
+  end
+
+  def duration=(val)
+    write_attribute :duration, val.to_i*604800
+  end
+
+  def expected_time
+    read_attribute(:expected_time)/3600
+  end
+
+  def expected_time_in_words=(val)
+    write_attribute :expected_time, val.to_i*3600
+  end
+
 end

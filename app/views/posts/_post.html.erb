@@ -10,9 +10,7 @@
       <ul style='margin:0'>
         <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
         <li><strong>State:</strong> <em><%= post.state %></em> </li>
-        <li><strong>Published:</strong> <em><%= post.nice_created_at_date %></em> </li>
-        <li><strong>Starts:</strong> <em><%= post.nice_begins_on %></em> </li>
-        <li><strong>Ends:</strong> <em><%= post.nice_ends_on %></em> </li>
+        <li><strong>Goal:</strong> <em><%= post.goal %></em> </li>
       </ul>
     </p>
   </div>
@@ -27,14 +25,14 @@
       <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
     </div>
     <div class="text-right">
-      <strong>Topics:</strong>
       <%= render partial: "shared/tags", locals: { tags: post.tags }  %>
     </div>
     <p>
-      <ul class="inline-list big">
-        <li><strong>Views:</strong> <em><%= post.impressions_count %></em> </li>
-        <li><strong>Participants:</strong> <em><%= post.committed_users.count %></em> </li>
-        <li><strong>MOC Credits:</strong> <em><%= post.credits %></em> </li>
+      <ul class="inline-list">
+        <li><strong>Time:</strong> <em><%= post.expected_time %> hrs</em> </li>
+        <li><strong>Duration:</strong> <em><%= post.duration %> wks</em> </li>
+        <li><strong>Takers:</strong> <em><%= post.committed_users.count %></em> </li>
+        <li><strong>Credits:</strong> <em><%= post.credits %></em> </li>
       </ul>
     </p>
   </div>

@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     @name_array.each { |n| n.capitalize }
   end
 
+  def name=(s)
+    write_attribute(:name, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  end
+
   def first_name
     @name_array = self.name.split(' ')
     @name_array[0].capitalize

@@ -20,6 +20,9 @@ namespace :db do
         post.desc = Populator.words(50..120)
         post.user_id = user.id
         post.state = "WI"
+        post.goal = ["Patient Outcomes", "Patient Satisfaction", "Work Process", "Cost Effectiveness"]
+        post.duration = 600000..18000000
+        post.expected_time = 60000..100000
         post.video_url = "http://www.youtube.com/watch?v=bCGlWQnzDVE"
         post.img_url = "http://img.youtube.com/vi/x10zrYPuU_o/default.jpg"
         post.created_at = 4.months.ago..Time.now

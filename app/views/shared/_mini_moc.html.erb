@@ -6,10 +6,5 @@
       <%= link_to post_path(m) do %>
         <%= m.title %>
       <% end %>
-    <p>by: <em><%= link_to "#{m.user.name}", user_path(m.user) %></em> <p>
-    <% if false %>
-      <div><%= m.very_short_desc %> <%= link_to '(more)', post_path(m) %></div>
-    <% end %>
-    <%= render partial: "shared/tags", locals: { tags: m.tags.first(3) }  %>
-    </p>
+    <p>Goal: <%= m.goal %></p>
 </li>

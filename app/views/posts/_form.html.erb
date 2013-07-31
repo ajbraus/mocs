@@ -18,12 +18,26 @@
         <%= f.text_field :title %>
       </div>
       <div class="field">
-        <%= f.label :tag_list, "Topics (words or phrases separated by commas)" %> 
+        <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)" %> 
         <%= f.text_field :tag_list %>
       </div>  
+      <div>
+        <%= f.label :goal %>
+        <%= f.select :goal, goals, class:"required", prompt: "Select a Goal" %><br>
+      </div>
       <div class="field">
         <%= f.label :desc, "Project Description" %>
         <%= f.text_area :desc %>
+      </div>
+      <div class="field">
+        <div class="times-input">
+          <%= f.label :expected_time, "Time to Complete" %>
+          <%= f.number_field :expected_time, class:"price" %> hours
+        </div>
+        <div class="times-input">
+          <%= f.label :duration, "Duration" %>
+          <%= f.number_field :duration, class:"price" %> weeks
+        </div>
       </div>
       <div class="field">
         <%= f.label :img_url, "Image URL" %>
@@ -34,14 +48,14 @@
         <%= f.text_field :video_url %>
       </div>
       <div class="field">
-        <p>
-          <%= f.label :credits, "MOC Credits", class:"price" %>
-          <%= f.number_field :credits %> 
-        </p>
-      </div>
-      <div class="field">
-        <%= f.label :price %>
-        <span class="bigger">$</span> <%= f.number_field :price, class:"price" %>
+        <div class="times-input">
+          <%= f.label :credits, "MOC Credits" %>
+          <%= f.number_field :credits, class:"price" %> 
+        </div>
+        <div class="times-input">
+          <%= f.label :price %>
+          <span class="bigger">$</span> <%= f.number_field :price, class:"price" %>
+        </div>
       </div>
       <div class="field">
         <div class="times-input">
@@ -53,7 +67,7 @@
           <%= f.text_field :ends_on %>
         </div>
       </div>
-      <div class="actions">
+      <div class="actions clear-both">
         <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>
         <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large'  %>
         <% if params[:action] == "edit" %>

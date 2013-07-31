@@ -16,6 +16,17 @@
       <span class="muted">Project Lead: <em><%= link_to "#{@post.user.name}", user_path(@post.user) %></em></span>
     </div>    
     <div>
+      <p>
+        <strong>Time Commitment</strong>: <%= @post.expected_time %> hours
+      </p>
+      <p>
+        <strong>Project Duration</strong>: <%= @post.duration %> weeks
+      </p>
+      <p>
+        <strong>Views</strong>: <%= @post.impressions_count %>
+      </p>
+    </div> 
+    <div>
       <i class="icon-star gold"></i> 78 Favorite</p>
       <div>
         <%= render partial: "shared/tags", locals: { tags: @post.tags }  %>
@@ -26,18 +37,7 @@
       <p class="muted">
         <%= @post.desc %>
       </p>
-    </div>
-    <div>
-      <p>
-        <strong>Project Duration</strong>: 6 months
-      </p>
-      <p>
-        <strong>Time Commitment</strong>: 3 hours / Week
-      </p>
-      <p>
-        <strong>Views</strong>: <%= @post.impressions_count %>
-      </p>
-    </div>    
+    </div>   
         <h3>Comments</h3>
         <%= render partial: 'comments/form' %>
     <ul class="media-list">
