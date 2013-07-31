@@ -13,6 +13,7 @@ Two user groups
   add oofta = true
 
   add security 
+    add admin who can do everything, edit mocs, see progresses, see all inboxes
     only you can see your inbox
     only you can see your posts.html page
     hide identifying info if not logged in

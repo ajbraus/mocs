@@ -126,13 +126,8 @@
                 <li>
                   |
                 </li>
-                <li>
-                  <%= link_to user_path(current_user), class:'no-hover' do %>
-                    <%= current_user.name %>
-                  <% end %>
-                </li>
               </ul>
-              <a  class="dropdown-toggle pull-right" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><b class="caret"></b></div></a>
+              <a  class="dropdown-toggle pull-right" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><%= current_user.name %> <b class="caret"></b></div></a>
               <ul class="dropdown-menu">
                 <li><%= link_to user_path(current_user) do %>
                   <i class="icon-user"></i> Profile
