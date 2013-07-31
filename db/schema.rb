@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(:version => 20130731050944) do
     t.datetime "last_touched"
     t.string   "state"
     t.integer  "credits",           :default => 0
-    t.integer  "expected_time"
-    t.integer  "actual_time"
-    t.integer  "duration"
+    t.integer  "expected_time",     :default => 0
+    t.integer  "actual_time",       :default => 0
+    t.integer  "duration",          :default => 0
     t.string   "goal"
   end
 
