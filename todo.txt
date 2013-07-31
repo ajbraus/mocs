@@ -21,9 +21,6 @@ Two user groups
   click tag just submits search with that tag
     
   don't require a video to publish
-
-  Project lead dashboard
-    add progress bars to posts.html if your MOC
   
   add delete message link
   
