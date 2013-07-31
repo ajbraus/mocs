@@ -148,10 +148,27 @@
           <% end %>   
          </div>
        </div>
+      <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" %>
       <div class="container">
-        <%= bootstrap_flash %>
-        <%= yield %>
-      </div> <!-- /container -->
+        <div class="row">
+          <div class="span4">
+            <h3>Fast and Easy</h3>
+          </div>
+          <div class="span4">
+            <h3>Market Place</h3>
+          </div>
+          <div class="span4">
+            <h3>Organizational Services</h3>
+            <p>
+          </div>
+        </div>
+      </div>
+      <% else %>
+        <div class="container">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div> <!-- /container -->
+      <% end %>
     </div>
 
 
