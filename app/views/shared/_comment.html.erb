@@ -8,15 +8,17 @@
         <%= c.plusminus %>
       </div>
       <%= link_to vote_down_comment_path(c) do %>
-        <p><i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i></p>
+        <i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i>
       <% end %>
     <% end %>
   </div>        
+  <% if false %>
   <a class="pull-left" href="#">
     <%= image_tag 'default_profile_pic.png', class:"media-object comment-pic" %>
   </a>
+  <% end %>
   <div class="media-body">
-    <div class="media-heading"><%= link_to c.commentable.user do %><%= c.commentable.user.name %> <% end %></div>
     <div><%= c.content %></div>
+    <div class='text-right muted small'>commented <%= time_ago_in_words(c.created_at) %> ago by <%= link_to "#{c.commentable.user.name}", c.commentable.user %>
   </div>
 </li>
