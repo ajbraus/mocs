@@ -3,14 +3,16 @@
     <%= link_to post_path(post) do %>
       <%= image_tag post.img_url, class:"img-polaroid moc-pic" %>
     <% end %>
-    <% if user_signed_in? && current_user == post.user %>
-      <%= link_to "Edit", edit_post_path(post), class:"pull-left btn margin-top" %>
-    <% end %>
     <p>
       <ul style='margin:0'>
         <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
         <li><strong>Organization:</strong> <em><%= post.user.organization.name %></em></li>
         <li><strong>Goal:</strong> <em><%= post.goal %></em> </li>
+        <li>
+        <% if user_signed_in? && current_user == post.user %>
+          <%= link_to "Edit", edit_post_path(post), class:"margin-top" %>
+        <% end %>
+        </li>
       </ul>
     </p>
   </div>
