@@ -13,6 +13,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag 'application', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js" %>
 
 <% if false %>
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -37,7 +38,7 @@
 <% end %>
   </head>
   <body>  
-    <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' %>
+    <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" %>
       <header class="jumbotron subhead" id="overview">
          <div class="row">   
            <div class="span7">
@@ -55,7 +56,7 @@
                    <small>Ross I. Donaldson, MD of<cite title="Source Title">The Lassa Ward</cite></small>
                  </blockquote> -->
                  <div class="text-center offset1">
-                  <%= link_to "Sign In", new_user_session_path, :class => "btn btn-large btn-success" %>
+                  <%= link_to "Login", new_user_session_path, :class => "btn btn-large btn-success" %>
                   <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-large btn-gold" %>
                 </div>
                </br>
@@ -101,7 +102,7 @@
                 <% if devise_mapping.rememberable? -%>
                   <%= f.hidden_field :remember_me, value: true %> 
                 <% end -%>
-                <%= f.submit "Sign in", class:"btn btn-success" %>
+                <%= f.submit "Login", class:"btn btn-success" %>
               <% end %>
             </div>
             </div>
