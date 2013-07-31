@@ -1,6 +1,7 @@
 development:
   mysql41: 9110
   morphology: stem_en
+  enable_star: true
   html_strip: 1
   min_infix_len: 2
   bin_path: "/usr/local/bin"
@@ -8,9 +9,11 @@ development:
 test:
   mysql41: 9111
   morphology: stem_en
+  enable_star: true
   html_strip: 1
   min_infix_len: 2
 production:
   morphology: stem_en
+  enable_star: true
   html_strip: 1
   min_infix_len: 2

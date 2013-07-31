@@ -3,18 +3,6 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
-  #2 Homepage  - A key and important feature of any project is Estimated Time: 120 min Duration: 5 months. That is more important than #Views, which could be deleted.
-
-  #3 Homepage  - The start date and end date is causing clutter and is not thaaat important. We can talk later about what items should occupy this prime real estate. 
-     Proposed Example:
-        Creator: Andrew Conley 
-        Location: Madison WI 
-        Goals of Project (pick one): 
-
-        <li><strong>Published:</strong> <em><%= post.nice_created_at_date %></em> </li>
-        <li><strong>Starts:</strong> <em><%= post.nice_begins_on %></em> </li>
-        <li><strong>Ends:</strong> <em><%= post.nice_ends_on %></em> </li>
-<li><strong>Views:</strong> <em><%= post.impressions_count %></em> </li>
 
   Add organization record
   Create Organization dashboard
@@ -245,3 +233,11 @@ moc certified?
   DONE create new message page messages#new
   DONE create "Message This User" link 
   DONE make email work
+
+  #2 Homepage  - A key and important feature of any project is Estimated Time: 120 min Duration: 5 months. That is more important than #Views, which could be deleted.
+
+  #3 Homepage  - The start date and end date is causing clutter and is not thaaat important. We can talk later about what items should occupy this prime real estate. 
+     Proposed Example:
+        Creator: Andrew Conley 
+        Location: Madison WI 
+        Goals of Project (pick one): 

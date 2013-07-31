@@ -18,6 +18,8 @@ gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
 
+gem 'airbrake'
+
 gem 'daemons'
 gem 'delayed_job_active_record'
 

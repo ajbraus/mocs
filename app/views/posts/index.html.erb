@@ -16,7 +16,7 @@
         </div>
         <div class="tab-pane" id="B">
           <%= render partial: "posts/post", collection: @posts_by_activity, as: :post %>
-          <%= will_paginate @posts_by_activity, renderer: BootstrapPagination::Rails %>         
+          <%= will_paginate @posts_by_activity, renderer: BootstrapPagination::Rails %>
         </div>
         <% if false %>
         <div class="tab-pane" id="C">

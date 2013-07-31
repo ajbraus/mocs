@@ -12,6 +12,10 @@
        <%= f.email_field :email %>
      </div>
      <div>
+      <%= f.label :organization, "Organization* (choose from autocomplete list)" %>
+      <%= f.text_field :organization, nil, data: { autocomplete_source: city_names_path }, class:"required" %>
+     </div>
+     <div>
        <%= f.label :state %>
        <%= f.select :state, us_states, class:"state required" %><br>
      </div>

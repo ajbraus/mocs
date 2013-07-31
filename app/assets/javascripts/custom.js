@@ -22,6 +22,10 @@ $(document).ready(function() {
     window.location = $(this).data("link")
   })
 
+  $('#city_name').autocomplete(function(){
+    source: $('#city_name').data('autocomplete-source')
+  });
+      
 
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];

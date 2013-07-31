@@ -11,8 +11,11 @@ class User < ActiveRecord::Base
 
   has_many :posts
   
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
+
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
-  has_many :committed_tos, through: :commitments, source: "commitment"
+  has_many :committed_tos, through: :commitments, source: :commitment
 
   has_many :comments, as: :commentable
   has_many :messages, class_name: "Message", foreign_key: "receiver_id"

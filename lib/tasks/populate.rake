@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [User, Post, Comment, Tag, Commitment, Message].each(&:delete_all)
+    [User, Post, Comment, Tag, Commitment, Message, Organization, OrganizationUser].each(&:delete_all)
     
     User.populate 20 do |user|
       user.name    = Faker::Name.name
@@ -52,6 +52,11 @@ namespace :db do
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
     end
+    Organization.create(name:"UW Health")
+    Organization.create(name:"Gundersen Lutheran")
+    Organization.create(name:"Mayo Clinic")
+    Organization.create(name:"Guthrie Health")
+    Organization.create(name:"Cleveland Clinic")
 
     #rake ts:index
     

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731050944) do
+ActiveRecord::Schema.define(:version => 20130731142430) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -105,6 +105,21 @@ ActiveRecord::Schema.define(:version => 20130731050944) do
 
   add_index "messages", ["receiver_id"], :name => "index_messages_on_receiver_id"
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
+  create_table "organization_users", :id => false, :force => true do |t|
+    t.boolean "is_admin",        :default => false
+    t.integer "user_id"
+    t.integer "organization_id"
+  end
+
+  add_index "organization_users", ["organization_id", "user_id"], :name => "index_organization_users_on_organization_id_and_user_id"
+  add_index "organization_users", ["user_id", "organization_id"], :name => "index_organization_users_on_user_id_and_organization_id"
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"

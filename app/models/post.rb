@@ -3,10 +3,14 @@ class Post < ActiveRecord::Base
   is_impressionable :counter_cache => true #@post.impressions_count
   #tracked owner: ->(controller, model) { controller && controller.current_user }
   belongs_to :user
-  has_many :commitments, foreign_key: :committed_user_id, dependent: :destroy
-  has_many :committed_users, through: :commitments
+  
+  has_many :commitments, foreign_key: :commitment_id, dependent: :destroy
+  has_many :committed_users, through: :commitments, source: :committed_user
+  
   has_and_belongs_to_many :tags
+
   has_many :comments, as: :commentable
+
   attr_accessible :desc, 
                   :price,
                   :credits,

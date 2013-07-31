@@ -15,7 +15,7 @@ class PostsController < ApplicationController
         @posts_by_state = Post.where(state: current_user.state, published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       end
       @posts = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
+      @posts_by_activity = Post.where(published: true).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
       # @posts_by_participants = Post.sort_by { |m| m.commitments.count }
     end
     @trending_mocs = Post.first(3)
