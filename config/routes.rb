@@ -17,7 +17,6 @@ Mocs::Application.routes.draw do
     end
   end
 
-
   resources :users, :only => [:show]
   match 'users/:id' => 'users#show'
   match 'user/projects', to: "users#posts", as: "user_posts"
