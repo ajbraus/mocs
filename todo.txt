@@ -3,6 +3,16 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
+
+  
+
+  add outcome sort
+
+  time that it takes
+  recommended from my network
+  friends are doing it
+  number of teammates
+
   Fix search and add to production
     ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
 
