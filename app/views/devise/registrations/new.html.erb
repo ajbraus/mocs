@@ -2,27 +2,27 @@
  <div class="span4 well">
    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
      <%= devise_error_messages! %>
-     <div>
+     <p>
        <%= f.label :name %>
        <%= f.text_field :name, :autofocus => true %>
-     </div>
-     <div>
+     </p>
+     <p>
        <%= f.label :email %>
        <%= f.email_field :email %>
-     </div>
-     <div>
+     </p>
+     <p>
       <%= f.label :organization, "Organization" %>
       <%= f.text_field :organization, data: { autocomplete_source: org_name_path }, class:"required", id:"organization" %>
-     </div>
-     <div>
+     </p>
+     <p>
        <%= f.label :state %>
        <%= f.select :state, us_states, class:"state required" %><br>
-     </div>
-     <div>
+     </p>
+     <p>
        <%= f.label :password %>
        <%= f.password_field :password %>
-     </div>
-     <div><%= f.submit "Sign Up", class:"btn btn-gold pull-right" %></div>
+     </p>
+     <div><%= f.submit "Sign Up", class:"btn btn-gold btn-large pull-right" %></div>
    <% end %>
  </div>
 <div class="span5">
