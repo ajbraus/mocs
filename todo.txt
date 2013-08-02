@@ -8,13 +8,6 @@ Two user groups
 
   request access form (instead of signup!)
 
-  Possible sorts
-    outcome
-    time that it takes
-    recommended from my network
-    friends are doing it
-    number of teammates
-
   Fix search and add to production
     ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
 
@@ -27,6 +20,13 @@ Two user groups
     only you can see your posts.html page
     
     don't send link of todo item if done
+
+  Possible sorts
+    outcome
+    time that it takes
+    recommended from my network
+    friends are doing it
+    number of teammates
 
   click tag just submits search with that tag
     
