@@ -1,7 +1,7 @@
 Mocs::Application.routes.draw do
 
   resources :messages
-  resources :posts, path: 'MOCs'
+  resources :posts, path: 'Mocs'
 
   root :to => 'posts#index'
   match '/how', :to => 'welcome#how', :as => "how"

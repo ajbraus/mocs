@@ -3,11 +3,9 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
-
-  state not being updated
-  
   Fix search and add to production
-  
+    ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
+
   add state and name to settings edit
 
   add oofta = true
@@ -16,15 +14,14 @@ Two user groups
     add admin who can do everything, edit mocs, see progresses, see all inboxes
     only you can see your inbox
     only you can see your posts.html page
-    hide identifying info if not logged in
+    
+    don't send link of todo item if done
 
   click tag just submits search with that tag
     
   don't require a video to publish
   
   add delete message link
-  
-  Logo
 
   make follow MOCs
     post has_and_belongs_to_many followers, class "User"
@@ -81,6 +78,7 @@ Two user groups
   
   Create Organization dashboard
 
+  Setup zerigo
   setup @mocsfordocs.org emails
 
   setup 'commitments' (projects your doing)
@@ -240,3 +238,5 @@ moc certified?
         Goals of Project (pick one): 
 DONE Add organization record
 DONE search by aurthor's name
+DONE hide identifying info if not logged in
+DONE Logo
