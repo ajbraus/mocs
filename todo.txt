@@ -4,20 +4,21 @@ Two user groups
 
 ==INBOX==
 
-  
+  forgot password not redirecting correctly
 
-  add outcome sort
+  request access form (instead of signup!)
 
-  time that it takes
-  recommended from my network
-  friends are doing it
-  number of teammates
+  Possible sorts
+    outcome
+    time that it takes
+    recommended from my network
+    friends are doing it
+    number of teammates
 
   Fix search and add to production
     ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
 
   add state and name to settings edit
-
   add oofta = true
 
   add security 
