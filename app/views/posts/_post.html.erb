@@ -1,14 +1,14 @@
 <div class="media">
-  <div class="span3">
+  <div class="span2">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.img_url, class:"img-polaroid moc-pic" %>
+      <%= image_tag post.img_url, class:"moc-pic" %>
     <% end %>
     <% "<span class='label label-info'>New</label>" if post.new? %>
     <p>
       <ul style='margin:0'>
-        <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
-        <li><strong>Organization:</strong> <em><%= post.user.organization.name %></em></li>
-        <li><strong>Goal:</strong> <em><%= post.goal %></em> </li>
+        <li><em><%= link_to "#{post.user.name}", user_path(post.user), class:"muted" %></em></li>
+        <li><%= post.user.organization.name %></li>
+        <li><em><%= post.goal %></em> </li>
         <li>
         <% if user_signed_in? && current_user == post.user %>
           <%= link_to "Edit", edit_post_path(post), class:"margin-top" %>

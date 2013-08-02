@@ -42,8 +42,8 @@ class Post < ActiveRecord::Base
   end
 
   def short_desc
-    if self.desc.size >=180
-      self.desc.slice(0..180) + ". . . "
+    if self.desc.size >=130
+      self.desc.slice(0..130) + ". . . "
     else
       self.desc
     end

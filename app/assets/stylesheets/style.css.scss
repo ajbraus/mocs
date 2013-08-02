@@ -55,12 +55,6 @@ padding-top: 70px;
   background-color: #7DCBF1;
 }
 
-.label {
-  margin:2px;
-  &:hover {
-    opacity:.80;
-  }
-}
 .label-info {
   background-color: #7DCBF1 !important;
 }
@@ -357,7 +351,8 @@ left: 2px;
 }
 
 .moc-pic {
-  width: 150px;
+  border-radius: 5px;
+  width: 105px;
 }
 
 .trending {

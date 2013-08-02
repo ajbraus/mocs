@@ -68,21 +68,19 @@
           <li><a href="#C" data-toggle="tab">Newest</a></li>
           <li><a href="#B" data-toggle="tab">Highest Rated</a></li>
           <li class="active"><a href="#A" data-toggle="tab">Popular Now</a></li>
-          
-          <!-- <li><a href="#C" data-toggle="tab">Popularity</a></li> -->
         </ul>
       </div>
     </div>
       <div class="tab-content">
-        <div class="tab-pane active" id="A">
+        <div class="tab-pane" id="C">
           <%= render partial: "posts/post", collection: @recently_added, as: :post %>
           <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
         </div>
-        <div class="tab-pane active" id="A">
+        <div class="tab-pane" id="B">
           <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
           <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
         </div>
-        <div class="tab-pane" id="B">
+        <div class="tab-pane active" id="A">
           <%= render partial: "posts/post", collection: @popular_now, as: :post %>
           <%= will_paginate @popular_now, renderer: BootstrapPagination::Rails %>
         </div>
