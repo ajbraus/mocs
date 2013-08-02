@@ -8,7 +8,6 @@ Mocs::Application.routes.draw do
   match '/about', :to => 'welcome#about', :as => "about"
 
   devise_for :users, :controllers => { :registrations => "registrations" }
-  resources :tags, only: [:create, :destroy, :show]
   
   resources :comments do
     member do
