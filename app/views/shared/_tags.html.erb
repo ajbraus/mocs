@@ -1,1 +1,3 @@
-<%= raw tags.map(&:name).map { |t| "<span class='label label-info'>" + "#{t}" + "</span>" }.join(' ') %>
+<div class="tag">
+  <%= raw tags.map(&:name).map { |t| t }.join(', ') %>
+</div>

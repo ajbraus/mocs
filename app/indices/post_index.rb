@@ -8,7 +8,6 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
   # has author_id, published_at
   has published_at
   has last_touched
-  has state
   has published
 
   set_property:field_weights => {

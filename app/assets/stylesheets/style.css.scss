@@ -104,6 +104,10 @@ background: rgb(192, 219, 205);
 margin: 0 0px 17px 0px;
 }
 
+.input-append {
+  margin-left:20px;
+}
+
 .nav-border {
 	height: 50px;
 	padding-top: 14px;
@@ -147,18 +151,10 @@ width: 47px;
 }
 
 .tag {
-color:blue;
-padding: 4px;
-font-weight: 100;
-font-size: 13px;
-text-shadow: none;
-cursor: pointer;
-margin: 2px;
-border-radius: 0;
-}
-
-.tag:hover {
-  opacity:.7;
+color:grey;
+font-weight: bold;
+margin-top:5px;
+font-size:103%;
 }
 
 .well {
@@ -627,3 +623,10 @@ ul.inline-list {
   background:lightpink
 }
 
+.filter-set {
+  margin-top:15px;
+}
+
+.indent {
+  margin-left:10px;
+}

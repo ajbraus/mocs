@@ -3,6 +3,7 @@
     <%= link_to post_path(post) do %>
       <%= image_tag post.img_url, class:"img-polaroid moc-pic" %>
     <% end %>
+    <% "<span class='label label-info'>New</label>" if post.new? %>
     <p>
       <ul style='margin:0'>
         <li><strong>Creator:</strong> <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></li>
@@ -26,7 +27,7 @@
     <div class="clear-both">
       <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
     </div>
-    <div class="text-right">
+    <div class="text-left">
       <%= render partial: "shared/tags", locals: { tags: post.tags }  %>
     </div>
     <p>

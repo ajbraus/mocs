@@ -4,7 +4,11 @@ class CommitmentsController < ApplicationController
   def create
     @post = Post.find(params[:commitment][:commitment_id])
     current_user.commit!(@post)
+    @post.last_touched = Time.now
+    @post.save
+    
     respond_to do |format|
+
       format.html { redirect_to @post }
       format.js
     end

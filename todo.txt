@@ -11,6 +11,9 @@ Two user groups
   Fix search and add to production
     ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
 
+  move tracking to left side with tabs
+  add 'featured mocs' to splash
+
   add state and name to settings edit
   add oofta = true
 
@@ -18,15 +21,41 @@ Two user groups
     add admin who can do everything, edit mocs, see progresses, see all inboxes
     only you can see your inbox
     only you can see your posts.html page
+    check gemset at gemnasym 
     
     don't send link of todo item if done
 
+  private/public mocs (only organization can see)
+
+Make "Highest Rated" work
+Make filters work
+  Radio Everywhere
+  Radio Org
+
+------
+  
+  Goals checkboxes
+
+------
+
+  Price
+
+------
+
+autocomplete tags in moc creation
+
   Possible sorts
-    outcome
+    Activity
+
     time that it takes
-    recommended from my network
-    friends are doing it
+    most recommended
+    most popular
+
+  Possible filter
+    organization
+    outcome
     number of teammates
+    price
 
   click tag just submits search with that tag
     
@@ -251,3 +280,9 @@ DONE Add organization record
 DONE search by aurthor's name
 DONE hide identifying info if not logged in
 DONE Logo
+
+
+    <div class="well">
+      <p class="muted">Trending Topics</p>
+      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
+    </div>

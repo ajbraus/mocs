@@ -4,19 +4,15 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:search].present?
-      if user_signed_in?
-        @posts_by_state = Post.search(params[:search], with: { state: current_user.state, published: true }, :page => params[:page], :per_page => 10)
-      end
-      @posts = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)
+      @recently_added = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
+      @highest_rated = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
+      @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)
       # @posts_by_participants = @mocs.sort_by { |m| m.commitments.count }
       # @posts_by_organization = Post.search(params[:search], with: { organization: current_user.organization, published: true }, :page => params[:page], :per_page => 10)
     else 
-      if user_signed_in?
-        @posts_by_state = Post.where(state: current_user.state, published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
-      end
-      @posts = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.where(published: true).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
+      @recently_added = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
+      @highest_rated = Post.where(published: true).paginate(:page => params[:page], :per_page => 10)
+      @popular_now = Post.where(published: true).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
       # @posts_by_participants = Post.sort_by { |m| m.commitments.count }
       # @posts_by_organization = Post.includes(:user).where("user.organizations CONTAINS ?, published = ?", current_user.organization, true).paginate(:page => params[:page], :per_page => 10)
     end

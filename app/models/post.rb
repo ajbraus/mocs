@@ -104,4 +104,10 @@ class Post < ActiveRecord::Base
     write_attribute :expected_time, val.to_i*3600
   end
 
+  def new?
+    if created_at > Time.now - 1.month
+      return true
+    end
+  end
+
 end

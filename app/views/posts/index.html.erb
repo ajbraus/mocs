@@ -1,8 +1,59 @@
 <div class="row">
+
+  <div class="span3">
+    <div class="filter-set">
+      <p class="muted indent">Network/Organization</p>
+      <div class="text-center">
+        <div class="btn-group" data-toggle="buttons-radio">
+            <button class="btn btn-primary active">All</button>
+            <button class="btn btn-success"><%= current_user.organization.name %></button>
+        </div>
+      </div>
+    </div>
+    <div class="filter-set">
+      <hr>
+      <p class="muted indent">Goals</p>
+      <ul class="filter-item">
+        <% goals.each do |g| %>
+        <div>
+          <%= check_box_tag :terms_of_service, g, checked: true %>
+          <%= label :terms_of_service, "#{g}", class:"checkbox inline" %>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+    <div class="filter-set">
+      <hr>
+      <p class="muted indent">Price</p>
+      <ul>
+        <li>
+          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= label :terms_of_service, "100+", class:"checkbox inline" %>
+        </li>
+        <li>
+          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= label :terms_of_service, "50-99", class:"checkbox inline" %>
+        </li>
+        <li>
+          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= label :terms_of_service, "0-49", class:"checkbox inline" %>
+        </li>
+      </ul>
+    </div>
+    <div class="">
+      <hr>
+      <p class="muted indent">Trending Projects</p>
+      <ul>
+        <% @trending_mocs.each do |tm| %>
+          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
   <div class="span9">
-    <div class="tabbable">
-      <% if false %>
-      <div class="search-form pull-left">
+    <div class="tabbable row">
+      <div class="search-form span4">
         <%= form_tag root_path, :method => :get, class:"form-search" do %>
           <div class="input-append">
             <%= text_field_tag :search, params[:search], class:"span4", placeholder:"Search..." %>
@@ -12,52 +63,29 @@
           </div>
         <% end %>
       </div>
-      <% end %>
-      <ul class="nav nav-pills text-right">
-        <% if user_signed_in? %>
-          <li><a href="#D" data-toggle="tab"><%= current_user.state %></a></li>
-        <% end %>
-        <li><a href="#B" data-toggle="tab">Activity</a></li>
-        <li class="active"><a href="#A" data-toggle="tab">Newest</a></li>
-        
-        <!-- <li><a href="#C" data-toggle="tab">Popularity</a></li> -->
-      </ul>
+      <div class="span5">
+        <ul class="nav nav-pills text-right">
+          <li><a href="#C" data-toggle="tab">Newest</a></li>
+          <li><a href="#B" data-toggle="tab">Highest Rated</a></li>
+          <li class="active"><a href="#A" data-toggle="tab">Popular Now</a></li>
+          
+          <!-- <li><a href="#C" data-toggle="tab">Popularity</a></li> -->
+        </ul>
+      </div>
+    </div>
       <div class="tab-content">
         <div class="tab-pane active" id="A">
-          <%= render partial: "posts/post", collection: @posts, as: :post %>
-          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+          <%= render partial: "posts/post", collection: @recently_added, as: :post %>
+          <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
+        </div>
+        <div class="tab-pane active" id="A">
+          <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
+          <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
         </div>
         <div class="tab-pane" id="B">
-          <%= render partial: "posts/post", collection: @posts_by_activity, as: :post %>
-          <%= will_paginate @posts_by_activity, renderer: BootstrapPagination::Rails %>
+          <%= render partial: "posts/post", collection: @popular_now, as: :post %>
+          <%= will_paginate @popular_now, renderer: BootstrapPagination::Rails %>
         </div>
-        <% if false %>
-        <div class="tab-pane" id="C">
-          <%= render "posts/post", collection: @posts_by_participants, as: :post %>
-          <%= will_paginate @posts_by_participants, renderer: BootstrapPagination::Rails %>
-        </div>
-        <% end %>
-        <% if user_signed_in? %>
-          <div class="tab-pane" id="D">
-            <%= render partial: "posts/post", collection: @posts_by_state, as: :post %>
-            <%= will_paginate @posts_by_state, renderer: BootstrapPagination::Rails %>
-          </div>      
-        <% end %>
       </div><!-- tab-content -->
     </div> <!-- /tabbable -->
   </div><!-- /span8 -->
-
-  <div class="span3">
-    <div class="well dark">
-      <p class="muted">Trending Topics</p>
-      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
-    </div>
-    <div class="well dark">
-      <p class="muted">Trending Projects</p>
-      <ul>
-        <% @trending_mocs.each do |tm| %>
-          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
