@@ -55,6 +55,16 @@ padding-top: 70px;
   background-color: #7DCBF1;
 }
 
+.label {
+  margin:2px;
+  &:hover {
+    opacity:.80;
+  }
+}
+.label-info {
+  background-color: #7DCBF1 !important;
+}
+
 .navbar {
  font-family: 'Lato', sans-serif; 
 }
