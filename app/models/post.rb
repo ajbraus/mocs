@@ -27,7 +27,8 @@ class Post < ActiveRecord::Base
                   :title, 
                   :video_url, 
                   :img_url, 
-                  :tag_list
+                  :tag_list,
+                  :goal_ids
 
   validates :title, presence: true
 
