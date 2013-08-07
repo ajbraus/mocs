@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806042805) do
+ActiveRecord::Schema.define(:version => 20130807152719) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -157,6 +157,11 @@ ActiveRecord::Schema.define(:version => 20130806042805) do
     t.integer  "expected_time",     :default => 0
     t.integer  "actual_time",       :default => 0
     t.integer  "duration",          :default => 0
+    t.text     "info"
+    t.text     "baseline"
+    t.text     "plan_do"
+    t.text     "post_test"
+    t.text     "wrap_up"
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|

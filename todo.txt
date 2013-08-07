@@ -15,7 +15,7 @@ Two user groups
     filter on network or organization
 
   Add directions for parts of project
-    add text columns
+    DONE add text columns
     add to form
     DONE add rich text textboxes
 

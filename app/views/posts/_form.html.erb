@@ -67,6 +67,28 @@
           <%= f.text_field :ends_on %>
         </div>
       </div>
+      <h4>Instructions</h4>
+      <div class="field">
+        <%= f.label :info, "Step 1: Background Information" %>
+        <%= f.text_area :info %>
+      </div>
+      <div class="field">
+        <%= f.label :baseline, "Step 2: Collect Baseline Data" %>
+        <%= f.text_area :baseline %>
+      </div>
+      <div class="field">
+        <%= f.label :plan_d, "Step 3: Plan, Do, Check, Act Cycles" %>
+        <%= f.text_area :plan_do %>
+      </div>
+      <div class="field">
+        <%= f.label :post_test, "Step 4: Post Test Data Collection" %>
+        <%= f.text_area :post_test %>
+      </div>
+      <div class="field">
+        <%= f.label :wrap_up, "Step 5: Wrap Up" %>
+        <%= f.text_area :wrap_up %>
+      </div>
+
       <div class="actions clear-both">
         <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>
         <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large'  %>
