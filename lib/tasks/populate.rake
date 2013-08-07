@@ -64,7 +64,7 @@ namespace :db do
     end
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
-      post.goals << Goal.find(1)
+      post.goals << Goal.all.sample
     end
 
     #rake ts:index
