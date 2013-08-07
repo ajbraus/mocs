@@ -88,7 +88,7 @@
           <h3>
             <strong>
               <%= @post.title %>
-              <% if user_signed_in? && current_user == @post.user %>
+              <% if user_signed_in? && current_user == @post.user || current_user.admin? %>
                 <%= link_to 'Edit', edit_post_path(@post), style: "font-size:17px;" %>
               <% end %>
             </strong>
