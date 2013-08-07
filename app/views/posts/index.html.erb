@@ -16,7 +16,7 @@
       <ul class="filter-item">
       <% for goal in Goal.find(:all) %>
         <div>
-          <%= check_box_tag "goal_ids[]", goal.id, false %>
+          <%= check_box_tag "post[goal_ids][]", goal.id, true %>
           <%= goal.name %>
         </div>
       <% end %> 
