@@ -5,6 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   attr_accessible :content
   acts_as_voteable
+  belongs_to :user
   
   def nice_created_at
     self.created_at.strftime "%b %e, %l:%M%P"

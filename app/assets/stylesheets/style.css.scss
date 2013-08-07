@@ -13,7 +13,11 @@ body {
 	font-family: gurmukhi, "lucida grande", arial;
 }
 
-ul, li {
+ul {
+  list-style: none;
+}
+
+.no-list-style {
   list-style: none;
 }
 

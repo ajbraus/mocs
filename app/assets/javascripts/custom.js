@@ -24,7 +24,7 @@ $(document).ready(function() {
 
   $('#organization').autocomplete({source: $('#organization').data('autocomplete-source')});
   
-  $('textarea').wysihtml5({ 
+  $('textarea.rich-text').wysihtml5({ 
     "font-styles": false,
     "image": false,
     "color": true

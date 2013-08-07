@@ -52,6 +52,7 @@ namespace :db do
           comment.commentable_type = "Post"
           comment.commentable_id = post.id
           comment.content = Populator.words(3..14)
+          comment.user = user
         end
         Message.populate 4..10 do |message|
           message.subject = Populator.words(7..18).titleize

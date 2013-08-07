@@ -18,7 +18,7 @@
   </a>
   <% end %>
   <div class="media-body">
-    <div><%= c.content %></div>
-    <div class='text-right muted small'>commented <%= time_ago_in_words(c.created_at) %> ago by <%= link_to "#{c.commentable.user.name}", c.commentable.user %>
+    <div><%= raw c.content %></div>
+    <div class='text-right muted small'>commented <%= time_ago_in_words(c.created_at) %> ago by <%= link_to "#{c.commentable.user.name}", c.user %>
   </div>
 </li>

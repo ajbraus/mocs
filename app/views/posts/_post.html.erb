@@ -1,7 +1,7 @@
 <div class="media">
   <div class="span2">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.img_url, class:"moc-pic" %>
+      <%= image_tag post.img_url, class:"moc-pic" if post.img_url.present? %>
     <% end %>
     <% "<span class='label label-info'>New</label>" if post.new? %>
     <p>

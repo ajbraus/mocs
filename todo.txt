@@ -14,11 +14,6 @@ Two user groups
     filter on prices
     filter on network or organization
 
-  Add directions for parts of project
-    DONE add text columns
-    add to form
-    DONE add rich text textboxes
-
   setup 'commitments' (projects your doing)
     payment gateway - stripe marketplace
     automated messages to project lead ("You will be contacted")
@@ -274,3 +269,8 @@ DONE Logo
     DONE move tracking to left side with tabs
     DONE add oofta = true
     DONE fix moc create based on goals association
+
+    DONE Add directions for parts of project
+      DONE add text columns
+      DONE add to form
+      DONE add rich text textboxes

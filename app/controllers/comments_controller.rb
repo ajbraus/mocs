@@ -60,6 +60,7 @@ class CommentsController < ApplicationController
   def create
     @parent = Post.find(params[:comment][:post_id])
     @comment = @parent.comments.build(content: params[:comment][:content])
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save

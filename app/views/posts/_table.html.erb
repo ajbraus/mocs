@@ -1,5 +1,5 @@
 <tr>
-  <td width='20%'><%= image_tag post.img_url, class:"img-polaroid" %></td>
+  <td width='20%'><%= image_tag post.img_url, class:"moc-pic" if post.img_url.present? %></td>
   <td width="15%"><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
   <td class="muted" width="45%"><%= post.short_desc %> <%= link_to "(more)", post_path(post) %></td>
   <% end %>

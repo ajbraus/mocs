@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.paginate(:page => params[:page], :per_page => 10)
+    @comments = @post.comments.paginate(:page => params[:page], :per_page => 10, order: 'created_at desc')
     @mocs = Post.first(5)
     if user_signed_in?
       @post.create_activity :show, owner: current_user

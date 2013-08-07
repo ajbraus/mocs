@@ -77,35 +77,51 @@
             In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
           </p>
         </div>
+        <div class="well alert-success">
+          <p>
+            <strong>Steps</strong>
+          </p>
+          <p>
+            There are a lot of ways to make a MOC. We have broken the process into five steps. In the text areas below, provide directions for each step. These directions will only be revealed to doctors who register for your MOC.
+            <ol>
+              <li>Review Background Information</li>
+              <li>Gather Baseline Data</li>
+              <li>Complete Plan, Do, Check, Act Cycles</li>
+              <li>Gather Post Test Data</li>
+              <li>Wrap Up</li>
+            </ol>
+          </p>
       </div>
   </div>
   <div class="row">
     <div class="span11 offset1">
       <div class="field">
         <%= f.label :desc, "Project Description" %>
-        <%= f.text_area :desc %>
+        <%= f.text_area :desc, class:"rich-text" %>
       </div>
       <h4>Instructions</h4>
       <div class="field">
         <%= f.label :info, "Step 1: Background Information" %>
-        <%= f.text_area :info %>
+        <%= f.text_area :info, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :baseline, "Step 2: Collect Baseline Data" %>
-        <%= f.text_area :baseline %>
+        <%= f.text_area :baseline, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :plan_d, "Step 3: Plan, Do, Check, Act Cycles" %>
-        <%= f.text_area :plan_do %>
+        <%= f.text_area :plan_do, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :post_test, "Step 4: Post Test Data Collection" %>
-        <%= f.text_area :post_test %>
+        <%= f.text_area :post_test, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :wrap_up, "Step 5: Wrap Up" %>
-        <%= f.text_area :wrap_up %>
+        <%= f.text_area :wrap_up, class:"rich-text" %>
       </div>
+
+      <hr>
 
       <div class="actions clear-both">
         <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>

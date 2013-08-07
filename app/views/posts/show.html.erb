@@ -121,14 +121,14 @@
         <div>
           <h3><strong>Summary</strong></h3>
           <p class="muted">
-            <%= @post.desc %>
+            <%= raw @post.desc %>
           </p>
         </div>   
       </div>
     </div>
     <div class="tab-pane" id="tab2">
       <div class="span8">
-        <%= @post.info %>
+        <%= raw @post.info %>
         <% if current_user.committed_to?(@post) %>
           <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
           <div class="btn disabled btn-block 1">
@@ -141,7 +141,7 @@
     </div>
     <div class="tab-pane" id="tab3">
       <div class="span8">
-        <%= @post.baseline %>
+        <%= raw @post.baseline %>
         <% if current_user.committed_to?(@post) %>
           <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
           <div class="btn disabled btn-block 2">
@@ -154,7 +154,7 @@
     </div>
     <div class="tab-pane" id="tab4">
       <div class="span8">
-        <%= @post.plan_do %>
+        <%= raw @post.plan_do %>
         <% if current_user.committed_to?(@post) %>
           <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
           <div class="btn disabled btn-block 3">
@@ -167,7 +167,7 @@
     </div>
     <div class="tab-pane" id="tab5">
       <div class="span8">
-        <%= @post.post_test %>
+        <%= raw @post.post_test %>
         <% if current_user.committed_to?(@post) %>
           <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
           <div class="btn disabled btn-block 4">
@@ -180,7 +180,7 @@
     </div>
     <div class="tab-pane" id="tab6">
       <div class="span8">
-        <%= @post.wrap_up %>
+        <%= raw @post.wrap_up %>
         <% if current_user.committed_to?(@post) %>
           <% unless @commitment.progress >= 5 %>
           <div class="text-right">

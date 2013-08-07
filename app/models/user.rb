@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :committed_tos, through: :commitments, source: :commitment
 
   has_many :comments, as: :commentable
+  has_many :comments 
+  
   has_many :messages, class_name: "Message", foreign_key: "receiver_id"
   has_many :read_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: true }
   has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
