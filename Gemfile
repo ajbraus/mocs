@@ -18,7 +18,7 @@ gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
 
-gem 'bootstrap-wysihtml5-rails'
+gem "bootstrap-wysihtml5-rails", "~> 0.3.1.21"
 
 gem 'airbrake'
 gem 'newrelic_rpm'

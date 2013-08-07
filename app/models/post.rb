@@ -28,7 +28,12 @@ class Post < ActiveRecord::Base
                   :video_url, 
                   :img_url, 
                   :tag_list,
-                  :goal_ids
+                  :goal_ids,
+                  :info, 
+                  :baseline, 
+                  :plan_do, 
+                  :post_test, 
+                  :wrap_up
 
   validates :title, presence: true
 

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @unpublished_posts = current_user.posts.where(published: false)
     @expired_posts = current_user.posts.where("published = ? and ends_on > ?", true, Time.now  )
     @trending_tags = Tag.first(15)
-    @recommended_mocs = Post.first(3)
+    @recommended_mocs = Post.where(published: true).first(3)
   end
 
   def org_name

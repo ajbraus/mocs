@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       # @posts_by_participants = Post.sort_by { |m| m.commitments.count }
       # @posts_by_organization = Post.includes(:user).where("user.organizations CONTAINS ?, published = ?", current_user.organization, true).paginate(:page => params[:page], :per_page => 10)
     end
-    @trending_mocs = Post.first(3)
+    @trending_mocs = Post.where(published: true).first(3)
     @trending_tags = Tag.first(20)
 
     respond_to do |format|
