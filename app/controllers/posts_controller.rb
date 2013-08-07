@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if params[:oofta] == 'true'
+      flash.now[:warning] = "We're sorry, an error occured"
+    end
     if params[:search].present?
+      goals = params[:goal_ids]
+      prices = params[:prices]
       @recently_added = Post.search(params[:search], with: { published: true }, order: 'published_at desc', :page => params[:page], :per_page => 10)
       @highest_rated = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
       @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)

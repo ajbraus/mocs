@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731142430) do
+ActiveRecord::Schema.define(:version => 20130806035307) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -67,6 +67,20 @@ ActiveRecord::Schema.define(:version => 20130731142430) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "goals_posts", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "goal_id"
+  end
+
+  add_index "goals_posts", ["goal_id", "post_id"], :name => "index_goals_posts_on_goal_id_and_post_id"
+  add_index "goals_posts", ["post_id", "goal_id"], :name => "index_goals_posts_on_post_id_and_goal_id"
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"
@@ -143,7 +157,6 @@ ActiveRecord::Schema.define(:version => 20130731142430) do
     t.integer  "expected_time",     :default => 0
     t.integer  "actual_time",       :default => 0
     t.integer  "duration",          :default => 0
-    t.string   "goal"
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|
@@ -163,10 +176,10 @@ ActiveRecord::Schema.define(:version => 20130731142430) do
   add_index "tags", ["name"], :name => "index_tags_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "name",                   :default => "", :null => false
-    t.string   "state",                  :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "name",                   :default => "",    :null => false
+    t.string   "state",                  :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -175,8 +188,9 @@ ActiveRecord::Schema.define(:version => 20130731142430) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "terms",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

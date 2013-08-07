@@ -9,8 +9,8 @@ String.prototype.supplant = function (o) {
 
 $(document).ready(function() {
   step = parseInt($('#progress').text()) + 1
-  id = "#" + step
-  $(id).removeClass("disabled strike-through").addClass("btn-primary")
+  el = "." + step
+  $(el).removeClass("disabled strike-through").addClass("btn-primary")
   $('a').click(function() { 
     if ($(this).children('div').hasClass("disabled")) 
     {
@@ -23,7 +23,8 @@ $(document).ready(function() {
   })
 
   $('#organization').autocomplete({source: $('#organization').data('autocomplete-source')});
-      
+  
+  $('.textarea').wysihtml5();
 
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];

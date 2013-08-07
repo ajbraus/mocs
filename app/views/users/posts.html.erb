@@ -3,15 +3,14 @@
 </div>
 <div class="row">
   <div class="span8">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-      <ul class="nav nav-pills">
-        <li><a href="#tab5" data-toggle="tab">Ended (<%= @expired_posts.count %>)</a></li>
-        <li><a href="#tab4" data-toggle="tab">Unpublished (<%= @unpublished_posts.count %>)</a></li>
-        <li><a href="#tab3", data-toggle="tab">Published (<%= @posts.count %>)</a></li>
-        <li><a href="#tab2" data-toggle="tab">Completed (<%= @completed.count %>)</a></li>
-        <li class="active"><a href="#tab1" data-toggle="tab">Registered (<%= @commitments.count %>)</a></li>
-        
-      </ul>
+    <div class="tabbable row"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-pills">
+          <li><a href="#tab5" data-toggle="tab">Ended (<%= @expired_posts.count %>)</a></li>
+          <li><a href="#tab4" data-toggle="tab">Unpublished (<%= @unpublished_posts.count %>)</a></li>
+          <li><a href="#tab3", data-toggle="tab">Published (<%= @posts.count %>)</a></li>
+          <li><a href="#tab2" data-toggle="tab">Completed (<%= @completed.count %>)</a></li>
+          <li class="active"><a href="#tab1" data-toggle="tab">Registered (<%= @commitments.count %>)</a></li>
+        </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
           <%= render partial: 'posts/post', collection: @commitments, as: :post %>
@@ -35,11 +34,7 @@
     <div class="text-center margin-bottom">
       <%= link_to "Create a MOC Project", new_post_path, class:"btn btn-gold btn-large" %>
     </div>
-    <div class="well dark">
-      <p class="muted">Trending Topics</p>
-      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
-    </div>
-    <div class="well dark">
+    <div class="">
       <p class="muted">Recommended Projects</p>
       <ul>
         <% @recommended_mocs.each do |tm| %>

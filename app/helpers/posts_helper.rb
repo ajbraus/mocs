@@ -10,12 +10,4 @@ module PostsHelper
 
  		%Q{<iframe title="YouTube video player" width="90%" height="300px" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
  	end
-  def goals
-    [
-    "Patient Outcomes", 
-    "Patient Satisfaction", 
-    "Work Process", 
-    "Cost Effectiveness"
-    ]
-  end
 end

@@ -11,12 +11,14 @@ gem 'thinking-sphinx', '3.0.3' #'2.0.11'
 gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 
 gem 'devise'
-gem 'lazy_high_charts'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'thumbs_up'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
+
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'airbrake'
 gem 'newrelic_rpm'

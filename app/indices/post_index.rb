@@ -4,11 +4,13 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
   indexes tags(:name), as: :tag_name
   # indexes organizations(:name), as: :org_name
   indexes user(:name), as: :author_name
+  indexes goal(:name), as: :goal_name
   # indexes happening_on, sortable: true
   # has author_id, published_at
   has published_at
   has last_touched
   has published
+  has price
 
   set_property:field_weights => {
     :post_title => 5,

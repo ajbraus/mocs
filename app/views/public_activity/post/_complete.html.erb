@@ -1,0 +1,6 @@
+completed MOC 
+<% if activity.trackable %>
+  <%= link_to activity.trackable.title, activity.trackable %> and earned <%= activity.trackable.credits %> MOC credits towards certification.
+<% else %>
+  which has since been removed 
+<% end %>
