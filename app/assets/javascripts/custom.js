@@ -24,7 +24,11 @@ $(document).ready(function() {
 
   $('#organization').autocomplete({source: $('#organization').data('autocomplete-source')});
   
-  $('.textarea').wysihtml5();
+  $('textarea').wysihtml5({ 
+    "font-styles": false,
+    "image": false,
+    "color": true
+  })
 
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];

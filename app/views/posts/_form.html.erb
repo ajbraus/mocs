@@ -26,10 +26,6 @@
         <%= f.select :goal_ids, options_for_select(Goal.all.collect {|x| [x.name, x.id]}), prompt:"Select Goal" %>     
       </div>
       <div class="field">
-        <%= f.label :desc, "Project Description" %>
-        <%= f.text_area :desc %>
-      </div>
-      <div class="field">
         <div class="times-input">
           <%= f.label :expected_time, "Time to Complete" %>
           <%= f.number_field :expected_time, class:"price" %> hours
@@ -67,6 +63,28 @@
           <%= f.text_field :ends_on %>
         </div>
       </div>
+    </div>
+      <div class="span5">
+        <div class="well alert-info">
+          <p><strong>Tips</strong></p>
+          <p>
+            Choose a <strong>title</strong> that is brief and descriptive
+          </p>
+          <p>
+            Include a <strong>video</strong> stating the goals and benefits of the project and inviting doctors to join. To add a video, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
+          </p> 
+          <p>
+            In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
+          </p>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="span11 offset1">
+      <div class="field">
+        <%= f.label :desc, "Project Description" %>
+        <%= f.text_area :desc %>
+      </div>
       <h4>Instructions</h4>
       <div class="field">
         <%= f.label :info, "Step 1: Background Information" %>
@@ -98,20 +116,5 @@
           <%= link_to "Delete", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="span4">
-    <div class="well alert-info">
-      <p><strong>Tips</strong></p>
-      <p>
-        Choose a <strong>title</strong> that is brief and descriptive
-      </p>
-      <p>
-        Include a <strong>video</strong> stating the goals and benefits of the project and inviting doctors to join. To add a video, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
-      </p> 
-      <p>
-        In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
-      </p>
-    </div>
-  </div>
+  <% end %>
 </div>
