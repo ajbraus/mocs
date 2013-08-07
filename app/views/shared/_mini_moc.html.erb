@@ -1,7 +1,7 @@
 <li>
   <p>
     <%= link_to post_path(m) do %>
-      <%= image_tag m.img_url, class:"trending" %>
+      <%= image_tag m.img_url, class:"trending" if m.img_url.present? %>
     <% end %>
       <%= link_to post_path(m) do %>
         <%= m.title %>
