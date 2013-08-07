@@ -22,8 +22,8 @@
         <%= f.text_field :tag_list %>
       </div>  
       <div>
-        <%= f.label :goal %>
-        <%= f.select :goal, goals, class:"required", prompt: "Select a Goal" %><br>
+        <%= f.label :goal_ids %>
+        <%= f.select :goal_ids, options_for_select(Goal.all.collect {|x| [x.name, x.id]}), prompt:"Select Goal" %>     
       </div>
       <div class="field">
         <%= f.label :desc, "Project Description" %>

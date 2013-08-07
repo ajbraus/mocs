@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   has_many :commitments, foreign_key: :commitment_id, dependent: :destroy
   has_many :committed_users, through: :commitments, source: :committed_user
   
+  has_and_belongs_to_many :goals
+  
   has_and_belongs_to_many :tags
 
   has_many :comments, as: :commentable
@@ -110,4 +112,7 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def goal
+    goals.first.name
+  end
 end

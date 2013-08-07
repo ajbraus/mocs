@@ -4,12 +4,17 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [User, Post, Comment, Tag, Commitment, Message, Organization, OrganizationUser].each(&:delete_all)
+    [User, Post, Comment, Tag, Commitment, Goal, Message, Organization, OrganizationUser].each(&:delete_all)
     Organization.create(name:"UW Health")
     Organization.create(name:"Gundersen Lutheran")
     Organization.create(name:"Mayo Clinic")
     Organization.create(name:"Guthrie Health")
     Organization.create(name:"Cleveland Clinic")
+
+    Goal.create(id: 1, name: "Outcomes")
+    Goal.create(id: 2, name: "Costs")
+    Goal.create(id: 3, name: "Satisfaction")
+    Goal.create(id: 4, name: "Process")
 
     User.populate 20 do |user|
       user.name    = Faker::Name.name
@@ -29,7 +34,6 @@ namespace :db do
         post.desc = Populator.words(50..120)
         post.user_id = user.id
         post.state = "WI"
-        post.goal = ["Patient Outcomes", "Patient Satisfaction", "Work Process", "Cost Effectiveness"]
         post.duration = 600000..18000000
         post.expected_time = 60000..100000
         post.video_url = "http://www.youtube.com/watch?v=bCGlWQnzDVE"
@@ -60,6 +64,7 @@ namespace :db do
     end
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
+      post.goals << Goal.find(1)
     end
 
     #rake ts:index

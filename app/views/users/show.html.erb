@@ -48,16 +48,6 @@
   </div>
 
   <div class="span4">
-    <div class="well dark">
-      <p class="muted">Recommended Topics</p>
-      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
-    </div>
-
-    <div class="well dark">
-      <p class="muted">Recommended Projects</p>
-      <% @recommended_mocs.each do |m| %>
-        <%= render partial: "shared/mini_moc", locals: { m: m }  %>
-      <% end %>
-    </div>
+    <%= render 'shared/recommended_posts' %>
   </div>
 </div>

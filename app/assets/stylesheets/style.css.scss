@@ -320,7 +320,6 @@ hr {
 }
 
 .nav-pills > li {
-float: right;
 }
 
 .min-well {
@@ -624,4 +623,7 @@ ul.inline-list {
 
 .indent {
   margin-left:10px;
+}
+.nav-tabs > li, .nav-pills > li {
+float: right;
 }

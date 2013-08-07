@@ -3,63 +3,65 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
+  
+  filtering for search
+    create form elements
+    if params[:search].present? submit upon change
+    submit goals
+    submit prices
+    submit network or organization (set org as association to post)
+    filter on goals
+    filter on prices
+    filter on network or organization
+
+  Add directions for parts of project
+    add text columns
+    add to form
+    DONE add rich text textboxes
+
+  setup 'commitments' (projects your doing)
+    payment gateway - stripe marketplace
+    automated messages to project lead ("You will be contacted")
+    automated confirmation email with link to the MOC official website
+    who else has committed to a project
+    reminder - you signed up for this project, this project ends on this date
+    reminder - careful this is getting close to ending, you have 1 more month to complete it
+    completed?
+
+  setup email MX records
+
+  branding for email - mocsfordocs
 
   forgot password not redirecting correctly
 
   request access form (instead of signup!)
-
-  Fix search and add to production
-    ActionView::Template::Error (Lost connection to MySQL server at 'reading authorization packet', system error: 0):
-
-  move tracking to left side with tabs
   add 'featured mocs' to splash
 
-  add state and name to settings edit
-  add oofta = true
+  don't require a video to publish
 
+  add state and name to settings edit
+  
   add security 
-    add admin who can do everything, edit mocs, see progresses, see all inboxes
+    DONE add admin to user
+      who can do everything, 
+      edit mocs, 
+      see progresses, 
+      see all inboxes
+      set andrew and tracy as admins
+
     only you can see your inbox
     only you can see your posts.html page
     check gemset at gemnasym 
-    
-    don't send link of todo item if done
 
   private/public mocs (only organization can see)
 
-Make "Highest Rated" work
-Make filters work
-  Radio Everywhere
-  Radio Org
+  setup reminders
 
-------
-  
-  Goals checkboxes
+  Make "Highest Rated" work
 
-------
-
-  Price
-
-------
-
-autocomplete tags in moc creation
-
-  Possible sorts
-    Activity
-
-    time that it takes
-    most recommended
-    most popular
-
-  Possible filter
-    organization
-    outcome
-    number of teammates
-    price
+  autocomplete tags in moc creation
 
   click tag just submits search with that tag
-    
-  don't require a video to publish
   
   add delete message link
 
@@ -70,13 +72,12 @@ autocomplete tags in moc creation
     make sure last_touched is upated after followered
     track activity of following
     add filter of # Followers (sorted on # of committed)
+  
   add updates to MOCs (like comments)
 
   add most popular tab
 
   public vs private profile
-
-  branding for email - mocsfordocs
 
   post#new form
     DONE add published? column and published_on column and filter out not-published mocs
@@ -112,23 +113,9 @@ autocomplete tags in moc creation
 
   --------------------------
 
-  sort post by organization
-  search posts by organization
-  search posts by author
-  
   Create Organization dashboard
 
-  Setup zerigo
   setup @mocsfordocs.org emails
-
-  setup 'commitments' (projects your doing)
-    payment gateway - stripe marketplace
-    automated messages to project lead ("You will be contacted")
-    automated confirmation email with link to the MOC official website
-    who else has committed to a project
-    reminder - you signed up for this project, this project ends on this date
-    reminder - careful this is getting close to ending, you have 1 more month to complete it
-    completed?
 
   create a project leader dashboard
     who has favorited them
@@ -141,8 +128,6 @@ autocomplete tags in moc creation
     only log views of a post once per session
 
   setup comments on comments
-
-  search by certifying institution
 
   Setup users messaging each other
     Thread messages
@@ -286,3 +271,6 @@ DONE Logo
       <p class="muted">Trending Topics</p>
       <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
     </div>
+    DONE move tracking to left side with tabs
+    DONE add oofta = true
+    DONE fix moc create based on goals association

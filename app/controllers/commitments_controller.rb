@@ -6,7 +6,7 @@ class CommitmentsController < ApplicationController
     current_user.commit!(@post)
     @post.last_touched = Time.now
     @post.save
-    
+    @post.create_activity :commit, owner: current_user
     respond_to do |format|
 
       format.html { redirect_to @post }
@@ -29,6 +29,9 @@ class CommitmentsController < ApplicationController
     post = Post.find(commitment.commitment_id)
     commitment.progress += 1
     commitment.save
+    if commitment.progress >= 5
+      post.create_activity :complete, owner: current_user
+    end
     respond_to do |format|
       format.html { redirect_to post }
       format.js
