@@ -96,21 +96,21 @@ class Post < ActiveRecord::Base
     return self.committed_user.find_by_committed_user_id(user.id).present?
   end
 
-  def duration
-    read_attribute(:duration)/604800
-  end
+  # def duration
+  #   read_attribute(:duration)/604800
+  # end
 
-  def duration=(val)
-    write_attribute :duration, val.to_i*604800
-  end
+  # def duration=(val)
+  #   write_attribute :duration, val.to_i*604800
+  # end
 
-  def expected_time
-    read_attribute(:expected_time)/3600
-  end
+  # def expected_time
+  #   read_attribute(:expected_time)/3600
+  # end
 
-  def expected_time_in_words=(val)
-    write_attribute :expected_time, val.to_i*3600
-  end
+  # def expected_time_in_words=(val)
+  #   write_attribute :expected_time, val.to_i*3600
+  # end
 
   def new?
     if created_at > Time.now - 1.month

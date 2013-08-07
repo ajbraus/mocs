@@ -27,15 +27,15 @@
       <p class="muted indent">Price</p>
       <ul>
         <li>
-          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= check_box_tag "post[prices][]", "10000000", checked: true %>
           <%= label :terms_of_service, "100+", class:"checkbox inline" %>
         </li>
         <li>
-          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= check_box_tag "post[prices][]", "9900", checked: true %>
           <%= label :terms_of_service, "50-99", class:"checkbox inline" %>
         </li>
         <li>
-          <%= check_box_tag :terms_of_service, "", checked: true %>
+          <%= check_box_tag "post[prices][]", "5000", checked: true %>
           <%= label :terms_of_service, "0-49", class:"checkbox inline" %>
         </li>
       </ul>
