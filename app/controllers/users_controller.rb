@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @trending_tags = Tag.first(10)
   end
+  
   def posts
     @commitments = current_user.committed_tos.where('progress < 6')
     @completed = current_user.committed_tos.where("progress >= 6")

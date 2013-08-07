@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span6 offset1">
+  <div class="span7">
     <%= form_for(@post) do |f| %>
       <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -75,15 +75,22 @@
             There are a lot of ways to make a MOC. We have broken the process into steps. 
           </p>
           <p>
-            First fill out the Description of your Moc. Then the steps physicians will take to complete it
+            First, fill out the Description of your Moc. This description is what physicians will judge to decide if they want to register for your Moc.
           </p>
-
           <p>
-            Your instructions will only be revealed to doctors who register for your MOC.
+            Next, provide directions for each step in the text areas below.
+            <ol>
+              <li>Review Background Information</li>
+              <li>Gather Baseline Data</li>
+              <li>Complete Plan, Do, Check, Act Cycles</li>
+              <li>Gather Post Test Data</li>
+              <li>Wrap Up</li>
+            </ol>
+             Your instructions will only be revealed to doctors who register for your MOC.
           </p>
         </div>
 
-        <div class="well alert-danger">
+        <div class="well alert-success">
           <p><strong>Tips</strong></p>
           <p>
             Choose a <strong>title</strong> that is brief and descriptive
@@ -95,25 +102,10 @@
             To include a <strong>video</strong>, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
           </p> 
         </div>
-      <div class="well alert-success">
-        <p>
-          <strong>Instructions</strong>
-        </p>
-        <p>
-          In the text areas below, provide directions for each step. 
-          <ol>
-            <li>Review Background Information</li>
-            <li>Gather Baseline Data</li>
-            <li>Complete Plan, Do, Check, Act Cycles</li>
-            <li>Gather Post Test Data</li>
-            <li>Wrap Up</li>
-          </ol>
-        </p>
       </div>
     </div>
-  </div>
   <div class="row">
-    <div class="span11 offset1">
+    <div class="span12">
       <h4>Instructions</h4>
       <div class="field">
         <%= f.label :info, "Step 1: Background Information" %>

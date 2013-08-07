@@ -1,4 +1,4 @@
 <p class="muted">Recommended Projects</p>
-<% Post.first(5).each do |m| %>
+<% Post.where(published:true).first(5).each do |m| %>
   <%= render partial: "shared/mini_moc", locals: { m: m }  %>
 <% end %>
