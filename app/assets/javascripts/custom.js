@@ -65,7 +65,7 @@ $(document).ready(function() {
     $('#overview').slideUp();
   });
 
-  $('.alert').delay(2000).fadeOut();
+  $('.alert').delay(3000).fadeOut();
   $('.hover-edit').hover(function(){
     $(this).find('.edit').fadeToggle('fast');
   })

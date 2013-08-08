@@ -6,7 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :state, :organization, :terms
+  attr_accessible :email, 
+                  :password, 
+                  :password_confirmation, 
+                  :remember_me, 
+                  :name, 
+                  :state, 
+                  :terms
   # attr_accessible :title, :body
 
   has_many :posts
@@ -29,6 +35,17 @@ class User < ActiveRecord::Base
   has_karma(:comments)
 
   #validates :name, presence: true
+
+  before_create :skip_confirmation_notification
+  after_create :request_confirmation
+
+  # def send_welcome
+  #   Notifier.delay.welcome(self)
+  # end
+
+  def request_confirmation
+    Notifier.delay.request_confirmation(self)
+  end
 
   def nice_name
     @name_array = self.name.split(' ')
@@ -76,5 +93,9 @@ class User < ActiveRecord::Base
 
   def organization=(name)
     self.organizations << Organization.find_or_create_by_name(name) unless name.blank?
+  end
+
+  def skip_confirmation_notification
+    skip_confirmation_notification!
   end
 end

@@ -3,21 +3,29 @@
     <div class="filter-set">
       <p class="muted indent">Network/Organization</p>
       <div class="text-center">
+        <%= form_tag root_path, :method => :get, class:"form-search", id:"searchForm" do %>
         <div class="btn-group" data-toggle="buttons-radio">
-          <button class="btn btn-primary active">All</button>
-          <button class="btn btn-success"><%= current_user.organization.name if user_signed_in? %></button>
+          <label>
+            <%= radio_button_tag "organization[]", 0, true, class:"btn btn-primary active" %>
+            All
+          </label>
+          <label>
+            <%= radio_button_tag "organization[]", current_user.organization.id, false, class:"btn btn-success active" %>
+            <%= current_user.organization.name if user_signed_in? %>
+          </label>
         </div>
       </div>
     </div>
-    <%= form_tag root_path, :method => :get, class:"form-search", id:"searchForm" do %>
     <div class="filter-set">
       <hr>
       <p class="muted indent">Goals</p>
       <ul class="filter-item">
       <% for goal in Goal.find(:all) %>
         <div>
-          <%= check_box_tag "post[goal_ids][]", goal.id, true %>
-          <%= goal.name %>
+          <label>
+            <%= check_box_tag "goal_ids[]", goal.id, true %>
+            <%= goal.name %>
+          </label>
         </div>
       <% end %> 
       </ul>
@@ -27,16 +35,22 @@
       <p class="muted indent">Price</p>
       <ul>
         <li>
-          <%= check_box_tag "post[prices][]", "10000000", checked: true %>
-          <%= label :terms_of_service, "100+", class:"checkbox inline" %>
+          <label>
+            <%= check_box_tag "prices[]", "10000000", checked: true %>
+            100+
+          </label>
         </li>
         <li>
-          <%= check_box_tag "post[prices][]", "9900", checked: true %>
-          <%= label :terms_of_service, "50-99", class:"checkbox inline" %>
+          <label>
+            <%= check_box_tag "prices[]", "9900", checked: true %>
+            50-99
+          </label>
         </li>
         <li>
-          <%= check_box_tag "post[prices][]", "5000", checked: true %>
-          <%= label :terms_of_service, "0-49", class:"checkbox inline" %>
+          <label>
+            <%= check_box_tag "prices[]", "5000", checked: true %>
+            0-49
+          </label>
         </li>
       </ul>
     </div>
@@ -53,7 +67,7 @@
 
   <div class="span9">
     <div class="tabbable row">
-      <div class="search-form span4">
+      <div class="span4">
           <div class="input-append">
             <%= text_field_tag :search, params[:search], class:"span4", placeholder:"Search..." %>
             <button type="submit" class="btn btn-primary btn-search">

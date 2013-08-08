@@ -3,9 +3,10 @@ class Comment < ActiveRecord::Base
   # tracked owner: ->(controller, model) { controller && controller.current_user }
   
   belongs_to :commentable, polymorphic: true
+  belongs_to :user
+  
   attr_accessible :content
   acts_as_voteable
-  belongs_to :user
   
   def nice_created_at
     self.created_at.strftime "%b %e, %l:%M%P"

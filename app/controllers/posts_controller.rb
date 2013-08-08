@@ -6,15 +6,15 @@ class PostsController < ApplicationController
     if params[:oofta] == 'true'
       flash.now[:warning] = "We're sorry, an error occured"
     end
-    if params[:search].present?
+    if params[:search].present? || params[:organization].present?
       goals = params[:goal_ids]
       prices = params[:prices]
+      organization = params[:organization]
+      binding.pry
       @recently_added = Post.search(params[:search], with: { published: true }, order: 'published_at desc', :page => params[:page], :per_page => 10)
       @highest_rated = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
-      @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)
-      # @posts_by_participants = @mocs.sort_by { |m| m.commitments.count }
-      # @posts_by_organization = Post.search(params[:search], with: { organization: current_user.organization, published: true }, :page => params[:page], :per_page => 10)
-    else 
+      @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
+    else
       @recently_added = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       @highest_rated = Post.where(published: true).paginate(:page => params[:page], :per_page => 10)
       @popular_now = Post.where(published: true).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)

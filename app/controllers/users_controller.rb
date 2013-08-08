@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tags = Tag.first(5)
-    @activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
+    @activities = PublicActivity::Activity.order("created_at desc").paginate(:page => params[:page], :per_page => 10) #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @trending_tags = Tag.first(10)
   end
   
@@ -15,6 +15,42 @@ class UsersController < ApplicationController
     @expired_posts = current_user.posts.where("published = ? and ends_on > ?", true, Time.now  )
     @trending_tags = Tag.first(15)
     @recommended_mocs = Post.where(published: true).first(3)
+  end
+
+  def index
+    if current_user.admin?
+      @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 10)
+      @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+      @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+    else 
+      redirect_to root_path, notice: "Oops, here you go!"
+    end
+  end
+
+  def confirm
+    @user = User.find(params[:user_id])
+    @user.confirmed_at = Time.now
+    @user.rejected_at = nil
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_path, notice:"User successufly confirmed" }
+      format.js
+      format.json { render json: @user }
+    end  
+  end
+
+  def reject
+    @user = User.find(params[:user_id])
+    @user.rejected_at = Time.now
+    @user.confirmed_at = nil
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_path, notice:"User successufly rejected" }
+      format.js
+      format.json { render json: @user }
+    end  
   end
 
   def org_name

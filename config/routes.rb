@@ -16,7 +16,10 @@ Mocs::Application.routes.draw do
     end
   end
 
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :index, :confirm, :reject] do
+    get :reject
+    get :confirm
+  end
   match 'users/:id' => 'users#show'
   match 'user/projects', to: "users#posts", as: "user_posts"
   match '/org_name', :to => 'users#org_name', :as => "org_name"

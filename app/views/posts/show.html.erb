@@ -1,7 +1,7 @@
 <div class="tabbable pills-left"> <!-- Only required for left/right tabs -->
   <div class="span4">
     <% if user_signed_in? %>
-      <% if current_user == @post.user %>
+      <% if current_user == @post.user || current_user.admin? %>
         <table class="table table-striped table-condensed">
             <thead>
               <tr>

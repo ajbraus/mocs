@@ -34,8 +34,8 @@ namespace :db do
         post.desc = Populator.words(50..120)
         post.user_id = user.id
         post.state = "WI"
-        post.duration = 600000..18000000
-        post.expected_time = 60000..100000
+        post.duration = 1..20
+        post.expected_time = 5..30
         post.video_url = "http://www.youtube.com/watch?v=bCGlWQnzDVE"
         post.img_url = "http://img.youtube.com/vi/x10zrYPuU_o/default.jpg"
         post.created_at = 4.months.ago..Time.now
@@ -52,7 +52,7 @@ namespace :db do
           comment.commentable_type = "Post"
           comment.commentable_id = post.id
           comment.content = Populator.words(3..14)
-          comment.user = user
+          comment.user_id = User.first.id
         end
         Message.populate 4..10 do |message|
           message.subject = Populator.words(7..18).titleize
