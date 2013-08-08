@@ -121,4 +121,8 @@ class Post < ActiveRecord::Base
   def goal
     goals.first.name
   end
+
+  def rebuild_index
+    rake fs:rebuild
+  end
 end
