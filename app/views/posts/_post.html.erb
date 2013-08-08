@@ -10,8 +10,10 @@
         <li><%= post.user.organization.name %></li>
         <li><em><%= post.goal %></em> </li>
         <li>
-        <% if user_signed_in? && current_user == post.user || current_user.admin? %>
-          <%= link_to "Edit", edit_post_path(post), class:"margin-top" %>
+        <% if user_signed_in? %>
+          <% if current_user == post.user || current_user.admin? %>
+            <%= link_to "Edit", edit_post_path(post), class:"margin-top" %>
+          <% end %>
         <% end %>
         </li>
       </ul>

@@ -16,3 +16,13 @@
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
 //= require_tree .
+
+// var csrf = '<%= "#{ENV['BALANCED_CSRF']}" %>'
+// var marketplaceUri = '<%= "#{ENV['BALANCED_MARKETPLACE_URI']}" %>'
+// //  kick everything off when jquery is ready
+// $(function () {
+//     rentmybike.init({
+//         csrfToken:csrf,
+//         marketplaceUri:marketplaceUri
+//     });
+// });

@@ -35,6 +35,7 @@ gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'coffee-rails', '~> 3.2.1'
 gem 'jquery-ui-rails'
 
+gem 'balanced'
 # group :development, :test do
 # 	gem 'rspec-rails'
 # 	gem 'turnip'

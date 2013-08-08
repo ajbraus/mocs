@@ -10,7 +10,6 @@ class PostsController < ApplicationController
       goals = params[:goal_ids]
       prices = params[:prices]
       organization = params[:organization]
-      binding.pry
       @recently_added = Post.search(params[:search], with: { published: true }, order: 'published_at desc', :page => params[:page], :per_page => 10)
       @highest_rated = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
       @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      

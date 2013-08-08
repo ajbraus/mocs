@@ -3,6 +3,9 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
+
+  progress bar fucked up
+  scrolly side to side on part
   
   validations on users, posts
 
@@ -29,6 +32,11 @@ Two user groups
     reminder - you signed up for this project, this project ends on this date
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
+
+
+  complete moc sends email
+
+  upload picture to post
 
   branding for email - mocsfordocs
 

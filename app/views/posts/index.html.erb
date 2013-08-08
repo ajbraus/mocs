@@ -9,10 +9,12 @@
             <%= radio_button_tag "organization[]", 0, true, class:"btn btn-primary active" %>
             All
           </label>
+           <% if user_signed_in? %>
           <label>
             <%= radio_button_tag "organization[]", current_user.organization.id, false, class:"btn btn-success active" %>
-            <%= current_user.organization.name if user_signed_in? %>
+            <%= current_user.organization.name %>
           </label>
+          <% end %>
         </div>
       </div>
     </div>

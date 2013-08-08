@@ -4,8 +4,8 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
   indexes tags(:name), as: :tag_name
   indexes organizations(:name), as: :org_name
   indexes user(:name), as: :author_name
-  # indexes happening_on, sortable: true
-  # has author_id, published_at
+
+  
   has goal(:id), as: :goal_id
   has published_at
   has last_touched
