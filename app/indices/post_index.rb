@@ -5,8 +5,7 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
   indexes organizations(:name), as: :org_name
   indexes user(:name), as: :author_name
 
-  
-  has goal(:id), as: :goal_id
+  has goals.id, as: :goal_id
   has published_at
   has last_touched
   has published

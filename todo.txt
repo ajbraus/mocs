@@ -16,10 +16,10 @@ Two user groups
     DONE submit prices
     DONE submit network or organization (set org as association to post)
     filter on network or organization
-      set organization id in post
+      DONE set organization id in post
     filter on goals
-      remove HABTM for goals/posts
-        only need posts to belong to goals (one goal per post)
+      DONE remove HABTM for goals/posts
+        DONE only need posts to belong to goals (one goal per post)
     filter on prices
       use radio buttons for ranges
       pass range into filter on price attribute

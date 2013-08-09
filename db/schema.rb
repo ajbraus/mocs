@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807222653) do
+ActiveRecord::Schema.define(:version => 20130808234556) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -75,14 +75,6 @@ ActiveRecord::Schema.define(:version => 20130807222653) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "goals_posts", :id => false, :force => true do |t|
-    t.integer "post_id"
-    t.integer "goal_id"
-  end
-
-  add_index "goals_posts", ["goal_id", "post_id"], :name => "index_goals_posts_on_goal_id_and_post_id"
-  add_index "goals_posts", ["post_id", "goal_id"], :name => "index_goals_posts_on_post_id_and_goal_id"
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"
@@ -164,6 +156,8 @@ ActiveRecord::Schema.define(:version => 20130807222653) do
     t.text     "plan_do"
     t.text     "post_test"
     t.text     "wrap_up"
+    t.integer  "organization_id"
+    t.integer  "goal_id"
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|

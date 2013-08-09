@@ -10,9 +10,9 @@ class PostsController < ApplicationController
       goals = params[:goal_ids]
       prices = params[:prices]
       organization = params[:organization]
-      @recently_added = Post.search(params[:search], with: { published: true }, order: 'published_at desc', :page => params[:page], :per_page => 10)
-      @highest_rated = Post.search(params[:search], with: { published: true }, :page => params[:page], :per_page => 10)
-      @popular_now = Post.search(params[:search], with: { published: true }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
+      @recently_added = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices,  }, order: 'published_at desc', :page => params[:page], :per_page => 10)
+      @highest_rated = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices }, :page => params[:page], :per_page => 10)
+      @popular_now = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
     else
       @recently_added = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       @highest_rated = Post.where(published: true).paginate(:page => params[:page], :per_page => 10)
@@ -73,6 +73,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.build(params[:post])
     @post.state = @user.state
+    @post.organization = @user.organization
     @post.last_touched = Time.now
 
     if params[:commit] == "Publish"
