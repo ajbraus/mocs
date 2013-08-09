@@ -24,6 +24,8 @@ Mocs::Application.routes.draw do
   match 'user/projects', to: "users#posts", as: "user_posts"
   match '/org_name', :to => 'users#org_name', :as => "org_name"
   
+  match 'organizations/:id' => 'organizations#show'
+
   resources :commitments, only: [:create, :destroy] do 
     member do
       put :increment_progress

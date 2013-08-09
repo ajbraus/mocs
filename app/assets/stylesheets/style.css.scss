@@ -510,7 +510,7 @@ left: 2px;
 }
 
 .btn-search {
-  padding: 6px 14px;
+  padding: 10.5px 14px;
   font-size: 17px;
 }
 
@@ -632,4 +632,12 @@ ul.inline-list {
 .tab-content {
   position: relative;
 left: 30px;
+}
+
+.input-append {
+  input {
+    padding: 10px 10px 11px 10px;
+  font-size: 20px;
+
+  }
 }

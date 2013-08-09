@@ -200,11 +200,11 @@
 
     <% if params[:controller] == 'posts' && params[:action] == 'index' && params[:search] %>
       <script>
-      $(document).ready(function() {
-        $('.filter-el').change(function() {
-          $('#searchForm').submit();
+        $(document).ready(function() {
+          $('.filter-el').change(function() {
+            $('#searchForm').submit();
+          });
         });
-      });
 
       </script>
     <% end %>

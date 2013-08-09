@@ -126,4 +126,8 @@ class User < ActiveRecord::Base
       'There was an error adding a customer'
     end
   end
+
+  def org_admin?(org)
+    return org.organization_users.find(self.id).is_admin?
+  end
 end
