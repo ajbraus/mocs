@@ -117,8 +117,4 @@ class Post < ActiveRecord::Base
       return true
     end
   end
-
-  def rebuild_index
-    rake fs:rebuild
-  end
 end
