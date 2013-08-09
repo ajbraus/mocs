@@ -32,6 +32,7 @@ namespace :db do
       Post.populate 10..30 do |post|
         post.title = Populator.words(7..18).titleize
         post.desc = Populator.words(50..120)
+        post.organization_id = user.organizations.first.id
         post.user_id = user.id
         post.state = "WI"
         post.duration = 1..20
@@ -43,6 +44,7 @@ namespace :db do
         post.credits = 0..30
         post.impressions_count = 1..3000
         post.published = [true,false]
+        post.price = 0..23000
         if post.published == true
           post.published_at = 4.months.ago..Time.now
         end
@@ -65,7 +67,8 @@ namespace :db do
     end
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
-      post.goals << Goal.all.sample
+      post.goal = Goal.all.sample
+      post.save
     end
 
     #rake ts:index

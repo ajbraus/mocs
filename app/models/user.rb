@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
 
   #validates :name, presence: true
 
-  before_create :skip_confirmation_notification
-  after_create :request_confirmation
+  #before_create :skip_confirmation_notification
+  #after_create :request_confirmation
 
   # def send_welcome
   #   Notifier.delay.welcome(self)

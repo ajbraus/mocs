@@ -11,11 +11,7 @@ class PostsController < ApplicationController
       @price_range = params[:price_range][0].split('..').map{|d| Integer(d)}
       @price_range = @price_range[0]..@price_range[1]
       @organization = params[:organization][0].to_i
-      # @popular_now = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
-      # @highest_rated = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
-      # @recently_added = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
-
-      if @organization[0] == 0
+      if @organization == 0
         @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
         @highest_rated = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, :page => params[:page], :per_page => 10)
         @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'published_at desc', :page => params[:page], :per_page => 10)

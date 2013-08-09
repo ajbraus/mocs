@@ -7,6 +7,9 @@ Two user groups
   progress bar fucked up
   scrolly side to side on part
   validations on users, posts
+    if published = needs goal
+
+  just filtering with no search term
 
   setup 'commitments' (projects your doing)
     add price to register button
