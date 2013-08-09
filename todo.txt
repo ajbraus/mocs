@@ -4,7 +4,7 @@ Two user groups
 
 ==INBOX==
 
-  progress bar fucked up
+  progress bar say 0/6
   scrolly side to side on part
   validations on users, posts
     if published = needs goal
