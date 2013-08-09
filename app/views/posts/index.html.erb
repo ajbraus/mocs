@@ -84,17 +84,17 @@
   </div>
 
   <div class="span9">
-    <div class="tabbable row">
-      <div class="span4">
+    <div class="tabbable">
+      <div class="span8">
           <div class="input-append">
-            <%= text_field_tag :search, params[:search], class:"span4", placeholder:"Search..." %>
-            <button type="submit" class="btn btn-primary btn-search">
+            <%= text_field_tag :search, params[:search], class:"span8", placeholder:"Search..." %>
+            <button type="submit" class="btn btn-primary">
               <i class="icon-search"></i>
             </button>
           </div>
         <% end %>
       </div>
-      <div class="span5">
+      <div class="span8 offset1">
         <ul class="nav nav-pills pull-right">
           <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
           <li class="pull-right"><a href="#B" data-toggle="tab">Highest Rated</a></li>
