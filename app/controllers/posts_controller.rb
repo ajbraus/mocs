@@ -6,13 +6,24 @@ class PostsController < ApplicationController
     if params[:oofta] == 'true'
       flash.now[:warning] = "We're sorry, an error occured"
     end
-    if params[:search].present? || params[:organization].present?
-      goals = params[:goal_ids]
-      prices = params[:prices]
-      organization = params[:organization]
-      @recently_added = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices,  }, order: 'published_at desc', :page => params[:page], :per_page => 10)
-      @highest_rated = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices }, :page => params[:page], :per_page => 10)
-      @popular_now = Post.search(params[:search], with: { published: true, goal_ids: goals, price: prices }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
+    if @search_present = params[:search].present?
+      @goals = params[:goal_ids].map(&:to_i)
+      @price_range = params[:price_range][0].split('..').map{|d| Integer(d)}
+      @price_range = @price_range[0]..@price_range[1]
+      @organization = params[:organization][0].to_i
+      # @popular_now = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
+      # @highest_rated = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
+      # @recently_added = Post.search(params[:search], order: 'published_at desc', :page => params[:page], :per_page => 10)
+
+      if @organization[0] == 0
+        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
+        @highest_rated = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, :page => params[:page], :per_page => 10)
+        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'published_at desc', :page => params[:page], :per_page => 10)
+      else
+        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'last_touched asc', :page => params[:page], :per_page => 10)              
+        @highest_rated = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, :page => params[:page], :per_page => 10)
+        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'published_at desc', :page => params[:page], :per_page => 10)
+      end
     else
       @recently_added = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 10)
       @highest_rated = Post.where(published: true).paginate(:page => params[:page], :per_page => 10)
@@ -23,6 +34,11 @@ class PostsController < ApplicationController
     @trending_mocs = Post.where(published: true).first(3)
     @trending_tags = Tag.first(20)
 
+    if !@search_present
+      @goals = Goal.pluck(:id)
+      @price_range = 0..10000000
+      @organization = 0
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

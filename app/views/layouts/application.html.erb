@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Mocs" %></title>
-    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
     <%= csrf_meta_tags %>
 
@@ -197,6 +196,19 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-    
+    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
+
+    <% if params[:controller] == 'posts' && params[:action] == 'index' && params[:search] %>
+      <script>
+
+      $(document).ready(function() {
+        $('.filter-el').change(function() {
+          $('#searchForm').submit();
+        });
+      });
+
+      </script>
+
+    <% end %>
   </body>
 </html>

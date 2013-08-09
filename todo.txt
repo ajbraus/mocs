@@ -6,25 +6,11 @@ Two user groups
 
   progress bar fucked up
   scrolly side to side on part
-  
   validations on users, posts
 
-  filtering for search
-    create form elements
-    if params[:search].present? submit upon change
-    DONE submit goals
-    DONE submit prices
-    DONE submit network or organization (set org as association to post)
-    filter on network or organization
-      DONE set organization id in post
-    filter on goals
-      DONE remove HABTM for goals/posts
-        DONE only need posts to belong to goals (one goal per post)
-    filter on prices
-      use radio buttons for ranges
-      pass range into filter on price attribute
-
   setup 'commitments' (projects your doing)
+    add price to register button
+    add price to post.html
     payment gateway - stripe marketplace
     automated messages to project lead ("You will be contacted")
     automated confirmation email with link to the MOC official website
@@ -32,7 +18,6 @@ Two user groups
     reminder - you signed up for this project, this project ends on this date
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
-
 
   complete moc sends email
 
@@ -300,3 +285,19 @@ DONE Setup manual confirmation
         DONE edit mocs, 
         DONE see progresses, 
       DONE set andrew and tracy as admins
+
+  filtering for search
+    DONE if params[:search].present? submit upon change
+    DONE filter on prices
+      DONE use radio buttons for ranges
+      DONE pass range into filter on price attribute
+    ----
+    DONE submit goals
+    DONE submit prices
+    DONE submit network or organization (set org as association to post)
+    filter on network or organization
+      DONE set organization id in post
+    filter on goals
+      DONE remove HABTM for goals/posts
+        DONE only need posts to belong to goals (one goal per post)
+    DONE create form elements

@@ -6,12 +6,12 @@
         <%= form_tag root_path, :method => :get, class:"form-search", id:"searchForm" do %>
         <div class="btn-group" data-toggle="buttons-radio">
           <label>
-            <%= radio_button_tag "organization[]", 0, true, class:"btn btn-primary active" %>
+            <%= radio_button_tag "organization[]", 0, @organization == 0, class:"filter-el btn btn-primary active" %>
             All
           </label>
            <% if user_signed_in? %>
           <label>
-            <%= radio_button_tag "organization[]", current_user.organization.id, false, class:"btn btn-success active" %>
+            <%= radio_button_tag "organization[]", current_user.organization.id, @organization != 0, class:"filter-el btn btn-success active" %>
             <%= current_user.organization.name %>
           </label>
           <% end %>
@@ -25,7 +25,7 @@
       <% for goal in Goal.find(:all) %>
         <div>
           <label>
-            <%= check_box_tag "goal_ids[]", goal.id, true %>
+            <%= check_box_tag "goal_ids[]", goal.id, goal.id.in?(@goals), class:'filter-el' %>
             <%= goal.name %>
           </label>
         </div>
@@ -38,20 +38,32 @@
       <ul>
         <li>
           <label>
-            <%= check_box_tag "prices[]", "10000000", checked: true %>
-            100+
+            <%= radio_button_tag "price_range[]", 0..10000000, @price_range.eql?(0..10000000), class:"filter-el" %>
+            All
           </label>
         </li>
         <li>
           <label>
-            <%= check_box_tag "prices[]", "9900", checked: true %>
-            50-99
+            <%= radio_button_tag "price_range[]", 15000..10000000, @price_range.eql?(15000..10000000), class:"filter-el" %>
+            $150+
           </label>
         </li>
         <li>
           <label>
-            <%= check_box_tag "prices[]", "5000", checked: true %>
-            0-49
+            <%= radio_button_tag "price_range[]", 5000..14999, @price_range.eql?(5000..14999), class:"filter-el" %>
+            $50-149
+          </label>
+        </li>
+        <li>
+          <label>
+            <%= radio_button_tag "price_range[]", 100..4999, @price_range.eql?(100..4999), class:"filter-el" %>
+            $1-49
+          </label>
+        </li>
+        <li>
+          <label>
+            <%= radio_button_tag "price_range[]", 0, @price_range.eql?(0), class:"filter-el" %>
+            Free
           </label>
         </li>
       </ul>
