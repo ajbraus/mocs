@@ -7,7 +7,9 @@ development:
   :enable_starttls_auto: true
 production:
   :domain: mocsfordocs.org
-  :address: smtp.sendgrid.net
+  :address: smtp.sendgrid.com
   :port: 587
   :authentication: plain
   :enable_starttls_auto: true
+  :user_name: app16398911@heroku.com
+  :password: "tqoinmjf"

@@ -13,6 +13,7 @@ Two user groups
   validations on users, posts
     fix form and 'publish' button to light up properly
     if published = needs goal
+    validate user creates with organization
 
   just filtering with no search term
 

@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
   include UsersHelper
   include ActionView::Helpers::AssetTagHelper  
   layout 'email' # use email.(html|text).erb as the layout for emails
-  default from: "MocsforDocs.org MocsForDocs@gmail.com"
+  default from: "MocsforDocs.org Team@mocsfordocs.org"
 
 
   def request_confirmation(user)

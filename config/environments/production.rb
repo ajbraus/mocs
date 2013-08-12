@@ -4,21 +4,6 @@ Mocs::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default_url_options = { :host => 'www.mocsfordocs.org' }
-  config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.com",
-    port: 587,
-    domain: "mocsfordocs.org",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD']
-  }
-
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

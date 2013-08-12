@@ -52,6 +52,7 @@
   </head>
   <body>  
     <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" || params[:action] == 'edit' %>
+      <%= bootstrap_flash %>
       <header class="jumbotron subhead" id="overview">
          <div class="row">   
            <div class="span7 offset1">
@@ -85,7 +86,6 @@
              </div>
           </div>
       </header>
-      <%= bootstrap_flash %>
     <% end %>
 
       <div class="navbar">
