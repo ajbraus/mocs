@@ -51,7 +51,7 @@
     </script>
   </head>
   <body>  
-    <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" %>
+    <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" || params[:action] == 'edit' %>
       <header class="jumbotron subhead" id="overview">
          <div class="row">   
            <div class="span7 offset1">
@@ -91,7 +91,7 @@
        <div class="navbar-inner">
         <ul class="nav" id="main-menu-left">
           <li>
-            <%= link_to "MocsforDocs.org", root_path, class:"brand" %>
+            <%= link_to "MocsforDocs", root_path, class:"brand" %>
           </li>
           <li class="down"><%= link_to 'FAQ', how_path %></li>
           <li class="down"><%= link_to 'About', about_path %></li>
@@ -153,7 +153,7 @@
           <% end %>   
          </div>
        </div>
-      <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" %>
+      <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" || params[:action] == 'edit' %>
       <div class="container">
         <div class="row">
           <div class="span4">
