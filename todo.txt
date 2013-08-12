@@ -18,9 +18,15 @@ Two user groups
   just filtering with no search term
 
   setup 'commitments' (projects your doing)
-    add price to register button
+    DONE add price to register button
     add price to post.html
-    payment gateway - stripe marketplace
+    payment gateway - balanced payments
+    DONE add balanced gem
+    DONE add balanced.js
+    get bank account data for moc creator
+    
+    create commitment#new and get credit card data for moc user
+
     automated messages to project lead ("You will be contacted")
     automated confirmation email with link to the MOC official website
     who else has committed to a project

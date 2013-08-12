@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   attr_accessible :desc, 
+                  :price_in_dollars,
                   :price,
                   :credits,
                   :duration,
@@ -47,6 +48,14 @@ class Post < ActiveRecord::Base
 
   def nice_begins_on
     begins_on.strftime("%b %e, %y") if begins_on.present? #May 21, 2010 
+  end
+
+  def price_in_dollars
+    (price.to_d / 100).to_i if price
+  end
+  
+  def price_in_dollars=(dollars)
+    self.price = dollars.to_d * 100 if dollars.present?
   end
 
   def short_desc

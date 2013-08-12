@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
                   :remember_me, 
                   :name, 
                   :state, 
-                  :terms
+                  :terms,
+                  :confirmed_at,
+                  :admin
   # attr_accessible :title, :body
 
   has_many :posts

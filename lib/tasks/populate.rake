@@ -22,8 +22,8 @@ namespace :db do
       user.state = "WI"
       user.encrypted_password = "password"
     end
-    adam = User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI")
-    james = User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI")
+    adam = User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI", confirmed_at: Time.now, admin: true)
+    james = User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI", confirmed_at: Time.now, admin: true)
     adam.organizations << Organization.find_by_name("UW Health")
     james.organizations << Organization.find_by_name("UW Health")
 
@@ -44,7 +44,7 @@ namespace :db do
         post.credits = 0..30
         post.impressions_count = 1..3000
         post.published = [true,false]
-        post.price = 0..23000
+        post.price = [2000,5000,10000,20000]
         if post.published == true
           post.published_at = 4.months.ago..Time.now
         end

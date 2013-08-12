@@ -3,7 +3,7 @@
     <% unless current_user.committed_to?(@post) %>
       <%= form_for(current_user.commitments.build(commitment_id: @post.id)) do |f| %>
         <div><%= f.hidden_field :commitment_id %></div>
-        <%= f.submit "Register for this MOC", class: "btn btn-gold btn-large" %>
+        <%= f.submit "$#{@post.price_in_dollars} Register for this MOC", class: "btn btn-gold btn-large" %>
       <% end %>
     <% end %>
   </div>
