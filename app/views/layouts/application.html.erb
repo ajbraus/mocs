@@ -111,6 +111,9 @@
             </div>
             </div>
           <% else %>
+          <% if current_user.admin? %>
+            <li class="down"><%= link_to 'Admin', users_path %></li>
+          <% end %>
           </ul>
           <!-- DROPDOWN -->
           <div class="dropdown push-down-a-bit pull-right">

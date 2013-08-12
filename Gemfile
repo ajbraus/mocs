@@ -11,7 +11,6 @@ gem 'thinking-sphinx', '3.0.3' #'2.0.11'
 gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 
 gem 'devise', '2.2.4'
-
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'thumbs_up'
 gem 'will_paginate'

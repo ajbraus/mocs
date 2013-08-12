@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     Notifier.delay.request_confirmation(self)
   end
 
+  def nice_created_at
+    created_at.strftime("%b %e, %Y") #May 21, 2010
+  end
+  
   def nice_name
     @name_array = self.name.split(' ')
     @name_array.each { |n| n.capitalize }
