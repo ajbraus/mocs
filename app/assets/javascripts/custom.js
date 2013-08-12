@@ -38,7 +38,9 @@ $(document).ready(function() {
     window.location = $(this).data("link")
   })
 
-  $('#organization').autocomplete({source: $('#organization').data('autocomplete-source')});
+  $('#organization').autocomplete({
+    source: $('#organization').data('autocomplete-source')
+  });
   
   $('textarea.rich-text').wysihtml5({ 
     "font-styles": false,

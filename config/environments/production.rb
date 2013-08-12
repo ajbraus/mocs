@@ -12,7 +12,16 @@ Mocs::Application.configure do
   config.serve_static_assets = false
 
   config.action_mailer.default_url_options = { :host => 'www.mocsfordocs.org' }
-
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'mocsfordocs.herokuapp.org',
+    :enable_starttls_auto => true
+  }
+  
   # Compress JavaScripts and CSS
   config.assets.compress = true
 

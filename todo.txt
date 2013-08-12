@@ -24,7 +24,7 @@ Two user groups
     DONE add balanced gem
     DONE add balanced.js
     get bank account data for moc creator
-    
+
     create commitment#new and get credit card data for moc user
 
     automated messages to project lead ("You will be contacted")

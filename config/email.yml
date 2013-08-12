@@ -5,11 +5,11 @@ development:
   :user_name: mocsfordocs@gmail.com
   :password: "Change!23"
   :enable_starttls_auto: true
-production:
-  :domain: heroku.mocsfordocs.org
-  :address: smtp.sendgrid.com
-  :port: 587
-  :authentication: plain
-  :enable_starttls_auto: true
-  :user_name: app16398911@heroku.com
-  :password: "tqoinmjf"
+# production:
+#   :domain: mocsfordocs.org
+#   :address: smtp.sendgrid.com
+#   :port: 587
+#   :authentication: plain
+#   :enable_starttls_auto: true
+#   :user_name: app16398911@heroku.com
+#   :password: "tqoinmjf"

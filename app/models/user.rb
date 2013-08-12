@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
                   :state, 
                   :terms,
                   :confirmed_at,
-                  :admin
+                  :admin,
+                  :organization_ids
   # attr_accessible :title, :body
 
   has_many :posts

@@ -11,8 +11,8 @@
        <%= f.email_field :email %>
      </p>
      <p>
-      <%= f.label :organization, "Organization" %>
-      <%= f.text_field :organization, data: { autocomplete_source: org_name_path }, class:"required", id:"organization" %>
+      <label for="organization">Organization</label>
+      <input class="required ui-autocomplete-input" data-autocomplete-source="/org_name" id="organization" name="organization" size="30" type="text" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
      </p>
      <p>
        <%= f.label :state %>
