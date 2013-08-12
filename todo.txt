@@ -4,9 +4,6 @@ Two user groups
 
 ==INBOX==
 
-  add confirmable & confirable fields to users
-  setup godaddy email in production
-
   add mailchimp devise
 
   progress bar say 0/6
@@ -316,3 +313,5 @@ DONE Setup manual confirmation
       DONE remove HABTM for goals/posts
         DONE only need posts to belong to goals (one goal per post)
     DONE create form elements
+    DONE add confirmable & confirable fields to users
+    DONE setup godaddy email in production
