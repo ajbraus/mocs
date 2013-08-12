@@ -3,9 +3,11 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
+  forgot password not redirecting correctly
 
   progress bar say 0/6
   validations on users, posts
+    fix form and 'publish' button to light up properly
     if published = needs goal
 
   just filtering with no search term
@@ -26,8 +28,6 @@ Two user groups
   upload picture to post
 
   branding for email - mocsfordocs
-
-  forgot password not redirecting correctly
 
   add 'featured mocs' to splash
 

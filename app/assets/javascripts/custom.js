@@ -27,6 +27,13 @@ $(document).ready(function() {
     }
   })
 
+  if ($('a').hasClass("disabled")) 
+  {
+    $(this).click(function(){
+      return false;
+    });
+  }
+
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   })
