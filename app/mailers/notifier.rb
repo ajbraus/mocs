@@ -4,6 +4,12 @@ class Notifier < ActionMailer::Base
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "MocsforDocs.org MocsForDocs@gmail.com"
 
+
+  def request_confirmation(user)
+    @user = user
+    mail to: "team@mocsfordocs.org", subject: "New User to Confirm or Reject"
+  end
+
   def welcome(user)
     @user = user
 

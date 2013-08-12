@@ -3,7 +3,11 @@ Two user groups
   project leaders - promote, track/manage
 
 ==INBOX==
-  forgot password not redirecting correctly
+
+  add confirmable & confirable fields to users
+  setup godaddy email in production
+
+  add mailchimp devise
 
   progress bar say 0/6
   validations on users, posts
@@ -22,6 +26,8 @@ Two user groups
     reminder - you signed up for this project, this project ends on this date
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
+
+  tighten up voting
 
   complete moc sends email
 
