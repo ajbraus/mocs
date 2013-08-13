@@ -14,17 +14,17 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :title, "Project Title" %>
+        <%= f.label :title, "Project Title*" %>
         <%= f.text_field :title %>
+      </div>
+      <div>
+        <%= label_tag :goal_id, "Project Goal*" %>
+        <%= select_tag :goal_id, options_for_select(Goal.all.collect {|x| [x.name, x.id]}), prompt:"Select Goal" %>     
       </div>
       <div class="field">
         <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)" %> 
         <%= f.text_field :tag_list %>
       </div>  
-      <div>
-        <%= f.label :goal_ids %>
-        <%= f.select :goal_ids, options_for_select(Goal.all.collect {|x| [x.name, x.id]}), prompt:"Select Goal" %>     
-      </div>
       <div class="field">
         <div class="times-input">
           <%= f.label :expected_time, "Time to Complete" %>
@@ -69,10 +69,25 @@
       </div>
     </div>
       <div class="span5">
+        <div class="well alert-success">
+          <p><strong>Tips</strong></p>
+          <p>
+            <strong>"*"</strong> denotes a required field. Only a <strong>title</strong> and a <strong>goal</strong> are required to save a project to publish later.
+          </p>
+          <p>
+            Choose a <strong>title</strong> that is brief and descriptive
+          </p>
+          <p>
+            In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
+          </p>
+          <p>
+            To include a <strong>video</strong>, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
+          </p> 
+        </div>
         <div class="well alert-info">
           <p><strong>Description & Instructions</strong></p>
           <p>
-            There are a lot of ways to make a MOC. We have broken the process into steps. 
+            There are a lot of ways to make a MOC. For simplicity we have broken the process into steps. 
           </p>
           <p>
             First, fill out the Description of your Moc. This description is what physicians will judge to decide if they want to register for your Moc.
@@ -88,19 +103,6 @@
             </ol>
              Your instructions will only be revealed to doctors who register for your MOC.
           </p>
-        </div>
-
-        <div class="well alert-success">
-          <p><strong>Tips</strong></p>
-          <p>
-            Choose a <strong>title</strong> that is brief and descriptive
-          </p>
-          <p>
-            In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
-          </p>
-          <p>
-            To include a <strong>video</strong>, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
-          </p> 
         </div>
       </div>
     </div>
@@ -132,7 +134,7 @@
 
       <div class="actions clear-both">
         <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>
-        <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large'  %>
+        <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large disabled'  %>
         <% if params[:action] == "edit" %>
           <%= f.submit "Delete", class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% elsif params[:action] == "new" %>

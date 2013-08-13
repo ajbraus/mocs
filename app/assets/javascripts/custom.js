@@ -27,12 +27,14 @@ $(document).ready(function() {
     }
   })
 
-  if ($('a').hasClass("disabled")) 
-  {
-    $(this).click(function(){
-      return false;
-    });
+  $(".disabled").click(function(){
+    return false;
+  });
+
+  if ($('#post_title')) {
+
   }
+
 
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")

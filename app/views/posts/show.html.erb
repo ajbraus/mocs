@@ -96,22 +96,25 @@
     <!--  <p class="lead">
             by <a href="orgprofile.html">The American Madeup Association</a>
           </p> -->
-          <span class="muted">Project Lead: <em><%= link_to "#{@post.user.name}", user_path(@post.user) %></em></span>
+          <span class="muted">Project Lead: <em><%= link_to "#{@post.user.name}", user_path(@post.user) %>, <%= @post.user.organization.name %></em></span>
         </div>    
-        <div>
-          <p>
+        <ul>
+          <li>
+            <strong>Goal</strong>: <%= @post.goal.name %>
+          </li>                  
+          <li>
             <strong>Time Commitment</strong>: <%= @post.expected_time %> hours
-          </p>
-          <p>
+          </li>
+          <li>
             <strong>MOC Credits</strong>: <%= @post.credits %> credits
-          </p>
-          <p>
+          </li>
+          <li>
             <strong>Project Duration</strong>: <%= @post.duration %> weeks
-          </p>
-          <p>
+          </li>
+          <li>
             <strong>Views</strong>: <%= @post.impressions_count %>
-          </p>
-        </div> 
+          </li>
+        </ul> 
         <div>
           <!-- <i class="icon-star gold"></i> 78 Favorite</p> -->
           <div>
