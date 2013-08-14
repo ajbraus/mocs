@@ -569,9 +569,11 @@ background-color: hsl(210, 57%, 46%) !important;
   }
 }
 
-.btn {
-  font-family: arial;
-font-size: 14px;
+.inline-list {
+  .btn {
+    font-family: arial;
+  font-size: 14px;
+  }  
 }
 
 .btn-link {
