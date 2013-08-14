@@ -10,7 +10,6 @@ class Post < ActiveRecord::Base
   has_many :committed_users, through: :commitments, source: :committed_user
   
   has_and_belongs_to_many :tags
-  has_and_belongs_to_many :goals
 
   has_many :comments, as: :commentable
 
@@ -29,7 +28,7 @@ class Post < ActiveRecord::Base
                   :video_url, 
                   :img_url, 
                   :tag_list,
-                  :goal_ids,
+                  :goal_id,
                   :info, 
                   :baseline, 
                   :plan_do, 
@@ -43,11 +42,11 @@ class Post < ActiveRecord::Base
   end
 
   def nice_ends_on
-    ends_on.strftime("%b %e, %y") if ends_on.present? #May 21, 2010 
+    ends_on.strftime("%b %e %Y") if ends_on.present? #May 21, 2010 
   end
 
   def nice_begins_on
-    begins_on.strftime("%b %e, %y") if begins_on.present? #May 21, 2010 
+    begins_on.strftime("%b %e %Y") if begins_on.present? #May 21, 2010 
   end
 
   def price_in_dollars

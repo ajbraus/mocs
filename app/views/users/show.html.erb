@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span9">
+  <div class="span8">
     <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
       <%= form_for @user.messages.new, remote:true do |f| %>
         <div class="modal-header">  
@@ -24,18 +24,24 @@
     <% end %>
   </div>
 
-  <div class="span7">
-    <h3 class=""><%= @user.name %> <span class="muted">+123</span></h3>
-    <div class="big clear-both">
-      <strong>Organization:</strong> <%= @user.organization.name %>
-    </div>
-    <div class="big">
-      <strong>Interests</strong> 
-      <%= render partial: "shared/tags", locals: { tags: @tags }  %>
-    </div>
-    <div class="">
-      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Send Private Message</a>
-    </div>
+  <div class="span8">
+    <% if current_user == @user %>
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-pills">
+            <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed (<%= @completed.count %>)</a></li>
+            <li class="pull-right active"><a href="#tab1" data-toggle="tab">Registered (<%= @commitments.count %>)</a></li>
+          </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <%= render partial: 'posts/post', collection: @commitments, as: :post %>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <%= render partial: 'posts/post', collection: @completed, as: :post %>
+          </div>
+        </div><!-- tab content -->
+      </div><!-- tabbable -->
+    <% end %>
+    <% if false %>
     <div class="clear-both">
       <h4>Recent Activity</h4>
       <% @activities.each do |activity| %>
@@ -45,9 +51,23 @@
         </div>
       <% end %>
     </div>
+    <% end %>
   </div>
 
-  <div class="span4">
+  <div class="span3 offset1">
+    <h3 class=""><%= @user.name %></h3>
+    <div class="big clear-both">
+      <strong>Organization:</strong> <%= @user.organization.name %>
+    </div>
+    <div class="big">
+      <strong>Interests</strong> 
+      <%= render partial: "shared/tags", locals: { tags: @tags }  %>
+    </div>
+    <% if @user != current_user %>
+      <div class="">
+        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Send Private Message</a>
+      </div>
+    <% end %>
     <%= render 'shared/recommended_posts' %>
   </div>
 </div>

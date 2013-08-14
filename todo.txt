@@ -4,15 +4,7 @@ Two user groups
 
 ==INBOX==
 
-  add mailchimp devise
-
-  progress bar say 0/6
-  validations on users, posts
-    fix form and 'publish' button to light up properly
-    if published = needs goal
-    validate user creates with organization
-
-  just filtering with no search term
+  fix form to identify change in textarea and then highlight publish button
 
   setup 'commitments' (projects your doing)
     DONE add price to register button
@@ -21,6 +13,18 @@ Two user groups
     DONE add balanced gem
     DONE add balanced.js
     get bank account data for moc creator
+
+  add relevance search sort
+  add mailchimp devise
+  add datepicker to form
+
+  progress bar say 0/6
+  validations on users, posts
+    fix form and 'publish' button to light up properly
+    if published = needs goal
+    validate user creates with organization
+
+  just filtering with no search term
 
     create commitment#new and get credit card data for moc user
 

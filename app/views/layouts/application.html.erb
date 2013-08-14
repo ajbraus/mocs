@@ -125,11 +125,6 @@
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
               <li>
-                <%= link_to user_path(current_user) do %>
-                  <i class="icon-user"></i> Profile
-                <% end %>
-              </li>
-              <li>
                 <%= link_to edit_user_registration_path do %>
                  <i class="icon-cog"></i> Settings
                 <% end %>
@@ -144,13 +139,27 @@
             </div>
             <ul class="pull-right inline-list further-down">
               <li>
+                <%= link_to root_path, class:"btn btn-warning hover" do %>
+                  <%= params[:action] == "index" && params[:controller] == "posts" ? raw("<i class='icon-caret-right'></i>") : '' %> 
+                  <i class="icon-search"></i> Discover Mocs
+                <% end %>
+              </li>
+              <li>
                 <%= link_to user_posts_path, class:"btn btn-gold hover" do %>
-                  <i class="icon-briefcase"></i> My Mocs
+                  <%= params[:action] == "posts" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
+                  <i class="icon-briefcase"></i> Manage Mocs
                 <% end %>
               </li>
               <li>
                 <%= link_to messages_path, class:"btn btn-success hover" do %>
+                  <%= params[:action] == "index" && params[:controller] == "messages" ? raw("<i class='icon-caret-right'></i>") : '' %>
                   <i class="icon-envelope-alt"></i> Inbox
+                <% end %>
+              </li>
+              <li>
+                <%= link_to user_path(current_user), class:"btn btn-primary hover" do %>
+                  <%= params[:action] == "show" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
+                  <i class="icon-user"></i> My Mocs
                 <% end %>
               </li>
             </ul>

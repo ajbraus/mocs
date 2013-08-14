@@ -4,7 +4,7 @@
       <p class="muted indent">Network/Organization</p>
       <div class="text-center">
       <%= form_tag root_path, :method => :get, class:"form-search", id:"searchForm" do %>
-      <ul class="text-left">
+      <ul class="text-left margin-left">
         <li>
           <label>
             <%= radio_button_tag "organization[]", 0, @organization == 0, class:"filter-el btn btn-primary active" %>
@@ -27,7 +27,7 @@
       <p class="muted indent">Goals</p>
       <ul class="filter-item">
       <% for goal in Goal.find(:all) %>
-        <div>
+        <div class="margin-left">
           <label>
             <%= check_box_tag "goal_ids[]", goal.id, goal.id.in?(@goals), class:'filter-el' %>
             <%= goal.name %>
@@ -39,7 +39,7 @@
     <div class="filter-set">
       <hr>
       <p class="muted indent">Price</p>
-      <ul>
+      <ul class="margin-left">
         <li>
           <label>
             <%= radio_button_tag "price_range[]", 0..10000000, @price_range.eql?(0..10000000), class:"filter-el" %>
@@ -96,25 +96,51 @@
       </div>
       <div class="span8 offset1">
         <ul class="nav nav-pills pull-right">
-          <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
-          <li class="pull-right"><a href="#B" data-toggle="tab">Highest Rated</a></li>
-          <li class="pull-right active"><a href="#A" data-toggle="tab">Popular Now</a></li>
+          <% if params[:search].present? %>
+            <li class="pull-right"><a href="#D" data-toggle="tab">Newest</a></li>
+            <li class="pull-right"><a href="#C" data-toggle="tab">Highest Rated</a></li>
+            <li class="pull-right"><a href="#B" data-toggle="tab">Popular Now</a></li>
+            <li class="pull-right active"><a href="#A" data-toggle="tab">Relevance</a></li>
+          <% else %>
+            <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
+            <li class="pull-right"><a href="#B" data-toggle="tab">Highest Rated</a></li>
+            <li class="pull-right active"><a href="#A" data-toggle="tab">Popular Now</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
       <div class="tab-content">
-        <div class="tab-pane" id="C">
-          <%= render partial: "posts/post", collection: @recently_added, as: :post %>
-          <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
-        </div>
-        <div class="tab-pane" id="B">
-          <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
-          <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
-        </div>
-        <div class="tab-pane active" id="A">
-          <%= render partial: "posts/post", collection: @popular_now, as: :post %>
-          <%= will_paginate @popular_now, renderer: BootstrapPagination::Rails %>
-        </div>
+        <% if params[:search].present? %>
+          <div class="tab-pane" id="D">
+            <%= render partial: "posts/post", collection: @recently_added, as: :post %>
+            <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="C">
+            <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
+            <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="B">
+            <%= render partial: "posts/post", collection: @popular_now, as: :post %>
+            <%= will_paginate @popular_now, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane active" id="A">
+            <%= render partial: "posts/post", collection: @relevance, as: :post %>
+            <%= will_paginate @relevance, renderer: BootstrapPagination::Rails %>
+          </div>
+        <% else %>
+          <div class="tab-pane" id="C">
+            <%= render partial: "posts/post", collection: @recently_added, as: :post %>
+            <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="B">
+            <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
+            <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane active" id="A">
+            <%= render partial: "posts/post", collection: @popular_now, as: :post %>
+            <%= will_paginate @popular_now, renderer: BootstrapPagination::Rails %>
+          </div>
+        <% end %>
       </div><!-- tab-content -->
     </div> <!-- /tabbable -->
   </div><!-- /span8 -->

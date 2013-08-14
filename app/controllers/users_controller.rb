@@ -5,11 +5,13 @@ class UsersController < ApplicationController
     @tags = Tag.first(5)
     @activities = PublicActivity::Activity.order("created_at desc").paginate(:page => params[:page], :per_page => 10) #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @trending_tags = Tag.first(10)
+    if @user == current_user
+      @commitments = @user.committed_tos.where('progress < 6')
+      @completed = @user.committed_tos.where("progress >= 6")
+    end
   end
   
   def posts
-    @commitments = current_user.committed_tos.where('progress < 6')
-    @completed = current_user.committed_tos.where("progress >= 6")
     @posts = current_user.posts.where(published: true)
     @unpublished_posts = current_user.posts.where(published: false)
     @expired_posts = current_user.posts.where("published = ? and ends_on > ?", true, Time.now  )

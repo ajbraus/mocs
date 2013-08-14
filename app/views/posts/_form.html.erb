@@ -14,57 +14,61 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :title, "Project Title*" %>
+        <label for="post_title">Project Title<span class="red">*</span></label>
         <%= f.text_field :title %>
       </div>
       <div>
-        <%= label_tag :goal_id, "Project Goal*" %>
-        <%= select_tag :goal_id, options_for_select(Goal.all.collect {|x| [x.name, x.id]}), prompt:"Select Goal" %>     
+        <label for="goal_id">Project Goal<span class="red">*</span></label>
+        <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, :selected => @post.goal.id, prompt:"Select Goal" %>     
       </div>
       <div class="field">
-        <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)" %> 
+        <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)*" %> 
         <%= f.text_field :tag_list %>
       </div>  
       <div class="field">
         <div class="times-input">
-          <%= f.label :expected_time, "Time to Complete" %>
+          <%= f.label :expected_time, "Time to Complete*" %>
           <%= f.number_field :expected_time, class:"price" %> hours
         </div>
         <div class="times-input">
-          <%= f.label :duration, "Duration" %>
+          <%= f.label :duration, "Duration*" %>
           <%= f.number_field :duration, class:"price" %> weeks
         </div>
       </div>
       <div class="field">
-        <%= f.label :desc, "Project Description" %>
+        <%= f.label :desc, "Project Description*" %>
         <%= f.text_area :desc, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :img_url, "Image URL" %>
-        <%= f.text_field :img_url %>
+        <%= f.text_field :img_url, class:"" %>
       </div>
       <div class="field">
         <%= f.label :video_url, "YouTube Video URL" %>
-        <%= f.text_field :video_url %>
+        <%= f.text_field :video_url, class:"" %>
       </div>
       <div class="field">
         <div class="times-input">
-          <%= f.label :credits, "MOC Credits" %>
+          <%= f.label :credits, "MOC Credits*" %>
           <%= f.number_field :credits, class:"price" %> 
         </div>
         <div class="times-input">
-          <%= f.label :price_in_dollars %>
+          <%= f.label :price_in_dollars, "Price*" %>
           <span class="bigger">$</span> <%= f.number_field :price_in_dollars, class:"price" %>
         </div>
       </div>
       <div class="field">
         <div class="times-input">
-          <%= f.label :begins_on, "Begins On", class:"input-medium" %>
-          <%= f.text_field :begins_on %>
+          <%= f.label :begins_on do %>
+          <i class="icon-calendar"></i> Begins On*
+          <% end %>
+          <%= f.text_field :begins_on, value: "", class:"datepicker" %>
         </div>
         <div class="times-input">
-          <%= f.label :ends_on, "Ends On", class:"input-medium" %>
-          <%= f.text_field :ends_on %>
+          <%= f.label :ends_on do %>
+          <i class="icon-calendar"></i> Ends On*
+          <% end %>
+          <%= f.text_field :ends_on, value: "", class:"datepicker" %>
         </div>
       </div>
     </div>
@@ -72,22 +76,25 @@
         <div class="well alert-success">
           <p><strong>Tips</strong></p>
           <p>
-            <strong>"*"</strong> denotes a required field. Only a <strong>title</strong> and a <strong>goal</strong> are required to save a project to publish later.
+            <strong>"<span class='red'>*</span>"</strong> means the <strong>title</strong> and a <strong>goal</strong> are required to save a project for later.
+          </p>
+          <p>
+            <strong>"*"</strong> means the field is required to publish.
           </p>
           <p>
             Choose a <strong>title</strong> that is brief and descriptive
           </p>
           <p>
-            In the "Topics" field, include a list of topic <strong>keywords and phrases</strong> that searchable and popular identifiers for the topics of your project.
+            "Topics" are a list of 2-7 <strong>keywords and phrases</strong> for  your moc.
           </p>
           <p>
-            To include a <strong>video</strong>, record a video and upload it to your YouTube channel, then paste the URL of the video into the "Video URL" field.
+            To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" field.
           </p> 
         </div>
         <div class="well alert-info">
           <p><strong>Description & Instructions</strong></p>
           <p>
-            There are a lot of ways to make a MOC. For simplicity we have broken the process into steps. 
+            There are a lot of ways to make a Moc. For simplicity we have broken the process into steps. 
           </p>
           <p>
             First, fill out the Description of your Moc. This description is what physicians will judge to decide if they want to register for your Moc.
@@ -101,7 +108,7 @@
               <li>Gather Post Test Data</li>
               <li>Wrap Up</li>
             </ol>
-             Your instructions will only be revealed to doctors who register for your MOC.
+             Your instructions will only be revealed to doctors who register for your Moc.
           </p>
         </div>
       </div>
@@ -110,33 +117,30 @@
     <div class="span12">
       <h4>Instructions</h4>
       <div class="field">
-        <%= f.label :info, "Step 1: Background Information" %>
+        <%= f.label :info, "Step 1: Background Information*" %>
         <%= f.text_area :info, class:"rich-text" %>
       </div>
       <div class="field">
-        <%= f.label :baseline, "Step 2: Collect Baseline Data" %>
+        <%= f.label :baseline, "Step 2: Collect Baseline Data*" %>
         <%= f.text_area :baseline, class:"rich-text" %>
       </div>
       <div class="field">
-        <%= f.label :plan_d, "Step 3: Plan, Do, Check, Act Cycles" %>
+        <%= f.label :plan_do, "Step 3: Plan, Do, Check, Act Cycles*" %>
         <%= f.text_area :plan_do, class:"rich-text" %>
       </div>
       <div class="field">
-        <%= f.label :post_test, "Step 4: Post Test Data Collection" %>
+        <%= f.label :post_test, "Step 4: Post Test Data Collection*" %>
         <%= f.text_area :post_test, class:"rich-text" %>
       </div>
       <div class="field">
         <%= f.label :wrap_up, "Step 5: Wrap Up" %>
         <%= f.text_area :wrap_up, class:"rich-text" %>
       </div>
-
-      <hr>
-
       <div class="actions clear-both">
-        <%= f.submit "Publish", class:'btn btn-inverse disabled btn-large', id: "publish"  %>
-        <%= f.submit "Save w/o Publishing", class:'btn btn-success btn-large disabled'  %>
+        <%= f.submit "Publish", id:"publish", class:'btn btn-primary disabled btn-large', id: "publish"  %>
+        <%= f.submit "Save w/o Publishing", id:"save", class:'btn btn-success btn-large disabled'  %>
         <% if params[:action] == "edit" %>
-          <%= f.submit "Delete", class:'btn btn-danger', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
+          <%= f.submit "Delete", class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% elsif params[:action] == "new" %>
           <%= link_to "Delete", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
         <% end %>

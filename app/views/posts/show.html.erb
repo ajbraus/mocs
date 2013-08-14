@@ -1,3 +1,8 @@
+<% if !@post.published? %>
+<div class="well alert-danger">
+  This Moc is not published - <%= link_to 'continue editing', edit_post_path(@post) %>
+</div>
+<% end %>
 <div class="tabbable pills-left"> <!-- Only required for left/right tabs -->
   <div class="span4">
     <% if user_signed_in? %>
@@ -101,6 +106,9 @@
         <ul>
           <li>
             <strong>Goal</strong>: <%= @post.goal.name %>
+          </li>
+          <li>
+            <strong>Time-Period</strong>: <%= @post.nice_begins_on %> - <%= @post.nice_ends_on %>
           </li>                  
           <li>
             <strong>Time Commitment</strong>: <%= @post.expected_time %> hours

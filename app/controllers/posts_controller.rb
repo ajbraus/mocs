@@ -12,10 +12,12 @@ class PostsController < ApplicationController
       @price_range = @price_range[0]..@price_range[1]
       @organization = params[:organization][0].to_i
       if @organization == 0
+        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, :page => params[:page], :per_page => 10)      
         @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'last_touched asc', :page => params[:page], :per_page => 10)      
         @highest_rated = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, :page => params[:page], :per_page => 10)
         @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'published_at desc', :page => params[:page], :per_page => 10)
       else
+        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, :page => params[:page], :per_page => 10)
         @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'last_touched asc', :page => params[:page], :per_page => 10)              
         @highest_rated = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, :page => params[:page], :per_page => 10)
         @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'published_at desc', :page => params[:page], :per_page => 10)

@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def index
     @messages = current_user.messages.paginate(:page => params[:page], :per_page => 15)
     @sent_messages = current_user.sent_messages.paginate(:page => params[:page], :per_page => 15)
-
+    @recommended_mocs = Post.where(published: true).first(3)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @messages }
