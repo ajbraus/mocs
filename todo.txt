@@ -14,9 +14,9 @@ Two user groups
     DONE add balanced.js
     get bank account data for moc creator
 
-  add relevance search sort
+  
   add mailchimp devise
-  add datepicker to form
+  
 
   progress bar say 0/6
   validations on users, posts
@@ -319,3 +319,6 @@ DONE Setup manual confirmation
     DONE create form elements
     DONE add confirmable & confirable fields to users
     DONE setup godaddy email in production
+
+DONE  add relevance search sort
+DONE add datepicker to form

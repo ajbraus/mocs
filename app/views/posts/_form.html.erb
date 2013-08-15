@@ -19,7 +19,11 @@
       </div>
       <div>
         <label for="goal_id">Project Goal<span class="red">*</span></label>
-        <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, :selected => @post.goal.id, prompt:"Select Goal" %>     
+        <% if @post.goal.present? %>
+          <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, :selected => @post.goal.id, prompt:"Select Goal" %>     
+        <% else %>
+          <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, prompt:"Select Goal" %>     
+        <% end %>
       </div>
       <div class="field">
         <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)*" %> 
