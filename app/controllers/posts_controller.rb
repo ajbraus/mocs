@@ -89,7 +89,6 @@ class PostsController < ApplicationController
     @post.state = @user.state
     @post.organization = @user.organization
     @post.last_touched = Time.now
-    @post.goal = Goal.find(params[:goal_id])
 
     if params[:commit] == "Publish"
       @post.published = true

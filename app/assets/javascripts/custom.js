@@ -34,7 +34,7 @@ $(document).ready(function() {
   });
 
 
-  if ($('#post_title').val().length > 0 && 
+  if ($('#post_title').val() > 0 && 
       $("#post_goal_id option:selected").val().length > 0) 
   {
     $("#save").removeClass("disabled");
@@ -62,12 +62,12 @@ $(document).ready(function() {
 
   $("form").keyup(function(){
     if ($('#post_title').val().length > 0 && 
-        $("#goal_id option:selected").val().length > 0) 
+        $("#post_goal_id option:selected").val().length > 0) 
     {
       $("#save").removeClass("disabled");
     }
     if ($('#post_title').length > 0 && 
-        $("#goal_id option:selected").val().length > 0 &&
+        $("#post_goal_id option:selected").val().length > 0 &&
         $("#post_tag_list").val().length > 0 &&
         $("#post_expected_time").val().length > 0 &&
         $("#post_duration").val().length > 0 &&
