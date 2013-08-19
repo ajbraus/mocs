@@ -1,15 +1,13 @@
 <li class="media">
   <div class="pull-left">
-    <% if user_signed_in? %>
-      <%= link_to vote_up_comment_path(c) do %>
-        <p><i class="icon-chevron-up <%= current_user.voted_for?(c) ? 'voted' : 'not-voted' %>"></i></p>
-      <% end %>
-      <div class="vote-count">
-        <%= c.plusminus %>
-      </div>
-      <%= link_to vote_down_comment_path(c) do %>
-        <i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i>
-      <% end %>
+    <%= link_to vote_up_comment_path(c) do %>
+      <p><i class="icon-chevron-up <%= current_user.voted_for?(c) ? 'voted' : 'not-voted' %>"></i></p>
+    <% end %>
+    <div class="vote-count">
+      <%= c.plusminus %>
+    </div>
+    <%= link_to vote_down_comment_path(c) do %>
+      <i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i>
     <% end %>
   </div>        
   <% if false %>

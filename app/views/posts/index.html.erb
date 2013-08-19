@@ -97,13 +97,11 @@
       <div class="span8 offset1">
         <ul class="nav nav-pills pull-right">
           <% if params[:search].present? %>
-            <li class="pull-right"><a href="#D" data-toggle="tab">Newest</a></li>
-            <li class="pull-right"><a href="#C" data-toggle="tab">Highest Rated</a></li>
+            <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
             <li class="pull-right"><a href="#B" data-toggle="tab">Popular Now</a></li>
             <li class="pull-right active"><a href="#A" data-toggle="tab">Relevance</a></li>
           <% else %>
-            <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
-            <li class="pull-right"><a href="#B" data-toggle="tab">Highest Rated</a></li>
+            <li class="pull-right"><a href="#B" data-toggle="tab">Newest</a></li>
             <li class="pull-right active"><a href="#A" data-toggle="tab">Popular Now</a></li>
           <% end %>
         </ul>
@@ -111,13 +109,9 @@
     </div>
       <div class="tab-content">
         <% if params[:search].present? %>
-          <div class="tab-pane" id="D">
+          <div class="tab-pane" id="C">
             <%= render partial: "posts/post", collection: @recently_added, as: :post %>
             <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
-          </div>
-          <div class="tab-pane" id="C">
-            <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
-            <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
           </div>
           <div class="tab-pane" id="B">
             <%= render partial: "posts/post", collection: @popular_now, as: :post %>
@@ -128,13 +122,9 @@
             <%= will_paginate @relevance, renderer: BootstrapPagination::Rails %>
           </div>
         <% else %>
-          <div class="tab-pane" id="C">
+          <div class="tab-pane" id="B">
             <%= render partial: "posts/post", collection: @recently_added, as: :post %>
             <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
-          </div>
-          <div class="tab-pane" id="B">
-            <%= render partial: "posts/post", collection: @highest_rated, as: :post %>
-            <%= will_paginate @highest_rated, renderer: BootstrapPagination::Rails %>
           </div>
           <div class="tab-pane active" id="A">
             <%= render partial: "posts/post", collection: @popular_now, as: :post %>

@@ -146,17 +146,8 @@ $(document).ready(function() {
   $('.hover-edit').hover(function(){
     $(this).find('.edit').fadeToggle('fast');
   })
-  // $('.label').click(function(){
-  //  $(this).appendTo('#searchTags');
-  // });
 
-  // $('#clearBtn').click(function(){
-  //   $('#searchTags').children().prependTo('#topicMenu');
-  // });
 
-  // var index;
-
-  // for (index = 0; index < a.length; ++index) {
-  //   $('#topicMenu').append("<span class='label label-warning'>" + index + "</span>")
-  // }
+  // VALIDATIONS
+  $('#new_registration').validate();
 });

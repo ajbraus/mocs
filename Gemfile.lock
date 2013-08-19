@@ -173,6 +173,7 @@ GEM
     newrelic_rpm (3.6.6.147)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
+    parsley-rails (1.1.17.0)
     pg (0.14.0)
     polyglot (0.3.3)
     populator (1.0.0)
@@ -325,6 +326,7 @@ DEPENDENCIES
   less-rails
   mysql2 (= 0.3.12b5)
   newrelic_rpm
+  parsley-rails
   pg
   populator
   pry

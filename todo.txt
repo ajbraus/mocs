@@ -1,8 +1,45 @@
-Two user groups
-  doctors - search/sort, sign up
-  project leaders - promote, track/manage
+errors
 
-==INBOX==
+hint
+  - includling outpaient and pediatrics
+
+
+start with your speciality:
+  speciality
+    What you were "Boarded in" and what your subspeciality is
+    Family Medicine
+      Internal Medicine
+      Ob/gyn
+      Pediatrics
+  inpatient/outpatient
+
+Reroute to MOC website to register to for MOC
+
+Message creator button inside the Moc
+
+"Project Center" or "Moc Maker Dashboard"
+
+Qualifies for MOC Credits between these dates
+
+
+   price "I want to pay less than X"
+
+   "Patient Outcomes"
+
+  filter by Duration (because they want to spend)
+
+  Time = totaly Time Commitment or per week
+
+  sort by 
+    relevance
+    total time commitment
+    remove highest rated
+
+  show recently viewed projects in sidebar
+
+  remove wiggle in the summary of moc
+
+  put time, duration, # takers into own column - best with progress bars
 
   fix form to identify change in textarea and then highlight publish button
 
@@ -13,6 +50,25 @@ Two user groups
     DONE add balanced gem
     DONE add balanced.js
     get bank account data for moc creator
+
+
+  Close date instead of "Time Period"
+
+  When done with MOC => 
+    Submit documentation to American Board of Medical Specialities
+      Doctor Name,
+      Witness's Name,
+      Start Date,
+      End Date,
+      Project Leader
+
+      HOW DO WE SUBMIT DATA
+
+  
+  Who near by you and in your organization are doing this project?
+
+  Can we use the social interactions to create support and prevent bad behavior?
+    Connect with people who are doing the moc
 
   
   add mailchimp devise
@@ -98,6 +154,12 @@ Two user groups
     Moved my rake code to the appropriate models
     Added controller/routing code for calling models methods from the browser
     Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
+
+------------------------------
+
+Admin can recommend Mocs
+Mocs can get recommendations from organizations
+
 
 ==ADAM'S LIST==
 
