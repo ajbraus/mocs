@@ -19,6 +19,8 @@ class UsersController < ApplicationController
       @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 10)
       @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
       @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+      @published_posts = Post.where(published: true).paginate(:page => params[:page], :per_page => 10)
+      @unpublished_posts = Post.where(published: false).paginate(:page => params[:page], :per_page => 10)
     else 
       redirect_to root_path, notice: "Oops, here you go!"
     end

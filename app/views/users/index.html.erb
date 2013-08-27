@@ -91,4 +91,22 @@
       </div>
     </div>
   </div>
-</div></div>
+<h2>All Mocs</h2>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#posts1" data-toggle="tab">Published Projects(<%= @published_posts.count %>)</a></li>
+      <li><a href="#posts2" data-toggle="tab">Unpublished Projects(<%= @unpublished_posts.count %>)</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="posts1">
+        <%= render partial: "posts/post", collection: @published_posts, as: :post %>      
+        <%= will_paginate @published_posts, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div class="tab-pane" id="posts2">
+        <%= render partial: "posts/post", collection: @unpublished_posts, as: :post %>
+        <%= will_paginate @unpublished_posts, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
