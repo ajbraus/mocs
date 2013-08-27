@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812144146) do
+ActiveRecord::Schema.define(:version => 20130826151824) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -158,23 +158,30 @@ ActiveRecord::Schema.define(:version => 20130812144146) do
     t.text     "wrap_up"
     t.integer  "organization_id"
     t.integer  "goal_id"
+    t.string   "registration_url"
   end
 
-  create_table "posts_tags", :id => false, :force => true do |t|
+  create_table "posts_specialities", :id => false, :force => true do |t|
     t.integer "post_id"
-    t.integer "tag_id"
+    t.integer "speciality_id"
   end
 
-  add_index "posts_tags", ["post_id", "tag_id"], :name => "index_posts_tags_on_post_id_and_tag_id"
-  add_index "posts_tags", ["tag_id", "post_id"], :name => "index_posts_tags_on_tag_id_and_post_id"
+  add_index "posts_specialities", ["post_id", "speciality_id"], :name => "index_posts_specialities_on_post_id_and_speciality_id"
+  add_index "posts_specialities", ["speciality_id", "post_id"], :name => "index_posts_specialities_on_speciality_id_and_post_id"
 
-  create_table "tags", :force => true do |t|
+  create_table "specialities", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "tags", ["name"], :name => "index_tags_on_name"
+  create_table "specialities_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "speciality_id"
+  end
+
+  add_index "specialities_users", ["speciality_id", "user_id"], :name => "index_specialities_users_on_speciality_id_and_user_id"
+  add_index "specialities_users", ["user_id", "speciality_id"], :name => "index_specialities_users_on_user_id_and_speciality_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -199,6 +206,11 @@ ActiveRecord::Schema.define(:version => 20130812144146) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "credit_hours",           :default => 1
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -1,17 +1,5 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Common
-  is_impressionable :counter_cache => true #@post.impressions_count
-  #tracked owner: ->(controller, model) { controller && controller.current_user }
-  belongs_to :user
-  belongs_to :goal
-  belongs_to :organization
-  
-  has_many :commitments, foreign_key: :commitment_id, dependent: :destroy
-  has_many :committed_users, through: :commitments, source: :committed_user
-  
-  has_and_belongs_to_many :tags
-
-  has_many :comments, as: :commentable
 
   attr_accessible :desc, 
                   :price_in_dollars,
@@ -27,13 +15,27 @@ class Post < ActiveRecord::Base
                   :title, 
                   :video_url, 
                   :img_url, 
-                  :tag_list,
                   :goal_id,
                   :info, 
                   :baseline, 
                   :plan_do, 
                   :post_test, 
-                  :wrap_up
+                  :wrap_up,
+                  :speciality_ids
+
+  is_impressionable :counter_cache => true #@post.impressions_count
+  #tracked owner: ->(controller, model) { controller && controller.current_user }
+  belongs_to :user
+  belongs_to :goal
+  belongs_to :organization
+  
+  has_many :commitments, foreign_key: :commitment_id, dependent: :destroy
+  has_many :committed_users, through: :commitments, source: :committed_user
+  
+  has_and_belongs_to_many :specialities
+
+  has_many :comments, as: :commentable
+
 
   validates :title, presence: true
 
@@ -81,24 +83,24 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).posts
-  end
+  # def self.tagged_with(name)
+  #   Tag.find_by_name!(name).posts
+  # end
 
-  def self.tag_counts
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id")
-  end
+  # def self.tag_counts
+  #   Tag.select("tags.*, count(taggings.tag_id) as count").
+  #     joins(:taggings).group("taggings.tag_id")
+  # end
 
-  def tag_list
-    tags.map(&:name).join(", ")
-  end
+  # def tag_list
+  #   tags.map(&:name).join(", ")
+  # end
 
-  def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
-    end
-  end
+  # def tag_list=(names)
+  #   self.tags = names.split(",").map do |n|
+  #     Tag.where(name: n.strip).first_or_create!
+  #   end
+  # end
 
   def is_committed_to_by?(user)
     return self.committed_user.find_by_committed_user_id(user.id).present?

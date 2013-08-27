@@ -112,58 +112,68 @@
             </div>
             </div>
           <% else %>
-          <% if current_user.admin? %>
-            <li class="down"><%= link_to 'Admin', users_path %></li>
-          <% end %>
-          </ul>
-          <!-- DROPDOWN -->
-          <div class="dropdown push-down-a-bit pull-right">
-            <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link">
-              <div class=""> 
-                <%= current_user.name %> <b class="caret"></b>
-              </div>
+            </ul>
+            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li>
-                <%= link_to edit_user_registration_path do %>
-                 <i class="icon-cog"></i> Settings
-                <% end %>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to destroy_user_session_path, method: "delete" do %>
-                  <i class="icon-off"></i> Logout
-                <% end %>
-              </li>
-            </ul>
-            </div>
-            <ul class="pull-right inline-list further-down">
-              <li>
-                <%= link_to root_path, class:"btn btn-warning hover" do %>
-                  <%= params[:action] == "index" && params[:controller] == "posts" ? raw("<i class='icon-caret-right'></i>") : '' %> 
-                  <i class="icon-search"></i> Discover Mocs
-                <% end %>
-              </li>
-              <li>
-                <%= link_to user_posts_path, class:"btn btn-gold hover" do %>
-                  <%= params[:action] == "posts" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
-                  <i class="icon-briefcase"></i> Moc Maker
-                <% end %>
-              </li>
-              <li>
-                <%= link_to messages_path, class:"btn btn-success hover" do %>
-                  <%= params[:action] == "index" && params[:controller] == "messages" ? raw("<i class='icon-caret-right'></i>") : '' %>
-                  <i class="icon-envelope-alt"></i> Inbox
-                <% end %>
-              </li>
-              <li>
-                <%= link_to user_path(current_user), class:"btn btn-primary hover" do %>
-                  <%= params[:action] == "show" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
-                  <i class="icon-user"></i> My Mocs
-                <% end %>
-              </li>
-            </ul>
-          <% end %>   
+            <div class="nav-collapse inline-list navbar-responsive-collapse collapse" style="height: 0px;">
+              <ul class="nav inline-list pull-right">
+                <li>
+                  <%= link_to root_path, class:"btn-warning hover" do %>
+                    <%= params[:action] == "index" && params[:controller] == "posts" ? raw("<i class='icon-caret-right'></i>") : '' %> 
+                    <i class="icon-search"></i> Discover
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to user_posts_path, class:"btn-gold hover" do %>
+                    <%= params[:action] == "posts" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
+                    <i class="icon-briefcase"></i> Project Workbench
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to messages_path, class:"btn-success hover" do %>
+                    <%= params[:action] == "index" && params[:controller] == "messages" ? raw("<i class='icon-caret-right'></i>") : '' %>
+                    <i class="icon-envelope-alt"></i> Messages
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to user_path(current_user), class:"btn-primary hover" do %>
+                    <%= params[:action] == "show" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
+                    <i class="icon-user"></i> Profile
+                  <% end %>
+                </li>
+                <!-- DROPDOWN -->
+                <li class="divider-vertical"></li>
+                <li class="dropdown">
+                  <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link">
+                    <%= current_user.name %> <b class="caret"></b> <%= profile_picture(current_user) %> 
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%= link_to edit_user_registration_path do %>
+                       <i class="icon-cog"></i> Settings
+                      <% end %>
+                    </li>
+                    <% if current_user.admin? %>
+                      <li>
+                        <%= link_to users_path do %>
+                          <i class="icon-beaker"></i> Admin
+                        <% end %>
+                      </li>
+                    <% end %>
+                    <li class="divider"></li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: "delete" do %>
+                        <i class="icon-off"></i> Logout
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <% end %>   
+           </div>
          </div>
        </div>
       <% unless user_signed_in? || params[:action] == 'new' || params[:action] == 'show' || params[:action] == "about" || params[:action] == "how" || params[:action] == 'edit' %>
@@ -211,7 +221,7 @@
     <%= javascript_include_tag "application" %>
     <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
-    <% if params[:controller] == 'posts' && params[:action] == 'index' && params[:search] %>
+    <% if params[:controller] == 'posts' && params[:action] == 'index' %>
       <script>
         $(document).ready(function() {
           $('.filter-el').change(function() {

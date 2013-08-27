@@ -1,4 +1,4 @@
-<div class="media">
+<div class="row">
   <div class="span2">
     <%= link_to post_path(post) do %>
       <%= image_tag post.img_url, class:"moc-pic" if post.img_url.present? %>
@@ -6,7 +6,13 @@
     <% "<span class='label label-info'>New</label>" if post.new? %>
     <p>
       <ul style='margin:0'>
-        <li><em><%= link_to "#{post.user.name}", user_path(post.user), class:"muted" %></em></li>
+        <li><em>
+          <% if post.user.deleted? %>
+            <%= post.user.name %>
+          <% else %>
+            <%= link_to "#{post.user.name}", user_path(post.user), class:"muted" %>
+          <% end %>
+        </em></li>
         <li><%= post.user.organization.name %></li>
         <li><em><%= post.goal.name %></em> </li>
         <li>
@@ -19,7 +25,7 @@
       </ul>
     </p>
   </div>
-  <div class="media-body">
+  <div class="span5">
     <h4 class="media-heading">
       <%= link_to post_path(post), class:"no-hover" do %>
         <%= post.title %>
@@ -30,15 +36,17 @@
       <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
     </div>
     <div class="text-left">
-      <%= render partial: "shared/tags", locals: { tags: post.tags }  %>
+      <%= render partial: "shared/specialities", locals: { specialities: post.specialities }  %>
     </div>
-    <p>
-      <ul class="inline-list">
-        <li><strong>Time: </strong> <em><%= post.expected_time %> hrs</em> </li>
-        <li><strong>Duration:</strong> <em><%= post.duration %> wks</em> </li>
-        <li><strong>Takers:</strong> <em><%= post.commitments.count %></em> </li>
-        <li><strong>Credits:</strong> <em><%= post.credits %></em> </li>
-      </ul>
-    </p>
+  </div>
+  <div class="span2">
+    <ul>
+      <li><em><%= post.impressions_count %> <i class="icon-eye-open"></i> Views</em></li>
+      <li><em><%= post.commitments.count %> <i class="icon-user-md"></i> MDs Joined</em></li>
+      <li><em><%= post.expected_time %> <i class="icon-time"></i> Hours</em></li>
+      <li><em><%= post.duration %> <i class="icon-calendar"></i> Weeks</em></li>
+      <li><em><%= post.credits %> <i class="icon-certificate"></i> Moc Credits</em></li>
+      <li><em>$<%= post.price_in_dollars %> <i class="icon-money"></i> Price</em></li>
+    </ul>
   </div>
 </div>

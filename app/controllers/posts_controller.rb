@@ -6,34 +6,66 @@ class PostsController < ApplicationController
     if params[:oofta] == 'true'
       flash.now[:warning] = "We're sorry, an error occured"
     end
-    if @search_present = params[:search].present?
+
+    if params[:goal_ids]
       @goals = params[:goal_ids].map(&:to_i)
+    else
+      @goals = Goal.pluck(:id)
+    end
+
+    if params[:price_range]
       @price_range = params[:price_range][0].split('..').map{|d| Integer(d)}
       @price_range = @price_range[0]..@price_range[1]
-      @organization = params[:organization][0].to_i
-      if @organization == 0
-        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, :page => params[:page], :per_page => 7)      
-        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'last_touched asc', :page => params[:page], :per_page => 7)      
-        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range }, order: 'published_at desc', :page => params[:page], :per_page => 7)
-      else
-        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, :page => params[:page], :per_page => 7)
-        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'last_touched asc', :page => params[:page], :per_page => 7)              
-        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization }, order: 'published_at desc', :page => params[:page], :per_page => 7)
-      end
     else
-      @recently_added = Post.where(published: true).order('published_at desc').paginate(:page => params[:page], :per_page => 7)
-      @popular_now = Post.where(published: true).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
-      # @posts_by_participants = Post.sort_by { |m| m.commitments.count }
-      # @posts_by_organization = Post.includes(:user).where("user.organizations CONTAINS ?, published = ?", current_user.organization, true).paginate(:page => params[:page], :per_page => 10)
-    end
-    @trending_mocs = Post.where(published: true).first(3)
-    @trending_tags = Tag.first(20)
-
-    if !@search_present
-      @goals = Goal.pluck(:id)
       @price_range = 0..10000000
+    end
+
+    if params[:speciality_ids]
+      @specialities = params[:speciality_ids].map(&:to_i)
+    elsif user_signed_in?
+      @specialities = current_user.specialities.pluck(:id)
+    end
+
+    if params[:organization]
+      @organization = params[:organization][0].to_i
+    else
       @organization = 0
     end
+
+    if params[:search].present?
+      if @organization == 0
+        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, :page => params[:page], :per_page => 7)      
+        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, order: 'last_touched asc', :page => params[:page], :per_page => 7)      
+        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, order: 'published_at desc', :page => params[:page], :per_page => 7)
+        @time_commitment = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, order: 'expected_time asc', :page => params[:page], :per_page => 7)
+        @weeks_long = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, order: 'duration asc', :page => params[:page], :per_page => 7)
+        @moc_credits = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, speciality_ids: @specialities }, order: 'credits asc', :page => params[:page], :per_page => 7)
+      else
+        @relevance = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, :page => params[:page], :per_page => 7)
+        @popular_now = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, order: 'last_touched asc', :page => params[:page], :per_page => 7)              
+        @recently_added = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, order: 'published_at desc', :page => params[:page], :per_page => 7)
+        @time_commitment = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, order: 'expected_time asc', :page => params[:page], :per_page => 7)
+        @weeks_long = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, order: 'duration asc', :page => params[:page], :per_page => 7)
+        @moc_credits = Post.search(params[:search], with: { published: true, goal_id: @goals, price: @price_range, org_id: @organization, speciality_ids: @specialities }, order: 'credits asc', :page => params[:page], :per_page => 7)
+      end
+    else
+      if @organization == 0
+        @recently_added = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order('published_at desc').paginate(:page => params[:page], :per_page => 7)
+        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
+        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
+        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "duration asc").paginate(:page => params[:page], :per_page => 7)
+        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "credits asc").paginate(:page => params[:page], :per_page => 7)
+      else
+        @recently_added = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order('published_at desc').paginate(:page => params[:page], :per_page => 7)
+        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
+        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
+        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "duration asc").paginate(:page => params[:page], :per_page => 7)
+        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "credits asc").paginate(:page => params[:page], :per_page => 7)        
+      end
+    end
+
+    @trending_mocs = Post.where(published: true).order( "last_touched asc" ).first(3)
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }

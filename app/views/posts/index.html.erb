@@ -1,7 +1,11 @@
 <div class="row">
   <div class="span3">
+<!--     <div class="well alert-info">
+      <span class="big"><i class="icon-user-md"></i> Tip</span></br>
+      Here you can search, filter, and sort Mocs
+    </div> -->
     <div class="filter-set">
-      <p class="muted indent">Network/Organization</p>
+      <p class="muted indent">Organization</p>
       <div class="text-center">
       <%= form_tag root_path, :method => :get, class:"form-search", id:"searchForm" do %>
       <ul class="text-left margin-left">
@@ -48,20 +52,20 @@
         </li>
         <li>
           <label>
-            <%= radio_button_tag "price_range[]", 15000..10000000, @price_range.eql?(15000..10000000), class:"filter-el" %>
-            $150+
+            <%= radio_button_tag "price_range[]", 0..15000, @price_range.eql?(0..15000), class:"filter-el" %>
+            <$150
           </label>
         </li>
         <li>
           <label>
-            <%= radio_button_tag "price_range[]", 5000..14999, @price_range.eql?(5000..14999), class:"filter-el" %>
-            $50-149
+            <%= radio_button_tag "price_range[]", 0..10000, @price_range.eql?(0..10000), class:"filter-el" %>
+            <$100
           </label>
         </li>
         <li>
           <label>
-            <%= radio_button_tag "price_range[]", 100..4999, @price_range.eql?(100..4999), class:"filter-el" %>
-            $1-49
+            <%= radio_button_tag "price_range[]", 0..5000, @price_range.eql?(0..5000), class:"filter-el" %>
+            <$50
           </label>
         </li>
         <li>
@@ -70,6 +74,22 @@
             Free
           </label>
         </li>
+      </ul>
+    </div>
+    <div class="filter-set">
+      <hr>
+      <p class="muted indent">Specialities</p>
+      <ul class="filter-item">
+        <% if user_signed_in? %>
+        <% for speciality in Speciality.find(:all) %>
+          <div class="margin-left">
+            <label>
+              <%= check_box_tag "speciality_ids[]", speciality.id, speciality.id.in?(@specialities), class:'filter-el' %>
+              <%= speciality.name %>
+            </label>
+          </div>
+        <% end %> 
+      <% end %>
       </ul>
     </div>
     <div class="">
@@ -87,7 +107,7 @@
     <div class="tabbable">
       <div class="span8">
           <div class="input-append">
-            <%= text_field_tag :search, params[:search], class:"span8", placeholder:"Search..." %>
+            <%= text_field_tag :search, params[:search], class:"span8", placeholder:"Search Quality Improvement Projects..." %>
             <button type="submit" class="btn btn-primary btn-search">
               <i class="icon-search"></i>
             </button>
@@ -97,21 +117,39 @@
       <div class="span8 offset1">
         <ul class="nav nav-pills pull-right">
           <% if params[:search].present? %>
-            <li class="pull-right"><a href="#C" data-toggle="tab">Newest</a></li>
-            <li class="pull-right"><a href="#B" data-toggle="tab">Popular Now</a></li>
+            <li class="pull-right"><a href="#F" data-toggle="tab">Recent</a></li>
+            <li class="pull-right"><a href="#E" data-toggle="tab"># Credits</a></li>
+            <li class="pull-right"><a href="#D" data-toggle="tab"># Weeks</a></li>
+            <li class="pull-right"><a href="#C" data-toggle="tab"># Hours</a></li>
+            <li class="pull-right"><a href="#B" data-toggle="tab">Popular</a></li>
             <li class="pull-right active"><a href="#A" data-toggle="tab">Relevance</a></li>
           <% else %>
-            <li class="pull-right"><a href="#B" data-toggle="tab">Newest</a></li>
-            <li class="pull-right active"><a href="#A" data-toggle="tab">Popular Now</a></li>
+            <li class="pull-right"><a href="#E" data-toggle="tab">Recent</a></li>
+            <li class="pull-right"><a href="#D" data-toggle="tab"># Credits</a></li>
+            <li class="pull-right"><a href="#C" data-toggle="tab"># Weeks</a></li>
+            <li class="pull-right"><a href="#B" data-toggle="tab"># Hours</a></li>
+            <li class="pull-right active"><a href="#A" data-toggle="tab">Popular</a></li>
           <% end %>
         </ul>
       </div>
     </div>
       <div class="tab-content">
         <% if params[:search].present? %>
-          <div class="tab-pane" id="C">
+          <div class="tab-pane" id="F">
             <%= render partial: "posts/post", collection: @recently_added, as: :post %>
             <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="E">
+            <%= render partial: "posts/post", collection: @moc_credits, as: :post %>
+            <%= will_paginate @moc_credits, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="D">
+            <%= render partial: "posts/post", collection: @weeks_long, as: :post %>
+            <%= will_paginate @weeks_long, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="C">
+            <%= render partial: "posts/post", collection: @time_commitment, as: :post %>
+            <%= will_paginate @time_commitment, renderer: BootstrapPagination::Rails %>
           </div>
           <div class="tab-pane" id="B">
             <%= render partial: "posts/post", collection: @popular_now, as: :post %>
@@ -122,9 +160,21 @@
             <%= will_paginate @relevance, renderer: BootstrapPagination::Rails %>
           </div>
         <% else %>
-          <div class="tab-pane" id="B">
+          <div class="tab-pane" id="E">
             <%= render partial: "posts/post", collection: @recently_added, as: :post %>
             <%= will_paginate @recently_added, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="D">
+            <%= render partial: "posts/post", collection: @moc_credits, as: :post %>
+            <%= will_paginate @moc_credits, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="C">
+            <%= render partial: "posts/post", collection: @weeks_long, as: :post %>
+            <%= will_paginate @weeks_long, renderer: BootstrapPagination::Rails %>
+          </div>
+          <div class="tab-pane" id="B">
+            <%= render partial: "posts/post", collection: @time_commitment, as: :post %>
+            <%= will_paginate @time_commitment, renderer: BootstrapPagination::Rails %>
           </div>
           <div class="tab-pane active" id="A">
             <%= render partial: "posts/post", collection: @popular_now, as: :post %>

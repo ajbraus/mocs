@@ -17,8 +17,16 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords @user
-      respond_with @user
+      redirect_to root_path, notice: "An account already exists with that email. Try logging in."
     end
+  end
+
+  def destroy
+    resource.deleted = true
+    resource.save
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message :notice, :destroyed if is_navigational_format?
+    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
   protected

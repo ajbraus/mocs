@@ -26,9 +26,18 @@
         <% end %>
       </div>
       <div class="field">
-        <%= f.label :tag_list, "Topics (Key words or phrases separated by commas)*" %> 
-        <%= f.text_field :tag_list %>
-      </div>  
+        <%= f.label :speciality_ids, "Specialities* (choose at least one)" %>
+        <ul>
+          <% for speciality in Speciality.find(:all) %>
+            <li class="pull-left breathing-room">
+              <label>
+                <%= check_box_tag "post[speciality_ids][]", speciality.id, @post.specialities.include?(speciality) %>
+                <%= speciality.name %>
+              </label>
+            </li>
+          <% end %>  
+        <ul>
+      </div> 
       <div class="field">
         <div class="times-input">
           <%= f.label :expected_time, "Time to Complete*" %>
@@ -77,25 +86,7 @@
       </div>
     </div>
       <div class="span5">
-        <div class="well alert-success">
-          <p><strong>Tips</strong></p>
-          <p>
-            <strong>"<span class='red'>*</span>"</strong> means the <strong>title</strong> and a <strong>goal</strong> are required to save a project for later.
-          </p>
-          <p>
-            <strong>"*"</strong> means the field is required to publish.
-          </p>
-          <p>
-            Choose a <strong>title</strong> that is brief and descriptive
-          </p>
-          <p>
-            "Topics" are a list of 2-7 <strong>keywords and phrases</strong> for  your moc.
-          </p>
-          <p>
-            To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" field.
-          </p> 
-        </div>
-        <div class="well alert-info">
+        <div class="well">
           <p><strong>Description & Instructions</strong></p>
           <p>
             There are a lot of ways to make a Moc. For simplicity we have broken the process into steps. 
@@ -114,6 +105,24 @@
             </ol>
              Your instructions will only be revealed to doctors who register for your Moc.
           </p>
+        </div>
+        <div class="well alert-info">
+          <span class="big"><i class="icon-user-md"></i> Tip</span></br>
+          <p>
+            <strong>"<span class='red'>*</span>"</strong> means the <strong>title</strong> and a <strong>goal</strong> are required to save a project for later.
+          </p>
+          <p>
+            <strong>"*"</strong> means the field is required to publish.
+          </p>
+          <p>
+            Choose a <strong>title</strong> that is brief and descriptive
+          </p>
+          <p>
+            "Topics" are a list of 2-7 <strong>keywords and phrases</strong> for  your moc.
+          </p>
+          <p>
+            To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" field.
+          </p> 
         </div>
       </div>
     </div>

@@ -4,12 +4,15 @@ The golden rod tones that are recommended are
  #CA9758 (dark)
  #E5B984 (light)*/
 
+a {
+  text-decoration: none !important;
+}
+
 hr {
 	clear:both;
 }
 
 body {
-	font-family: gurmukhi, "lucida grande", arial;
 }
 
 ul {
@@ -39,6 +42,7 @@ padding-top: 70px;
 .navbar .nav > li > a {
   color:white;
   font-family: 'Lato', sans-serif;
+  text-shadow:none;
 }
 
 .down {
@@ -78,7 +82,7 @@ padding-top: 70px;
 }
 
 .row {
-
+  margin-bottom: 15px;
 }
 .media-object {
 	border-radius: 4px;
@@ -96,7 +100,7 @@ padding-top: 70px;
 width: 100%;
 z-index: 100;
 margin-bottom: 0;
-padding: 12px 0px;
+padding: 10px 0px;
 /*background: #E5F1ED;*/
 background: rgb(192, 219, 205);
 margin: 0 0px 17px 0px;
@@ -644,7 +648,7 @@ ul.inline-list {
 }
 
 .filter-set {
-  margin-top:15px;
+  margin-top:0px;
 }
 
 .indent {
@@ -685,4 +689,64 @@ input.error {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.hint {
+  margin-bottom:0;
+  font-size: 18px;
+  padding: 6px 10px 6px 10px;
+  font-family: 'Montserrat', sans-serif;
+  i {
+    font-size: 25px;
+  }
+}
+
+.breathing-room {
+  margin:0 10px;
+}
+
+.large-thumbnail {
+  width:100px;
+  height:100px;
+}
+
+.medium-thumbnail {
+  width:40px;
+  height:40px;
+}
+
+.small-thumbnail {
+  width:30px;
+  height:30px;
+}
+
+.votes {
+  position: relative;
+  top: 10px;
+  font-size: 16px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.not-voted {
+  color:lightgrey;
+}
+
+.not-voted:hover {
+  color:gold;
+  cursor:pointer;
+}
+
+.voted {
+  color:gold;
+}
+
+.caret {
+  position: relative;
+  top: 5px;
+}
+
+.dropdown-toggle {
+  padding: 0 !important;
 }

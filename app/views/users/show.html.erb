@@ -24,45 +24,51 @@
     <% end %>
   </div>
 
-  <div class="span8">
+  <div class="span9">
     <% if current_user == @user %>
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-          <ul class="nav nav-pills">
-            <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed (<%= @completed.count %>)</a></li>
-            <li class="pull-right active"><a href="#tab1" data-toggle="tab">Registered (<%= @commitments.count %>)</a></li>
-          </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="tab1">
-            <%= render partial: 'posts/post', collection: @commitments, as: :post %>
+      <div class="clear-both">
+        <h4>Recent Activity</h4>
+        <% @activities.each do |activity| %>
+          <div class="activity">
+          <%= link_to activity.owner.name, activity.owner if activity.owner %>
+          <%= render_activity activity %>
           </div>
-          <div class="tab-pane" id="tab2">
-            <%= render partial: 'posts/post', collection: @completed, as: :post %>
-          </div>
-        </div><!-- tab content -->
-      </div><!-- tabbable -->
+        <% end %>
+        <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
+      </div>
     <% end %>
-    <% if false %>
-    <div class="clear-both">
-      <h4>Recent Activity</h4>
-      <% @activities.each do |activity| %>
-        <div class="activity">
-        <%= link_to activity.owner.name, activity.owner if activity.owner %>
-        <%= render_activity activity %>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-pills">
+          <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed Mocs (<%= @completed.count %>)</a></li>
+          <li class="pull-right active"><a href="#tab1" data-toggle="tab">Joined Mocs (<%= @commitments.count %>)</a></li>
+        </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <%= render partial: 'posts/post', collection: @commitments, as: :post %>
         </div>
-      <% end %>
-    </div>
-    <% end %>
+        <div class="tab-pane" id="tab2">
+          <%= render partial: 'posts/post', collection: @completed, as: :post %>
+        </div>
+      </div><!-- tab content -->
+    </div><!-- tabbable -->
   </div>
 
-  <div class="span3 offset1">
+  <div class="span3">
+    <%= large_profile_picture(@user) %>
     <h3 class=""><%= @user.name %></h3>
     <div class="big clear-both">
       <strong>Organization:</strong> <%= @user.organization.name %>
     </div>
     <div class="big">
-      <strong>Interests</strong> 
-      <%= render partial: "shared/tags", locals: { tags: @tags }  %>
+      <strong>Specialities</strong>
+      <div class="tag"><%= @user.specialities.map(&:name).join(", ") %></div>
     </div>
+    <% if @user == current_user %>
+      <%= link_to edit_user_registration_path do %>
+        <i class='icon-edit'></i> edit profile 
+      <% end %>
+    <% end %>
+    <br>
     <% if @user != current_user %>
       <div class="">
         <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Send Private Message</a>

@@ -3,5 +3,5 @@
   <td width="15%"><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
   <td class="muted" width="45%"><%= post.short_desc %> <%= link_to "(more)", post_path(post) %></td>
   <% end %>
-  <td width="20%"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></td>
+  <td width="20%"><%= render partial: "shared/specialities", locals: { specialities: post.specialities }  %></td>
 </tr>

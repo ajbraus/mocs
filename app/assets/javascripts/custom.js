@@ -107,18 +107,6 @@ $(document).ready(function() {
     "color": true
   })
 
-  // var a = [$('#trendingTags').data("tags")];
-  // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
-  // a.forEach(function(entry) {
-  //   var color = colors[Math.floor(Math.random()*colors.length)];
-  //   var style = "label " + color
-  //   $('#trendingTags').prepend("<span class='" + style + "''>" + entry + "</span>")
-  // });
-
-  // $('#closeJumbotron').click(function(){
-  //   $('#overview').slideUp();
-  // });
-
   incomplete = $('form :input').filter(function() {
                     return $(this).val() == '';
                   });

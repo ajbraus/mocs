@@ -5,9 +5,9 @@ class CreateGoals < ActiveRecord::Migration
 
       t.timestamps
     end
-    Goal.create(name: "Outcomes")
-    Goal.create(name: "Costs")
-    Goal.create(name: "Satisfaction")
-    Goal.create(name: "Process")
+    Goal.create(name: "Patient Outcomes")
+    Goal.create(name: "Cost Effectiveness")
+    Goal.create(name: "Patient Satisfaction")
+    Goal.create(name: "Process Improvement")
   end
 end

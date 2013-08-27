@@ -1,20 +1,13 @@
 <li class="media">
-  <div class="pull-left">
+  <div class="pull-left votes">
     <%= link_to vote_up_comment_path(c) do %>
-      <p><i class="icon-chevron-up <%= current_user.voted_for?(c) ? 'voted' : 'not-voted' %>"></i></p>
+      <i class="icon-circle-arrow-up <%= current_user.voted_for?(c) ? 'voted' : 'not-voted' %>"></i>
     <% end %>
-    <div class="vote-count">
-      <%= c.plusminus %>
-    </div>
-    <%= link_to vote_down_comment_path(c) do %>
-      <i class="icon-chevron-down <%= current_user.voted_against?(c) ? 'voted' : 'not-voted' %>"></i>
-    <% end %>
+    <%= c.plusminus %>
   </div>        
-  <% if false %>
   <a class="pull-left" href="#">
-    <%= image_tag 'default_profile_pic.png', class:"media-object comment-pic" %>
+    <%= profile_picture(c.user) %>
   </a>
-  <% end %>
   <div class="media-body">
     <div><%= raw c.content %></div>
     <div class='text-right muted small'>commented <%= time_ago_in_words(c.created_at) %> ago by <%= link_to "#{c.commentable.user.name}", c.user %>

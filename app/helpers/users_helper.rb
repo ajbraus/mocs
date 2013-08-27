@@ -55,4 +55,29 @@ module UsersHelper
       ['WY']
     ]
   end
+
+  def profile_picture(user)
+    if user.avatar.present?
+      image_tag user.avatar.url(:medium), class:"medium-thumbnail img-rounded"
+    else
+      image_tag "default_profile_pic.png", class:"medium-thumbnail img-rounded"
+    end
+  end
+
+  def small_profile_picture(user)
+    if user.avatar.present?
+      image_tag user.avatar.url(:thumb), class:"small-thumbnail img-rounded"
+    else
+      image_tag "default_profile_pic.png", class:"small-thumbnail img-rounded"
+    end
+  end
+
+
+  def large_profile_picture(user)
+    if user.avatar.present?
+      image_tag user.avatar.url(:medium), class:"large-thumbnail img-rounded"
+    else
+      image_tag "default_profile_pic.png", class:"large-thumbnail img-rounded"
+    end
+  end
 end

@@ -15,10 +15,15 @@ class User < ActiveRecord::Base
                   :terms,
                   :confirmed_at,
                   :admin,
-                  :organization_ids
+                  :organization_ids,
+                  :speciality_ids,
+                  :avatar
+
   # attr_accessible :title, :body
 
   has_many :posts
+
+  has_and_belongs_to_many :specialities
   
   has_many :organization_users
   has_many :organizations, through: :organization_users
@@ -36,6 +41,22 @@ class User < ActiveRecord::Base
 
   acts_as_voter
   has_karma(:comments)
+
+  has_attached_file :avatar,
+         :styles => { 
+            :medium => "300x300",
+            :thumb => "100x100#" 
+            },
+         :convert_options => { 
+            :thumb => '-quality 60 -strip' 
+            },
+         :storage => :s3,
+         :s3_credentials => { :access_key_id => ENV['S3_ACCESS_KEY'], :secret_access_key => ENV['S3_SECRET_KEY'], :bucket => "bankmybiz"},
+         :path => "user_avatars/:id/avatar.:extension",
+         :default_url => "https://s3.amazonaws.com/mocsfordocs/default_avatar.png"
+
+  validates :avatar, # :attachment_presence => true,
+                     :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }
 
   #validates :name, presence: true
 

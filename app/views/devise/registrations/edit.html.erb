@@ -1,22 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="span10 offset1">
+    <%= devise_error_messages! %>
+    <div class="well clearfix">
+      <h2>Edit Profile</h2>
+      <div class="row">
+        <div class="span4">
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+           <p>
+             <%= f.label :avatar, "Select Profile Picture*" %><br />
+             <%= f.file_field :avatar %>
+           </p>
+           <p>
+             <%= f.label :name, "Full Name" %>
+             <%= f.text_field :name, :autofocus => true, class:"required" %>
+           </p>
+           <p>
+             <%= f.label :email, "Email" %>
+             <%= f.email_field :email, class:"required email" %>
+           </p>
+           <p>
+             <%= f.label :password, "New Password (Ignore to keep same password)" %>
+             <%= f.password_field :password, class:"required" %>
+           </p>
+           <p>
+             <%= f.label :password, "Confirm Password" %>
+             <%= f.password_field :password, class:"required" %>
+           </p>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
+         </div>
+         <div class="span4 offset1">
+          <p>
+           <label for="organization">Organization</label>
+           <input class="required ui-autocomplete-input" data-autocomplete-source="/org_name" id="organization" name="organization" size="30" type="text" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" value="<%= @user.organization.name %>">
+          </p>
+          <p>
+            <%= f.label :state %>
+            <%= f.select :state, us_states, class:"state required" %><br>
+          </p>
+          <p>
+            <%= f.label :speciality_ids, "Choose Your Specialities" %>
+            <% for speciality in Speciality.find(:all) %>
+              <label>
+                <%= check_box_tag "user[speciality_ids][]", speciality.id, @user.specialities.include?(speciality) %>
+                <%= speciality.name %>
+              </label>
+            <% end %> 
+          </p> 
+          <p>
+            <%= f.label :current_password, "Current Password*" %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password %>
+          </p>
+          </div>
+        </div>
+           <div><%= f.submit "Update Profile", class:"btn btn-gold btn-large pull-right" %></div>
+         <% end %>
+       </div>
 
 <h3>Cancel my account</h3>
 

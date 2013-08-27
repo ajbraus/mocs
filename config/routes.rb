@@ -9,6 +9,10 @@ Mocs::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   
+  match 'users/:id/profile/edit' => 'profiles#edit', as: 'edit_profile'
+  match 'users/:id/profiles' => 'profiles#update', as: 'update_profile'
+
+
   resources :comments do
     member do
       get :vote_up
@@ -33,7 +37,7 @@ Mocs::Application.routes.draw do
     end
   end
 
-  get 'tags/:tag', to: 'tags#show', as: :tag
+  get 'specialities/:speciality', to: 'specialities#show', as: :speciality
 
   # namespace :api do
   #   namespace :v1 do

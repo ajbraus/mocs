@@ -1,58 +1,34 @@
-errors
+setup complete moc workflow
+  uptick Count hours of QI time on user & MOC Credits
+  generate documentation to submit
 
-hint
-  - includling outpaient and pediatrics
-
-
-start with your speciality:
-  speciality
-    What you were "Boarded in" and what your subspeciality is
-    Family Medicine
-      Internal Medicine
-      Ob/gyn
-      Pediatrics
-  inpatient/outpatient
-
-Reroute to MOC website to register to for MOC
+don't create new view of post if in the same day
 
 Message creator button inside the Moc
 
-"Project Center" or "Moc Maker Dashboard"
-
 Qualifies for MOC Credits between these dates
 
+user and admins can delete comments
 
-   price "I want to pay less than X"
+Close date instead of "Time Period"
 
-   "Patient Outcomes"
+show recently viewed projects in sidebar
 
-  filter by Duration (because they want to spend)
-
-  Time = totaly Time Commitment or per week
-
-  sort by 
-    relevance
-    total time commitment
-    remove highest rated
-
-  show recently viewed projects in sidebar
-
-  remove wiggle in the summary of moc
-
-  put time, duration, # takers into own column - best with progress bars
-
-  fix form to identify change in textarea and then highlight publish button
-
-  setup 'commitments' (projects your doing)
-    DONE add price to register button
-    add price to post.html
-    payment gateway - balanced payments
-    DONE add balanced gem
-    DONE add balanced.js
-    get bank account data for moc creator
+remove wiggle in the summary of moc
 
 
-  Close date instead of "Time Period"
+setup 'commitments' (projects your doing)
+  Get bank account data to become project creator "Create Projects"
+  Ask for Credit Card info or confirm when Committing
+  SLL Cert
+
+  DONE add price to post.html
+  DONE add balanced gem
+  DONE add balanced.js
+  DONE add price to register button
+
+
+  
 
   When done with MOC => 
     Submit documentation to American Board of Medical Specialities
@@ -384,3 +360,28 @@ DONE Setup manual confirmation
 
 DONE  add relevance search sort
 DONE add datepicker to form
+
+DONE delete user
+  DONE don't link to user
+
+
+DONE Remove Tags
+
+DONE start with your speciality:
+  DONE HABTM users_specialities
+    DONE allow edit specialities
+  DONE Add avatar photo 
+
+  DONE HABTM posts_specialities
+  DONE make posts filtered by post speciality (like goals)
+  DONE filter by credits/certified
+
+  DONE price "I want to pay less than X"
+
+  DONE "Patient Outcomes"
+
+DONE filter by Duration (because they want to spend)
+
+DONE put time, duration, # takers into own column - best with progress bars
+
+DONE fix form to identify change in textarea and then highlight publish button

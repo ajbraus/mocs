@@ -71,6 +71,10 @@ namespace :db do
       post.save
     end
 
+    User.all.each do |user|
+      user.specialities << Speciality.all.sample
+    end
+
     #rake ts:index
     
     # Person.populate 100 do |person|
