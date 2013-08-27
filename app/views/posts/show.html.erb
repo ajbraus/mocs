@@ -119,92 +119,80 @@
     <hr>
     <%= render 'shared/recommended_posts' %>
   </div>
-  <div class="tab-content">
+  <div class="tab-content span7">
     <div class="tab-pane active" id="tab1">
-      <div class="span8">
-        <%= raw(youtube_embed(@post.video_url)) if @post.video_url.present? %>
-        <div>
-          <h3>
-            <%= @post.title %>
-          </h3>
-          <div class="tag">
-            <%= raw @post.specialities.map(&:name).map { |t| t }.join(', ') %>
-          </div>
-        </div>       
-        <div>
-          <h3><strong>Summary</strong></h3>
-          <p class="muted">
-            <%= raw @post.desc %>
-          </p>
-        </div>   
-      </div>
+      <%= raw(youtube_embed(@post.video_url)) if @post.video_url.present? %>
+      <div>
+        <h3>
+          <%= @post.title %>
+        </h3>
+        <div class="tag">
+          <%= raw @post.specialities.map(&:name).map { |t| t }.join(', ') %>
+        </div>
+      </div>       
+      <div>
+        <h3><strong>Summary</strong></h3>
+        <p class="muted">
+          <%= raw @post.desc %>
+        </p>
+      </div>   
     </div>
     <div class="tab-pane" id="tab2">
-      <div class="span8">
-        <%= raw @post.info %>
-        <% if current_user.committed_to?(@post) %>
-          <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
-          <div class="btn disabled btn-block 1">
-            <i class="<%= @commitment.progress >= 1 ? 'icon-check' : 'icon-check-empty'%>"></i>
-            <span class="todo-text <%= @commitment.progress >= 1 ? 'strike-through' : ''%>">Review Information</span>
-          </div>
-          <% end %>
+      <%= raw @post.info %>
+      <% if current_user.committed_to?(@post) %>
+        <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+        <div class="btn disabled btn-block 1">
+          <i class="<%= @commitment.progress >= 1 ? 'icon-check' : 'icon-check-empty'%>"></i>
+          <span class="todo-text <%= @commitment.progress >= 1 ? 'strike-through' : ''%>">Review Information</span>
+        </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="tab-pane" id="tab3">
-      <div class="span8">
-        <%= raw @post.baseline %>
-        <% if current_user.committed_to?(@post) %>
-          <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
-          <div class="btn disabled btn-block 2">
-            <i class="<%= @commitment.progress >= 2 ? 'icon-check' : 'icon-check-empty'%>"></i>
-            <span class="todo-text <%= @commitment.progress >= 2 ? 'strike-through' : ''%>">Collect Baseline Data</span>
-          </div>
-          <% end %>
+      <%= raw @post.baseline %>
+      <% if current_user.committed_to?(@post) %>
+        <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+        <div class="btn disabled btn-block 2">
+          <i class="<%= @commitment.progress >= 2 ? 'icon-check' : 'icon-check-empty'%>"></i>
+          <span class="todo-text <%= @commitment.progress >= 2 ? 'strike-through' : ''%>">Collect Baseline Data</span>
+        </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="tab-pane" id="tab4">
-      <div class="span8">
-        <%= raw @post.plan_do %>
-        <% if current_user.committed_to?(@post) %>
-          <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
-          <div class="btn disabled btn-block 3">
-            <i class="<%= @commitment.progress >= 3 ? 'icon-check' : 'icon-check-empty'%>"></i>
-            <span class="todo-text <%= @commitment.progress >= 3 ? 'strike-through' : ''%>">Plan, Do, Check, Act</span>
-          </div>
-          <% end %>
+      <%= raw @post.plan_do %>
+      <% if current_user.committed_to?(@post) %>
+        <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+        <div class="btn disabled btn-block 3">
+          <i class="<%= @commitment.progress >= 3 ? 'icon-check' : 'icon-check-empty'%>"></i>
+          <span class="todo-text <%= @commitment.progress >= 3 ? 'strike-through' : ''%>">Plan, Do, Check, Act</span>
+        </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="tab-pane" id="tab5">
-      <div class="span8">
-        <%= raw @post.post_test %>
-        <% if current_user.committed_to?(@post) %>
-          <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
-          <div class="btn disabled btn-block 4">
-            <i class="<%= @commitment.progress >= 4 ? 'icon-check' : 'icon-check-empty'%>"></i>
-            <span class="todo-text <%= @commitment.progress >= 4 ? 'strike-through' : ''%>">Collect Post Test Data</span>
-          </div>
-          <% end %>
+      <%= raw @post.post_test %>
+      <% if current_user.committed_to?(@post) %>
+        <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+        <div class="btn disabled btn-block 4">
+          <i class="<%= @commitment.progress >= 4 ? 'icon-check' : 'icon-check-empty'%>"></i>
+          <span class="todo-text <%= @commitment.progress >= 4 ? 'strike-through' : ''%>">Collect Post Test Data</span>
+        </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="tab-pane" id="tab6">
-      <div class="span8">
-        <%= raw @post.wrap_up %>
-        <% if current_user.committed_to?(@post) %>
-          <% unless @commitment.progress >= 5 %>
-          <div class="text-right">
-            <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
-              <div class="btn btn-block <%= @commitment.progress >= 4 ? 'btn-gold' : 'disabled'%>">Complete MOC</div>
-            <% end %>
-            <%= render 'commitments/reneg' %>
-          </div>
+      <%= raw @post.wrap_up %>
+      <% if current_user.committed_to?(@post) %>
+        <% unless @commitment.progress >= 5 %>
+        <div class="text-right">
+          <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
+            <div class="btn btn-block <%= @commitment.progress >= 4 ? 'btn-gold' : 'disabled'%>">Complete MOC</div>
           <% end %>
+          <%= render 'commitments/reneg' %>
+        </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
     <div class="span7">
       <h3>Comments</h3>
