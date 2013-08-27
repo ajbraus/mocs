@@ -42,7 +42,6 @@ $(document).ready(function() {
 
   if ($('#post_title').length > 0 && 
       $("#post_goal_id option:selected").val().length > 0 &&
-      $("#post_tag_list").val().length > 0 &&
       $("#post_expected_time").val().length > 0 &&
       $("#post_duration").val().length > 0 &&
       $("#post_desc").val().length > 0 &&
@@ -68,7 +67,6 @@ $(document).ready(function() {
     }
     if ($('#post_title').length > 0 && 
         $("#post_goal_id option:selected").val().length > 0 &&
-        $("#post_tag_list").val().length > 0 &&
         $("#post_expected_time").val().length > 0 &&
         $("#post_duration").val().length > 0 &&
         $("#post_desc").val().length > 0 &&

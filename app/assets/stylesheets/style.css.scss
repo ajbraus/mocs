@@ -419,6 +419,7 @@ left: 2px;
   }
   textarea {
     width:95%;
+    height: 150px;
   }
   .times-input {
     width:30%;
@@ -749,4 +750,8 @@ input.error {
 
 .dropdown-toggle {
   padding: 0 !important;
+}
+
+.search-input {
+  padding: 14px 5px 7px 10px;
 }
