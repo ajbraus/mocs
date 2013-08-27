@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [User, Post, Comment, Tag, Commitment, Goal, Message, Organization, OrganizationUser].each(&:delete_all)
+    [User, Post, Comment, Speciality, Commitment, Goal, Message, Organization, OrganizationUser, Vote].each(&:delete_all)
     Organization.create(name:"UW Health")
     Organization.create(name:"Gundersen Lutheran")
     Organization.create(name:"Mayo Clinic")
@@ -16,6 +16,13 @@ namespace :db do
     Goal.create(id: 3, name: "Satisfaction")
     Goal.create(id: 4, name: "Process")
 
+    Speciality.create(name: "Family Medicine")    
+    Speciality.create(name: "OBGYN")    
+    Speciality.create(name: "Internal Medicine")  
+    Speciality.create(name: "Pediatrics")  
+    Speciality.create(name: "Inpatient")  
+    Speciality.create(name: "Ambulatory")
+    
     User.populate 20 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
@@ -65,17 +72,20 @@ namespace :db do
         end
       end
     end
+
     Post.all.each do |post|
-      5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
+      post.specialities << Speciality.all.shuffle.first(2) 
       post.goal = Goal.all.sample
       post.save
     end
 
     User.all.each do |user|
-      user.specialities << Speciality.all.sample(2)
+      user.specialities << Speciality.all.shuffle.first(2)
     end
 
-    #rake ts:index
+
+    # 129-292-554
+    # rake ts:index
     
     # Person.populate 100 do |person|
     #   person.name    = Faker::Name.name
