@@ -5,17 +5,20 @@ don't create new view of post if in the same day
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
   generate documentation to submit
+    Submit documentation to American Board of Medical Specialities
+      Doctor Name,
+      Witness's Name,
+      Start Date,
+      End Date,
+      Project Leader
 
-Message creator button inside the Moc
+add 'featured mocs' thumbnails to splash
 
 Qualifies for MOC Credits between these dates
 
-user and admins can delete comments
-
 Close date instead of "Time Period"
 
-show recently viewed projects in sidebar
-
+initiate with welcome message in messages
 
 setup 'commitments' (projects your doing)
   Get bank account data to become project creator "Create Projects"
@@ -27,94 +30,44 @@ setup 'commitments' (projects your doing)
   DONE add balanced.js
   DONE add price to register button
 
+upload picture to post
 
-  
+show recently viewed projects in sidebar
 
-  When done with MOC => 
-    Submit documentation to American Board of Medical Specialities
-      Doctor Name,
-      Witness's Name,
-      Start Date,
-      End Date,
-      Project Leader
-
-      HOW DO WE SUBMIT DATA
-
-  
-  Who near by you and in your organization are doing this project?
-
-  Can we use the social interactions to create support and prevent bad behavior?
-    Connect with people who are doing the moc
-
-  
-  add mailchimp devise
-  
-
-  progress bar say 0/6
-  validations on users, posts
-    fix form and 'publish' button to light up properly
-    if published = needs goal
-    validate user creates with organization
-
-  just filtering with no search term
-
-    create commitment#new and get credit card data for moc user
-
+  EMAILS
     automated messages to project lead ("You will be contacted")
     automated confirmation email with link to the MOC official website
     who else has committed to a project
     reminder - you signed up for this project, this project ends on this date
     reminder - careful this is getting close to ending, you have 1 more month to complete it
     completed?
+    complete moc sends email
+      welcome
+      s/o has joined your action
+      action comments digest (over 10 votes?)
+      someone commented on your comment
+      someone voted up your comment
+      unlocked new permission
 
-  tighten up voting
-
-  complete moc sends email
-
-  upload picture to post
 
   branding for email - mocsfordocs
-
-  add 'featured mocs' to splash
-
-  don't require a video to publish
-
-  add state and name to settings edit
   
-  skip_confirmation_notification!
+-----------------------------------------
   
-  add security 
+  user and admins can delete comments
 
-      see all inboxes
-
-
+  security
     only you can see your inbox
     only you can see your posts.html page
     check gemset at gemnasym 
 
   private/public mocs (only organization can see)
-
-  setup reminders
-
-  Make "Highest Rated" work
-
-  autocomplete tags in moc creation
-
-  click tag just submits search with that tag
   
   add delete message link
 
-  make follow MOCs
-    post has_and_belongs_to_many followers, class "User"
-    user has_and_belongs_to_many followed_posts, class "Post"
-
-    make sure last_touched is upated after followered
-    track activity of following
-    add filter of # Followers (sorted on # of committed)
+  make sure last_touched is upated after committed to
   
   add updates to MOCs (like comments)
-
-  add most popular tab
 
   public vs private profile
 
@@ -190,44 +143,6 @@ Mocs can get recommendations from organizations
   ---------------------------------
 
   add friendly_id for posts and user profiles
-
-------------------------------------------------------------------
-
-  
-  Actions
-    # views
-    # favorites
-    # taken
-
-  Tags
-    # actions
-
-  People
-    # votes up on comments and checkins
-    # actions created
-    # tags created
-    # actions joined
-    # actions taken
-
-profile page
-  reputation
-    unlocked permissions
-    how to get points
-  activity (public activity)
-    actions created
-    commitments
-    taken
-    comments created
-
-setup nearby actions - require location
-
-setup email notifications
-  welcome
-  s/o has joined your action
-  action comments digest (over 10 votes?)
-  someone commented on your comment
-  someone voted up your comment
-  unlocked new permission
 
 ---------------------------------------
 
@@ -387,3 +302,5 @@ DONE put time, duration, # takers into own column - best with progress bars
 DONE fix form to identify change in textarea and then highlight publish button
 
 DONE remove wiggle in the summary of moc
+
+DONE Message creator button inside the Moc
