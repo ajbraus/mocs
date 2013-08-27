@@ -72,7 +72,7 @@ namespace :db do
     end
 
     User.all.each do |user|
-      user.specialities << Speciality.all.sample
+      user.specialities << Speciality.all.sample(2)
     end
 
     #rake ts:index

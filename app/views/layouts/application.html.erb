@@ -119,7 +119,7 @@
               <span class="icon-bar"></span>
             </a>
             <div class="nav-collapse inline-list navbar-responsive-collapse collapse" style="height: 0px;">
-              <ul class="nav inline-list pull-right">
+              <ul class="nav pull-right">
                 <li>
                   <%= link_to root_path, class:"btn-warning hover" do %>
                     <%= params[:action] == "index" && params[:controller] == "posts" ? raw("<i class='icon-caret-right'></i>") : '' %> 
@@ -129,7 +129,7 @@
                 <li>
                   <%= link_to user_posts_path, class:"btn-gold hover" do %>
                     <%= params[:action] == "posts" && params[:controller] == "users" ? raw("<i class='icon-caret-right'></i>") : '' %>
-                    <i class="icon-briefcase"></i> Project Workbench
+                    <i class="icon-briefcase"></i> QI Workbench
                   <% end %>
                 </li>
                 <li>
