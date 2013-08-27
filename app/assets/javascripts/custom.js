@@ -34,7 +34,7 @@ $(document).ready(function() {
   });
 
 
-  if ($('#post_title').val() > 0 && 
+  if ($('#post_title').val().length > 0 && 
       $("#post_goal_id option:selected").val().length > 0) 
   {
     $("#save").removeClass("disabled");

@@ -1,3 +1,7 @@
+fix moc form
+
+fix production
+
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
   generate documentation to submit
@@ -13,8 +17,6 @@ user and admins can delete comments
 Close date instead of "Time Period"
 
 show recently viewed projects in sidebar
-
-remove wiggle in the summary of moc
 
 
 setup 'commitments' (projects your doing)
@@ -385,3 +387,5 @@ DONE filter by Duration (because they want to spend)
 DONE put time, duration, # takers into own column - best with progress bars
 
 DONE fix form to identify change in textarea and then highlight publish button
+
+DONE remove wiggle in the summary of moc
