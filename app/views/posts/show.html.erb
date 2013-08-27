@@ -1,3 +1,27 @@
+  <div class="span8">
+    <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
+      <%= form_for @post.user.messages.new, remote:true do |f| %>
+        <div class="modal-header">  
+          <a class="close" data-dismiss="modal">×</a>  
+          <h3>Contact <%= @post.user.name %></h3>  
+        </div>  
+        <div class="modal-body">  
+          <div class=" message-subject">
+            <%= f.text_field :subject , :placeholder => "Subject", :class => "span5 message-subject-input"%>
+          </div>
+          <div class=" message-body ">
+            <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
+          </div>               
+        </div>  
+        <div class="modal-footer">  
+          <%= f.submit "Send Message", :class => "btn btn-primary" %>
+          <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+        </div>  
+      </div>
+      <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+      <%= f.hidden_field :receiver_id, value: "#{@post.user.id}" %>
+    <% end %>
+  </div>
 <% if !@post.published? %>
 <div class="well alert-danger">
   This Moc is not published - <%= link_to 'continue editing', edit_post_path(@post) %>
@@ -126,9 +150,14 @@
         <h3>
           <%= @post.title %>
         </h3>
-        <div class="tag">
+        <p class="tag">
           <%= raw @post.specialities.map(&:name).map { |t| t }.join(', ') %>
-        </div>
+        </p>
+        <% if @post.user != current_user %>
+          <p>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Contact Project Lead</a>
+          </p>
+        <% end %>
       </div>       
       <div>
         <h3><strong>Summary</strong></h3>

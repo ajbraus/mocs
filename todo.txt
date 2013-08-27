@@ -1,12 +1,10 @@
-fix moc form
+search is repeating posts with multiple specialities
 
-fix production
+don't create new view of post if in the same day
 
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
   generate documentation to submit
-
-don't create new view of post if in the same day
 
 Message creator button inside the Moc
 

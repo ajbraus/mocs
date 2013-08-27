@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [User, Post, Comment, Speciality, Commitment, Goal, Message, Organization, OrganizationUser, Vote].each(&:delete_all)
+    [User, Post, Activity, Comment, Speciality, Commitment, Goal, Message, Organization, OrganizationUser, Vote].each(&:delete_all)
     Organization.create(name:"UW Health")
     Organization.create(name:"Gundersen Lutheran")
     Organization.create(name:"Mayo Clinic")
@@ -22,7 +22,7 @@ namespace :db do
     Speciality.create(name: "Pediatrics")  
     Speciality.create(name: "Inpatient")  
     Speciality.create(name: "Ambulatory")
-    
+
     User.populate 20 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
