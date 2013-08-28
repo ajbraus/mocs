@@ -7,7 +7,7 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
 
   has goal.id, as: :goal_id
   has organization.id, as: :org_id
-  has specialities(:id), :as => :speciality_ids
+  has specialities(:id), :as => :speciality_ids, multi: true, type: :integer
   has published_at
   has last_touched
   has published
