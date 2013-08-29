@@ -18,7 +18,7 @@ class Notifier < ActionMailer::Base
 
   def new_moc(moc)
     @moc = moc
-    mail to: "ajbraus@gmail.com, andrewscottconnely@gmail.com", subject: "Woot! New MOC by #{@moc.user.name} - #{@moc.title}"
+    mail to: "ajbraus@gmail.com, andrewscottconnely@gmail.com, tflood131@gmail.com", subject: "Woot! New MOC by #{@moc.user.name} - #{@moc.title}"
   end
 
   def send_message(message)
@@ -32,6 +32,11 @@ class Notifier < ActionMailer::Base
     @user = user
     @moc = moc
     mail bcc: @user.email, subject: "MOC Update: #{@moc.title}"
+  end
+
+  def missing_bank_info(user)
+    @user = user
+    mail to:"tflood131@gmail.com, ajbraus@gmail.com, andrewscottconnely@gmail.com", subject: "Transaction Failed - Missing bank account info for #{@user.name}"
   end
 end
 

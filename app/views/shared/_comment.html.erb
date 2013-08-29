@@ -8,7 +8,7 @@
   <a class="pull-left" href="#">
     <%= profile_picture(c.user) %>
   </a>
-  <div class="media-body">
+  <div class="span5">
     <div><%= raw c.content %></div>
     <div class='text-right muted small'>commented <%= time_ago_in_words(c.created_at) %> ago by <%= link_to "#{c.commentable.user.name}", c.user %>
   </div>

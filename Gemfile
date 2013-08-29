@@ -10,8 +10,6 @@ gem 'mysql2',          '0.3.12b5'
 gem 'thinking-sphinx', '3.0.3' #'2.0.11'
 gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 
-gem "parsley-rails"
-
 gem 'devise', '2.2.4'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'thumbs_up'
@@ -40,12 +38,7 @@ gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'coffee-rails', '~> 3.2.1'
 gem 'jquery-ui-rails'
 
-gem 'balanced'
-# group :development, :test do
-# 	gem 'rspec-rails'
-# 	gem 'turnip'
-# 	gem 'capyabara'
-# end
+gem 'stripe'
 
 group :development do
 	gem 'pry'

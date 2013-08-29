@@ -1,6 +1,39 @@
-search is repeating posts with multiple specialities
+setup 'commitments' (projects your doing)
+  Get bank account data to become project creator "Create Projects"
+    DONE add stripe_recipient_id and stripe_customer_id to user
+    create Stripe::Recipient and set recipient_id upon create first moc
+    user.can_recieve_payment?
+      display when bank information was added - this not correct? 
 
-don't create new view of post if in the same day
+
+    create commitment
+    if no stripe customer then create stripe customer 
+    unless card already exists
+      users.credit_card.build
+    create stripe charge
+    if response true then commitment.paid = true
+    commitment#show
+
+    create Stripe::Customer and set user.stripe_customer_id upon create first charge
+    user.has_valid_credit_card?
+      update charges#new to show all available credit cards with radio to pic
+
+    add credit card images to home page
+
+    get our fee for us
+
+
+  Ask for Credit Card info or confirm when Committing
+  SLL Cert
+
+  Create organization payment method
+  Offer to have the org pay % of all Mocs their users sign up for
+
+
+  DONE add price to post.html
+  DONE add balanced gem
+  DONE add balanced.js
+  DONE add price to register button
 
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
@@ -16,19 +49,19 @@ add 'featured mocs' thumbnails to splash
 
 Qualifies for MOC Credits between these dates
 
+fix profile
+  To check progress (green bars) in my projects
+  get prompted as to next steps
+  see other people's comments of projects I have joined
+  and my total MOC points earned
+  remove icons
+
+Remove "Moc"
+
+
 Close date instead of "Time Period"
 
 initiate with welcome message in messages
-
-setup 'commitments' (projects your doing)
-  Get bank account data to become project creator "Create Projects"
-  Ask for Credit Card info or confirm when Committing
-  SLL Cert
-
-  DONE add price to post.html
-  DONE add balanced gem
-  DONE add balanced.js
-  DONE add price to register button
 
 upload picture to post
 
@@ -304,3 +337,4 @@ DONE fix form to identify change in textarea and then highlight publish button
 DONE remove wiggle in the summary of moc
 
 DONE Message creator button inside the Moc
+DONE don't create new view of post if in the same day

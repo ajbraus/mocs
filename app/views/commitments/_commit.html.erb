@@ -1,10 +1,26 @@
 <% if user_signed_in? && current_user != @post.user %>
   <div id="commit_form">
     <% unless current_user.committed_to?(@post) %>
-      <%= form_for(current_user.commitments.build(commitment_id: @post.id)) do |f| %>
-        <div><%= f.hidden_field :commitment_id %></div>
-        <%= f.submit "$#{@post.price_in_dollars} Join this Moc", class:"btn btn-large btn-gold" %>
+      <% if @post.price == 0 %>
+        <%= form_for(current_user.commitments.build(commitment_id: @post.id), html: { id:"free_commitment" }) do |f| %>
+          <div><%= f.hidden_field :commitment_id %></div>
+          <%= f.submit "Free to Join Project", class:"btn btn-large btn-gold" %>
+        <% end %>
+      <% else %>
+        <%= link_to "$#{@post.price_in_dollars} Join Project", new_commitment_path(post_id: @post.id), class:"btn btn-large btn-gold" %>
       <% end %>
+    <% if false %>
+      <form action="" method="POST">
+        <script
+          src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+          data-key="pk_test_1jZfryRg3dnc00f47GPREoRJ"
+          data-amount="<%= @post.price %>"
+          data-name="<%= @post.user.name %>"
+          data-description="<%= @post.title %> ($<%= @post.price_in_dollars %>)"
+          data-image="/assets/icon.png">
+        </script>
+      </form>
+    <% end %>
     <% end %>
   </div>
 <% end %>

@@ -79,7 +79,11 @@ class PostsController < ApplicationController
     @comments = @post.comments.paginate(:page => params[:page], :per_page => 10, order: 'created_at desc')
     @mocs = Post.first(5)
     if user_signed_in?
-      @post.create_activity :show, owner: current_user
+      @last_show = PublicActivity::Activity.where(owner_id: current_user.id, trackable_id: @post.id).last
+      if @last_show.present? && @last_show.created_at < Date.yesterday
+        @post.create_activity :show, owner: current_user
+      end
+
       @commitment = current_user.commitments.find_by_commitment_id(@post.id)
       if @commitment.present?
         @percent_complete = @commitment.percent_complete

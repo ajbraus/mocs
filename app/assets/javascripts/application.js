@@ -15,8 +15,6 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
-//= require parsley
-//= require parsley.extend
 //= require_tree .
 
 // var csrf = '<%= "#{ENV['BALANCED_CSRF']}" %>'

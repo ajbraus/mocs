@@ -1,5 +1,9 @@
 Mocs::Application.routes.draw do
 
+  get "recipients/new"
+
+  get "recipients/create"
+
   resources :messages
   resources :posts, path: 'Mocs'
 
@@ -30,7 +34,7 @@ Mocs::Application.routes.draw do
   
   match 'organizations/:id' => 'organizations#show'
 
-  resources :commitments, only: [:create, :destroy] do 
+  resources :commitments, only: [:create, :destroy, :new] do 
     member do
       put :increment_progress
       put :decrement_progress

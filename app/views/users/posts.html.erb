@@ -1,36 +1,47 @@
 <div class="row">
-  <div class="span9">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-pills">
-          <li class="pull-right"><a href="#3" data-toggle="tab">Ended (<%= @expired_posts.count %>)</a></li>
-          <li class="pull-right"><a href="#2" data-toggle="tab">Unpublished (<%= @unpublished_posts.count %>)</a></li>
-          <li class="pull-right active"><a href="#1", data-toggle="tab">Published (<%= @posts.count %>)</a></li>
+  <% if current_user.posts.any? %>
+    <div class="span9">
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-pills">
+            <li class="pull-right"><a href="#3" data-toggle="tab">Ended (<%= @expired_posts.count %>)</a></li>
+            <li class="pull-right"><a href="#2" data-toggle="tab">Unpublished (<%= @unpublished_posts.count %>)</a></li>
+            <li class="pull-right active"><a href="#1", data-toggle="tab">Published (<%= @posts.count %>)</a></li>
+          </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <%= render @posts %>
+          </div>
+          <div class="tab-pane" id="2">
+            <%= render partial: 'posts/unpublished_post', collection: @unpublished_posts, as: :post %>
+          </div>
+          <div class="tab-pane" id="3">
+            <%= render partial: 'posts/post', collection: @expired_posts, as: :post %>      
+          </div>
+        </div><!-- tab content -->
+      </div><!-- tabbable -->
+    </div><!-- span8 -->
+    
+    <div class="span3">
+      <div class="text-center margin-bottom">
+        <%= link_to "Create a QI Project", new_post_path, class:"btn btn-gold btn-large" %>
+      </div>
+      <div class="">
+        <p class="muted">Recommended Projects</p>
+        <ul>
+          <% @recommended_mocs.each do |tm| %>
+            <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
+          <% end %>
         </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="1">
-          <%= render @posts %>
-        </div>
-        <div class="tab-pane" id="2">
-          <%= render partial: 'posts/unpublished_post', collection: @unpublished_posts, as: :post %>
-        </div>
-        <div class="tab-pane" id="3">
-          <%= render partial: 'posts/post', collection: @expired_posts, as: :post %>      
-        </div>
-      </div><!-- tab content -->
-    </div><!-- tabbable -->
-  </div><!-- span8 -->
-  
-  <div class="span3">
-    <div class="text-center margin-bottom">
-      <%= link_to "Create a MOC Project", new_post_path, class:"btn btn-gold btn-large" %>
+      </div>
     </div>
-    <div class="">
-      <p class="muted">Recommended Projects</p>
-      <ul>
-        <% @recommended_mocs.each do |tm| %>
-          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-        <% end %>
-      </ul>
+  <% else %>
+    <div class="span8 offset2">
+      <div class="project-pitch">
+        <h3>Become a QI Project Maker</h3>
+        <div>
+          
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div><!-- row -->

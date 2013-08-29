@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
                   :speciality_ids,
                   :avatar
 
-  # attr_accessible :title, :body
-
   has_many :posts
+
+  has_many :credit_cards
 
   has_and_belongs_to_many :specialities
   
@@ -106,10 +106,6 @@ class User < ActiveRecord::Base
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
   end
-  
-  def commit!(post)
-    @commitment = commitments.create!(commitment_id: post.id)
-  end  
 
   def reneg!(commitment)
     commitments.find(commitment.id).destroy
@@ -157,5 +153,32 @@ class User < ActiveRecord::Base
 
   def org_admin?(org)
     return org.organization_users.find(self.id).is_admin?
+  end
+
+  def send_transfers
+    User.where("stripe_recipient_id IS NOT NULL").each do |u|
+      if u.commitments.where(paid: false).any?
+        price = u.commitments.where(paid: false).inject {|sum, c| sum + c.price }
+        payout = price * 0.7
+        transfer = Stripe::Transfer.create(
+          :amount => payout,
+          :currency => "usd",
+          :recipient => u.stripe_recipient_id,
+          :statement_descriptor => "MocsforDocs.org - #{c.post.user.name}: #{c.post.title}"
+        )
+        u.commitments.each do |c|
+          c.paid = true
+          c.save
+        end
+      end
+    end
+
+    # AUTOMATE TRANSFERS TO MOCS
+    # transfer = Stripe::Transfer.create(
+    #   :amount => payout,
+    #   :currency => "usd",
+    #   :recipient => "self"
+    #   :statement_descriptor => "MocsforDocs.org - <%= c.post.user.name %>: <%= c.post.title %>"
+    # )
   end
 end

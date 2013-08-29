@@ -1,27 +1,26 @@
-  <div class="span8">
-    <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
-      <%= form_for @post.user.messages.new, remote:true do |f| %>
-        <div class="modal-header">  
-          <a class="close" data-dismiss="modal">×</a>  
-          <h3>Contact <%= @post.user.name %></h3>  
-        </div>  
-        <div class="modal-body">  
-          <div class=" message-subject">
-            <%= f.text_field :subject , :placeholder => "Subject", :class => "span5 message-subject-input"%>
-          </div>
-          <div class=" message-body ">
-            <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
-          </div>               
-        </div>  
-        <div class="modal-footer">  
-          <%= f.submit "Send Message", :class => "btn btn-primary" %>
-          <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
-        </div>  
+
+<div id="contact-modal" class="modal hide fade in" style="display: none; ">  
+  <%= form_for @post.user.messages.new, remote:true do |f| %>
+    <div class="modal-header">  
+      <a class="close" data-dismiss="modal">×</a>  
+      <h3>Contact <%= @post.user.name %></h3>  
+    </div>  
+    <div class="modal-body">  
+      <div class=" message-subject">
+        <%= f.text_field :subject , :placeholder => "Subject", :class => "span5 message-subject-input"%>
       </div>
-      <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
-      <%= f.hidden_field :receiver_id, value: "#{@post.user.id}" %>
-    <% end %>
-  </div>
+      <div class=" message-body ">
+        <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
+      </div>               
+    </div>  
+    <div class="modal-footer">  
+      <%= f.submit "Send Message", :class => "btn btn-primary" %>
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+    </div>  
+  <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+  <%= f.hidden_field :receiver_id, value: "#{@post.user.id}" %>
+<% end %>
+</div>
 <% if !@post.published? %>
 <div class="well alert-danger">
   This Moc is not published - <%= link_to 'continue editing', edit_post_path(@post) %>
@@ -87,24 +86,22 @@
             <% end %>                           
           </tbody>
         </table>
-      <% else %>
-        <% if current_user.committed_to?(@post) %>
-          <h5>Your Progress</h5>
-          <% if @commitment.progress >= 5 %>
-            <div class="progress progress-striped progress-gold">
-              <div class="bar" style="width: 100%;">
-                <span class="progress-count">MOC Completed!</span>
-              </div>
+      <% elsif current_user.committed_to?(@post) %>
+        <h5>Your Progress</h5>
+        <% if @commitment.progress >= 5 %>
+          <div class="progress progress-striped progress-gold">
+            <div class="bar" style="width: 100%;">
+              <span class="progress-count">MOC Completed!</span>
             </div>
-          <% else %>
-            <div class="progress progress-success progress-striped">
-              <div class="bar" style="width: <%= @percent_complete %>%;"></div>
-              <span class="progress-count"><span id="progress"><%= @commitment.progress %></span> / 6</span>
-            </div>
-            <div class="muted">
-              complete by <%= @post.nice_ends_on %>
-            </div>
-          <% end %>
+          </div>
+        <% else %>
+          <div class="progress progress-success progress-striped">
+            <div class="bar" style="width: <%= @percent_complete %>%;"></div>
+            <span class="progress-count"><span id="progress"><%= @commitment.progress %></span> / 6</span>
+          </div>
+          <div class="muted">
+            complete by <%= @post.nice_ends_on %>
+          </div>
         <% end %>
       <% end %>
     <ul class="nav nav-pills nav-stacked">
@@ -143,7 +140,7 @@
     <hr>
     <%= render 'shared/recommended_posts' %>
   </div>
-  <div class="tab-content span7">
+  <div class="tab-content">
     <div class="tab-pane active" id="tab1">
       <%= raw(youtube_embed(@post.video_url)) if @post.video_url.present? %>
       <div>

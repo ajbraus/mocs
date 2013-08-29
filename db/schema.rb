@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826151824) do
+ActiveRecord::Schema.define(:version => 20130828221100) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(:version => 20130826151824) do
   create_table "commitments", :force => true do |t|
     t.integer  "committed_user_id"
     t.integer  "commitment_id"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.integer  "progress",          :default => 0
+    t.boolean  "paid",              :default => false
   end
 
   add_index "commitments", ["commitment_id"], :name => "index_commitments_on_commitment_id"
@@ -211,6 +212,8 @@ ActiveRecord::Schema.define(:version => 20130826151824) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "credit_hours",           :default => 1
+    t.string   "stripe_recipient_id"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -1,0 +1,43 @@
+<div class="span7 offset2">
+  <div class="well clearfix">
+    <h3>Join Project</h3>
+    <ul>
+      <li><strong>Title:</strong>: <%= @post.title %></li>
+      <li><strong>Lead:</strong>: <%= @post.user.name %></li>
+      <li><strong>Price:</strong>: $<%= @post.price_in_dollars %></li>
+    </ul>
+    <div class="credit-cards text-center">
+      <%= image_tag "credit_cards.png" %>
+    </div>
+
+    <%= form_for @commitment, html: { class:"form-horizontal" } do |f| %>
+      <span class="payment-errors"></span>
+      <div class="control-group">
+        <label class="control-label">Card Number</label>
+        <div class="controls">
+          <input type="text" data-stripe="number" class="span3"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">CVC (3-digit code)</label>
+        <div class="controls">
+          <input type="text" data-stripe="cvc" class="input-mini"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Expiration (MM/YYYY)</label>
+        <div class="controls">
+          <input type="text" data-stripe="exp-month" class="input-mini"/>
+          /
+          <input type="text" data-stripe="exp-year" class="input-mini"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Confirm Payment", class:"btn btn-gold btn-large" %>
+        </div>
+      </div>
+      <%= f.hidden_field :commitment_id, value: @post.id %>
+    <% end %>
+  </div>
+</div>

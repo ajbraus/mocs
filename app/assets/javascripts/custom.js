@@ -11,6 +11,7 @@ $(document).ready(function() {
   step = parseInt($('#progress').text()) + 1
   el = "." + step
   $(el).removeClass("disabled strike-through").addClass("btn-primary")
+  
   $('a').click(function() { 
     if ($(this).children('div').hasClass("disabled")) 
     {

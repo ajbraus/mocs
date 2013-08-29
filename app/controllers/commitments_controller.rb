@@ -1,33 +1,45 @@
 class CommitmentsController < ApplicationController
   before_filter :authenticate_user!
 
+  def new
+    @post = Post.find(params[:post_id])
+    @commitment = current_user.commitments.new
+  end
+
   def create
     @post = Post.find(params[:commitment][:commitment_id])
-    current_user.commit!(@post)
+    @commitment = current_user.commitments.create!(commitment_id: @post.id)
+    if @post.price = 0
+      @commitment.paid = true
+      @commitment.save
+    else
+      @amount = @post.price
+      
+      if current_user.stripe_customer_id.blank?
+        customer = Stripe::Customer.create(
+          :email => 'example@stripe.com',
+          :card  => params[:stripeToken]
+        )
+        current_user.stripe_customer_id = customer.id
+        current_user.save
+      end
+
+      charge = Stripe::Charge.create(
+        :customer    => current_user.stripe_customer_id,
+        :amount      => @amount,
+        :description => "MocsforDocs - #{@post.title} - #{@post.user.name}",
+        :currency    => 'usd'
+      )
+
+      @commitment.paid = charge.paid
+    end
+
     @post.last_touched = Time.now
     @post.save
     @post.create_activity :commit, owner: current_user
 
-    # marketplace = Balanced::Marketplace.my_marketplace
-    # # user represents a user in our database who wants to rent a bicycle
-    # # buyer is a Balanced::Customer object that knows about payment information for user
-    # # or guest who wants to rent a bicycle
-    # buyer, user = nil, nil
-    # if user_signed_in? # logic to handle guest/not signed in users
-    #   buyer = current_user.balanced_customer
-    # else
-    #   buyer = User.create_balanced_customer(
-    #     :name  => params[:"guest-name"],
-    #     :email => params[:"guest-email_address"]
-    #     )
-    # end
-    # listing = Listing.find(params[:listing_id])
-    # listing.rent(:renter => buyer, :card_uri => params[:card_uri])
-    # render :confirmation
-
     respond_to do |format|
-
-      format.html { redirect_to @post }
+      format.html { redirect_to @post, notice: "Successfully Joined Project" }
       format.js
     end
   end
