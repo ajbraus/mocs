@@ -16,7 +16,10 @@ class CommitmentsController < ApplicationController
     
     @amount = @post.price
 
-    unless @post.price == 0
+    if @post.price == 0
+      @commitment.paid = true
+      @commitment.save
+    else
       @amount = @post.price
 
       if current_user.stripe_customer_id.blank?
@@ -34,10 +37,9 @@ class CommitmentsController < ApplicationController
         :description => "MocsforDocs - #{@post.title} - #{@post.user.name}",
         :currency    => 'usd'
       )
+      @commitment.paid = charge.paid
+      @commitment.save
     end
-
-    @commitment.paid = charge.paid
-    @commitment.save
     
     Notifier.delay.payment_receipt(current_user, @post, @amount)
 

@@ -1,37 +1,4 @@
-setup 'commitments' (projects your doing)
-  Get bank account data to become project creator "Create Projects"
-    DONE add stripe_recipient_id and stripe_customer_id to user
-    DONE create Stripe::Recipient and set recipient_id upon create first moc
-
-    DONE create commitment
-    DONE if no stripe customer then create stripe customer 
-    DONE create stripe charge
-    DONE if response true then commitment.paid = true
-    DONE commitment#show
-    DONE if free post just create commitment
-
-    if already have card on file, just confirm and charge card
-
-    Square up for commitments
-      On the 2nd and 15th of each month run square up
-
-    payout_receipt template
-    payment_receipt template
-
-          get a
-    get our fee for us
-
-
-  SLL Cert
-
-  Create organization payment method
-  Offer to have the org pay % of all Mocs their users sign up for
-
-
-  DONE add price to post.html
-  DONE add balanced gem
-  DONE add balanced.js
-  DONE add price to register button
+SLL Cert
 
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
@@ -58,49 +25,46 @@ fix profile
 
 Remove "Moc"
 
-
 Close date instead of "Time Period"
 
 initiate with welcome message in messages
 
-upload picture to post
-
 show recently viewed projects in sidebar
 
-  EMAILS
-    automated messages to project lead ("You will be contacted")
-    automated confirmation email with link to the MOC official website
-    who else has committed to a project
-    reminder - you signed up for this project, this project ends on this date
-    reminder - careful this is getting close to ending, you have 1 more month to complete it
-    completed?
-    complete moc sends email
-      welcome
-      s/o has joined your action
-      action comments digest (over 10 votes?)
-      someone commented on your comment
-      someone voted up your comment
-      unlocked new permission
+EMAILS
+  automated messages to project lead ("You will be contacted")
+  automated confirmation email with link to the MOC official website
+  who else has committed to a project
+  reminder - you signed up for this project, this project ends on this date
+  reminder - careful this is getting close to ending, you have 1 more month to complete it
+  completed?
+  complete moc sends email
+    welcome
+    s/o has joined your action
+    action comments digest (over 10 votes?)
+    someone commented on your comment
+    someone voted up your comment
+    unlocked new permission
 
 
   branding for email - mocsfordocs
   
+  add updates to MOCs (like comments)
+
 -----------------------------------------
   
   user and admins can delete comments
 
-  security
-    only you can see your inbox
-    only you can see your posts.html page
-    check gemset at gemnasym 
+  ORGANIZATION FEATURES
+    private/public mocs (only organization can see)
+    Create organization payment method
+    Offer to have the org pay % of all Mocs their users sign up for
 
-  private/public mocs (only organization can see)
-  
+  Set rake task to square up commitments On the 2nd and 15th of each month
+
+  upload picture to post
+
   add delete message link
-
-  make sure last_touched is upated after committed to
-  
-  add updates to MOCs (like comments)
 
   public vs private profile
 
@@ -338,3 +302,20 @@ DONE remove wiggle in the summary of moc
 
 DONE Message creator button inside the Moc
 DONE don't create new view of post if in the same day
+
+
+setup 'commitments' (projects your doing)
+  DONE add price to post.html
+  DONE add balanced gem
+  DONE add balanced.js
+  DONE add price to register button
+  Get bank account data to become project creator "Create Projects"
+    DONE add stripe_recipient_id and stripe_customer_id to user
+    DONE create Stripe::Recipient and set recipient_id upon create first moc
+    DONE create commitment
+    DONE if no stripe customer then create stripe customer 
+    DONE create stripe charge
+    DONE if response true then commitment.paid = true
+    DONE commitment#show
+    DONE if free post just create commitment
+    DONE if already have card on file, just confirm and charge card
