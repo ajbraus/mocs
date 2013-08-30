@@ -1,29 +1,27 @@
 setup 'commitments' (projects your doing)
   Get bank account data to become project creator "Create Projects"
     DONE add stripe_recipient_id and stripe_customer_id to user
-    create Stripe::Recipient and set recipient_id upon create first moc
-    user.can_recieve_payment?
-      display when bank information was added - this not correct? 
+    DONE create Stripe::Recipient and set recipient_id upon create first moc
 
+    DONE create commitment
+    DONE if no stripe customer then create stripe customer 
+    DONE create stripe charge
+    DONE if response true then commitment.paid = true
+    DONE commitment#show
+    DONE if free post just create commitment
 
-    create commitment
-    if no stripe customer then create stripe customer 
-    unless card already exists
-      users.credit_card.build
-    create stripe charge
-    if response true then commitment.paid = true
-    commitment#show
+    if already have card on file, just confirm and charge card
 
-    create Stripe::Customer and set user.stripe_customer_id upon create first charge
-    user.has_valid_credit_card?
-      update charges#new to show all available credit cards with radio to pic
+    Square up for commitments
+      On the 2nd and 15th of each month run square up
 
-    add credit card images to home page
+    payout_receipt template
+    payment_receipt template
 
+          get a
     get our fee for us
 
 
-  Ask for Credit Card info or confirm when Committing
   SLL Cert
 
   Create organization payment method
@@ -46,6 +44,8 @@ setup complete moc workflow
       Project Leader
 
 add 'featured mocs' thumbnails to splash
+
+add user#show activity track once per day
 
 Qualifies for MOC Credits between these dates
 

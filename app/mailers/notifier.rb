@@ -12,7 +12,6 @@ class Notifier < ActionMailer::Base
 
   def welcome(user)
     @user = user
-
     mail to: @user.email, subject: "Welcome to MocsForDocs"
   end
 
@@ -37,6 +36,21 @@ class Notifier < ActionMailer::Base
   def missing_bank_info(user)
     @user = user
     mail to:"tflood131@gmail.com, ajbraus@gmail.com, andrewscottconnely@gmail.com", subject: "Transaction Failed - Missing bank account info for #{@user.name}"
+  end
+
+  def payout_receipt(user, owed_posts, total, payout)
+    @user = user
+    @owed_posts = owed_posts
+    @total = total
+    @payout = payout
+    mail to: @user.email, subject: "Payment received from MocsforDocs"
+  end
+
+  def payment_receipt(user, moc, paid)
+    @user = user
+    @moc = moc
+    @paid = paid
+    mail to: @user.email, subject: "Receipt for Joining #{@moc.title}"
   end
 end
 

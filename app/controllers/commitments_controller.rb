@@ -4,17 +4,21 @@ class CommitmentsController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     @commitment = current_user.commitments.new
+
+    if current_user.stripe_customer_id.present? 
+      @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    end
   end
 
   def create
     @post = Post.find(params[:commitment][:commitment_id])
     @commitment = current_user.commitments.create!(commitment_id: @post.id)
-    if @post.price = 0
-      @commitment.paid = true
-      @commitment.save
-    else
+    
+    @amount = @post.price
+
+    unless @post.price == 0
       @amount = @post.price
-      
+
       if current_user.stripe_customer_id.blank?
         customer = Stripe::Customer.create(
           :email => 'example@stripe.com',
@@ -30,9 +34,12 @@ class CommitmentsController < ApplicationController
         :description => "MocsforDocs - #{@post.title} - #{@post.user.name}",
         :currency    => 'usd'
       )
-
-      @commitment.paid = charge.paid
     end
+
+    @commitment.paid = charge.paid
+    @commitment.save
+    
+    Notifier.delay.payment_receipt(current_user, @post, @amount)
 
     @post.last_touched = Time.now
     @post.save

@@ -18,7 +18,6 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= stylesheet_link_tag 'application', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js" %>
 
 <% if false %>
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -152,7 +151,7 @@
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
                   <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link">
-                    <%= current_user.name %> <%= profile_picture(current_user) %> <b class="caret"></b>
+                    <span class="breathing-room"><%= current_user.name %></span> <%= profile_picture(current_user) %> <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
                     <li>

@@ -25,18 +25,6 @@
   </div>
 
   <div class="span9">
-    <% if current_user == @user %>
-      <div class="clear-both">
-        <h4>Recent Activity</h4>
-        <% @activities.each do |activity| %>
-          <div class="activity">
-          <%= link_to activity.owner.name, activity.owner if activity.owner %>
-          <%= render_activity activity %>
-          </div>
-        <% end %>
-        <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
-      </div>
-    <% end %>
     <div class="tabbable"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-pills">
           <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed Mocs (<%= @completed.count %>)</a></li>
@@ -51,6 +39,18 @@
         </div>
       </div><!-- tab content -->
     </div><!-- tabbable -->
+    <% if current_user == @user %>
+      <div class="clear-both">
+        <h4>Recent Activity</h4>
+        <% @activities.each do |activity| %>
+          <div class="activity">
+          <%= link_to activity.owner.name, activity.owner if activity.owner %>
+          <%= render_activity activity %>
+          </div>
+        <% end %>
+        <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
+      </div>
+    <% end %>
   </div>
 
   <div class="span3">

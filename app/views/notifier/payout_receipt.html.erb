@@ -1,0 +1,20 @@
+<%= @user.name %>
+<table>  
+  <% @owed_posts.each do |op| %>
+    <tr>
+      <td>
+        <%= op.title %>
+      </td>
+      <td>
+        <%= %>
+      </td>
+      <td>
+        <%= op. %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+    @user = user
+    @owed_posts = owed_posts
+    @total = total
+    @payout = payout

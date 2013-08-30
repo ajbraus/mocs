@@ -1,2 +1,48 @@
-<h1>Recipients#new</h1>
-<p>Find me in app/views/recipients/new.html.erb</p>
+<div class="span7 offset2">
+  <div class="well">
+    <h3 class="text-center">Accept Payments</h3>
+    <%= form_tag '/recipients', id: "new_recipient", class:"form-horizontal" do %>
+      <div class="payment-errors well alert-danger text-center" style="display:none"></div>
+      <div class="control-group">
+        <label class="control-label">Full Name</label>
+        <div class="controls">
+          <strong id="name"><%= current_user.name %></strong>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Country</label>
+        <div class="controls">
+          <strong>US</strong>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Type</label>
+        <div class="controls">
+          Individual
+          <% if false %>
+          <%= select_tag "type", options_for_select(["individual", "corporation"], "individual"), id:"type", class:"span3" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Routing Number</label>
+        <div class="controls">
+          <input type="text" id="bankRoutingNumber" class="span3"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Account Number</label>
+        <div class="controls">
+          <input type="text" id="bankAccountNumber" class="span3"/>
+        </div>
+      </div>
+      <div class="row text-center">
+        <%= image_tag "bank_numbers.gif", class:"bank-numbers" %>
+      </div>
+      <div class="text-center row">
+        <span class="breathing-room"><%= link_to "Cancel", :back, class:'down' %></span>
+        <%= submit_tag "Start Accepting Payments", class:"btn btn-success btn-large" %>
+      </div>
+    <% end %>
+  </div>
+</div>

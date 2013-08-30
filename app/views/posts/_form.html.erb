@@ -66,8 +66,15 @@
           <%= f.number_field :credits, class:"price" %> 
         </div>
         <div class="times-input">
-          <%= f.label :price_in_dollars, "Price*" %>
-          <span class="bigger">$</span> <%= f.number_field :price_in_dollars, class:"price" %>
+          <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified? %>
+            <%= f.label :price_in_dollars, "Price*" %>
+            <span class="bigger">$</span> <%= f.number_field :price_in_dollars, class:"price" %>
+          <% else %>
+            <label class="muted">Price*</label>
+            <strong>Free</strong> <%= link_to "(Start Accepting Payment)", new_recipient_path, class:"small", confirm:"Unless you have saved your progress, leaving continuing will delete your progress so far. Would you like to continue?" %>
+            <%= f.hidden_field :price_in_dollars, value:"0" %>
+            
+          <% end %>
         </div>
       </div>
       <div class="field">
@@ -124,6 +131,11 @@
             To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" field.
           </p> 
         </div>
+        <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified == false %>
+          <div class="well alert-danger">
+            <strong>Warning</strong> - Your bank account information could not be verified. We are reviewing your information. If you have any questions, please <%= mail_to "team@mocsfordocs.org", "Contact Us" %>
+          </div>
+        <% end %>
       </div>
     </div>
   <div class="row">

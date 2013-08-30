@@ -1,6 +1,6 @@
 <div class="span7 offset2">
   <div class="well clearfix">
-    <h3>Join Project</h3>
+    <h3 class="text-center">Join Project</h3>
     <ul>
       <li><strong>Title:</strong>: <%= @post.title %></li>
       <li><strong>Lead:</strong>: <%= @post.user.name %></li>
@@ -9,35 +9,58 @@
     <div class="credit-cards text-center">
       <%= image_tag "credit_cards.png" %>
     </div>
-
-    <%= form_for @commitment, html: { class:"form-horizontal" } do |f| %>
-      <span class="payment-errors"></span>
-      <div class="control-group">
-        <label class="control-label">Card Number</label>
-        <div class="controls">
-          <input type="text" data-stripe="number" class="span3"/>
+    <% if current_user.stripe_customer_id.present? %>
+      <h4 class="text-center">Card on File</h4>
+      <table class="table-bordered span6">
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Last 4</th>
+        </tr>
+        <tr class="text-center">
+          <td><%= current_user.name %></td>
+          <td><%= @stripe_customer.cards.first.type %></td>
+          <td>**** **** **** <%= @stripe_customer.cards.first.last4 %></td>
+        </tr>
+      </table>
+      <%= form_for @commitment, html: { class:"form-horizontal", id:"already_paid" } do |f| %>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit "Confirm Payment", class:"btn btn-gold btn-large" %>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">CVC (3-digit code)</label>
-        <div class="controls">
-          <input type="text" data-stripe="cvc" class="input-mini"/>
+        <%= f.hidden_field :commitment_id, value: @post.id %>
+      <% end %>
+    <% else %>    
+      <%= form_for @commitment, html: { class:"form-horizontal" } do |f| %>
+        <div class="payment-errors well alert-danger text-center" style="display:none"></div>
+        <div class="control-group">
+          <label class="control-label">Card Number</label>
+          <div class="controls">
+            <input type="text" data-stripe="number" class="span3"/>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Expiration (MM/YYYY)</label>
-        <div class="controls">
-          <input type="text" data-stripe="exp-month" class="input-mini"/>
-          /
-          <input type="text" data-stripe="exp-year" class="input-mini"/>
+        <div class="control-group">
+          <label class="control-label">CVC (3-digit code)</label>
+          <div class="controls">
+            <input type="text" data-stripe="cvc" class="input-mini"/>
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit "Confirm Payment", class:"btn btn-gold btn-large" %>
+        <div class="control-group">
+          <label class="control-label">Expiration (MM/YYYY)</label>
+          <div class="controls">
+            <input type="text" data-stripe="exp-month" class="input-mini"/>
+            /
+            <input type="text" data-stripe="exp-year" class="input-mini"/>
+          </div>
         </div>
-      </div>
-      <%= f.hidden_field :commitment_id, value: @post.id %>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit "Confirm Payment", class:"btn btn-gold btn-large" %>
+          </div>
+        </div>
+        <%= f.hidden_field :commitment_id, value: @post.id %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -415,7 +415,7 @@ left: 2px;
 .new_post, .edit_post {
   input[type=text] {
     width:95%;
-  }
+  } 
   textarea {
     width:95%;
     height: 150px;
@@ -781,4 +781,8 @@ color: rgb(192, 152, 83);
   h4 {
     color: #c09853;
   }
+}
+
+.bank-numbers {
+  width:270px;
 }

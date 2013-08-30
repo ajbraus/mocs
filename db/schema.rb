@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130828221100) do
     t.datetime "updated_at",                           :null => false
     t.integer  "progress",          :default => 0
     t.boolean  "paid",              :default => false
+    t.boolean  "paid_out",          :default => false
   end
 
   add_index "commitments", ["commitment_id"], :name => "index_commitments_on_commitment_id"
@@ -213,6 +214,7 @@ ActiveRecord::Schema.define(:version => 20130828221100) do
     t.datetime "avatar_updated_at"
     t.integer  "credit_hours",           :default => 1
     t.string   "stripe_recipient_id"
+    t.boolean  "stripe_verified",        :default => false
     t.string   "stripe_customer_id"
   end
 

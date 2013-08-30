@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     @mocs = Post.first(5)
     if user_signed_in?
       @last_show = PublicActivity::Activity.where(owner_id: current_user.id, trackable_id: @post.id).last
-      if @last_show.present? && @last_show.created_at < Date.yesterday
+      unless @last_show.present? && @last_show.created_at > Date.yesterday
         @post.create_activity :show, owner: current_user
       end
 

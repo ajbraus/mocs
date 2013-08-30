@@ -155,30 +155,43 @@ class User < ActiveRecord::Base
     return org.organization_users.find(self.id).is_admin?
   end
 
-  def send_transfers
+  def square_up
+    # MINIMIZE THE NUMBER OF TRANSFERS
+    mocs_total = 0
+
     User.where("stripe_recipient_id IS NOT NULL").each do |u|
-      if u.commitments.where(paid: false).any?
-        price = u.commitments.where(paid: false).inject {|sum, c| sum + c.price }
-        payout = price * 0.7
+      @owed_posts = u.posts.joins(:commitments).where(commitments: { paid_out: false })
+      if @owed_posts.any?
+        total = 0
+        @owed_posts.each do |op|
+          subtotal = op.commitments.where(paid_out: false).inject {|sum, c| sum + c.price }  
+          total = total + subtotal
+          op.commitments.each do |c|
+            c.paid_out = true
+            c.save
+          end
+        end
+        payout = total * 0.67
         transfer = Stripe::Transfer.create(
           :amount => payout,
           :currency => "usd",
           :recipient => u.stripe_recipient_id,
           :statement_descriptor => "MocsforDocs.org - #{c.post.user.name}: #{c.post.title}"
         )
-        u.commitments.each do |c|
-          c.paid = true
-          c.save
+        if transfer.true
+          Notifier.delay.payout_receipt(u, @owed_posts, total, payout)
+        else
+          Notifier.delay.error_payout(u)
         end
-      end
-    end
 
-    # AUTOMATE TRANSFERS TO MOCS
-    # transfer = Stripe::Transfer.create(
-    #   :amount => payout,
-    #   :currency => "usd",
-    #   :recipient => "self"
-    #   :statement_descriptor => "MocsforDocs.org - <%= c.post.user.name %>: <%= c.post.title %>"
-    # )
+        mocs_total = mocs_total + total * 0.33 # COUNT UP THE MOCSFORDOCS TOTAL
+      end
+      transfer = Stripe::Transfer.create(
+        :amount => mocs_total,
+        :currency => "usd",
+        :recipient => "self",
+        :statement_descriptor => "Payout - #{Time.now.strftime("%H:%M %b %e %Y")}"
+      )
+    end
   end
 end

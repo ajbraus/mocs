@@ -1,8 +1,6 @@
 Mocs::Application.routes.draw do
 
-  get "recipients/new"
-
-  get "recipients/create"
+  resources :recipients, only: [:new, :create]
 
   resources :messages
   resources :posts, path: 'Mocs'
