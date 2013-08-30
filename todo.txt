@@ -1,5 +1,6 @@
 Fix create moc form validation
 Fix impressionist
+Fix multiples in homepage
 
 SLL Cert
 
@@ -32,7 +33,6 @@ Close date instead of "Time Period"
 
 initiate with welcome message in messages
 
-show recently viewed projects in sidebar
 
 EMAILS
   automated messages to project lead ("You will be contacted")
@@ -322,3 +322,5 @@ setup 'commitments' (projects your doing)
     DONE commitment#show
     DONE if free post just create commitment
     DONE if already have card on file, just confirm and charge card
+
+DONE show recently viewed projects in sidebar

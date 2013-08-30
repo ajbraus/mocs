@@ -51,16 +51,16 @@ class PostsController < ApplicationController
     else
       if @organization == 0
         @recently_added = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).uniq.order('published_at desc').paginate(:page => params[:page], :per_page => 7)
-        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
-        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
-        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "duration asc").paginate(:page => params[:page], :per_page => 7)
-        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).order( "credits asc").paginate(:page => params[:page], :per_page => 7)
+        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).uniq.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
+        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).uniq.order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
+        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).uniq.order( "duration asc").paginate(:page => params[:page], :per_page => 7)
+        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, posts_specialities: { speciality_id: @specialities }).uniq.order( "credits asc").paginate(:page => params[:page], :per_page => 7)
       else
-        @recently_added = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order('published_at desc').paginate(:page => params[:page], :per_page => 7)
-        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
-        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
-        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "duration asc").paginate(:page => params[:page], :per_page => 7)
-        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).order( "credits asc").paginate(:page => params[:page], :per_page => 7)        
+        @recently_added = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).uniq.order('published_at desc').paginate(:page => params[:page], :per_page => 7)
+        @popular_now = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).uniq.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 7)
+        @time_commitment = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).uniq.order( "expected_time asc").paginate(:page => params[:page], :per_page => 7)
+        @weeks_long = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).uniq.order( "duration asc").paginate(:page => params[:page], :per_page => 7)
+        @moc_credits = Post.joins(:specialities).where(published: true, goal_id: @goals, price: @price_range, organization_id: @organization, posts_specialities: { speciality_id: @specialities }).uniq.order( "credits asc").paginate(:page => params[:page], :per_page => 7)        
       end
     end
 
