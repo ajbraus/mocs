@@ -24,13 +24,8 @@
     <div class="text-center margin-bottom">
       <%= link_to "Create a QI Project", new_post_path, class:"btn btn-gold btn-large" %>
     </div>
-    <div class="">
-      <p class="muted">Recommended Projects</p>
-      <ul>
-        <% @recommended_mocs.each do |tm| %>
-          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-        <% end %>
-      </ul>
+    <div>
+      <%= render 'shared/trending_posts' %>
     </div>
   </div>
 </div><!-- row -->

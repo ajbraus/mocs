@@ -1,0 +1,4 @@
+<p class="muted">Your Recently Viewed</p>
+<% PublicActivity::Activity.where(owner_id: current_user.id, trackable_type: "Post").last(4).map { |a| Post.find(a.trackable_id) }.reverse.each do |m| %>
+  <%= render partial: "shared/mini_moc", locals: { m: m }  %>
+<% end %>

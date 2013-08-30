@@ -1,3 +1,3 @@
 <div class="tag">
-  <%= raw specialities.map(&:name).map { |t| t }.join(', ') %>
+  <%= raw specialities.map { |s| s.name }.join(', ') %>
 </div>

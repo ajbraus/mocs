@@ -94,12 +94,7 @@
     </div>
     <div class="">
       <hr>
-      <p class="muted indent">Trending Projects</p>
-      <ul>
-        <% @trending_mocs.each do |tm| %>
-          <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-        <% end %>
-      </ul>
+      <%= render 'shared/trending_posts' %>
     </div>
   </div>
 

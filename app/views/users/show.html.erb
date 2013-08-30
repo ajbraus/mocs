@@ -27,7 +27,9 @@
   <div class="span9">
     <div class="tabbable"> <!-- Only required for left/right tabs -->
         <ul class="nav nav-pills">
-          <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed Mocs (<%= @completed.count %>)</a></li>
+          <% if @completed.any? %>
+            <li class="pull-right"><a href="#tab2" data-toggle="tab">Completed Mocs (<%= @completed.count %>)</a></li>
+          <% end %>
           <li class="pull-right active"><a href="#tab1" data-toggle="tab">Joined Mocs (<%= @commitments.count %>)</a></li>
         </ul>
       <div class="tab-content">
@@ -54,13 +56,16 @@
   </div>
 
   <div class="span3">
-    <%= large_profile_picture(@user) %>
+    <div class="text-center">
+      <%= large_profile_picture(@user) %>
+    </div>
     <h3 class=""><%= @user.name %></h3>
     <div class="big clear-both">
-      <strong>Organization:</strong> <%= @user.organization.name %>
+      <strong>Organization:</strong> 
+      <div class="tag"><%= @user.organization.name %></div>
     </div>
     <div class="big">
-      <strong>Specialities</strong>
+      <strong>Specialities:</strong>
       <div class="tag"><%= @user.specialities.map(&:name).join(", ") %></div>
     </div>
     <% if @user == current_user %>
@@ -75,6 +80,6 @@
       </div>
     <% end %>
     <hr>
-    <%= render 'shared/recommended_posts' %>
+    <%= render 'shared/recently_viewed_posts' %>
   </div>
 </div>
