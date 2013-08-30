@@ -41,7 +41,7 @@ class CommitmentsController < ApplicationController
       @commitment.save
     end
     
-    Notifier.delay.payment_receipt(current_user, @post, @amount)
+    Notifier.delay.payment_receipt(current_user, @post, @amount, @commitment)
 
     @post.last_touched = Time.now
     @post.save

@@ -1,3 +1,22 @@
-    <%= @user.name %>
-    <%= @moc.title %>
-    <%= @paid %>
+<p><%= @user.name %>,</p>
+<br />
+<br />
+<p>This is a receipt for <strong><%= link_to @moc.title, post_url(@moc) %><strong>
+<br />
+<br />
+<p>
+  <table>
+    <tr>
+      <th>Project Title</th>
+      <th>Price</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td><%= @moc.title %></td>
+      <td><%= @paid %></td>
+      <td><%= @commitment.nice_created_at %></td>
+    </tr>
+  </table>
+</p>
+<br />
+<br />

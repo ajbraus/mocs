@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
                   :wrap_up,
                   :speciality_ids
 
-  is_impressionable #:counter_cache => true #@post.impressions_count
+  is_impressionable :counter_cache => true #@post.impressions_count
   #tracked owner: ->(controller, model) { controller && controller.current_user }
   belongs_to :user
   belongs_to :goal

@@ -1,6 +1,5 @@
 Fix create moc form validation
 Fix impressionist
-Fix multiples in homepage
 
 SLL Cert
 
@@ -33,7 +32,6 @@ Close date instead of "Time Period"
 
 initiate with welcome message in messages
 
-
 EMAILS
   automated messages to project lead ("You will be contacted")
   automated confirmation email with link to the MOC official website
@@ -48,6 +46,8 @@ EMAILS
     someone commented on your comment
     someone voted up your comment
     unlocked new permission
+  reciept tempalte
+  payout template
 
 
   branding for email - mocsfordocs
@@ -324,3 +324,4 @@ setup 'commitments' (projects your doing)
     DONE if already have card on file, just confirm and charge card
 
 DONE show recently viewed projects in sidebar
+DONE Fix multiples in homepage

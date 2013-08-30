@@ -1,20 +1,27 @@
-<%= @user.name %>
-<table>  
-  <% @owed_posts.each do |op| %>
-    <tr>
-      <td>
-        <%= op.title %>
-      </td>
-      <td>
-        <%= %>
-      </td>
-      <td>
-        <%= op. %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-    @user = user
-    @owed_posts = owed_posts
-    @total = total
-    @payout = payout
+<%= @user.name %>,
+<br />
+<br />
+<p>This is a notification of payment of $<%= @payout %> into your bank account.<strong>
+<br />
+<br />
+<p>
+  <h5>Posts with new Joiners</h5>
+  <table>  
+    <% @owed_posts.each do |op| %>
+      <tr>
+        <th>Title</th>
+        <th>Total Joiners</th>
+      </tr>
+      <tr>
+        <td>
+          <%= op.title %>
+        </td>
+        <td>
+          <%= op.commitments.count %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+<br />
+<br />

@@ -46,10 +46,11 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Payment received from MocsforDocs"
   end
 
-  def payment_receipt(user, moc, paid)
+  def payment_receipt(user, moc, paid, commitment)
     @user = user
     @moc = moc
     @paid = paid
+    @commitment = commitment
     mail to: @user.email, subject: "Receipt for Joining #{@moc.title}"
   end
 end
