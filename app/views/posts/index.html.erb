@@ -94,7 +94,9 @@
     </div>
     <div class="">
       <hr>
+      <% if user_signed_in? %>
       <%= render 'shared/trending_posts' %>
+      <% end %>
     </div>
   </div>
 
