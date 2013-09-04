@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 
   if (!!$('#post_title').val() && 
-      $("#post_goal_id option:selected").val().length > 0) 
+      !!$("#post_goal_id option:selected").val().length > 0) 
   {
     $("#save").removeClass("disabled");
   }
@@ -46,42 +46,44 @@ $(document).ready(function() {
       $("#post_expected_time").val().length > 0 &&
       $("#post_duration").val().length > 0 &&
       $("#post_desc").val().length > 0 &&
-      $("#post_credits").val().length > 0 &&
       $("#post_price_in_dollars").val().length > 0 &&
-      $("#post_begins_on").val().length > 0 &&
-      $("#post_ends_on").val().length > 0 &&
       $("#post_info").val().length > 0 &&
       $("#post_baseline").val().length > 0 &&
       $("#post_plan_do").val().length > 0 &&
       $("#post_post_test").val().length > 0 &&
       $("#post_wrap_up").val().length > 0)
+      // $("#post_credits").val().length > 0 &&
+      // $("#post_begins_on").val().length > 0 &&
+      // $("#post_ends_on").val().length > 0 &&
   {
-    $('#publish').removeClass("disabled");
+    $('#publish').val("Publish!").removeClass("disabled").addClass("btn-gold");
   }
 
 
   $("form").keyup(function(){
+    console.log("fuck you")
     if ($('#post_title').val().length > 0 && 
         $("#post_goal_id option:selected").val().length > 0) 
     {
       $("#save").removeClass("disabled");
     }
+
     if ($('#post_title').length > 0 && 
         $("#post_goal_id option:selected").val().length > 0 &&
         $("#post_expected_time").val().length > 0 &&
         $("#post_duration").val().length > 0 &&
         $("#post_desc").val().length > 0 &&
-        $("#post_credits").val().length > 0 &&
         $("#post_price_in_dollars").val().length > 0 &&
-        $("#post_begins_on").val().length > 0 &&
-        $("#post_ends_on").val().length > 0 &&
+        // $("#post_credits").val().length > 0 &&
+        // $("#post_begins_on").val().length > 0 &&
+        // $("#post_ends_on").val().length > 0 &&
         $("#post_info").val().length > 0 &&
         $("#post_baseline").val().length > 0 &&
         $("#post_plan_do").val().length > 0 &&
         $("#post_post_test").val().length > 0 &&
         $("#post_wrap_up").val().length > 0)
     {
-      $('#publish').removeClass("disabled");
+      $('#publish').val("Publish!").removeClass("disabled").addClass("btn-gold");
     }
   });
 

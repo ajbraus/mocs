@@ -49,7 +49,6 @@ namespace :db do
         post.created_at = 4.months.ago..Time.now
         post.last_touched = 4.months.ago..Time.now
         post.credits = 0..30
-        post.impressions_count = 1..3000
         post.published = [true,false]
         post.price = [2000,5000,10000,20000]
         if post.published == true

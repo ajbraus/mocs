@@ -150,8 +150,8 @@
                 <!-- DROPDOWN -->
                 <li class="divider-vertical"></li>
                 <li class="dropdown">
-                  <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link">
-                    <span class="breathing-room"><%= current_user.name %></span> <%= profile_picture(current_user) %> <b class="caret"></b>
+                  <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link" style="padding:0;">
+                    <span class="breathing-room"><%= current_user.name %></span> <%= profile_picture(current_user) %> <b class="caret" style="position: relative;top: 10px;"></b>
                   </a>
                   <ul class="dropdown-menu">
                     <li>
@@ -222,6 +222,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+
+    <!-- JQUERY EASING -->
+    <%= javascript_include_tag "http://thecodeplayer.com/uploads/js/jquery.easing.min.js" %>
 
     <% if params[:controller] == 'posts' && params[:action] == 'index' %>
       <script>

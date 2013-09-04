@@ -1,5 +1,17 @@
 <div class="row">
-  <div class="span7">
+  <div class="span10 offset1">
+    <ul id="progressbar">
+      <li data-step="0" class="active">Summary</li>
+      <li data-step="1">Background</li>
+      <li data-step="2">Baseline Data</li>
+      <li data-step="3">Intervention(s)</li>
+      <li data-step="4">Post Data</li>
+      <li data-step="5">Wrap Up</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span8 offset1">
     <%= form_for(@post) do |f| %>
       <% if @post.errors.any? %>
         <div id="error_explanation">
@@ -12,163 +24,177 @@
           </ul>
         </div>
       <% end %>
-
-      <div class="field">
-        <label for="post_title">Project Title<span class="red">*</span></label>
-        <%= f.text_field :title %>
-      </div>
-      <div>
-        <label for="goal_id">Project Goal<span class="red">*</span></label>
-        <% if @post.goal.present? %>
-          <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, :selected => @post.goal.id, prompt:"Select Goal" %>     
-        <% else %>
-          <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, prompt:"Select Goal" %>     
-        <% end %>
-      </div>
-      <div class="field">
-        <%= f.label :speciality_ids, "Specialities* (choose at least one)" %>
-        <ul>
-          <% for speciality in Speciality.find(:all) %>
-            <li class="pull-left breathing-room">
-              <label>
-                <%= check_box_tag "post[speciality_ids][]", speciality.id, @post.specialities.include?(speciality) %>
-                <%= speciality.name %>
-              </label>
-            </li>
-          <% end %>  
-        <ul>
-      </div> 
-      <div class="field">
-        <div class="times-input">
-          <%= f.label :expected_time, "Time to Complete*" %>
-          <%= f.number_field :expected_time, class:"price" %> hours
+      <fieldset>
+        <div class="row">
+          <label for="post_title">Project Title<span class="red">*</span></label>
+          <%= f.text_field :title %>
         </div>
-        <div class="times-input">
-          <%= f.label :duration, "Duration*" %>
-          <%= f.number_field :duration, class:"price" %> weeks
+        <div class="row">
+          <label for="goal_id">Project Goal<span class="red">*</span></label>
+          <% if @post.goal.present? %>
+            <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, :selected => @post.goal.id, prompt:"Select Goal" %>     
+          <% else %>
+            <%= f.select :goal_id, Goal.all.collect {|x| [x.name, x.id]}, prompt:"Select Goal" %>     
+          <% end %>
         </div>
-      </div>
-      <div class="field">
-        <%= f.label :desc, "Project Description*" %>
-        <%= f.text_area :desc, class:"rich-text" %>
-      </div>
-      <div class="field">
-        <%= f.label :img_url, "Image URL" %>
-        <%= f.text_field :img_url, class:"" %>
-      </div>
-      <div class="field">
-        <%= f.label :video_url, "YouTube Video URL" %>
-        <%= f.text_field :video_url, class:"" %>
-      </div>
-      <div class="field">
-        <div class="times-input">
-          <%= f.label :credits, "MOC Credits*" %>
-          <%= f.number_field :credits, class:"price" %> 
+        <div class="row">
+          <%= f.label :speciality_ids, "Specialities* (choose at least one)" %>
+          <ul>
+            <% for speciality in Speciality.find(:all) %>
+              <li class="pull-left breathing-room">
+                <label>
+                  <%= check_box_tag "post[speciality_ids][]", speciality.id, @post.specialities.include?(speciality) %>
+                  <%= speciality.name %>
+                </label>
+              </li>
+            <% end %>  
+          <ul>
+        </div> 
+        <div class="row">
+          <%= f.label :desc, "Project Description*" %>
+          <%= f.text_area :desc, class:"rich-text" %>
         </div>
-        <div class="times-input">
+        <div class="row">
           <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified? %>
             <%= f.label :price_in_dollars, "Price*" %>
             <span class="bigger">$</span> <%= f.number_field :price_in_dollars, class:"price" %>
           <% else %>
-            <label class="muted">Price*</label>
-            <strong>Free</strong> <%= link_to "(Start Accepting Payment)", new_recipient_path, class:"small", confirm:"Unless you have saved your progress, leaving continuing will delete your progress so far. Would you like to continue?" %>
-            <%= f.hidden_field :price_in_dollars, value:"0" %>
-            
-          <% end %>
+            <div class="well">
+              <label>Price</label>
+              <strong>Free</strong> <%= link_to "(Start Accepting Payment)", new_recipient_path, class:"small", confirm:"Leaving this page will delete unsaved progress. Would you like to continue?" %>
+              <%= f.hidden_field :price_in_dollars, value:"0" %>
+            </div>
+          <% end %>          
         </div>
-      </div>
-      <div class="field">
-        <div class="times-input">
-          <%= f.label :begins_on do %>
-          <i class="icon-calendar"></i> Begins On*
-          <% end %>
-          <%= f.text_field :begins_on, value: "", class:"datepicker" %>
-        </div>
-        <div class="times-input">
-          <%= f.label :ends_on do %>
-          <i class="icon-calendar"></i> Ends On*
-          <% end %>
-          <%= f.text_field :ends_on, value: "", class:"datepicker" %>
-        </div>
-      </div>
-    </div>
-      <div class="span5">
-        <div class="well">
-          <p><strong>Description & Instructions</strong></p>
-          <p>
-            There are a lot of ways to make a Moc. For simplicity we have broken the process into steps. 
-          </p>
-          <p>
-            First, fill out the Description of your Moc. This description is what physicians will judge to decide if they want to register for your Moc.
-          </p>
-          <p>
-            Next, provide directions for each step in the text areas below.
-            <ol>
-              <li>Review Background Information</li>
-              <li>Gather Baseline Data</li>
-              <li>Complete Plan, Do, Check, Act Cycles</li>
-              <li>Gather Post Test Data</li>
-              <li>Wrap Up</li>
-            </ol>
-             Your instructions will only be revealed to doctors who register for your Moc.
-          </p>
-        </div>
-        <div class="well alert-info">
-          <span class="big"><i class="icon-user-md"></i> Tip</span></br>
-          <p>
-            <strong>"<span class='red'>*</span>"</strong> means the <strong>title</strong> and a <strong>goal</strong> are required to save a project for later.
-          </p>
-          <p>
-            <strong>"*"</strong> means the field is required to publish.
-          </p>
-          <p>
-            Choose a <strong>title</strong> that is brief and descriptive
-          </p>
-          <p>
-            "Topics" are a list of 2-7 <strong>keywords and phrases</strong> for  your moc.
-          </p>
-          <p>
-            To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" field.
-          </p> 
-        </div>
-        <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified == false %>
-          <div class="well alert-danger">
-            <strong>Warning</strong> - Your bank account information could not be verified. We are reviewing your information. If you have any questions, please <%= mail_to "team@mocsfordocs.org", "Contact Us" %>
+        <div class="row">
+          <div class="span3">
+            <%= f.label :expected_time, "Time to Complete*" %>
+            <%= f.number_field :expected_time, class:"price" %> hours
           </div>
+          <div class="span3">
+            <%= f.label :duration, "Estimated Duration*" %>
+            <%= f.number_field :duration, class:"price" %> weeks
+          </div>
+        </div>
+        <div class="row">
+          <%= f.label :img_url, "Image URL (optional)" %>
+          <%= f.text_field :img_url, class:"" %>
+        </div>
+        <div class="row">
+          <%= f.label :video_url, "YouTube Video URL (optional)" %>
+          <%= f.text_field :video_url, class:"" %>
+        </div>
+        <div class="row well clearfix">
+          <h5>MOC Project Status (optional)</h5>
+          <div class="span2">
+            <%= f.label :credits, "MOC Credits" %>
+            <%= f.number_field :credits, class:"price" %> 
+          </div>
+          <div class="span3">
+            <%= f.label :begins_on do %>
+            <i class="icon-calendar"></i> MOC Credit Open Date (optional)
+            <% end %>
+            <%= f.text_field :begins_on, value: "", class:"datepicker" %>
+          </div>
+          <div class="span3">
+            <%= f.label :ends_on do %>
+            <i class="icon-calendar"></i> MOC Credit Close Date (optional)
+            <% end %>
+            <%= f.text_field :ends_on, value: "", class:"datepicker" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="btn btn-gold btn-large next pull-right">Next <i class="icon-chevron-right"></i></div>
+        </div>
+      </fieldset>
+      <fieldset style="display:none;">
+        <div class="row">
+          <%= f.label :info, "Step 1: Background Information*" %>
+          <%= f.text_area :info, class:"rich-text" %>
+        </div>
+        <div class="row">
+          <div class="btn btn-large previous"><i class="icon-chevron-left"></i> Previous</div> <div class="btn btn-gold btn-large next pull-right">Next <i class="icon-chevron-right"></i></div>
+        </div>
+      </fieldset>
+      <fieldset style="display:none;">
+        <div class="row">
+          <%= f.label :baseline, "Step 2: Collect Baseline Data*" %>
+          <%= f.text_area :baseline, class:"rich-text" %>
+        </div>
+        <div class="row">
+          <div class="btn btn-large previous"><i class="icon-chevron-left"></i> Previous</div> <div class="btn btn-gold btn-large next pull-right">Next <i class="icon-chevron-right"></i></div>
+        </div>
+      </fieldset>
+      <fieldset style="display:none;">
+        <div class="row">
+          <%= f.label :plan_do, "Step 3: Intervention(s)*" %>
+          <%= f.text_area :plan_do, class:"rich-text" %>
+        </div>
+        <div class="row">
+          <div class="btn btn-large previous"><i class="icon-chevron-left"></i> Previous</div> <div class="btn btn-gold btn-large next pull-right">Next <i class="icon-chevron-right"></i></div>
+        </div>
+      </fieldset>
+      <fieldset style="display:none;">
+        <div class="row">
+          <%= f.label :post_test, "Step 4: Collect Post Intervention Data*" %>
+          <%= f.text_area :post_test, class:"rich-text" %>
+        </div>
+        <div class="row">
+          <div class="btn btn-large previous"><i class="icon-chevron-left"></i> Previous</div> <div class="btn btn-gold btn-large next pull-right">Next <i class="icon-chevron-right"></i></div>
+        </div>
+      </fieldset>
+      <fieldset style="display:none;">
+        <div class="row">
+          <%= f.label :wrap_up, "Step 5: Wrap Up" %>
+          <%= f.text_area :wrap_up, class:"rich-text" %>
+        </div>
+        <div class="row">
+          <div class="btn btn-large previous"><i class="icon-chevron-left"></i> Previous</div>
+        </div>
+      </fieldset>
+      <div class="actions row">
+        <% if params[:action] == "edit" %>
+          <%= f.submit "Delete", class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
+        <% elsif params[:action] == "new" %>
+          <%= link_to "Cancel", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
         <% end %>
+        <%= f.submit "Save w/o Publishing", id:"save", class:'btn btn-success btn-large disabled'  %>
+        <%= f.submit "Complete to Publish", class:'btn btn-large disabled', id: "publish" %>
       </div>
     </div>
-  <div class="row">
-    <div class="span12">
-      <h4>Instructions</h4>
-      <div class="field">
-        <%= f.label :info, "Step 1: Background Information*" %>
-        <%= f.text_area :info, class:"rich-text" %>
-      </div>
-      <div class="field">
-        <%= f.label :baseline, "Step 2: Collect Baseline Data*" %>
-        <%= f.text_area :baseline, class:"rich-text" %>
-      </div>
-      <div class="field">
-        <%= f.label :plan_do, "Step 3: Plan, Do, Check, Act Cycles*" %>
-        <%= f.text_area :plan_do, class:"rich-text" %>
-      </div>
-      <div class="field">
-        <%= f.label :post_test, "Step 4: Post Test Data Collection*" %>
-        <%= f.text_area :post_test, class:"rich-text" %>
-      </div>
-      <div class="field">
-        <%= f.label :wrap_up, "Step 5: Wrap Up" %>
-        <%= f.text_area :wrap_up, class:"rich-text" %>
-      </div>
-      <div class="actions clear-both">
-        <%= f.submit "Publish", id:"publish", class:'btn btn-primary disabled btn-large', id: "publish"  %>
-        <%= f.submit "Save w/o Publishing", id:"save", class:'btn btn-success btn-large disabled'  %>
-        <% if params[:action] == "edit" %>
-          <%= f.submit "Delete", class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
-        <% elsif params[:action] == "new" %>
-          <%= link_to "Delete", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project from the database. Are you sure you would like to continue?"  %>
-        <% end %>
-      </div>
   <% end %>
+  
+    <div class="span3">
+      <div class="well 0">
+        <p>
+          Physicians will use this <strong>Summary</strong> to judge if they want to register for your project.
+        </p>
+        <p>
+          Choose a <strong>title</strong> that is brief and descriptive.
+        </p>
+        <p>
+          To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" row.
+        </p> 
+      </div>
+      <div class="well 1" style='display:none;'>
+        <p>
+          Blah
+        </p> 
+      </div>
+      <div class="well alert-info">
+        <span class="big"><i class="icon-user-md"></i> Tip</span></br>
+        <p>
+          <strong>"<span class='red'>*</span>"</strong> means the <strong>title</strong> and a <strong>goal</strong> are required to save a project for later.
+        </p>
+        <p>
+          <strong>"*"</strong> means the row is required to <strong>publish</strong>.
+        </p>
+      </div>
+      <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified == false %>
+        <div class="well alert-danger">
+          <strong>Warning</strong> - Your bank account information could not be verified. We are reviewing your information. If you have any questions, please <%= mail_to "team@mocsfordocs.org", "Contact Us" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -164,6 +164,7 @@
       </div>   
     </div>
     <div class="tab-pane" id="tab2">
+      <h3>Review Background Information</h3>
       <%= raw @post.info %>
       <% if current_user.committed_to?(@post) %>
         <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
@@ -175,6 +176,7 @@
       <% end %>
     </div>
     <div class="tab-pane" id="tab3">
+      <h3>Collect Baseline Data</h3>
       <%= raw @post.baseline %>
       <% if current_user.committed_to?(@post) %>
         <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
@@ -186,6 +188,7 @@
       <% end %>
     </div>
     <div class="tab-pane" id="tab4">
+      <h3>Intervention</h3>
       <%= raw @post.plan_do %>
       <% if current_user.committed_to?(@post) %>
         <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
@@ -197,6 +200,7 @@
       <% end %>
     </div>
     <div class="tab-pane" id="tab5">
+      <h3>Collect Post Intervention Datas</h3>
       <%= raw @post.post_test %>
       <% if current_user.committed_to?(@post) %>
         <%= link_to increment_progress_commitment_path(@commitment), method: :put, class:"no-hover" do %>
@@ -208,6 +212,7 @@
       <% end %>
     </div>
     <div class="tab-pane" id="tab6">
+      <h3>Wrap Up</h3>
       <%= raw @post.wrap_up %>
       <% if current_user.committed_to?(@post) %>
         <% unless @commitment.progress >= 5 %>
