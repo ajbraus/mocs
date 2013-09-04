@@ -29,14 +29,14 @@
          </div>
          <div class="span4 offset1">
           <p>
-           <label for="organization">Organization</label>
+           <label for="organization">Organization*</label>
            <input class="required ui-autocomplete-input" data-autocomplete-source="/org_name" id="organization" name="organization" size="30" type="text" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
           </p>
           <p>
-            <%= f.label :state %>
-            <%= f.select :state, us_states, class:"state required" %><br>
+            <%= f.label :state, "State*" %>
+            <%= f.select :state, us_states, class:"state required", prompt:"Select State" %><br>
           </p>
-            <%= f.label :speciality_ids, "Choose Your Specialities" %>
+            <%= f.label :speciality_ids, "Choose Your Specialities* (choose at least 1)" %>
             <% for speciality in Speciality.find(:all) %>
               <label>
                 <%= check_box_tag "user[speciality_ids][]", speciality.id, @user.specialities.include?(speciality) %>

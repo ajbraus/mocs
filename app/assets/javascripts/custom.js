@@ -139,4 +139,5 @@ $(document).ready(function() {
 
   // VALIDATIONS
   $('#new_registration').validate();
+  
 });

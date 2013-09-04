@@ -13,7 +13,8 @@
             <tr>
               <th width="3%"></th>
               <th width="30%">Name</th>
-              <th width="30%">Email</th>
+              <th width="20%">Email</th>
+              <th width="10%">Org</th>
               <th width="15%">Applied On</th>
               <th width="20%">Actions</th>
             </tr>
@@ -24,6 +25,7 @@
                 <td></td>
                 <td><%= u.name %></td>
                 <td><%= u.email %></td>
+                <td><%= u.organization.name %></td>
                 <td><%= u.nice_created_at %></td>
                 <td>
                   <%= link_to "Confirm", user_confirm_path(u), class:"btn btn-mini btn-success" %>
