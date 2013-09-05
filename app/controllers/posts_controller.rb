@@ -138,6 +138,7 @@ class PostsController < ApplicationController
         else
           @post.create_activity :create, owner: current_user
         end
+        Notifier.delay.new_post(@post)
         format.html { redirect_to @post, notice: 'MOC was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

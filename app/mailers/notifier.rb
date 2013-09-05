@@ -4,10 +4,14 @@ class Notifier < ActionMailer::Base
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "MocsforDocs.org Team@mocsfordocs.org"
 
-
-  def request_confirmation(user)
+  def internal_new_user(user)
     @user = user
     mail to: "team@mocsfordocs.org", subject: "New User to Confirm or Reject"
+  end
+
+  def confirmation_of_request(user)
+    @user = user
+    mail to: @user.email, subject: "Request Received for MocsforDocs.org Access"
   end
 
   def welcome(user)
@@ -15,9 +19,9 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Welcome to MocsForDocs"
   end
 
-  def new_moc(moc)
-    @moc = moc
-    mail to: "ajbraus@gmail.com, andrewscottconnely@gmail.com, tflood131@gmail.com", subject: "Woot! New MOC by #{@moc.user.name} - #{@moc.title}"
+  def new_post(post)
+    @post = post
+    mail to: "team@mocsfordocs.org", subject: "Woot! New Project Created by #{@post.user.name} - #{@post.title}"
   end
 
   def send_message(message)
@@ -27,10 +31,10 @@ class Notifier < ActionMailer::Base
     mail to: @receiver.email, subject: "MOC Message from #{@sender.first_name}"
   end
 
-  def moc_update(moc, user)
+  def post_update(post, user)
     @user = user
-    @moc = moc
-    mail bcc: @user.email, subject: "MOC Update: #{@moc.title}"
+    @post = post
+    mail bcc: @user.email, subject: "MOC Update: #{@post.title}"
   end
 
   def missing_bank_info(user)
@@ -46,12 +50,12 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Payment received from MocsforDocs"
   end
 
-  def payment_receipt(user, moc, paid, commitment)
+  def payment_receipt(user, post, paid, commitment)
     @user = user
-    @moc = moc
+    @post = post
     @paid = paid
     @commitment = commitment
-    mail to: @user.email, subject: "Receipt for Joining #{@moc.title}"
+    mail to: @user.email, subject: "Receipt for Joining #{@post.title}"
   end
 end
 

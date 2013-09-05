@@ -1,0 +1,11 @@
+<h4>A new Project was Just Created!</h4>
+
+<p>
+  <strong>Title:</strong> <%= @post.title %><br>
+  <strong>Description:</strong> <%= @post.try(:description) %><br>
+  <strong>Author:</strong> <%= link_to @post.user.name, user_url(@post.user) %><br>
+</p>
+
+<p>
+  <%= link_to "Admin dashboard", users_url %>
+</p>
