@@ -55,7 +55,7 @@
           <%= f.text_area :desc, class:"rich-text" %>
         </div>
         <div class="row">
-          <% if current_user.stripe_recipient_id.present? && current_user.stripe_verified? %>
+          <% if current_user.stripe_recipient_id.present? %>
             <%= f.label :price_in_dollars, "Price*" %>
             <span class="bigger">$</span> <%= f.number_field :price_in_dollars, class:"price" %>
           <% else %>

@@ -251,9 +251,8 @@
             </ul>  
           </div>
           <div class="tab-pane" id="updates">
-            <%= render partial: 'updates/form' %>
             <% if current_user == @post.user %>              
-              
+              <%= render partial: 'updates/form' %>
             <% end %>
             <ul class="media-list">
             <% @post.updates.each do |u| %>
