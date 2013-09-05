@@ -1,0 +1,12 @@
+<h4 class="h4"><%= @user.first_name %>, </h4>
+<p>
+  <strong>Congratulations</strong> - You have a new Joiner on one of your MocsforDocs.org projects.
+</p> 
+  <strong>Project:</strong> <%= link_to @post.title, post_url(@post) %>
+</p>
+<p>
+  <strong>Joiner:</strong> <%= link_to @joiner.name.titleize, user_url(@joiner) %>
+</p>
+<p>
+  Feel free to message them from their profile to welcome them to your project. They will recieve reminders automatically from MocsforDocs.org to remind them to keep going, but don't be shy sending out direct messages and project-wide updates from the project's page in the Updates section.
+</p>

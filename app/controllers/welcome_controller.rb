@@ -3,4 +3,6 @@ class WelcomeController < ApplicationController
   end
   def how
   end
+  def terms
+  end
 end

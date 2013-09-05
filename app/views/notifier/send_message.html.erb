@@ -1,12 +1,16 @@
+<h4 class="h4"><%= @receiver.first_name %>, </h4>
 <p>
-  <strong>Message from:</strong> <%= @sender.name.titleize %>
+  You have a new message in your messages on MocsforDocs.org
+</p> 
+  <strong>From:</strong> <%= @sender.name.titleize %>
 </p>
 <p>
-  <div class="big"><strong>Subject:</strong> <%= @message.subject %></div>
+  <strong>Subject:</strong> <%= @message.subject %>
 </p>
 <p>
   <%= @message.body %>
 </p>
 <p>
-  <a href="http://www.mocsfordocs.org/messages/<%= @message.id %>">reply</a>
+  <%= link_to "View Message", message_url(@message) %></br>
+  <%= link_to "View All Messages", messages_url %>
 </p>

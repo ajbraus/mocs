@@ -42,6 +42,7 @@ class CommitmentsController < ApplicationController
     end
     
     Notifier.delay.payment_receipt(current_user, @post, @amount, @commitment)
+    Notifier.delay.new_joiner(@post.user, current_user, @post)
 
     @post.last_touched = Time.now
     @post.save

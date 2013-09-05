@@ -35,7 +35,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :specialities
 
   has_many :comments, as: :commentable
-
+  has_many :updates
 
   validates :title, presence: true
 

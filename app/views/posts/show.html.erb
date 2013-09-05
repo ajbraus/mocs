@@ -226,15 +226,45 @@
       <% end %>
     </div>
     <div class="span7">
-      <h3>Comments</h3>
-      <%= render partial: 'comments/form' %>
-      <ul class="media-list">
-      <% @comments.each do |c| %>
-        <% if c.id.present? %>
-          <%= render partial: 'shared/comment', locals: { c: c } %>
-        <% end %>
-      <% end %>
-      </ul>  
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#comments" data-toggle="tab">
+              Comments (<%= @comments.count %>)
+            </a>
+          </li>
+          <li>
+            <a href="#updates" data-toggle="tab">
+              Updates (<%= @post.updates.count %>)
+            </a> 
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="comments">
+            <%= render partial: 'comments/form' %>
+            <ul class="media-list">
+            <% @comments.each do |c| %>
+              <% if c.id.present? %>
+                <%= render partial: 'shared/comment', locals: { c: c } %>
+              <% end %>
+            <% end %>
+            </ul>  
+          </div>
+          <div class="tab-pane" id="updates">
+            <%= render partial: 'updates/form' %>
+            <% if current_user == @post.user %>              
+              
+            <% end %>
+            <ul class="media-list">
+            <% @post.updates.each do |u| %>
+              <% if u.id.present? %>
+                <%= render partial: 'updates/update', locals: { u: u } %>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

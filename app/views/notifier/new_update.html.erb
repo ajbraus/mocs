@@ -1,0 +1,13 @@
+<h4 class="h4"><%= @user.first_name %>, </h4>
+<p>
+  There is a new update on one of your MocsforDocs.org projects: <%= link_to @post.title, post_url(@post) %>
+</p>
+<p>
+  <strong>Subject:</strong> <%= @update.subject %>
+</p>
+<p>
+  <strong>Body:</strong> <%= @update.body %>
+</p>
+<p>
+  <div class='text-right muted'>updated <%= time_ago_in_words(u.created_at) %> ago by <%= link_to u.post.user.name, u.post.user %>
+</p>

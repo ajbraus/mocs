@@ -212,10 +212,20 @@
 
 
     <footer id="footer">
-      <div class="links">
-        &copy; MocsforDocs, LLC 2013
-        <a href=mailto:"team@mocsfordocs.com">Contact Us</a>
-      </div>
+      <ul class="links">
+        <li>
+          &copy; MocsforDocs, LLC 2013
+        </li>
+        <li>
+          <a href=mailto:"team@mocsfordocs.com">Contact Us</a>
+        </li>
+        <li>
+          <%= link_to "Terms & Conditions", terms_path %>
+        </li>
+        <li>
+          <%= link_to "About us", about_path %>
+        </li>
+      </ul>
     </footer>
 
     <!-- Javascripts

@@ -79,6 +79,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.paginate(:page => params[:page], :per_page => 10, order: 'created_at desc')
     @mocs = Post.first(5)
+    @update = @post.updates.build
     if user_signed_in?
       @last_show = PublicActivity::Activity.where(owner_id: current_user.id, trackable_id: @post.id).last
       unless @last_show.present? && @last_show.created_at > Date.yesterday

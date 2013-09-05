@@ -57,5 +57,19 @@ class Notifier < ActionMailer::Base
     @commitment = commitment
     mail to: @user.email, subject: "Receipt for Joining #{@post.title}"
   end
+
+  def new_update(user, post, update)
+    @user = user
+    @post = post
+    @update = update
+    mail to: @user.email, subject: "Update on One of Your Projects - #{@post.title}"
+  end
+
+  def new_joiner(user, joiner, post)
+    @user = user
+    @joiner = joiner
+    @post = post
+    mail to: @user.email, subject: "New Joiner for Your MocsforDocs Project - #{@post.title}"
+  end
 end
 

@@ -22,8 +22,6 @@ setup complete moc workflow
       End Date,
       Project Leader
 
-initate with welcome message
-
 fix profile
   To check progress (green bars) in my projects
   get prompted as to next steps
@@ -34,25 +32,21 @@ fix profile
 Remove "Moc"
 
 EMAILS
-  automated messages to project lead ("You will be contacted")
-  automated confirmation email with link to the MOC official website
-  who else has committed to a project
-  reminder - you signed up for this project, this project ends on this date
-  reminder - careful this is getting close to ending, you have 1 more month to complete it
-  completed?
-  complete moc sends email
-    welcome
-    s/o has joined your action
-    action comments digest (over 10 votes?)
-    someone commented on your comment
-    someone voted up your comment
-    unlocked new permission
   reciept tempalte
   payout template
 
+  automated messages to project lead ("You will be contacted") when creating project
+  s/o has completed your project
+
+  reminder - you signed up for this project, this project ends on this date
+  reminder - careful this is getting close to ending, you have 1 more month to complete it
+  completed?
+
+  DONE s/o has joined your project
+  DONE update on your project
+  DONE automated confirmation email with link to the MOC official website
+
   branding for email - mocsfordocs
-  
-  add updates to MOCs (like comments)
 
 -----------------------------------------
 

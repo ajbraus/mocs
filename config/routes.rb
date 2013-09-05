@@ -6,8 +6,9 @@ Mocs::Application.routes.draw do
   resources :posts, path: 'Mocs'
 
   root :to => 'posts#index'
-  match '/how', :to => 'welcome#how', :as => "how"
+  match '/howitworks', :to => 'welcome#how', :as => "how"
   match '/about', :to => 'welcome#about', :as => "about"
+  match '/termsandconditions', :to => 'welcome#terms', :as => "terms"
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   
@@ -21,6 +22,8 @@ Mocs::Application.routes.draw do
       get :vote_down
     end
   end
+
+  resources :updates
 
   resources :users, :only => [:show, :index, :confirm, :reject] do
     get :reject
