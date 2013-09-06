@@ -7,10 +7,6 @@ Payment
   SLL Cert
   Set rake task to square up commitments On the 2nd and 15th of each month
 
-add 3 'featured project' thumbnails to splash
-
-add user#show activity track once per day
-
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
   offer to rate the MOC
@@ -28,6 +24,10 @@ fix profile
   see other people's comments of projects I have joined
   and my total MOC points earned
   remove icons
+
+add 3 'featured project' thumbnails to splash
+
+add user#show activity track once per day
 
 Remove "Moc"
 
