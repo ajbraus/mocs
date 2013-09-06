@@ -122,7 +122,7 @@
       </li>
       <li class="<%= current_user == @post.user || current_user.committed_to?(@post) ? '' : 'disabled'%>">
         <a href="#tab4" data-toggle="tab">
-          <i class="<%= current_user.committed_to?(@post) && @commitment.progress >= 3 ? 'icon-check' : 'icon-check-empty'%>"></i> Plan, Do, Check, Act
+          <i class="<%= current_user.committed_to?(@post) && @commitment.progress >= 3 ? 'icon-check' : 'icon-check-empty'%>"></i> Intervention(s)
         </a>
       </li>
       <li class="<%= current_user == @post.user || current_user.committed_to?(@post) ? '' : 'disabled'%>">
@@ -226,6 +226,7 @@
       <% end %>
     </div>
     <div class="span7">
+      <% if @post.published? %>
       <div class="tabbable">
         <ul class="nav nav-tabs">
           <li class="active">
@@ -263,6 +264,7 @@
             </ul>
           </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
