@@ -33,7 +33,17 @@
     </h4>
 
     <div class="clear-both">
-      <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
+      <% if current_user.committed_to?(post) %>
+        <div class="progress progress-success progress-striped">
+          <div class="bar" style="width: <%= post.commitments.find_by_committed_user_id(current_user.id).percent_complete %>%;"></div>
+          <span class="progress-count"><span id="progress"><%= post.commitments.find_by_committed_user_id(current_user.id).progress %></span> / 6</span>
+        </div>
+        <div class="muted">
+          complete by <%= post.nice_ends_on %>
+        </div>
+      <% else %>
+        <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
+      <% end %>
     </div>
     <div class="text-left">
       <%= render partial: "shared/specialities", locals: { specialities: post.specialities }  %>

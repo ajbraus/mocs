@@ -1,4 +1,4 @@
 <p class="muted">Trending Projects</p>
-<% Post.joins(:specialities).where(published: true, posts_specialities: { speciality_id: current_user.specialities.pluck(:id) }).order( "last_touched asc" ).last(4).each do |m| %>
+<% Post.joins(:specialities).where(published: true, posts_specialities: { speciality_id: current_user.specialities.pluck(:id) }).uniq.order( "last_touched asc" ).last(4).each do |m| %>
   <%= render partial: "shared/mini_moc", locals: { m: m }  %>
 <% end %>

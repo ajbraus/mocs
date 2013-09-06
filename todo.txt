@@ -1,11 +1,6 @@
-Fix create moc form validation
-  scroll window to top when previous or next
+Fix create moc form validation  
   Clicking navigation half working
   Make publish button live only complete (tip to explain what is lacking) (identify a keyup in rich textarea)
-
-Payment
-  SLL Cert
-  Set rake task to square up commitments On the 2nd and 15th of each month
 
 setup complete moc workflow
   uptick Count hours of QI time on user & MOC Credits
@@ -50,6 +45,10 @@ EMAILS
 
 -----------------------------------------
 
+  Payment
+    Set rake task to square up commitments On the 2nd and 15th of each month
+    SLL Cert
+  
   Karma inrcrement on comments not working  
 
   user and admins can delete comments
@@ -272,3 +271,5 @@ setup 'commitments' (projects your doing)
 DONE show recently viewed projects in sidebar
 DONE Fix multiples in homepage
 
+
+DONE scroll window to top when previous or next

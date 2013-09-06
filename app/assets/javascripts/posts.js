@@ -1,7 +1,4 @@
-//jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
-var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
 
 $(".next").click(function(){  
   current_fs = $(this).parent().parent();
@@ -54,7 +51,8 @@ $("#progressbar li").click(function(){
 if (!!$('#post_title').val() && 
     !!$("#post_goal_id option:selected").val().length > 0) 
 {
-  $("#save").removeClass("disabled");
+  $("#save").addClass("btn-success").removeClass("disabled");
+  $("#saveTip").remove();
 }
 
 if ($('#post_title').length > 0 && 
