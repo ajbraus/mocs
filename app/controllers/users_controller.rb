@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:org_name]
   def show
     @user = User.find(params[:id])
-    if user_signed_in? && current_user == @user
-      @activities = PublicActivity::Activity.where(owner_id: current_user.id, owner_type: "User").order("created_at desc").paginate(:page => params[:page], :per_page => 5) #.where(owner_id: current_user.friend_ids, owner_type: "User")
-    end
+    
+    @activities = PublicActivity::Activity.where(owner_id: current_user.id, owner_type: "User").order("created_at desc").paginate(:page => params[:page], :per_page => 5) #.where(owner_id: current_user.friend_ids, owner_type: "User")
+    @comments = @user.comments.paginate(:page => params[:page], :per_page => 5) 
 
     @commitments = @user.committed_tos.where('progress < 6')
     @completed = @user.committed_tos.where("progress >= 6")

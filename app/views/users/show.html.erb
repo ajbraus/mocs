@@ -41,8 +41,8 @@
         </div>
       </div><!-- tab content -->
     </div><!-- tabbable -->
-    <% if current_user == @user %>
-      <div class="clear-both">
+    <div class='row'>
+      <div class="span4">
         <h4>Recent Activity</h4>
         <% @activities.each do |activity| %>
           <div class="activity">
@@ -52,7 +52,14 @@
         <% end %>
         <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
       </div>
-    <% end %>
+      <div class="span4">
+        <h4>Recent Comments</h4>
+        <% @comments.each do |c| %>
+          <%= render partial: 'shared/comment', locals: { c: c } %>
+        <% end %>
+        <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
   </div>
 
   <div class="span3">

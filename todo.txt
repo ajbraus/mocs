@@ -14,8 +14,6 @@ setup complete moc workflow
       Project Leader
 
 fix profile
-  To check progress (green bars) in my projects
-  get prompted as to next steps
   see other people's comments of projects I have joined
   and my total MOC points earned
   remove icons
@@ -48,7 +46,7 @@ EMAILS
   Payment
     Set rake task to square up commitments On the 2nd and 15th of each month
     SLL Cert
-  
+
   Karma inrcrement on comments not working  
 
   user and admins can delete comments
@@ -273,3 +271,4 @@ DONE Fix multiples in homepage
 
 
 DONE scroll window to top when previous or next
+DONE To check progress (green bars) in my projects
