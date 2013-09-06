@@ -24,8 +24,12 @@
           </ul>
         </div>
       <% end %>
+
       <fieldset>
         <div class="row">
+          <div class="strong big"><span class="muted">Step:1</span> Summary of Your QI project</div>
+          <p class="muted">Physicians will be able to view this summary to find your Project and judge if they want to join. Be sure to include key words in the title and description. Pick an accurate <strong>Goal</strong> and include your best estimates of <strong>Time to Complete</strong> and <strong>Duration</strong>.</p>
+
           <label for="post_title">Project Title<span class="red">*</span></label>
           <%= f.text_field :title %>
         </div>
@@ -87,7 +91,7 @@
         <div class="row well clearfix">
           <h5>MOC Project Status (optional)</h5>
           <div class="span2">
-            <%= f.label :credits, "MOC Credits" %>
+            <%= f.label :credits, "MOC Credits (optional)" %>
             <%= f.number_field :credits, class:"price" %> 
           </div>
           <div class="span3">
@@ -109,7 +113,8 @@
       </fieldset>
       <fieldset style="display:none;">
         <div class="row">
-          <%= f.label :info, "Step 1: Background Information*" %>
+          <div class="strong big"><span class="muted">Step:2</span> Review Background Information</div>
+          <p class="muted">Here introduce the information, research, videos, articles, etc that a physician should review when preparing to complete this project. Please feel free to include links to external resources.</p>
           <%= f.text_area :info, class:"rich-text" %>
         </div>
         <div class="row">
@@ -118,7 +123,8 @@
       </fieldset>
       <fieldset style="display:none;">
         <div class="row">
-          <%= f.label :baseline, "Step 2: Collect Baseline Data*" %>
+          <div class="strong big"><span class="muted">Step:3</span> Collect Baseline Data</div>
+          <p class="muted">"You get more of what you measure," they say. Here, explain what your joiners should be measuring to be a success.</p>
           <%= f.text_area :baseline, class:"rich-text" %>
         </div>
         <div class="row">
@@ -127,7 +133,8 @@
       </fieldset>
       <fieldset style="display:none;">
         <div class="row">
-          <%= f.label :plan_do, "Step 3: Intervention(s)*" %>
+          <div class="strong big"><span class="muted">Step:4</span> Interventions</div>
+          <p class="muted">Ok, here's where it gets really interesting. Specify the interactions, the concrete interventions that providers can do to improve their care.</p>
           <%= f.text_area :plan_do, class:"rich-text" %>
         </div>
         <div class="row">
@@ -136,7 +143,8 @@
       </fieldset>
       <fieldset style="display:none;">
         <div class="row">
-          <%= f.label :post_test, "Step 4: Collect Post Intervention Data*" %>
+          <div class="strong big"><span class="muted">Step:5</span> Collect Post Intervention Data</div>
+          <p class="muted">Now explain how they should collect data after the intervention to measure their success.</p>
           <%= f.text_area :post_test, class:"rich-text" %>
         </div>
         <div class="row">
@@ -145,7 +153,8 @@
       </fieldset>
       <fieldset style="display:none;">
         <div class="row">
-          <%= f.label :wrap_up, "Step 5: Wrap Up" %>
+          <div class="strong big"><span class="muted">Step:6</span> Wrap Up</div>
+          <p class="muted">Here, let folks know what they learned, what success should look like, what they should do to get MOC credits awarded (if applicable), where they can go for more information, and say congratulations!</p>
           <%= f.text_area :wrap_up, class:"rich-text" %>
         </div>
         <div class="row">
@@ -153,34 +162,22 @@
         </div>
       </fieldset>
       <div class="actions row">
-        <% if params[:action] == "edit" %>
-          <%= f.submit "Delete", class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
-        <% elsif params[:action] == "new" %>
-          <%= link_to "Cancel", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
-        <% end %>
-        <%= f.submit "Save w/o Publishing", id:"save", class:'btn btn-success btn-large disabled'  %>
-        <%= f.submit "Complete to Publish", class:'btn btn-large disabled', id: "publish" %>
+        <p>
+          <% if params[:action] == "edit" %>
+            <%= f.submit "Delete", class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
+          <% elsif params[:action] == "new" %>
+            <%= link_to "Cancel", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
+          <% end %>
+          <%= f.submit "Save & Quit", id:"save", class:'btn btn-large disabled'  %>
+          <%= f.submit "Publish!", class:'btn btn-large disabled', id: "publish" %>
+        </p>
+        <p class="well alert-danger" id="saveTip"><i class="icon-check"></i> You must enter at least <strong>title</strong> and a <strong>Goal</strong> to save your project.</p>
+        <p class="well alert-info"><i class="icon-desktop"></i> You will be able to publish once your project is complete</p>
       </div>
     </div>
   <% end %>
   
     <div class="span3">
-      <div class="well 0">
-        <p>
-          Physicians will use this <strong>Summary</strong> to judge if they want to register for your project.
-        </p>
-        <p>
-          Choose a <strong>title</strong> that is brief and descriptive.
-        </p>
-        <p>
-          To include a <strong>video</strong>, record a video and upload it to your <strong>YouTube channel</strong>, then paste the URL of the video into the "Video URL" row.
-        </p> 
-      </div>
-      <div class="well 1" style='display:none;'>
-        <p>
-          Blah
-        </p> 
-      </div>
       <div class="well alert-info">
         <span class="big"><i class="icon-user-md"></i> Tip</span></br>
         <p>
