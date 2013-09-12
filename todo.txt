@@ -1,4 +1,7 @@
+feedback button
+
 Fix create moc form validation  
+  identify keyup in textboxes
   Clicking navigation half working
   Make publish button live only complete (tip to explain what is lacking) (identify a keyup in rich textarea)
 
@@ -12,11 +15,6 @@ setup complete moc workflow
       Start Date,
       End Date,
       Project Leader
-
-fix profile
-  see other people's comments of projects I have joined
-  and my total MOC points earned
-  remove icons
 
 add 3 'featured project' thumbnails to splash
 
@@ -272,3 +270,5 @@ DONE Fix multiples in homepage
 
 DONE scroll window to top when previous or next
 DONE To check progress (green bars) in my projects
+
+DONE see other people's comments of projects I have joined
