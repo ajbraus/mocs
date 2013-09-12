@@ -39,7 +39,7 @@
           <span class="progress-count"><span id="progress"><%= post.commitments.find_by_committed_user_id(current_user.id).progress %></span> / 6</span>
         </div>
         <div class="muted">
-          complete by <%= post.nice_ends_on %>
+          <%= "complete by " + post.nice_ends_on if post.ends_on %>
         </div>
       <% else %>
         <%= post.short_desc %> <%= link_to '(more)', post_path(post) %>
