@@ -102,8 +102,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @user = current_user
-    @post = @user.posts.build
+    @post = current_user.posts.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -119,10 +118,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @user = current_user
-    @post = @user.posts.build(params[:post])
-    @post.state = @user.state
-    @post.organization = @user.organization
+    @post = current_user.posts.build(params[:post])
+    @post.state = current_user.state
+    @post.organization = current_user.organization
     @post.last_touched = Time.now
 
     if params[:commit] == "Publish"

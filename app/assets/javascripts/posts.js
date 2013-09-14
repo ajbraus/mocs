@@ -70,7 +70,7 @@ if ($('#post_title').length > 0 &&
     // $("#post_begins_on").val().length > 0 &&
     // $("#post_ends_on").val().length > 0 &&
 {
-  $('#publish').val("Publish!").removeClass("disabled").addClass("btn-gold");
+  $('#publish').val("Publish").removeClass("disabled").addClass("btn-gold");
 }
 
 
@@ -97,7 +97,7 @@ $("form").keyup(function(){
       $("#post_post_test").val().length > 0 &&
       $("#post_wrap_up").val().length > 0)
   {
-    $('#publish').val("Publish!").removeClass("disabled").addClass("btn-gold");
+    $('#publish').val("Publish").removeClass("disabled").addClass("btn-gold");
   }
 });
 

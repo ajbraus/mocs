@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'faker'
 
-    [User, Post, Activity, Comment, Speciality, Commitment, Goal, Message, Organization, OrganizationUser, Vote].each(&:delete_all)
+    [User, Post, PublicActivity::Activity, Comment, Speciality, Commitment, Goal, Message, Organization, OrganizationUser, Vote].each(&:delete_all)
     Organization.create(name:"UW Health")
     Organization.create(name:"Gundersen Lutheran")
     Organization.create(name:"Mayo Clinic")
@@ -30,7 +30,6 @@ namespace :db do
       user.encrypted_password = "password"
     end
     adam = User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", state:"WI", confirmed_at: Time.now, admin: true)
-    james = User.create(name:"James Lloyd", email:"james.jd.lloyd@gmail.com", password:"password", state:"WI", confirmed_at: Time.now, admin: true)
     adam.organizations << Organization.find_by_name("UW Health")
     james.organizations << Organization.find_by_name("UW Health")
 

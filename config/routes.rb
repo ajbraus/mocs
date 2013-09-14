@@ -3,7 +3,7 @@ Mocs::Application.routes.draw do
   resources :recipients, only: [:new, :create]
 
   resources :messages
-  resources :posts, path: 'Mocs'
+  resources :posts, path: 'projects'
 
   root :to => 'posts#index'
   match '/howitworks', :to => 'welcome#how', :as => "how"

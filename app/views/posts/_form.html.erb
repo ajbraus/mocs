@@ -169,7 +169,7 @@
             <%= link_to "Cancel", posts_path, class:'btn btn-danger btn-large', confirm: "This will permanently delete this project. Are you sure you would like to continue?"  %>
           <% end %>
           <%= f.submit "Save & Quit", id:"save", class:'btn btn-large disabled'  %>
-          <%= f.submit "Publish!", class:'btn btn-large disabled', id: "publish" %>
+          <%= f.submit "Publish", class:'btn btn-large disabled', id: "publish" %>
         </p>
         <p class="well alert-danger" id="saveTip"><i class="icon-check"></i> You must enter at least <strong>title</strong> and a <strong>Goal</strong> to save your project.</p>
         <p class="well alert-info"><i class="icon-desktop"></i> You will be able to publish once your project is complete</p>
