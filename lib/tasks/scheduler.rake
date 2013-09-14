@@ -1,5 +1,5 @@
 task :rebuild_index => :environment do
-  rake "fs:rebuild"
+  Post.rebuild_index
 end
 
 # task :send_reminders => :environment do

@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.create(params[:user])
-    organization = Organization.find_by_name(params[:organization])
+    organization = Organization.find_or_create_by_name(params[:organization])
     @user.organizations << organization
 
     if @user.save
